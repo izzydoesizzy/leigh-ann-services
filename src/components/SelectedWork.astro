@@ -1,0 +1,173 @@
+---
+// Case studies pulled from brag sheet. Magazine-style with asymmetric ratios.
+const cases = [
+  {
+    num: "01",
+    company: "Ascend Wellness Holdings",
+    sector: "Public cannabis, CSE + OTCQX",
+    headline: "Board cadence from zero.",
+    pull: "When I arrived there were no board meetings on the calendar. I left with the full 2026 board and committee calendar planned 12 months ahead.",
+    body: "Coordinated an 8-person quarterly board convening (4 external directors plus CEO, CFO, President, and Chief Counsel) and two standing committees (Audit and Compensation). Anchored dates against earnings and legal review windows, and locked in member availability through proactive outreach.",
+    metrics: [
+      { label: "months planned ahead", value: "12" },
+      { label: "standing committees", value: "2" },
+      { label: "board convening", value: "8-person" },
+    ],
+    accent: "copper",
+    role: "EA to the CEO and President",
+  },
+  {
+    num: "02",
+    company: "Immunovant",
+    sector: "Pre-IPO clinical-stage biopharma",
+    headline: "The EA function, from zero.",
+    pull: "Employee #17 to 19 at hire. Sole EA for five C-suite executives by March 2020.",
+    body: "Built the executive-assistant function from scratch as Immunovant scaled. Designed onboarding programs for 6 administrative professionals that reduced ramp-up time by 20%. Co-founded the Culture Committee with HR and partnered with Facilities and ELT on policies that lifted employee satisfaction scores by 22%.",
+    metrics: [
+      { label: "C-suite execs as sole EA", value: "5" },
+      { label: "faster new-hire ramp", value: "20%" },
+      { label: "employee satisfaction lift", value: "22%" },
+    ],
+    accent: "sage",
+    role: "Senior EA to CEO and General Counsel",
+  },
+  {
+    num: "03",
+    company: "Ascend Wellness Holdings",
+    sector: "Public cannabis, 200+ stakeholders",
+    headline: "Earnings prep, rebuilt.",
+    pull: "One cycle in-role exposed the gaps. July 2025, I rebuilt the system. Deployed it for Q2 2025 and ran it through my tenure.",
+    body: "Aligned external IR (Mattio Communications), Legal, VP Financial Planning, PR, and C-suite on a shared 6 to 8 week cadence with SharePoint template discipline. Granted the Chief Commercial Officer script access mid-cycle and pulled the VP of Marketing into live prep, closing the input loops that had forced post-draft revisions.",
+    metrics: [
+      { label: "week system", value: "6 to 8" },
+      { label: "stakeholder satisfaction", value: "98%" },
+      { label: "efficiency improvement", value: "25%" },
+    ],
+    accent: "copper",
+    role: "EA, Investor Relations",
+  },
+  {
+    num: "04",
+    company: "PwC",
+    sector: "Big Four public accounting",
+    headline: "A nine-month season, delivered.",
+    pull: "I loved working at PwC. I left reluctantly.",
+    body: "Senior Team Assistant for the NY Metro State and Local Tax Department. Supported three tax service lines (Indirect, Income/Franchise, Credit & Incentives) across the full associate-to-MD ladder. Stewarded the Thought Leadership MD's weekly budget-tracking workflow through the WHIP report at 3 purchase orders by 500 companies.",
+    metrics: [
+      { label: "on-time delivery", value: "98%" },
+      { label: "payment reconciliation", value: "100%" },
+      { label: "TAs mentored", value: "4" },
+    ],
+    accent: "sage",
+    role: "Senior Team Assistant, SALT",
+  },
+  {
+    num: "05",
+    company: "Immunovant",
+    sector: "FDA and investor-relations coordination",
+    headline: "FDA-ready, IPO-ready.",
+    pull: "Coordinating FDA meeting readiness across the CMO, General Counsel, and CEO, including hardcopy lockbox for sensitive correspondence.",
+    body: "Managed clinical-trial ad-board convenings across multiple trial phases, owned CEO and CFO calendar time for investor meetings, and ran pre-IPO investor-relations coordination alongside the IR manager across press releases, earnings cycles, and no-deal roadshows.",
+    metrics: [
+      { label: "decision velocity gain", value: "30%" },
+      { label: "C-suite execs coordinated", value: "5" },
+      { label: "Culture Committee founder", value: "yes" },
+    ],
+    accent: "copper",
+    role: "Senior EA to CEO and GC",
+  },
+  {
+    num: "06",
+    company: "BearingPoint",
+    sector: "Global financial operations",
+    headline: "Ten million a month, on the dot.",
+    pull: "Managed $10M-plus monthly in payment processing with 99% accuracy and 100% regulatory compliance.",
+    body: "First US corporate role. Optimized cash management workflows with AP and AR teams, reducing billing discrepancies by 20%. Operated through Chapter 11 bankruptcy proceedings while coordinating with offshore teams in India and the British Virgin Islands.",
+    metrics: [
+      { label: "monthly processing", value: "$10M+" },
+      { label: "accuracy rate", value: "99%" },
+      { label: "regulatory compliance", value: "100%" },
+    ],
+    accent: "sage",
+    role: "Financial Operations Administrator",
+  },
+];
+---
+
+<section id="work" class="py-24 md:py-32 bg-paper">
+  <div class="max-w-[1440px] mx-auto px-6 md:px-10">
+    <!-- Section heading -->
+    <div class="grid md:grid-cols-12 gap-8 mb-16 md:mb-24" data-reveal>
+      <div class="md:col-span-4">
+        <p class="small-caps text-copper mb-4">Chapter Two</p>
+        <h2 class="font-display text-5xl md:text-7xl text-ink leading-[0.9]">
+          Selected <span class="italic font-display-italic">work</span>.
+        </h2>
+      </div>
+      <div class="md:col-span-6 md:col-start-7 flex items-end">
+        <p class="text-ink-soft text-lg leading-relaxed">
+          Six moments that show the shape of my work. Every metric cited is in my resume and verifiable through references. No composites, no estimates rounded up.
+        </p>
+      </div>
+    </div>
+
+    <!-- Cases: alternating ratios for magazine pacing -->
+    <div class="space-y-24 md:space-y-32">
+      {cases.map((c, idx) => {
+        const isEven = idx % 2 === 0;
+        const accentClass = c.accent === "copper" ? "text-copper" : "text-sage";
+        return (
+          <article class="grid md:grid-cols-12 gap-8 md:gap-16 items-start" data-reveal>
+            {/* Left rail: case number vertical + year */}
+            <div class={`md:col-span-2 flex ${isEven ? "md:justify-start" : "md:justify-end md:order-last"}`}>
+              <div class="flex flex-col items-start md:items-center gap-4">
+                <span class="font-display text-7xl md:text-8xl text-ink/10 leading-none tabular">{c.num}</span>
+                <span class="small-caps text-ink-muted hidden md:inline">Case study</span>
+              </div>
+            </div>
+
+            {/* Main column */}
+            <div class={`md:col-span-10 ${isEven ? "md:col-start-3" : "md:col-start-1 md:row-start-1"}`}>
+              <div class="border-t-2 border-ink pt-6 mb-8">
+                <div class="flex flex-wrap items-baseline justify-between gap-x-6 gap-y-2">
+                  <div>
+                    <p class={`small-caps ${accentClass} mb-1`}>{c.company}</p>
+                    <p class="font-mono text-[11px] text-ink-muted uppercase tracking-wider">{c.sector}</p>
+                  </div>
+                  <p class="font-mono text-[11px] text-ink-muted uppercase tracking-wider">{c.role}</p>
+                </div>
+              </div>
+
+              <div class="grid md:grid-cols-12 gap-8 md:gap-12">
+                <div class="md:col-span-7">
+                  <h3 class="font-display text-4xl md:text-6xl text-ink leading-[0.95] mb-8">
+                    {c.headline}
+                  </h3>
+                  <blockquote class="font-display-italic text-2xl md:text-3xl text-copper leading-snug border-l-2 border-copper pl-6 mb-8">
+                    "{c.pull}"
+                  </blockquote>
+                  <p class="text-ink-soft leading-relaxed text-[17px]">
+                    {c.body}
+                  </p>
+                </div>
+
+                {/* Metrics rail */}
+                <div class="md:col-span-5 md:pl-8 md:border-l md:border-rule">
+                  <p class="small-caps text-ink-muted mb-6">By the numbers</p>
+                  <dl class="space-y-6">
+                    {c.metrics.map(m => (
+                      <div>
+                        <dt class="font-mono text-[10px] text-ink-muted uppercase tracking-[0.2em] mb-1">{m.label}</dt>
+                        <dd class={`font-display text-4xl md:text-5xl ${accentClass} leading-none tabular`}>{m.value}</dd>
+                      </div>
+                    ))}
+                  </dl>
+                </div>
+              </div>
+            </div>
+          </article>
+        );
+      })}
+    </div>
+  </div>
+</section>

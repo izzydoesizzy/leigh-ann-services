@@ -1,0 +1,103 @@
+---
+const columns = [
+  {
+    roman: "I",
+    title: "Executive partnership",
+    subtitle: "What I do for the office",
+    items: [
+      "Calendar and correspondence for one to five C-suite executives",
+      "Anticipatory briefings and pre-meeting context",
+      "Confidential information handling across HR, M&A, legal",
+      "Gatekeeping with judgment, not rigidity",
+      "Travel, expense, and logistics at international scale",
+      "End-of-day summaries and priority alignment",
+    ],
+  },
+  {
+    roman: "II",
+    title: "Operations and governance",
+    subtitle: "What I build for the company",
+    items: [
+      "Quarterly board cadence and 12-month forward planning",
+      "Audit and Compensation committee coordination",
+      "Earnings-call prep with external IR partners",
+      "Pre-IPO and publicly traded company workflows",
+      "FDA meeting readiness and regulatory ad-boards",
+      "EA function build-out with onboarding frameworks",
+    ],
+  },
+  {
+    roman: "III",
+    title: "Tech, tools, and AI",
+    subtitle: "How I work every day",
+    items: [
+      "Microsoft 365, Google Workspace, SharePoint, Notion",
+      "Salesforce Certified Platform Administrator",
+      "Asana, Monday.com, Slack, Zoom, DocuSign",
+      "Concur, Expensify, Paylocity for financial ops",
+      "Claude and Perplexity daily since 2024",
+      "Advanced Excel, pivot tables, data analysis",
+    ],
+  },
+];
+
+const credentials = [
+  "Certified Administrative Professional (CAP), International Association of Administrative Professionals (IAAP)",
+  "Microsoft Office Certified Specialist",
+  "Salesforce Certified Platform Administrator",
+  "Strategic Project Management Certification (in progress)",
+  "B.S. Business Administration, SBCS Global Learning Institute, Trinidad & Tobago",
+];
+---
+
+<section class="bg-paper py-24 md:py-32">
+  <div class="max-w-[1440px] mx-auto px-6 md:px-10">
+    <div class="max-w-4xl mb-16 md:mb-20" data-reveal>
+      <p class="small-caps text-copper mb-4">Chapter Four</p>
+      <h2 class="font-display text-5xl md:text-7xl text-ink leading-[0.9] mb-8">
+        The <span class="italic font-display-italic">full range</span>.
+      </h2>
+      <p class="text-ink-soft text-lg leading-relaxed">
+        Three categories of capability. I don't pretend the first one makes me a strategic partner. It's all three together that does.
+      </p>
+    </div>
+
+    <div class="grid md:grid-cols-3 gap-px bg-rule border border-rule" data-reveal>
+      {columns.map(col => (
+        <div class="bg-paper p-8 md:p-10">
+          <div class="flex items-baseline gap-4 mb-6">
+            <span class="font-display text-5xl text-copper leading-none">{col.roman}.</span>
+            <div>
+              <p class="small-caps text-ink-muted">{col.subtitle}</p>
+            </div>
+          </div>
+          <h3 class="font-display text-2xl md:text-3xl text-ink leading-tight mb-8">{col.title}</h3>
+          <ul class="space-y-3">
+            {col.items.map(item => (
+              <li class="flex gap-3 items-start">
+                <span class="w-3 h-px bg-ink mt-2.5 flex-shrink-0"></span>
+                <span class="text-ink-soft text-[15px] leading-relaxed">{item}</span>
+              </li>
+            ))}
+          </ul>
+        </div>
+      ))}
+    </div>
+
+    <!-- Credentials callout -->
+    <div class="mt-12 md:mt-16 grid md:grid-cols-12 gap-6 border-t-2 border-ink pt-10" data-reveal>
+      <div class="md:col-span-3">
+        <p class="small-caps text-copper mb-2">Credentials</p>
+        <p class="font-display text-2xl text-ink leading-tight">Formally backed.</p>
+      </div>
+      <ul class="md:col-span-9 grid sm:grid-cols-2 gap-x-8 gap-y-3">
+        {credentials.map(cred => (
+          <li class="flex gap-3 items-start">
+            <span class="font-mono text-[10px] text-copper mt-1.5 flex-shrink-0">◆</span>
+            <span class="text-ink-soft text-sm leading-relaxed">{cred}</span>
+          </li>
+        ))}
+      </ul>
+    </div>
+  </div>
+</section>

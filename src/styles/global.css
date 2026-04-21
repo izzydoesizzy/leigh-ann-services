@@ -1,0 +1,154 @@
+@import "tailwindcss";
+
+/*
+ * Editorial magazine palette. Warm ivory paper, near-black ink, a single
+ * burnished-copper accent, and a muted sage as a secondary color.
+ * Typography pairs Fraunces (variable serif, optical sizing) for display
+ * with Inter for body and JetBrains Mono for numbers + labels.
+ */
+
+@theme {
+  --color-paper: #F5F0E6;
+  --color-paper-deep: #ECE4D2;
+  --color-paper-soft: #FBF7EE;
+  --color-ink: #161513;
+  --color-ink-soft: #3A3632;
+  --color-ink-muted: #7A736A;
+  --color-rule: #CFC4AE;
+  --color-copper: #B8763E;
+  --color-copper-deep: #8F5521;
+  --color-sage: #3C5148;
+  --color-blush: #C78F7E;
+
+  --font-sans: "Inter", system-ui, -apple-system, sans-serif;
+  --font-serif: "Fraunces", Georgia, "Times New Roman", serif;
+  --font-mono: "JetBrains Mono", "SF Mono", ui-monospace, monospace;
+}
+
+html {
+  scroll-behavior: smooth;
+  background: var(--color-paper);
+}
+
+body {
+  font-family: var(--font-sans);
+  color: var(--color-ink);
+  background: var(--color-paper);
+  font-feature-settings: "kern", "liga", "calt", "ss01";
+}
+
+/* Display type: Fraunces with optical sizing for big moments */
+.font-display {
+  font-family: var(--font-serif);
+  font-optical-sizing: auto;
+  font-variation-settings: "opsz" 144, "SOFT" 50, "WONK" 0;
+  letter-spacing: -0.02em;
+  line-height: 0.94;
+}
+
+.font-display-italic {
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-optical-sizing: auto;
+  font-variation-settings: "opsz" 144;
+}
+
+/* Caption-size serif for pull quotes and callouts */
+.font-caption {
+  font-family: var(--font-serif);
+  font-optical-sizing: auto;
+  font-variation-settings: "opsz" 9;
+}
+
+/* Small caps via OpenType + letterspacing for editorial labels */
+.small-caps {
+  font-family: var(--font-sans);
+  font-size: 0.6875rem;
+  font-weight: 600;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+}
+
+/* Mono labels for technical/numeric moments */
+.font-mono {
+  font-family: var(--font-mono);
+  font-feature-settings: "kern", "liga";
+}
+
+/* Rule: thin editorial line, used as a divider */
+.editorial-rule {
+  border-top: 1px solid var(--color-rule);
+}
+
+.editorial-rule-thick {
+  border-top: 2px solid var(--color-ink);
+}
+
+/* Paper grain for a subtle tactile feel */
+.paper-grain {
+  background-image:
+    radial-gradient(circle at 20% 30%, rgba(22, 21, 19, 0.018) 0%, transparent 40%),
+    radial-gradient(circle at 80% 70%, rgba(184, 118, 62, 0.025) 0%, transparent 50%);
+}
+
+/* Reveal-on-scroll (matches her other sites) */
+[data-reveal] {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.9s cubic-bezier(0.2, 0.8, 0.2, 1), transform 0.9s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+[data-reveal].revealed {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Magazine drop cap for the first paragraph of About */
+.drop-cap::first-letter {
+  font-family: var(--font-serif);
+  font-variation-settings: "opsz" 144;
+  font-weight: 700;
+  font-size: 4.75rem;
+  line-height: 0.82;
+  float: left;
+  margin: 0.08em 0.12em 0 0;
+  color: var(--color-copper);
+}
+
+::selection {
+  background: var(--color-ink);
+  color: var(--color-paper);
+}
+
+/* Subtle underline for inline links */
+.u-link {
+  color: var(--color-ink);
+  background-image: linear-gradient(to top, var(--color-copper) 0%, var(--color-copper) 1px, transparent 1px);
+  background-position: 0 95%;
+  background-size: 100% 2px;
+  background-repeat: no-repeat;
+  padding-bottom: 1px;
+  transition: color 0.2s ease, background-size 0.3s ease;
+}
+
+.u-link:hover {
+  color: var(--color-copper-deep);
+  background-size: 100% 100%;
+  background-image: linear-gradient(to top, var(--color-copper) 0%, rgba(184, 118, 62, 0.18) 100%);
+}
+
+/* Number ticker rhythm */
+.tabular {
+  font-variant-numeric: tabular-nums;
+}
+
+/* Softly animated vertical label */
+.v-label {
+  writing-mode: vertical-rl;
+  transform: rotate(180deg);
+  letter-spacing: 0.32em;
+  font-size: 0.6875rem;
+  text-transform: uppercase;
+  font-weight: 600;
+  color: var(--color-ink-muted);
+}

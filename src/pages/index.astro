@@ -1,0 +1,49 @@
+---
+import Layout from "../layouts/Layout.astro";
+import Masthead from "../components/Masthead.astro";
+import Overture from "../components/Overture.astro";
+import TwoPaths from "../components/TwoPaths.astro";
+import SelectedWork from "../components/SelectedWork.astro";
+import ByTheNumbers from "../components/ByTheNumbers.astro";
+import SkillsMatrix from "../components/SkillsMatrix.astro";
+import Services from "../components/Services.astro";
+import Recognition from "../components/Recognition.astro";
+import Testimonial from "../components/Testimonial.astro";
+import About from "../components/About.astro";
+import Contact from "../components/Contact.astro";
+import Colophon from "../components/Colophon.astro";
+---
+
+<Layout title="Leigh-Ann Martin | Senior EA, fractional partner">
+  <Masthead />
+  <main>
+    <Overture />
+    <TwoPaths />
+    <SelectedWork />
+    <ByTheNumbers />
+    <SkillsMatrix />
+    <Services />
+    <Recognition />
+    <Testimonial />
+    <About />
+    <Contact />
+  </main>
+  <Colophon />
+</Layout>
+
+<script>
+  // Scroll-reveal observer, matches the feel of her other sites.
+  const revealEls = document.querySelectorAll("[data-reveal]");
+  const observer = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("revealed");
+          observer.unobserve(entry.target);
+        }
+      });
+    },
+    { threshold: 0.08, rootMargin: "0px 0px -60px 0px" }
+  );
+  revealEls.forEach((el) => observer.observe(el));
+</script>

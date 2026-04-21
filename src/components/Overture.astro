@@ -1,0 +1,93 @@
+---
+const base = import.meta.env.BASE_URL;
+---
+
+<!-- Hero / Overture: editorial split with oversized serif and portrait -->
+<section class="relative overflow-hidden">
+  <div class="max-w-[1440px] mx-auto px-6 md:px-10 pt-12 md:pt-20 pb-16 md:pb-24">
+    <!-- Issue heading -->
+    <div class="flex items-baseline justify-between mb-10 md:mb-16" data-reveal>
+      <div class="flex items-baseline gap-4 md:gap-6">
+        <span class="small-caps text-ink-muted">Vol. I</span>
+        <span class="hidden md:inline text-ink-muted font-mono text-[11px]">&middot;</span>
+        <span class="hidden md:inline small-caps text-ink-muted">Executive support, reimagined</span>
+      </div>
+      <span class="small-caps text-ink-muted tabular">2026</span>
+    </div>
+
+    <div class="grid md:grid-cols-12 gap-8 md:gap-12 items-end">
+      <!-- Left: display headline -->
+      <div class="md:col-span-7" data-reveal>
+        <p class="small-caps text-copper mb-6">The Dossier</p>
+        <h1 class="font-display text-[16vw] md:text-[9.5rem] lg:text-[11.5rem] text-ink leading-[0.88] tracking-[-0.035em]">
+          A strategic
+          <span class="italic font-display-italic text-copper">partner</span>,
+          <br/>not an assistant.
+        </h1>
+
+        <p class="mt-10 md:mt-14 text-lg md:text-xl text-ink-soft leading-relaxed max-w-xl">
+          <span class="font-display-italic text-ink">Leigh-Ann Martin.</span> Twelve years supporting C-suite leaders across biotech, finance, and public cannabis. Trained chef. Published in the <em>New York Times</em>. Certified Administrative Professional. I build executive offices that run on anticipation, not triage.
+        </p>
+
+        <div class="mt-10 md:mt-14 flex flex-col sm:flex-row gap-3">
+          <a
+            href="#two-paths"
+            class="group inline-flex items-center justify-center gap-3 bg-ink text-paper px-7 py-4 rounded-full text-sm font-medium hover:bg-copper transition-colors"
+          >
+            <span>Part-time or full-time hire</span>
+            <svg class="w-4 h-4 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
+          </a>
+          <a
+            href="#services"
+            class="group inline-flex items-center justify-center gap-3 bg-paper border-2 border-ink text-ink px-7 py-4 rounded-full text-sm font-medium hover:bg-ink hover:text-paper transition-colors"
+          >
+            <span>Fractional engagement</span>
+            <svg class="w-4 h-4 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
+          </a>
+        </div>
+      </div>
+
+      <!-- Right: portrait + caption block -->
+      <div class="md:col-span-5" data-reveal>
+        <figure class="relative">
+          <div class="aspect-[3/4] rounded-[2px] overflow-hidden bg-paper-deep shadow-[0_20px_60px_-20px_rgba(22,21,19,0.25)]">
+            <img
+              src={`${base}portrait.jpg`}
+              alt="Leigh-Ann Martin"
+              class="w-full h-full object-cover"
+              style="object-position: center top;"
+            />
+          </div>
+          <!-- Caption with editorial rule -->
+          <figcaption class="mt-4 pt-3 border-t border-ink/20">
+            <p class="font-mono text-[10px] uppercase tracking-[0.2em] text-ink-muted mb-1">Portrait</p>
+            <p class="font-caption text-sm text-ink-soft italic leading-snug">
+              New York, 2026. Senior Executive Assistant, fractional EA, Founding Member &amp; Lead of Immunovant's Culture Committee.
+            </p>
+          </figcaption>
+
+          <!-- Floating badge -->
+          <div class="absolute -left-4 md:-left-8 top-6 bg-copper text-paper px-3 py-1.5 rotate-[-4deg] shadow-lg">
+            <span class="small-caps text-paper">Available now</span>
+          </div>
+        </figure>
+      </div>
+    </div>
+
+    <!-- Lower strip: quick positioning chips -->
+    <div class="mt-16 md:mt-24 pt-8 border-t border-rule flex flex-wrap items-center gap-x-6 gap-y-3 md:gap-x-10" data-reveal>
+      <span class="font-mono text-[11px] uppercase tracking-[0.2em] text-ink-muted">Supports</span>
+      <span class="text-ink text-sm">CEO &amp; Founder</span>
+      <span class="w-1 h-1 bg-rule rounded-full"></span>
+      <span class="text-ink text-sm">CFO &amp; President</span>
+      <span class="w-1 h-1 bg-rule rounded-full"></span>
+      <span class="text-ink text-sm">General Counsel</span>
+      <span class="w-1 h-1 bg-rule rounded-full"></span>
+      <span class="text-ink text-sm">Board &amp; Committees</span>
+      <span class="w-1 h-1 bg-rule rounded-full"></span>
+      <span class="text-ink text-sm">Investor Relations</span>
+      <span class="w-1 h-1 bg-rule rounded-full"></span>
+      <span class="text-ink text-sm">Chief of Staff teams</span>
+    </div>
+  </div>
+</section>
