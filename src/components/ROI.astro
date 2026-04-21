@@ -1,0 +1,63 @@
+---
+const scenarios = [
+  {
+    label: "Broken board-prep cycle",
+    cost: "8 to 12 hours per quarter across CEO, CFO, and General Counsel, at an internal billing rate of $500 to $1,500 per hour.",
+    annual: "$16,000 to $72,000",
+    detail: "of executive time, recovered when the cadence runs on rails instead of scrambling the week before.",
+  },
+  {
+    label: "Ad-hoc earnings coordination",
+    cost: "One quarter of script revisions, stakeholder chasing, and external IR back-and-forth typically consumes 20 to 40 hours of CFO and CEO time.",
+    annual: "$40,000 to $240,000",
+    detail: "across four quarters. A rebuilt cadence means your C-suite spends that time on the story, not the logistics.",
+  },
+  {
+    label: "First-EA hire done wrong",
+    cost: "A mis-hire in a senior EA role costs 6 to 9 months of salary ($60K to $125K+) plus the opportunity cost of leadership's unsupported calendar.",
+    annual: "$75,000 to $200,000+",
+    detail: "in direct and indirect cost. Done right, the EA function is force multiplier. Done wrong, it's a tax on the exec team.",
+  },
+];
+---
+
+<section class="bg-ink text-paper py-24 md:py-32">
+  <div class="max-w-[1440px] mx-auto px-6 md:px-10">
+    <div class="max-w-3xl mb-16 md:mb-20" data-reveal>
+      <p class="small-caps text-copper mb-4">The math</p>
+      <h2 class="font-display text-5xl md:text-7xl text-paper leading-[0.9] mb-8">
+        What it <span class="italic font-display-italic">actually costs</span> to not fix this.
+      </h2>
+      <p class="text-paper/70 text-lg leading-relaxed">
+        Fractional EA work feels like an expense until you price what the current state is already costing you. Three honest calculations.
+      </p>
+    </div>
+
+    <div class="space-y-px bg-paper/10 border border-paper/10" data-reveal>
+      {scenarios.map((s, idx) => (
+        <div class="bg-ink grid md:grid-cols-12 gap-6 md:gap-10 px-6 md:px-10 py-8 md:py-10">
+          <div class="md:col-span-1 flex items-start">
+            <span class="font-display text-5xl md:text-6xl text-copper leading-none tabular">0{idx + 1}</span>
+          </div>
+          <div class="md:col-span-5">
+            <p class="small-caps text-paper/50 mb-3">Scenario</p>
+            <h3 class="font-display text-2xl md:text-3xl text-paper leading-tight mb-3">{s.label}</h3>
+            <p class="text-paper/65 text-sm leading-relaxed">{s.cost}</p>
+          </div>
+          <div class="md:col-span-6 md:border-l md:border-paper/15 md:pl-8">
+            <p class="small-caps text-copper mb-3">Annual exposure</p>
+            <p class="font-display text-5xl md:text-6xl text-copper leading-none tabular mb-4">{s.annual}</p>
+            <p class="text-paper/70 text-sm leading-relaxed">{s.detail}</p>
+          </div>
+        </div>
+      ))}
+    </div>
+
+    <!-- Closing reframe -->
+    <div class="mt-12 md:mt-16 max-w-3xl" data-reveal>
+      <p class="font-display-italic text-2xl md:text-3xl text-paper leading-relaxed">
+        Against those numbers, a $5,000 to $15,000 fractional engagement doesn't look like an expense. It looks like recovery of capital you're already spending, just not on anything that compounds.
+      </p>
+    </div>
+  </div>
+</section>

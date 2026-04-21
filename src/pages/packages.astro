@@ -1,0 +1,447 @@
+---
+import Layout from "../layouts/Layout.astro";
+import Colophon from "../components/Colophon.astro";
+
+const base = import.meta.env.BASE_URL;
+
+// PRIVATE PAGE. Not linked from the public site. Noindex + robots.txt disallow.
+// This is the page Leigh-Ann walks through with a prospect after a discovery call.
+
+const mailto = (pkg: string) =>
+  `mailto:lmartinlapc@gmail.com?subject=${encodeURIComponent(`Package inquiry: ${pkg}`)}&body=${encodeURIComponent(`Hi Leigh-Ann,\n\nAfter our discovery call, I'd like to move forward with the ${pkg} package. Here's what we discussed:\n\n[your notes]\n\nNext step on my end:\n\n[countersign / kickoff scheduling / other]\n\nBest,`)}`;
+
+const custom = {
+  label: "Custom engagement",
+  pitch: "Your situation doesn't match one of the packages below. Most serious engagements start here.",
+  price: "Scoped in writing after the discovery call",
+  priceNote: "typical engagements land $8,000 to $45,000",
+  outcome: "A fractional arrangement shaped around the specific shape of what's breaking at your exec office.",
+  bullets: [
+    "Discovery call (30 min, no charge)",
+    "Written scope within 2 business days",
+    "Flat price tied to outcome, not hours",
+    "Built-in early-exit clause (see guarantee)",
+  ],
+};
+
+const packages = [
+  {
+    num: "01",
+    tier: "Tier 01 &middot; Entry",
+    name: "Executive Office Audit",
+    timeline: "2 weeks",
+    price: "$3,500",
+    priceRange: "flat, $2,500 to $4,500 depending on company size",
+    outcome: "You walk away knowing exactly what's broken at your executive office, what fixing it costs, and what to fix first.",
+    pain: "You know something isn't working. You can't name exactly what. You're not ready to commit to a 3-month engagement until you know what you're buying.",
+    deliverables: [
+      "Stakeholder interviews (CEO, CFO, Chief of Staff if present, and 2 to 3 others)",
+      "Written audit of board cadence, IR coordination, EA function, and exec office ops",
+      "Prioritized roadmap of what to fix, in what order, with estimated effort",
+      "Written recommendations you can act on, with or without me",
+      "90-minute walkthrough of the full audit with you and your CoS or CFO",
+    ],
+    milestones: [
+      { week: "Week 1", body: "Discovery interviews and systems audit" },
+      { week: "Week 2", body: "Written diagnostic and roadmap delivery + walkthrough" },
+    ],
+    fit: "Founders, CEOs, and Chiefs of Staff who suspect the exec office could run better but aren't sure what the intervention should be.",
+    guarantee: "If after the first week I don't believe I can write a useful diagnostic, I'll tell you and refund your full engagement fee.",
+    accent: "copper",
+  },
+  {
+    num: "02",
+    tier: "Tier 02 &middot; Single outcome",
+    name: "Board Cadence Stand-Up",
+    timeline: "4 to 6 weeks",
+    price: "$10,000",
+    priceRange: "flat, $7,500 to $12,500 depending on company size and board composition",
+    outcome: "Your next four board meetings run on rails. Full 12-month forward calendar, two committees wired, materials discipline established.",
+    pain: "Your board meetings are a quarterly fire drill. You're rescheduling them. Materials land late. The chairman is quietly losing patience. You need a cadence that holds.",
+    deliverables: [
+      "Quarterly board cadence anchored against earnings and legal review windows",
+      "Full 12-month forward board and committee calendar",
+      "Audit committee and compensation committee wired with charter alignment",
+      "Pre-read template, materials checklist, and minutes format",
+      "Chairman and director communication playbook",
+      "Meeting-day run-of-show for the first post-engagement board meeting",
+      "Handoff documentation so your team runs it after me",
+    ],
+    milestones: [
+      { week: "Week 1", body: "Discovery with CEO, Chairman (if reachable), CFO, and General Counsel" },
+      { week: "Week 2", body: "Calendar built and dates locked with directors" },
+      { week: "Week 3 to 4", body: "Committee charters and materials discipline implemented" },
+      { week: "Week 5 to 6", body: "First board meeting run under new cadence, handoff complete" },
+    ],
+    fit: "Pre-IPO and newly public companies where board governance has been ad-hoc. Scale-ups whose first real board is about to seat.",
+    guarantee: "If by end of Week 2 I don't have dates locked for the next 4 quarters, I refund the engagement and we walk away.",
+    accent: "copper",
+    evidence: "At Ascend Wellness Holdings, there were zero board meetings on the calendar when Leigh-Ann arrived. Within 9 months she had the full 2026 board and committee calendar planned 12 months ahead.",
+  },
+  {
+    num: "03",
+    tier: "Tier 02 &middot; Single outcome",
+    name: "Earnings Prep Overhaul",
+    timeline: "6 to 8 weeks",
+    price: "$12,500",
+    priceRange: "flat, $8,500 to $15,000 depending on complexity and IR agency involvement",
+    outcome: "Your next earnings cycle runs on a calendar, not a scramble. IR, Legal, Finance, PR, and C-suite all know their role on day one.",
+    pain: "Every earnings cycle is a scramble. Script revisions the night before. External IR chasing you. Stakeholders asking for inputs the day of. It works, but it shouldn't feel this hard.",
+    deliverables: [
+      "6 to 8 week prep cadence with hard and soft deadlines",
+      "External IR agency aligned with shared calendar and SharePoint access from Week 1",
+      "C-suite script practice cadence at T-minus-1.5 weeks",
+      "Stakeholder integration (CCO, VP Marketing) into live prep, not post-draft",
+      "SharePoint template and version-control discipline",
+      "Post-earnings debrief template and next-cycle improvement protocol",
+      "Handoff so your internal team owns it after me",
+    ],
+    milestones: [
+      { week: "Week 1", body: "Discovery, stakeholder alignment, system audit" },
+      { week: "Weeks 2 to 4", body: "Cadence built and pre-earnings rhythm established" },
+      { week: "Weeks 5 to 6", body: "First cycle run under new system with me embedded" },
+      { week: "Weeks 7 to 8", body: "Post-earnings debrief, improvements, full handoff" },
+    ],
+    fit: "Newly public or pre-IPO companies where the first or second earnings cycle exposed the gaps. Boards that have commented on cadence.",
+    guarantee: "If the first cycle under the new system doesn't run cleaner than your last cycle, I come back and rework it at no additional charge.",
+    accent: "copper",
+    evidence: "At Ascend Wellness Holdings, Leigh-Ann rebuilt earnings-call prep in July 2025 after the Q4 2024 cycle exposed gaps. She deployed the new system for Q2 2025 and ran it through her tenure.",
+  },
+  {
+    num: "04",
+    tier: "Tier 02 &middot; Single outcome",
+    name: "EA Function Build-Out",
+    timeline: "6 to 8 weeks",
+    price: "$12,500",
+    priceRange: "flat, $10,000 to $15,000 depending on EA team size and hire cadence",
+    outcome: "Your EA function becomes a scalable system, not a single point of failure. New EAs ramp in 4 to 5 weeks instead of 8.",
+    pain: "You're about to hire your first or second senior EA and no one on the team knows how to structure the function. Or: your current EA is cracking under a load that's outgrown them, and you need the function redesigned before the next hire.",
+    deliverables: [
+      "EA org design matched to your ELT size and IR load",
+      "Job description, interview panel structure, and scorecards for the next hire",
+      "30/60/90-day onboarding framework with a day-one orientation packet",
+      "Knowledge-base structure (tabs-in-spreadsheets, not Word docs, per proven approach)",
+      "Buddy-pairing protocol and weekly all-EA cadence",
+      "Cross-coverage matrix so no exec is stranded when someone's out",
+      "Handoff documentation your team owns after me",
+    ],
+    milestones: [
+      { week: "Week 1", body: "Discovery with CEO and current EA(s), current-state audit" },
+      { week: "Weeks 2 to 3", body: "Function design, JD drafting, onboarding framework" },
+      { week: "Weeks 4 to 5", body: "Knowledge-base build, cadence implementation" },
+      { week: "Weeks 6 to 8", body: "New EA onboarded (if hiring), or existing team transitioned, handoff complete" },
+    ],
+    fit: "Founders about to make their first senior EA hire. Scale-ups whose EA function has outgrown its current shape. CoS teams wanting to formalize the admin layer.",
+    guarantee: "If the new EA doesn't reach full productivity in 5 weeks or less under this system, I extend the engagement at no additional charge until they do.",
+    accent: "copper",
+    evidence: "At Immunovant, Leigh-Ann built the EA function from zero. Onboarding programs for 6 administrative professionals reduced ramp-up time by 20%. She was Founding Member and Lead of the Culture Committee.",
+  },
+  {
+    num: "05",
+    tier: "Tier 03 &middot; Transformation",
+    name: "Public-Company Readiness",
+    timeline: "3 to 6 months",
+    price: "$45,000",
+    priceRange: "flat, $30,000 to $60,000 spread across the engagement, paid monthly",
+    outcome: "You walk into your S-1 process with executive-office operations already at the standard CFOs, underwriters, and board members expect of a public company.",
+    pain: "You're 12 to 18 months from an IPO. Your executive office runs like a 40-person startup. When your CFO starts talking to underwriters, you don't want them hearing about governance that isn't there, IR that doesn't exist, or an EA function built for yesterday.",
+    deliverables: [
+      "Everything in Board Cadence Stand-Up (see Package 02)",
+      "Everything in Earnings Prep Overhaul, pre-deployed (see Package 03)",
+      "Everything in EA Function Build-Out (see Package 04)",
+      "Investor-relations function scoping and external-agency selection support",
+      "Documentation pass so underwriter diligence doesn't expose ops gaps",
+      "Monthly steering review with CEO and CFO against the readiness roadmap",
+      "3-month post-engagement check-in at no additional charge",
+    ],
+    milestones: [
+      { week: "Month 1", body: "Full diagnostic, prioritized roadmap, board cadence setup" },
+      { week: "Month 2", body: "Earnings prep system designed, EA function scoping" },
+      { week: "Month 3", body: "EA hires if needed, IR function setup" },
+      { week: "Months 4 to 6", body: "System running live, handoff progressively, readiness validation" },
+    ],
+    fit: "Pre-IPO companies 12 to 18 months out who need a public-company-grade exec office before their S-1.",
+    guarantee: "If at the end of any month you don't believe the engagement is delivering against the roadmap, you can cancel the remaining months, no penalty.",
+    accent: "sage",
+    evidence: "Leigh-Ann has done the component pieces of this engagement across Immunovant (pre-IPO biotech) and Ascend (publicly traded cannabis). This package combines them into one coordinated transformation.",
+  },
+];
+
+const retainer = {
+  name: "Monthly retainer",
+  subhead: "Ongoing fractional access",
+  price: "$7,500 to $10,000 / month",
+  note: "month-to-month, 30-day notice",
+  outcome: "Ongoing access to Leigh-Ann as your fractional senior EA, sized to your actual need rather than a full-time hire.",
+  bullets: [
+    "Weekly live session with the primary stakeholder",
+    "Async comms via your team's preferred tool (Slack, Teams, email)",
+    "Response SLA: 4 business hours async, same-day for urgent",
+    "Coverage plan documented for planned time off",
+    "Defined monthly outcomes per contract, not hours",
+    "Quarterly review to adjust scope and pricing",
+  ],
+};
+---
+
+<Layout noindex={true} title="Packages &middot; private" description="Private pricing page for post-discovery-call conversations. Not indexed.">
+  <!-- Minimal private-page header -->
+  <header class="bg-ink text-paper border-b border-paper/10">
+    <div class="max-w-[1440px] mx-auto px-6 md:px-10 py-4 flex items-center justify-between">
+      <div class="flex items-center gap-3">
+        <span class="inline-flex items-center justify-center w-7 h-7 rounded-full bg-copper text-paper font-display text-[11px] font-semibold">LA</span>
+        <span class="font-display text-lg text-paper">Leigh-Ann Martin</span>
+      </div>
+      <span class="small-caps text-paper/40">Private &middot; post-discovery</span>
+    </div>
+  </header>
+
+  <main>
+    <!-- Hero -->
+    <section class="bg-ink text-paper pt-16 md:pt-24 pb-16 md:pb-24">
+      <div class="max-w-[1440px] mx-auto px-6 md:px-10">
+        <div class="flex items-baseline justify-between mb-10" data-reveal>
+          <div class="flex items-baseline gap-4 md:gap-6">
+            <span class="small-caps text-copper">Private</span>
+            <span class="hidden md:inline small-caps text-paper/40">For post-discovery conversations only</span>
+          </div>
+          <span class="small-caps text-paper/40 tabular">2026</span>
+        </div>
+
+        <div class="grid md:grid-cols-12 gap-8 md:gap-12 items-end" data-reveal>
+          <div class="md:col-span-8">
+            <p class="small-caps text-copper mb-6">Packages &amp; pricing</p>
+            <h1 class="font-display text-[11vw] md:text-[7rem] lg:text-[8.5rem] text-paper leading-[0.88] tracking-[-0.035em]">
+              Five <span class="italic font-display-italic text-copper">ways</span>
+              <br/>to work with me.
+            </h1>
+          </div>
+          <div class="md:col-span-4">
+            <p class="text-paper/70 text-lg leading-relaxed">
+              If you're reading this, we've had a discovery call (or we're about to). These are the package shapes I offer. Most serious engagements end up custom-scoped, and that's what the top row is for.
+            </p>
+            <p class="mt-4 font-mono text-[11px] uppercase tracking-wider text-paper/40">
+              All pricing is outcome-based. Flat fees. Never hourly.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Custom engagement (anchors premium at the top) -->
+    <section class="bg-paper py-16 md:py-20 border-b border-rule">
+      <div class="max-w-[1440px] mx-auto px-6 md:px-10">
+        <article class="grid md:grid-cols-12 gap-8 md:gap-12 items-start" data-reveal>
+          <div class="md:col-span-4">
+            <p class="small-caps text-copper mb-4">{custom.label}</p>
+            <h2 class="font-display text-4xl md:text-5xl text-ink leading-[0.95] mb-4">
+              Start <span class="italic font-display-italic">here</span>.
+            </h2>
+            <p class="text-ink-soft leading-relaxed">{custom.pitch}</p>
+          </div>
+          <div class="md:col-span-5">
+            <p class="small-caps text-ink-muted mb-3">Process</p>
+            <ul class="space-y-2">
+              {custom.bullets.map(b => (
+                <li class="flex gap-3 items-start text-ink text-[15px] leading-relaxed">
+                  <span class="font-mono text-[10px] text-copper mt-1.5 flex-shrink-0">→</span>
+                  <span>{b}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
+          <div class="md:col-span-3 md:border-l md:border-rule md:pl-8">
+            <p class="small-caps text-ink-muted mb-2">Investment</p>
+            <p class="font-display text-3xl text-copper leading-tight mb-2">{custom.price}</p>
+            <p class="font-mono text-[11px] uppercase tracking-wider text-ink-muted mb-6">{custom.priceNote}</p>
+            <p class="small-caps text-ink-muted mb-2">Outcome</p>
+            <p class="font-display-italic text-lg text-ink leading-snug">"{custom.outcome}"</p>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- Packages 1-5 -->
+    <section class="py-16 md:py-20 bg-paper-soft">
+      <div class="max-w-[1440px] mx-auto px-6 md:px-10">
+        <div class="max-w-3xl mb-12 md:mb-16" data-reveal>
+          <p class="small-caps text-copper mb-4">Standard packages</p>
+          <h2 class="font-display text-4xl md:text-6xl text-ink leading-[0.92]">
+            Five <span class="italic font-display-italic">outcomes</span>, five flat prices.
+          </h2>
+        </div>
+
+        <div class="space-y-10 md:space-y-12">
+          {packages.map(p => {
+            const accentBg = p.accent === "sage" ? "bg-sage text-paper" : "bg-paper";
+            const accentText = p.accent === "sage" ? "text-paper" : "text-ink";
+            const accentMuted = p.accent === "sage" ? "text-paper/70" : "text-ink-soft";
+            const accentCopper = p.accent === "sage" ? "text-copper" : "text-copper";
+            const accentRule = p.accent === "sage" ? "border-paper/15" : "border-rule";
+            const accentSmallCaps = p.accent === "sage" ? "text-paper/50" : "text-ink-muted";
+
+            return (
+              <article class={`${accentBg} rounded-sm p-8 md:p-12 shadow-[0_8px_40px_-12px_rgba(22,21,19,0.12)]`} data-reveal>
+                <div class="flex flex-col md:flex-row md:items-start md:justify-between gap-6 mb-8 pb-6 border-b ${accentRule}">
+                  <div>
+                    <p class={`small-caps ${accentCopper} mb-2`}>{p.tier.replace(/&middot;/g, "·")}</p>
+                    <h3 class={`font-display text-4xl md:text-5xl ${accentText} leading-[0.95]`}>
+                      {p.num}. {p.name}
+                    </h3>
+                    <p class={`${accentMuted} text-sm mt-3`}>Timeline: <span class={`${accentText} font-medium`}>{p.timeline}</span></p>
+                  </div>
+                  <div class="md:text-right">
+                    <p class={`small-caps ${accentSmallCaps} mb-1`}>Investment</p>
+                    <p class={`font-display text-5xl md:text-6xl ${accentCopper} leading-none tabular mb-2`}>{p.price}</p>
+                    <p class={`font-mono text-[11px] uppercase tracking-wider ${accentSmallCaps}`}>{p.priceRange}</p>
+                  </div>
+                </div>
+
+                <div class="grid md:grid-cols-12 gap-8 md:gap-10">
+                  <!-- Pain + Outcome -->
+                  <div class="md:col-span-5">
+                    <p class={`small-caps ${accentCopper} mb-2`}>The pain</p>
+                    <p class={`font-display-italic text-xl ${accentText} leading-snug mb-6`}>"{p.pain}"</p>
+
+                    <p class={`small-caps ${accentCopper} mb-2`}>The outcome</p>
+                    <p class={`${accentText} text-[15px] leading-relaxed mb-6`}>{p.outcome}</p>
+
+                    <p class={`small-caps ${accentSmallCaps} mb-2`}>Best fit</p>
+                    <p class={`${accentMuted} text-sm leading-relaxed`}>{p.fit}</p>
+                  </div>
+
+                  <!-- Deliverables -->
+                  <div class="md:col-span-4">
+                    <p class={`small-caps ${accentCopper} mb-3`}>Deliverables</p>
+                    <ul class="space-y-2 mb-6">
+                      {p.deliverables.map(d => (
+                        <li class={`flex gap-3 items-start ${accentText} text-sm leading-relaxed`}>
+                          <span class={`font-mono text-[10px] ${accentCopper} mt-1.5 flex-shrink-0`}>→</span>
+                          <span>{d}</span>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+
+                  <!-- Milestones + Evidence + Guarantee -->
+                  <div class={`md:col-span-3 md:border-l ${accentRule} md:pl-6`}>
+                    <p class={`small-caps ${accentCopper} mb-3`}>Milestones</p>
+                    <ul class="space-y-3 mb-6">
+                      {p.milestones.map(m => (
+                        <li class={`${accentText} text-sm leading-relaxed`}>
+                          <span class={`font-mono text-[10px] uppercase tracking-wide ${accentSmallCaps} block mb-0.5`}>{m.week}</span>
+                          <span>{m.body}</span>
+                        </li>
+                      ))}
+                    </ul>
+
+                    {p.evidence && (
+                      <div class={`mt-6 pt-6 border-t ${accentRule}`}>
+                        <p class={`small-caps ${accentSmallCaps} mb-2`}>Evidence</p>
+                        <p class={`${accentMuted} text-xs leading-relaxed italic`}>{p.evidence}</p>
+                      </div>
+                    )}
+                  </div>
+                </div>
+
+                <!-- Guarantee + CTA -->
+                <div class={`mt-8 pt-8 border-t ${accentRule} grid md:grid-cols-12 gap-6 items-center`}>
+                  <div class="md:col-span-8">
+                    <p class={`small-caps ${accentCopper} mb-2`}>Guarantee</p>
+                    <p class={`${accentText} text-[15px] leading-relaxed`}>{p.guarantee}</p>
+                  </div>
+                  <div class="md:col-span-4 md:text-right">
+                    <a
+                      href={mailto(p.name)}
+                      class={`inline-flex items-center gap-2 ${p.accent === "sage" ? "bg-copper text-paper" : "bg-ink text-paper"} px-6 py-3 rounded-full text-sm font-medium hover:bg-copper/90 transition-colors`}
+                    >
+                      <span>Move forward</span>
+                      <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
+                    </a>
+                  </div>
+                </div>
+              </article>
+            );
+          })}
+        </div>
+      </div>
+    </section>
+
+    <!-- Retainer option -->
+    <section class="bg-ink text-paper py-16 md:py-20">
+      <div class="max-w-[1440px] mx-auto px-6 md:px-10">
+        <article class="grid md:grid-cols-12 gap-8 md:gap-12 items-start" data-reveal>
+          <div class="md:col-span-5">
+            <p class="small-caps text-copper mb-4">Ongoing</p>
+            <h2 class="font-display text-4xl md:text-5xl text-paper leading-[0.95] mb-4">{retainer.name}</h2>
+            <p class="font-display-italic text-xl text-copper mb-4">{retainer.subhead}</p>
+            <p class="text-paper/70 leading-relaxed">{retainer.outcome}</p>
+          </div>
+
+          <div class="md:col-span-4">
+            <p class="small-caps text-paper/40 mb-3">What's included</p>
+            <ul class="space-y-2">
+              {retainer.bullets.map(b => (
+                <li class="flex gap-3 items-start text-paper/85 text-sm leading-relaxed">
+                  <span class="font-mono text-[10px] text-copper mt-1.5 flex-shrink-0">→</span>
+                  <span>{b}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          <div class="md:col-span-3 md:border-l md:border-paper/15 md:pl-6">
+            <p class="small-caps text-paper/40 mb-2">Investment</p>
+            <p class="font-display text-3xl text-copper leading-tight mb-2">{retainer.price}</p>
+            <p class="font-mono text-[11px] uppercase tracking-wider text-paper/40 mb-6">{retainer.note}</p>
+            <a
+              href={mailto(retainer.name)}
+              class="inline-flex items-center gap-2 bg-copper text-paper px-5 py-3 rounded-full text-sm font-medium hover:bg-paper hover:text-ink transition-colors"
+            >
+              <span>Retainer inquiry</span>
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
+            </a>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- Closing -->
+    <section class="bg-paper py-20 md:py-24">
+      <div class="max-w-3xl mx-auto px-6 md:px-10 text-center" data-reveal>
+        <p class="small-caps text-copper mb-6">Next step</p>
+        <h2 class="font-display text-4xl md:text-6xl text-ink leading-[0.92] mb-8">
+          Ready to <span class="italic font-display-italic">move forward</span>?
+        </h2>
+        <p class="text-ink-soft text-lg leading-relaxed mb-10">
+          Reply to my email or click any "Move forward" button above. I'll send a contract inside 24 hours and we'll schedule kickoff.
+        </p>
+        <div class="flex flex-col sm:flex-row gap-3 justify-center">
+          <a
+            href="mailto:lmartinlapc@gmail.com"
+            class="inline-flex items-center justify-center gap-3 bg-ink text-paper px-7 py-4 rounded-full text-sm font-medium hover:bg-copper transition-colors"
+          >
+            <span>Email Leigh-Ann</span>
+          </a>
+        </div>
+      </div>
+    </section>
+  </main>
+  <Colophon />
+</Layout>
+
+<script>
+  const revealEls = document.querySelectorAll("[data-reveal]");
+  const observer = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("revealed");
+          observer.unobserve(entry.target);
+        }
+      });
+    },
+    { threshold: 0.05, rootMargin: "0px 0px -40px 0px" }
+  );
+  revealEls.forEach((el) => observer.observe(el));
+</script>

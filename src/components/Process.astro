@@ -1,0 +1,78 @@
+---
+const steps = [
+  {
+    num: "01",
+    phase: "Discovery",
+    time: "Free &middot; 30 minutes",
+    title: "Tell me what's breaking.",
+    body: "A short call, usually inside 48 hours of your reach-out. You describe what the real pain is (not the job description version), I ask the questions I need to scope a fit. If I can't clearly articulate the outcome by the end of the call, I won't take the engagement.",
+  },
+  {
+    num: "02",
+    phase: "Written scope",
+    time: "2 business days",
+    title: "I write back with the shape.",
+    body: "Not a generic proposal. A written scope with the specific outcome we're working toward, the deliverables, the milestones, the timeline, and the investment. Flat-priced against the outcome, not hourly. You say yes, no, or let's adjust.",
+  },
+  {
+    num: "03",
+    phase: "Kickoff + audit",
+    time: "Week 1",
+    title: "I embed enough to see the real state.",
+    body: "Discovery calls with the 3 to 5 stakeholders the work touches. A pass through the systems in question: calendar, SharePoint, Notion, whatever you're using. A written diagnostic by end of week one that often surprises me, and always surprises the client.",
+  },
+  {
+    num: "04",
+    phase: "Delivery cadence",
+    time: "Weeks 2 through N",
+    title: "Working sessions, async between.",
+    body: "Weekly live session for 45 to 60 minutes with the primary stakeholder. Async progress memos sent every Friday. Your preferred comms tool (Slack, Teams, email) for questions between. I build in your systems, not mine, so the work survives my handoff.",
+  },
+  {
+    num: "05",
+    phase: "Handoff",
+    time: "Final week",
+    title: "You own it. I step back.",
+    body: "Every engagement ends with complete documentation, a recorded walkthrough for whoever will run it after me, and an optional 30-day check-in at no charge. If the system breaks in the first 90 days, I come back and fix it on my time, not yours.",
+  },
+];
+---
+
+<section class="bg-paper py-24 md:py-32">
+  <div class="max-w-[1440px] mx-auto px-6 md:px-10">
+    <div class="max-w-3xl mb-16 md:mb-20" data-reveal>
+      <p class="small-caps text-copper mb-4">How I work</p>
+      <h2 class="font-display text-5xl md:text-7xl text-ink leading-[0.9] mb-8">
+        Five <span class="italic font-display-italic">steps</span>.
+      </h2>
+      <p class="text-ink-soft text-lg leading-relaxed">
+        Fractional consulting lives or dies on process transparency. Here's exactly what working with me looks like from first reply through handoff.
+      </p>
+    </div>
+
+    <div class="space-y-px bg-rule border-y-2 border-ink" data-reveal>
+      {steps.map(s => (
+        <div class="bg-paper grid md:grid-cols-12 gap-6 md:gap-10 px-6 md:px-10 py-8 md:py-10">
+          <div class="md:col-span-2">
+            <span class="font-display text-5xl md:text-6xl text-copper leading-none tabular">{s.num}</span>
+          </div>
+          <div class="md:col-span-3">
+            <p class="small-caps text-ink-muted mb-1">{s.phase}</p>
+            <p class="font-mono text-[11px] uppercase tracking-wide text-ink-muted/70" set:html={s.time} />
+          </div>
+          <div class="md:col-span-7">
+            <h3 class="font-display text-2xl md:text-3xl text-ink leading-tight mb-3">{s.title}</h3>
+            <p class="text-ink-soft text-[15px] leading-relaxed">{s.body}</p>
+          </div>
+        </div>
+      ))}
+    </div>
+
+    <!-- Subtle closing note -->
+    <div class="mt-12 md:mt-16 max-w-2xl" data-reveal>
+      <p class="font-display-italic text-xl text-ink-soft leading-relaxed">
+        Most fractional engagements fail because nobody agrees on the outcome at the start. Mine are scoped against the outcome, not the hours, so we're aligned from day one.
+      </p>
+    </div>
+  </div>
+</section>

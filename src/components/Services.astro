@@ -1,128 +1,129 @@
 ---
-const packages = [
+const base = import.meta.env.BASE_URL;
+
+const highlights = [
   {
     num: "01",
-    title: "Board & Governance Setup",
-    span: "4 weeks",
-    price: "$5,000",
-    priceNote: "flat engagement",
-    pitch: "For founders who have grown past the point where board ops can stay ad hoc.",
-    deliverables: [
-      "Quarterly board cadence with dates locked through the next fiscal year",
-      "Two standing committees coordinated (Audit and Compensation ready)",
-      "Pre-read templates, materials checklist, and minutes format",
-      "Chairman and director communication playbook",
-      "Handover to your internal team or continued retainer",
-    ],
-    outcome: "Reactive board prep becomes predictable quarterly rhythm.",
+    title: "Board & Governance",
+    pain: "Board meetings without a cadence, no 12-month forward view, committees firing off as an afterthought.",
+    outcome: "A predictable quarterly rhythm with two committees wired and materials flowing on a stable timeline.",
+    services: ["Quarterly cadence setup", "12-month forward calendar", "Audit + Compensation committees", "Pre-read templates", "Chairman relations"],
+    anchor: "board-governance",
   },
   {
     num: "02",
-    title: "Earnings Prep Overhaul",
-    span: "6 to 8 weeks",
-    price: "$4,500",
-    priceNote: "per earnings cycle, retainer available",
-    pitch: "For newly public or pre-IPO companies where the first earnings cycle exposed the gaps.",
-    deliverables: [
-      "Kickoff calendar anchored 6 to 8 weeks out with hard and soft deadlines",
-      "External IR alignment meetings and SharePoint access discipline",
-      "C-suite script practice cadence (CEO, CFO, President)",
-      "Stakeholder integration (CCO and VP Marketing into live prep)",
-      "Post-earnings debrief and next-cycle improvements",
-    ],
-    outcome: "Script ownership is clear, rework loops close, and calendars hold.",
+    title: "Investor Relations",
+    pain: "Earnings prep is a scramble every quarter, external IR is chasing you, stakeholder access is bottlenecked.",
+    outcome: "A 6 to 8 week repeatable system with IR, Legal, Finance, PR, and C-suite aligned on a shared calendar.",
+    services: ["Earnings prep system", "External IR partnership", "No-deal roadshow coordination", "Press release choreography", "Investor CRM setup"],
+    anchor: "investor-relations",
   },
   {
     num: "03",
     title: "EA Function Build-Out",
-    span: "6 weeks",
-    price: "$7,500",
-    priceNote: "includes 2 EA hires and onboarding framework",
-    pitch: "For companies hiring their first or second senior EA and not sure how to structure the function.",
-    deliverables: [
-      "EA org design matched to your ELT size and investor-relations load",
-      "Job descriptions, interview panel structure, and scorecards",
-      "Onboarding framework with spreadsheet knowledge base and buddy pairings",
-      "Weekly all-EA cadence and cross-coverage rotation",
-      "Day-one EA playbook your team owns after handoff",
-    ],
-    outcome: "New EAs reach full productivity in 4 to 5 weeks instead of 8.",
+    pain: "First or second EA hire looming and no one on the team knows how to structure the function.",
+    outcome: "A scalable EA team with onboarding framework, knowledge base, and cadence that survives turnover.",
+    services: ["First-EA hiring support", "Onboarding framework", "Knowledge-base system", "Weekly EA cadence", "Cross-coverage rotation"],
+    anchor: "ea-function",
+  },
+  {
+    num: "04",
+    title: "Executive Partnership",
+    pain: "Your calendar is chaos, your inbox is a job, and you need someone thinking two weeks ahead on your behalf.",
+    outcome: "Anticipatory executive ops from someone who thinks like a Chief of Staff and works like a senior EA.",
+    services: ["C-suite calendar architecture", "Daily briefings", "Decision memos", "Gatekeeping with judgment", "Confidential correspondence"],
+    anchor: "executive-partnership",
+  },
+  {
+    num: "05",
+    title: "Specialized",
+    pain: "Regulatory coordination, M&A tracking, or financial operations that need senior hands but don't justify a full hire.",
+    outcome: "Specialist coverage for the hard-to-staff moments: FDA readiness, M&A follow-up, or financial-ops precision.",
+    services: ["FDA meeting readiness", "M&A pipeline tracking", "Financial-ops reporting", "Ad-board coordination", "Process documentation"],
+    anchor: "specialized",
   },
 ];
 ---
 
 <section id="services" class="bg-sage text-paper py-24 md:py-32 relative overflow-hidden">
-  <!-- Decorative label -->
   <div class="hidden md:block absolute left-0 top-1/2 -translate-y-1/2">
-    <p class="v-label text-paper/30">Fractional engagements</p>
+    <p class="v-label text-paper/30">Fractional services</p>
   </div>
 
   <div class="max-w-[1440px] mx-auto px-6 md:px-10">
-    <div class="max-w-3xl mb-16 md:mb-24" data-reveal>
-      <p class="small-caps text-copper mb-4">Chapter Five</p>
-      <h2 class="font-display text-5xl md:text-7xl text-paper leading-[0.9] mb-8">
-        Outcome-based <span class="italic font-display-italic">packages</span>.
-      </h2>
-      <p class="text-paper/70 text-lg leading-relaxed">
-        Three starting points. Each priced flat against an outcome rather than an hour count. Bigger or hybrid engagements negotiated one-off.
-      </p>
+    <div class="grid md:grid-cols-12 gap-8 md:gap-16 mb-16 md:mb-24 items-end" data-reveal>
+      <div class="md:col-span-7">
+        <p class="small-caps text-copper mb-4">What I do</p>
+        <h2 class="font-display text-5xl md:text-7xl text-paper leading-[0.9] mb-8">
+          Five disciplines. <span class="italic font-display-italic">Thirty-seven services.</span>
+        </h2>
+        <p class="text-paper/70 text-lg leading-relaxed max-w-xl">
+          Granular enough to self-diagnose, broad enough to cover the full shape of an executive office. Pick the one where the pain is sharpest and we'll start there.
+        </p>
+      </div>
+      <div class="md:col-span-5 md:text-right">
+        <a
+          href={`${base}services`}
+          class="inline-flex items-center gap-3 bg-copper text-paper px-7 py-4 rounded-full text-sm font-medium hover:bg-paper hover:text-ink transition-colors group"
+        >
+          <span>See every service</span>
+          <svg class="w-4 h-4 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
+        </a>
+      </div>
     </div>
 
     <div class="space-y-px bg-paper/10">
-      {packages.map((p, idx) => (
-        <article class="bg-sage grid md:grid-cols-12 gap-8 md:gap-12 p-8 md:p-12 hover:bg-sage/95 transition-colors" data-reveal>
-          <!-- Number + title -->
-          <div class="md:col-span-4">
+      {highlights.map(h => (
+        <article class="bg-sage grid md:grid-cols-12 gap-8 md:gap-12 p-8 md:p-12 hover:bg-sage/95 transition-colors">
+          <div class="md:col-span-3">
             <div class="flex items-baseline gap-4 mb-4">
-              <span class="font-display text-6xl md:text-7xl text-copper leading-none tabular">{p.num}</span>
-              <span class="small-caps text-paper/40">{p.span}</span>
+              <span class="font-display text-6xl md:text-7xl text-copper leading-none tabular">{h.num}</span>
             </div>
-            <h3 class="font-display text-3xl md:text-4xl text-paper leading-tight mb-4">{p.title}</h3>
-            <p class="text-paper/65 text-[15px] leading-relaxed">{p.pitch}</p>
+            <h3 class="font-display text-3xl md:text-4xl text-paper leading-tight mb-4">{h.title}</h3>
           </div>
 
-          <!-- Deliverables -->
-          <div class="md:col-span-5">
-            <p class="small-caps text-copper mb-4">Deliverables</p>
-            <ul class="space-y-3">
-              {p.deliverables.map(d => (
+          <div class="md:col-span-5 md:border-l md:border-paper/15 md:pl-8">
+            <p class="small-caps text-copper mb-3">The pain</p>
+            <p class="font-display-italic text-xl text-paper/90 leading-snug mb-6">"{h.pain}"</p>
+            <p class="small-caps text-copper mb-3">The outcome</p>
+            <p class="text-paper/85 text-[15px] leading-relaxed">{h.outcome}</p>
+          </div>
+
+          <div class="md:col-span-4 md:border-l md:border-paper/15 md:pl-8 flex flex-col">
+            <p class="small-caps text-paper/50 mb-4">Included</p>
+            <ul class="space-y-2 mb-6">
+              {h.services.map(s => (
                 <li class="flex gap-3 items-start text-paper/80 text-sm leading-relaxed">
                   <span class="font-mono text-[10px] text-copper mt-1.5 flex-shrink-0">→</span>
-                  <span>{d}</span>
+                  <span>{s}</span>
                 </li>
               ))}
             </ul>
-          </div>
-
-          <!-- Price + outcome -->
-          <div class="md:col-span-3 md:border-l md:border-paper/15 md:pl-8 flex flex-col">
-            <p class="small-caps text-paper/40 mb-2">Investment</p>
-            <p class="font-display text-4xl md:text-5xl text-copper leading-none tabular mb-2">{p.price}</p>
-            <p class="font-mono text-[10px] uppercase tracking-[0.15em] text-paper/40 mb-6">{p.priceNote}</p>
-
-            <div class="mt-auto pt-6 border-t border-paper/10">
-              <p class="small-caps text-paper/40 mb-2">Outcome</p>
-              <p class="font-display-italic text-lg text-paper leading-snug">"{p.outcome}"</p>
-            </div>
+            <a
+              href={`${base}services#${h.anchor}`}
+              class="group inline-flex items-center gap-2 text-copper text-sm font-medium hover:gap-3 transition-all mt-auto"
+            >
+              <span>Full list for this discipline</span>
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
+            </a>
           </div>
         </article>
       ))}
     </div>
 
-    <!-- Custom engagement callout -->
     <div class="mt-12 md:mt-16 grid md:grid-cols-12 gap-6 items-center" data-reveal>
       <div class="md:col-span-7">
         <p class="font-display text-3xl md:text-4xl text-paper leading-tight">
           Something different in mind? <span class="italic font-display-italic text-copper">Let's talk.</span>
         </p>
         <p class="text-paper/60 mt-3 leading-relaxed">
-          Most of my engagements start as a conversation. Tell me what's breaking, and I'll tell you whether a package fits or whether we should scope something custom.
+          Most engagements start as a conversation. Tell me what's breaking, I'll tell you whether a service fits or whether we should scope something bespoke.
         </p>
       </div>
       <div class="md:col-span-5 md:text-right">
         <a
           href="#contact"
-          class="inline-flex items-center gap-3 bg-copper text-paper px-7 py-4 rounded-full text-sm font-medium hover:bg-paper hover:text-ink transition-colors group"
+          class="inline-flex items-center gap-3 bg-paper text-ink px-7 py-4 rounded-full text-sm font-medium hover:bg-copper hover:text-paper transition-colors group"
         >
           <span>Start a conversation</span>
           <svg class="w-4 h-4 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>

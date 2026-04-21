@@ -1,0 +1,47 @@
+---
+const disqualifiers = [
+  {
+    num: "01",
+    statement: "You need someone to manage a 40-person admin team.",
+    why: "I'm a senior individual contributor, not an Admin Ops manager. For head-of-admin roles, you want someone with direct people leadership as their primary expertise.",
+  },
+  {
+    num: "02",
+    statement: "You need task execution under $50 an hour.",
+    why: "VA platforms do that well. My work is designing the systems a VA or junior EA will run, or handling the executive-office moments where seniority and judgment are non-negotiable.",
+  },
+  {
+    num: "03",
+    statement: "You want someone who never pushes back on a calendar decision.",
+    why: "I will, politely. Good executive support isn't saying yes to everything. It's saying 'before you take that, let me flag that Thursday already has three investor touchpoints, and it will compress your prep window to 40 minutes.' That's the point.",
+  },
+];
+---
+
+<section class="bg-paper py-24 md:py-32 border-t border-b border-rule">
+  <div class="max-w-[1440px] mx-auto px-6 md:px-10">
+    <div class="grid md:grid-cols-12 gap-12 md:gap-16 items-start">
+      <div class="md:col-span-4" data-reveal>
+        <p class="small-caps text-copper mb-4">Who I'm not for</p>
+        <h2 class="font-display text-5xl md:text-6xl text-ink leading-[0.92] mb-6">
+          I'm probably <span class="italic font-display-italic">not your fit</span> if...
+        </h2>
+        <p class="text-ink-soft text-[15px] leading-relaxed">
+          Fractional engagements that work are the ones where both sides understand the shape of the work from the start. Here are the three signals I use to disqualify early.
+        </p>
+      </div>
+
+      <div class="md:col-span-8 space-y-0 divide-y divide-rule border-y border-rule" data-reveal>
+        {disqualifiers.map(d => (
+          <div class="grid grid-cols-12 gap-6 py-8">
+            <span class="col-span-2 md:col-span-1 font-display text-3xl md:text-4xl text-copper leading-none tabular">{d.num}</span>
+            <div class="col-span-10 md:col-span-11">
+              <h3 class="font-display text-2xl md:text-3xl text-ink leading-tight mb-3">{d.statement}</h3>
+              <p class="text-ink-soft text-[15px] leading-relaxed">{d.why}</p>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </div>
+</section>

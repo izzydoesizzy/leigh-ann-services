@@ -1,0 +1,93 @@
+---
+const base = import.meta.env.BASE_URL;
+
+const personas = [
+  {
+    tag: "The pre-IPO founder",
+    pain: "Your EA function is one person, and it's cracking.",
+    detail:
+      "You hired a great first EA eighteen months ago. Now leadership has doubled, investor meetings are weekly, and your EA is drowning. You know you need a more senior operator, but you don't have the bandwidth to lead the hire.",
+    signal: "If this is you",
+    triggers: [
+      "Your EA is doing calendar triage instead of strategic ops",
+      "Board prep starts the week of the meeting",
+      "Your next IR cycle feels like it will break something",
+    ],
+    service: "EA Function Build-Out",
+    anchor: "#ea-function-build-out",
+  },
+  {
+    tag: "The public-company CEO",
+    pain: "Earnings week consumes the entire company.",
+    detail:
+      "Four quarters in and earnings prep is still a scramble. Script revisions the night before. Stakeholders asking for inputs the day of. External IR wondering why they didn't get the deck on Tuesday. It works, but it shouldn't feel this hard.",
+    signal: "If this is you",
+    triggers: [
+      "You rebuild earnings prep from scratch every quarter",
+      "External IR has to chase you instead of run with you",
+      "Your CFO's time is consumed by coordination, not story",
+    ],
+    service: "Earnings Prep Overhaul",
+    anchor: "#earnings-prep",
+  },
+  {
+    tag: "The Chief of Staff",
+    pain: "You're the executive ops backstop, and it's eating strategy time.",
+    detail:
+      "Your job description says strategy. Your calendar says operations. You love the work, but every board meeting and investor cycle pulls you out of the thinking your CEO actually hired you for. You need a trusted operator who can own the tactical layer.",
+    signal: "If this is you",
+    triggers: [
+      "You're writing board pre-reads instead of strategy memos",
+      "You're first point of contact for every exec logistics question",
+      "You're the only person who knows how earnings prep works",
+    ],
+    service: "Executive Partnership",
+    anchor: "#executive-partnership",
+  },
+];
+---
+
+<section id="is-this-you" class="bg-paper-soft py-24 md:py-32">
+  <div class="max-w-[1440px] mx-auto px-6 md:px-10">
+    <div class="max-w-3xl mb-16 md:mb-20" data-reveal>
+      <p class="small-caps text-copper mb-4">Who I'm for</p>
+      <h2 class="font-display text-5xl md:text-7xl text-ink leading-[0.9] mb-8">
+        Is this <span class="italic font-display-italic">you</span>?
+      </h2>
+      <p class="text-ink-soft text-lg leading-relaxed">
+        Three profiles where I do my best work. If one of these reads like a mirror, we should talk.
+      </p>
+    </div>
+
+    <div class="grid md:grid-cols-3 gap-px bg-rule border border-rule" data-reveal>
+      {personas.map((p, idx) => (
+        <article class="bg-paper-soft p-8 md:p-10 flex flex-col">
+          <span class="font-mono text-[10px] uppercase tracking-[0.25em] text-copper mb-6 tabular">0{idx + 1}</span>
+
+          <p class="small-caps text-ink-muted mb-3">{p.tag}</p>
+          <h3 class="font-display text-3xl md:text-4xl text-ink leading-[1.05] mb-4">{p.pain}</h3>
+          <p class="text-ink-soft text-[15px] leading-relaxed mb-8">{p.detail}</p>
+
+          <div class="mt-auto">
+            <p class="small-caps text-copper mb-4">{p.signal}</p>
+            <ul class="space-y-2 mb-8">
+              {p.triggers.map(t => (
+                <li class="flex gap-3 items-start text-ink text-sm leading-relaxed">
+                  <span class="font-mono text-[10px] text-copper mt-1.5 flex-shrink-0">●</span>
+                  <span>{t}</span>
+                </li>
+              ))}
+            </ul>
+            <a
+              href={`${base}services${p.anchor}`}
+              class="group inline-flex items-center gap-2 text-copper text-sm font-medium hover:gap-3 transition-all"
+            >
+              <span>See the {p.service} work</span>
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
+            </a>
+          </div>
+        </article>
+      ))}
+    </div>
+  </div>
+</section>

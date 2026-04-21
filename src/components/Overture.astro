@@ -2,7 +2,7 @@
 const base = import.meta.env.BASE_URL;
 ---
 
-<!-- Hero / Overture: editorial split with oversized serif and portrait -->
+<!-- Hero / Overture: pain-led headline with portrait, anchors the whole case for hiring -->
 <section class="relative overflow-hidden">
   <div class="max-w-[1440px] mx-auto px-6 md:px-10 pt-12 md:pt-20 pb-16 md:pb-24">
     <!-- Issue heading -->
@@ -16,17 +16,22 @@ const base = import.meta.env.BASE_URL;
     </div>
 
     <div class="grid md:grid-cols-12 gap-8 md:gap-12 items-end">
-      <!-- Left: display headline -->
+      <!-- Left: pain-led display headline -->
       <div class="md:col-span-7" data-reveal>
         <p class="small-caps text-copper mb-6">The Dossier</p>
-        <h1 class="font-display text-[16vw] md:text-[9.5rem] lg:text-[11.5rem] text-ink leading-[0.88] tracking-[-0.035em]">
-          A strategic
-          <span class="italic font-display-italic text-copper">partner</span>,
-          <br/>not an assistant.
+        <h1 class="font-display text-[12vw] md:text-[6.5rem] lg:text-[8rem] text-ink leading-[0.92] tracking-[-0.035em]">
+          The executive office
+          <br/>should run on
+          <span class="italic font-display-italic text-copper">systems</span>,
+          <br/>not heroics.
         </h1>
 
-        <p class="mt-10 md:mt-14 text-lg md:text-xl text-ink-soft leading-relaxed max-w-xl">
-          <span class="font-display-italic text-ink">Leigh-Ann Martin.</span> Twelve years supporting C-suite leaders across biotech, finance, and public cannabis. Trained chef. Published in the <em>New York Times</em>. Certified Administrative Professional. I build executive offices that run on anticipation, not triage.
+        <p class="mt-10 md:mt-12 text-lg md:text-xl text-ink-soft leading-relaxed max-w-2xl">
+          If board prep is a quarterly fire drill, if earnings coordination lives in someone's head, if your EA function was built for the company you were two funding rounds ago, we should talk.
+        </p>
+
+        <p class="mt-6 text-base md:text-lg text-ink-muted leading-relaxed max-w-2xl">
+          I rebuild the three things that break first as executive offices scale: <span class="text-ink font-medium">board cadence</span>, <span class="text-ink font-medium">investor-relations coordination</span>, and the <span class="text-ink font-medium">EA function itself</span>. Twelve years of doing this for pre-IPO biotech, public-company cannabis, and Big Four.
         </p>
 
         <div class="mt-10 md:mt-14 flex flex-col sm:flex-row gap-3">
@@ -38,10 +43,10 @@ const base = import.meta.env.BASE_URL;
             <svg class="w-4 h-4 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
           </a>
           <a
-            href="#services"
+            href={`${base}services`}
             class="group inline-flex items-center justify-center gap-3 bg-paper border-2 border-ink text-ink px-7 py-4 rounded-full text-sm font-medium hover:bg-ink hover:text-paper transition-colors"
           >
-            <span>Fractional engagement</span>
+            <span>See fractional services</span>
             <svg class="w-4 h-4 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
           </a>
         </div>
@@ -62,7 +67,7 @@ const base = import.meta.env.BASE_URL;
           <figcaption class="mt-4 pt-3 border-t border-ink/20">
             <p class="font-mono text-[10px] uppercase tracking-[0.2em] text-ink-muted mb-1">Portrait</p>
             <p class="font-caption text-sm text-ink-soft italic leading-snug">
-              New York, 2026. Senior Executive Assistant, fractional EA, Founding Member &amp; Lead of Immunovant's Culture Committee.
+              Leigh-Ann Martin, New York, 2026. Senior Executive Assistant. Fractional partner. Founding Member and Lead of Immunovant's Culture Committee.
             </p>
           </figcaption>
 
@@ -74,20 +79,25 @@ const base = import.meta.env.BASE_URL;
       </div>
     </div>
 
-    <!-- Lower strip: quick positioning chips -->
-    <div class="mt-16 md:mt-24 pt-8 border-t border-rule flex flex-wrap items-center gap-x-6 gap-y-3 md:gap-x-10" data-reveal>
-      <span class="font-mono text-[11px] uppercase tracking-[0.2em] text-ink-muted">Supports</span>
-      <span class="text-ink text-sm">CEO &amp; Founder</span>
-      <span class="w-1 h-1 bg-rule rounded-full"></span>
-      <span class="text-ink text-sm">CFO &amp; President</span>
-      <span class="w-1 h-1 bg-rule rounded-full"></span>
-      <span class="text-ink text-sm">General Counsel</span>
-      <span class="w-1 h-1 bg-rule rounded-full"></span>
-      <span class="text-ink text-sm">Board &amp; Committees</span>
-      <span class="w-1 h-1 bg-rule rounded-full"></span>
-      <span class="text-ink text-sm">Investor Relations</span>
-      <span class="w-1 h-1 bg-rule rounded-full"></span>
-      <span class="text-ink text-sm">Chief of Staff teams</span>
+    <!-- Lower strip: the three things she fixes -->
+    <div class="mt-16 md:mt-24 pt-8 border-t border-rule" data-reveal>
+      <div class="grid md:grid-cols-3 gap-8 md:gap-12">
+        <div>
+          <p class="font-mono text-[10px] uppercase tracking-[0.2em] text-copper mb-3">She fixes 01</p>
+          <p class="font-display text-2xl text-ink leading-tight">Board cadence that doesn't exist yet.</p>
+          <p class="text-ink-muted text-sm mt-3 leading-relaxed">Quarterly rhythm, 12-month forward calendar, audit and compensation committees wired.</p>
+        </div>
+        <div>
+          <p class="font-mono text-[10px] uppercase tracking-[0.2em] text-copper mb-3">She fixes 02</p>
+          <p class="font-display text-2xl text-ink leading-tight">Earnings comms that live in someone's head.</p>
+          <p class="text-ink-muted text-sm mt-3 leading-relaxed">6 to 8 week repeatable prep cadence, external IR alignment, stakeholder access.</p>
+        </div>
+        <div>
+          <p class="font-mono text-[10px] uppercase tracking-[0.2em] text-copper mb-3">She fixes 03</p>
+          <p class="font-display text-2xl text-ink leading-tight">An EA function built for yesterday.</p>
+          <p class="text-ink-muted text-sm mt-3 leading-relaxed">First-hire or scale-up. Onboarding framework, knowledge base, team cadence.</p>
+        </div>
+      </div>
     </div>
   </div>
 </section>

@@ -1,0 +1,6 @@
+User-agent: *
+Allow: /
+Disallow: /leigh-ann-services/packages
+Disallow: /packages
+
+Sitemap: https://izzydoesizzy.github.io/leigh-ann-services/sitemap-index.xml

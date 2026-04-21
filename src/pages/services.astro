@@ -1,0 +1,704 @@
+---
+import Layout from "../layouts/Layout.astro";
+import Masthead from "../components/Masthead.astro";
+import Colophon from "../components/Colophon.astro";
+
+const base = import.meta.env.BASE_URL;
+
+const mailto = (topic: string) =>
+  `mailto:lmartinlapc@gmail.com?subject=${encodeURIComponent(`Fractional inquiry: ${topic}`)}&body=${encodeURIComponent(`Hi Leigh-Ann,\n\nI'd like to talk about the ${topic} service. Here's what's going on at our executive office:\n\n[describe your situation]\n\nBest,`)}`;
+
+const disciplines = [
+  {
+    id: "executive-partnership",
+    roman: "I",
+    name: "Executive Partnership",
+    intro: "The senior-EA layer. Anticipation, judgment, discretion. What a Chief of Staff would do if you had a Chief of Staff.",
+    services: [
+      {
+        name: "C-suite calendar architecture",
+        pain: "Your calendar looks like a Tetris game someone else is playing, and every Monday feels like damage control.",
+        outcome: "A calendar that protects deep work, stages context before meetings, and leaves no exec blindsided.",
+        included: [
+          "Weekly calendar audit with priority matrix",
+          "Meeting buffers and travel blocks designed to your energy rhythm",
+          "Pre-meeting briefings with agenda, attendees, and expected outcome",
+          "Decline and reschedule scripts for the work you shouldn't be doing",
+          "Post-meeting action capture and distribution",
+        ],
+        trigger: "You're context-switching 15+ times a day and still missing things.",
+      },
+      {
+        name: "Daily anticipatory briefings",
+        pain: "You walk into meetings unprepared and spend the first five minutes catching up on what everyone else already knew.",
+        outcome: "A 2-minute morning brief in your inbox that tells you exactly what today needs from you.",
+        included: [
+          "5 AM or 6 AM daily brief, delivered async",
+          "Today's meetings ranked by prep urgency",
+          "Key decisions you'll be asked to make",
+          "Yesterday's follow-ups you owe people",
+          "One flagged risk or opportunity",
+        ],
+        trigger: "You start your day by triaging Slack, not by knowing what matters.",
+      },
+      {
+        name: "Decision memo drafting",
+        pain: "Your inbox is 400 unread and half of them are decisions that don't need you yet.",
+        outcome: "Key asks distilled into 5-bullet memos with your recommended call, so you decide in minutes.",
+        included: [
+          "Inbox triage protocol matched to your priorities",
+          "One-page decision memos in your voice",
+          "A proposed recommendation on every memo",
+          "Follow-up tracking so nothing drops",
+          "Weekly decision queue review",
+        ],
+        trigger: "You're an approver of record and your team is waiting on you.",
+      },
+      {
+        name: "Gatekeeping with judgment",
+        pain: "Your calendar is wide open to anyone who books, and you're burning hours on meetings that don't belong on it.",
+        outcome: "A gate that lets the right asks through fast and says no to the rest with grace.",
+        included: [
+          "Requester-qualifying questions (not templated, matched to your role)",
+          "Tiered access rules for internal, external, and board-adjacent",
+          "Polite-but-firm decline language you'd sign off on",
+          "Escalation path when someone won't take a no",
+          "Quarterly calendar audit to tune the filter",
+        ],
+        trigger: "The wrong people keep getting 30 minutes. The right people can't get 15.",
+      },
+      {
+        name: "Executive travel and logistics",
+        pain: "Travel is a scramble, pre-trip briefings don't exist, and you forget which city you're in.",
+        outcome: "A single-page itinerary per trip, with context, local contacts, and a post-trip debrief template.",
+        included: [
+          "Single-page itinerary with timezone overlays",
+          "Pre-trip briefing on stakeholders and cultural notes",
+          "Real-time itinerary changes handled async",
+          "Visa, insurance, and compliance documentation",
+          "Expense capture flow so filing isn't a second trip",
+        ],
+        trigger: "You travel enough that logistics eats time. You don't travel so much that a TMC is worth it.",
+      },
+      {
+        name: "Confidential correspondence management",
+        pain: "Sensitive information lives in your inbox because there's no better place for it, and that worries you.",
+        outcome: "A discipline for confidential comms matched to what a publicly traded company would require.",
+        included: [
+          "NDA-default document handling",
+          "Encrypted channels for sensitive exchanges",
+          "Audit trail for every document touched",
+          "Fireproof lockbox protocol for hardcopy (yes, really)",
+          "Information access tiers with review cadence",
+        ],
+        trigger: "You've had to ask 'who else has this document' and not known the answer.",
+      },
+    ],
+  },
+  {
+    id: "board-governance",
+    roman: "II",
+    name: "Board & Governance",
+    intro: "Stand up the operating rhythm a board expects. No more scramble-the-week-before.",
+    services: [
+      {
+        name: "Quarterly board cadence setup",
+        pain: "Your board meets quarterly, technically, but the dates move, materials land late, and the chairman is unhappy.",
+        outcome: "A locked quarterly rhythm with dates fixed 12 months out and materials on a predictable timeline.",
+        included: [
+          "Date anchors tied to earnings and legal review windows",
+          "Board-member availability captured and protected",
+          "T-minus-3-week materials deadline and follow-through",
+          "Pre-read distribution 7 days before each meeting",
+          "Meeting day run-of-show with AV, catering, remote dial-in",
+        ],
+        trigger: "You've rescheduled a board meeting in the last two quarters.",
+      },
+      {
+        name: "12-month forward calendar planning",
+        pain: "You plan quarter by quarter because that's all the room you have. Board members want 6 months notice.",
+        outcome: "The full year of board and committee meetings locked in your calendar by the preceding September.",
+        included: [
+          "Board, audit committee, and compensation committee dates",
+          "Earnings-adjacent, legal-review-aware scheduling",
+          "Chairman and director calendar coordination",
+          "Materials ownership matrix by meeting",
+          "Mid-year rebalance against any disruption",
+        ],
+        trigger: "You keep losing good board slots because you booked two weeks too late.",
+      },
+      {
+        name: "Audit committee coordination",
+        pain: "Audit committee meetings feel like they exist in a separate universe from the main board, with their own pain.",
+        outcome: "Audit committee wired into the main cadence with materials and minutes handled at the same level of discipline.",
+        included: [
+          "Audit committee charter review and compliance tracking",
+          "Meeting materials coordination with Legal and external audit",
+          "Quarterly risk and controls reporting",
+          "Minutes captured with action items owned and tracked",
+          "External auditor relationship and correspondence",
+        ],
+        trigger: "You have an audit committee on paper, but no one is running it.",
+      },
+      {
+        name: "Compensation committee coordination",
+        pain: "Comp committee decisions are sensitive, confidential, and your current process leaves gaps.",
+        outcome: "Compensation committee materials handled with the discretion and precision the topic demands.",
+        included: [
+          "Comp study materials coordination",
+          "Executive comp decision memos",
+          "Equity and option grant tracking",
+          "Confidential draft distribution protocol",
+          "Minutes with full decision audit trail",
+        ],
+        trigger: "You have a comp committee, but exec comp decisions still live in your CFO's head.",
+      },
+      {
+        name: "Board pre-read templates and materials discipline",
+        pain: "Every board package looks different because every author makes their own slides, and the board is losing patience.",
+        outcome: "A standard board package template that makes every quarter legible and every author faster.",
+        included: [
+          "Template for financial update, operational update, and strategic items",
+          "Style and branding consistency across all contributors",
+          "Version-controlled shared drive with review workflow",
+          "Pre-read PDF assembly and distribution",
+          "Post-meeting action tracker template",
+        ],
+        trigger: "Your board has commented on inconsistent materials in the last 4 quarters.",
+      },
+      {
+        name: "Chairman and director relationship management",
+        pain: "Individual board members need attention between meetings and that attention isn't happening.",
+        outcome: "A cadence of 1:1 touchpoints per director so their inputs show up at board meetings, not as ambushes.",
+        included: [
+          "Individual director interest and expertise mapping",
+          "Monthly check-in cadence per director",
+          "Between-meeting update summaries",
+          "Committee assignment matching",
+          "Chairman-only confidential channel",
+        ],
+        trigger: "Your chairman has your personal phone number for a reason. The reason is you aren't responsive enough.",
+      },
+      {
+        name: "Meeting minutes and action tracking",
+        pain: "Action items from the last board meeting are lost in someone's notebook, and you'll be asked about them next quarter.",
+        outcome: "Minutes distributed within 24 hours and every action item tracked to close or explicit deferral.",
+        included: [
+          "Real-time action capture during meetings",
+          "Minutes drafted within 24 hours for chairman review",
+          "Action owner and deadline assignment",
+          "Weekly action-tracker updates distributed",
+          "Closing cadence so nothing sits idle",
+        ],
+        trigger: "You can't confidently say what action items came out of the last board meeting.",
+      },
+    ],
+  },
+  {
+    id: "investor-relations",
+    roman: "III",
+    name: "Investor Relations",
+    intro: "For pre-IPO and publicly traded companies. Build the machine that runs quarterly without burning down.",
+    services: [
+      {
+        name: "Earnings prep system (6 to 8 week cadence)",
+        pain: "Every earnings cycle feels like the first one. You rebuild the process from scratch in your head every quarter.",
+        outcome: "A repeatable 6 to 8 week prep cadence where IR, Legal, Finance, PR, and C-suite all know their role on day one.",
+        included: [
+          "Kickoff calendar 6 to 8 weeks out with all stakeholders",
+          "Week-5 full C-suite alignment meeting",
+          "SharePoint rollover and template discipline in Week 1",
+          "CEO script practice cadence 1.5 weeks pre-call",
+          "Post-earnings debrief and next-cycle improvements",
+        ],
+        trigger: "Your last earnings cycle had a fire the week of. Your next one will too.",
+      },
+      {
+        name: "External IR partnership management",
+        pain: "Your external IR agency (Mattio, ICR, Sloane, whoever) is chasing you instead of running with you.",
+        outcome: "Your agency and your internal team running as one, with clear handoffs and no orphan action items.",
+        included: [
+          "Shared calendar and SharePoint access from day one",
+          "Weekly sync cadence with agency principal",
+          "Agency brief template so they never ask twice",
+          "Feedback loop from C-suite to agency without CFO in the middle",
+          "Quarterly relationship review",
+        ],
+        trigger: "You're paying a premium for external IR and getting commodity service.",
+      },
+      {
+        name: "No-deal roadshow coordination",
+        pain: "Roadshows are high-stakes, logistics-heavy, and your CEO's calendar keeps breaking them.",
+        outcome: "Roadshow weeks where the only thing your CEO has to focus on is what to say in each meeting.",
+        included: [
+          "City-by-city investor meeting sequencing",
+          "Investor pre-reads and context briefings",
+          "Travel, hotel, and meal logistics",
+          "Real-time itinerary change management",
+          "Post-meeting follow-up and intel capture",
+        ],
+        trigger: "You're doing a roadshow in the next 90 days and the logistics plan is... somewhere.",
+      },
+      {
+        name: "Press release choreography",
+        pain: "Press releases go out with typos or timing gaps because too many people touch them and no one owns the process.",
+        outcome: "A release-day run-of-show with legal, PR, and IR aligned on timing, distribution, and post-release coverage.",
+        included: [
+          "Release calendar synced to earnings, clinical, and regulatory events",
+          "Legal and compliance review workflow",
+          "Distribution list and embargo management",
+          "Post-release coverage tracking",
+          "Executive talking points for inbound questions",
+        ],
+        trigger: "A release went out last year with a mistake you had to correct.",
+      },
+      {
+        name: "Investor CRM and stakeholder tracking",
+        pain: "You have 200+ investor relationships across institutions, analysts, and retail, and no single view of any of them.",
+        outcome: "A tracking system that tells you who saw the last deck, who asked what question, and who to call first.",
+        included: [
+          "Stakeholder segmentation (institutional, analyst, retail, prospect)",
+          "Touch-point history per contact",
+          "Meeting-note structure and retrieval",
+          "Priority flagging for CEO follow-ups",
+          "Quarterly stakeholder report to leadership",
+        ],
+        trigger: "You've had to ask 'have we talked to this fund yet' more than once.",
+      },
+      {
+        name: "Pre-IPO readiness operations",
+        pain: "You're 12 to 18 months from an IPO and your executive office isn't ready for what that looks like.",
+        outcome: "A public-company-grade operating rhythm in place before your S-1 so the process doesn't break you.",
+        included: [
+          "Board cadence build-out (see Board & Governance)",
+          "Earnings prep system design (pre-deploy)",
+          "Investor-relations function scoping",
+          "Executive-assistant function build-out (see EA Function)",
+          "Documentation pass for underwriter diligence",
+        ],
+        trigger: "Your S-1 process is on the horizon and your ops wouldn't pass a CFO's sniff test.",
+      },
+    ],
+  },
+  {
+    id: "ma-strategic",
+    roman: "IV",
+    name: "M&A & Strategic",
+    intro: "Keep the pipeline moving. Deals die in the follow-up gaps. I close them.",
+    services: [
+      {
+        name: "Weekly M&A meeting facilitation",
+        pain: "Your weekly M&A meeting is a status review, not a working session. Nothing actually moves between Mondays.",
+        outcome: "An M&A meeting that ends with clear ownership, timelines, and no ambiguity about what happens before next week.",
+        included: [
+          "Pre-meeting agenda capture from stakeholders",
+          "Live action-item capture during the meeting",
+          "Follow-up dashboard with leads and deadlines",
+          "Pre-next-meeting prep sync with director of M&A",
+          "Structured deal-stage movement tracking",
+        ],
+        trigger: "Your CEO has asked where a specific deal is, twice, in the same quarter.",
+      },
+      {
+        name: "Deal pipeline dashboards",
+        pain: "Your deal pipeline lives in someone's spreadsheet and no one else can read it.",
+        outcome: "A team-shareable pipeline view that shows stage, owner, probability, and next action for every live deal.",
+        included: [
+          "Pipeline template matched to your deal flow",
+          "Weekly updates captured from pipeline owner",
+          "Stage-gate definitions and movement criteria",
+          "Visibility controls (CEO sees all, team sees theirs)",
+          "Quarterly pipeline review format",
+        ],
+        trigger: "You can't answer 'how many deals are in late stage right now' in under 30 seconds.",
+      },
+      {
+        name: "Follow-up and action tracking",
+        pain: "Deals die because follow-ups don't happen. Targets stop responding, diligence stalls, documents go missing.",
+        outcome: "Every deal in your pipeline has a clear next action and a clear owner with a clear deadline.",
+        included: [
+          "Per-deal follow-up schedule",
+          "Owner-escalation protocol when deadlines slip",
+          "Document request tracking",
+          "Internal diligence workflow coordination",
+          "Target-side relationship cadence",
+        ],
+        trigger: "You've lost a deal to a competitor's faster response time.",
+      },
+      {
+        name: "Cross-functional due diligence coordination",
+        pain: "Diligence asks are coming in faster than your team can organize, and you're sending the same documents five times.",
+        outcome: "A diligence workflow that routes requests efficiently and builds a re-usable data room as you go.",
+        included: [
+          "Data room structure and content pack",
+          "Per-party access control and audit trail",
+          "Request routing across Legal, Finance, and Operations",
+          "Response SLA tracking",
+          "Post-close documentation handoff",
+        ],
+        trigger: "You're in diligence right now and it feels out of control.",
+      },
+    ],
+  },
+  {
+    id: "fda-regulatory",
+    roman: "V",
+    name: "FDA & Regulatory",
+    intro: "For biopharma and medical device companies. Meeting readiness, correspondence discipline, ad-board coordination.",
+    services: [
+      {
+        name: "FDA meeting prep and readiness",
+        pain: "Every FDA interaction feels like the first one, and you're not confident your team will be ready when it matters.",
+        outcome: "A prep protocol that ensures CEO, CMO, and General Counsel arrive briefed, aligned, and ready to answer follow-up.",
+        included: [
+          "Pre-meeting briefing doc template",
+          "Role-assignment matrix (who takes lead on which topic)",
+          "Rehearsal scheduling with trial-phase PMs",
+          "Post-meeting action capture",
+          "Commitment tracking to FDA follow-through",
+        ],
+        trigger: "Your CMO spends the day before every FDA meeting gathering documents.",
+      },
+      {
+        name: "Fireproof lockbox correspondence management",
+        pain: "FDA hardcopy correspondence sits in drawers and inboxes and you're one audit away from a finding.",
+        outcome: "Physical and digital correspondence handled to the standard FDA inspectors expect to see.",
+        included: [
+          "Fireproof lockbox setup and access control",
+          "Hardcopy log and scanning protocol",
+          "Electronic filing with retention policy",
+          "Quarterly audit of correspondence handling",
+          "Handoff documentation for new team members",
+        ],
+        trigger: "You can't quickly find the last letter FDA sent about a specific product.",
+      },
+      {
+        name: "Ad-board and clinical-trial convening",
+        pain: "Advisory boards for specific trial phases are hard to stand up quickly, and the logistics burn your clinical team.",
+        outcome: "Ad-board convenings that run smoothly so your CMO can focus on the content, not the catering.",
+        included: [
+          "Ad-board candidate outreach and confirmation",
+          "Venue, catering, and AV coordination",
+          "Pre-meeting materials distribution",
+          "Day-of run-of-show",
+          "Post-meeting summary and action tracking",
+        ],
+        trigger: "You're planning an ad-board in the next 6 months and your clinical team is already overloaded.",
+      },
+      {
+        name: "Regulatory filing coordination across Legal and Clinical",
+        pain: "Filings require coordination across Legal, Clinical, and Regulatory, and the handoffs drop things.",
+        outcome: "A filing-prep workflow where every role knows what they own and when, and nothing falls through the cracks.",
+        included: [
+          "Filing-type-specific workflow templates",
+          "Cross-functional deadline tracking",
+          "Version-controlled document collaboration",
+          "Executive sign-off routing",
+          "Post-submission audit trail",
+        ],
+        trigger: "A filing was late or had a correction submitted in the last year.",
+      },
+    ],
+  },
+  {
+    id: "financial-operations",
+    roman: "VI",
+    name: "Financial Operations",
+    intro: "Budget tracking, reconciliation, and exec-level financial workflows. The precision a CFO's office requires.",
+    services: [
+      {
+        name: "Budget tracking and WHIP-style reporting",
+        pain: "Your budget tracking is a monthly scramble and by the time the CFO asks, the numbers are two weeks stale.",
+        outcome: "Weekly budget-tracking with formula-driven reports that feed pivot-table analysis at the snap of a finger.",
+        included: [
+          "WHIP-style comprehensive purchase-order view",
+          "Multi-PO and multi-company tracking",
+          "Pivot-ready data structure",
+          "Weekly refresh cadence",
+          "Handoff to CFO or FP&A team",
+        ],
+        trigger: "Your CFO has asked for a budget update and you've had to 'pull the numbers' more than once.",
+      },
+      {
+        name: "Purchase order reconciliation",
+        pain: "POs are open that shouldn't be, closed ones keep getting re-billed, and your reconciliation takes days.",
+        outcome: "PO reconciliation that hits 100% payment accuracy and keeps your vendor relationships clean.",
+        included: [
+          "PO lifecycle audit",
+          "Vendor payment verification",
+          "Reconciliation report to AP team",
+          "Exception escalation protocol",
+          "Monthly close support",
+        ],
+        trigger: "Your AP team has flagged a reconciliation issue more than once in the last quarter.",
+      },
+      {
+        name: "Expense oversight for Time & Expense-heavy teams",
+        pain: "Expense filing is a nightmare for your senior team and your directors' reimbursements take weeks to process.",
+        outcome: "Expense discipline that turns T&E from a back-of-mind chore into a weekly habit that clears in 48 hours.",
+        included: [
+          "T&E policy review and matching to your spend pattern",
+          "Monthly expense audit for flagged categories",
+          "Fast-lane reimbursement protocol",
+          "Per-executive expense report ownership",
+          "Compliance discipline with Concur, Expensify, or SAP",
+        ],
+        trigger: "Your directors complain about expense turnaround, or you've had a policy violation in the last quarter.",
+      },
+    ],
+  },
+  {
+    id: "ea-function",
+    roman: "VII",
+    name: "EA Function Build-Out",
+    intro: "For first-EA and second-EA hires, or scale-ups that outgrew their current admin setup.",
+    services: [
+      {
+        name: "First-EA and second-EA hiring support",
+        pain: "You need to hire an EA and you don't know what to interview for beyond 'calendar management'.",
+        outcome: "A hiring spec tuned to your actual executive office, interview questions that test for the real skill, and a scorecard.",
+        included: [
+          "Job description written against your specific executive needs",
+          "Interview question bank with scoring criteria",
+          "Case study exercises for finalist candidates",
+          "Reference-check questions beyond generic",
+          "First-30-days onboarding plan for the winner",
+        ],
+        trigger: "You've had a bad EA hire, or you're about to make your first one.",
+      },
+      {
+        name: "30/60/90-day onboarding frameworks",
+        pain: "Your new EA is in month three and still figuring out what you need from them. You're burning goodwill.",
+        outcome: "A new-EA ramp that hits full productivity in 4 to 5 weeks instead of 8 or longer.",
+        included: [
+          "Day-one orientation packet",
+          "Week-one systems walk-through",
+          "30-day productivity checkpoint",
+          "60-day competency review",
+          "90-day scope expansion conversation",
+        ],
+        trigger: "Your last EA hire took too long to ramp, or your next one will hit the same wall.",
+      },
+      {
+        name: "EA team cadence and cross-coverage rotation",
+        pain: "You have multiple EAs and they operate as silos, so when one is out, their exec is stranded.",
+        outcome: "A team operating rhythm where every EA can back up every other EA with no exec feeling the seam.",
+        included: [
+          "Weekly all-EA sync cadence",
+          "Cross-EA 1:1 pairings",
+          "Backup coverage matrix with triggers",
+          "Shared knowledge base (tabs-in-spreadsheets, not Word docs)",
+          "Quarterly team retrospective",
+        ],
+        trigger: "An EA went on leave last year and the team felt the absence.",
+      },
+      {
+        name: "Knowledge base and institutional memory",
+        pain: "When someone leaves, half of how your exec office runs leaves with them.",
+        outcome: "A living knowledge base that survives turnover because it was built for the team, not one person's head.",
+        included: [
+          "Knowledge-base architecture (tabs-in-spreadsheets or Notion)",
+          "Per-exec context document",
+          "Systems inventory with access and ownership",
+          "Update cadence built into weekly workflow",
+          "Onboarding path for new EAs into the base",
+        ],
+        trigger: "An EA left in the last year and your team is still rediscovering what they knew.",
+      },
+    ],
+  },
+  {
+    id: "process-documentation",
+    roman: "VIII",
+    name: "Process & Documentation",
+    intro: "The systems underneath everything else. Nothing I build should live in my head.",
+    services: [
+      {
+        name: "SOPs and procedure manuals",
+        pain: "Processes exist in your team's muscle memory and nowhere else, so every handoff breaks something.",
+        outcome: "Written SOPs for the processes that matter most, living in your team's tooling, not a dusty PDF.",
+        included: [
+          "Top-10 process inventory",
+          "SOP template matched to your existing docs",
+          "Each SOP written with an actual user and pressure-tested",
+          "Update triggers built in (every quarter, or on process change)",
+          "Training-mode vs reference-mode versions",
+        ],
+        trigger: "Your newest EA had to ask a peer how to do something basic in week three.",
+      },
+      {
+        name: "Culture committee setup and governance",
+        pain: "Company culture is a leadership concern and no one owns the operational side of it.",
+        outcome: "A Culture Committee with rotating membership, a charter tied to company KPIs, and a real budget.",
+        included: [
+          "Charter drafting and ELT sign-off",
+          "6 to 10 member rotation with 6-month terms",
+          "Quarterly event calendar and budget",
+          "Post-event satisfaction surveys",
+          "Alignment with HR and ELT scorecard",
+        ],
+        trigger: "Your last engagement survey showed culture scores you don't like.",
+      },
+      {
+        name: "Policy and hybrid-work framework modernization",
+        pain: "Your hybrid-work policy is a vibes-based compromise and half the team is confused about what's expected.",
+        outcome: "Policies written clearly, with HR and Facilities aligned, that actually describe how your team should operate.",
+        included: [
+          "Hybrid-work policy redraft",
+          "Remote-and-in-office protocol",
+          "Facilities and tech-stack alignment",
+          "Manager playbook for hybrid teams",
+          "Employee handbook revisions",
+        ],
+        trigger: "HR has flagged friction around hybrid policy, or an exec has complained about it.",
+      },
+    ],
+  },
+];
+
+const totalServices = disciplines.reduce((s, d) => s + d.services.length, 0);
+---
+
+<Layout title="Services | Leigh-Ann Martin" description="Every granular fractional EA service Leigh-Ann Martin offers, organized by discipline. Board cadence, investor relations, FDA coordination, EA function build-out, and more.">
+  <Masthead />
+  <main>
+    <!-- Hero -->
+    <section class="pt-28 md:pt-20 pb-16 md:pb-24 bg-paper">
+      <div class="max-w-[1440px] mx-auto px-6 md:px-10">
+        <div class="flex items-baseline justify-between mb-10" data-reveal>
+          <div class="flex items-baseline gap-6">
+            <span class="small-caps text-ink-muted">Vol. I</span>
+            <span class="hidden md:inline small-caps text-ink-muted">The service index</span>
+          </div>
+          <span class="small-caps text-ink-muted tabular">2026</span>
+        </div>
+
+        <div class="grid md:grid-cols-12 gap-8 items-end" data-reveal>
+          <div class="md:col-span-8">
+            <p class="small-caps text-copper mb-6">Every service</p>
+            <h1 class="font-display text-[11vw] md:text-[7rem] lg:text-[8.5rem] text-ink leading-[0.88] tracking-[-0.035em]">
+              Pick the <span class="italic font-display-italic text-copper">pain</span>.
+              <br/>Start there.
+            </h1>
+          </div>
+          <div class="md:col-span-4">
+            <p class="text-ink-soft text-lg leading-relaxed">
+              <span class="font-display text-copper tabular">{totalServices} services</span>, organized into <span class="font-display text-copper tabular">{disciplines.length} disciplines</span>. Each one named after a specific pain, scoped against a specific outcome, priced when we talk.
+            </p>
+            <p class="mt-4 font-mono text-[11px] uppercase tracking-wider text-ink-muted">
+              No prices on this page. Pricing is conversation-first, always.
+            </p>
+          </div>
+        </div>
+
+        <!-- Quick jump nav -->
+        <nav class="mt-12 md:mt-16 pt-8 border-t border-rule flex flex-wrap items-center gap-x-6 gap-y-3" data-reveal>
+          <span class="font-mono text-[11px] uppercase tracking-[0.2em] text-ink-muted">Jump to</span>
+          {disciplines.map(d => (
+            <a href={`#${d.id}`} class="text-ink text-sm hover:text-copper transition-colors">
+              {d.roman}. {d.name}
+            </a>
+          ))}
+        </nav>
+      </div>
+    </section>
+
+    <!-- Disciplines -->
+    {disciplines.map((d, idx) => (
+      <section id={d.id} class={`py-20 md:py-28 ${idx % 2 === 0 ? 'bg-paper-soft' : 'bg-paper'}`}>
+        <div class="max-w-[1440px] mx-auto px-6 md:px-10">
+          <!-- Discipline header -->
+          <div class="grid md:grid-cols-12 gap-8 mb-12 md:mb-16 pb-8 border-b-2 border-ink" data-reveal>
+            <div class="md:col-span-1">
+              <span class="font-display text-7xl md:text-8xl text-copper leading-none">{d.roman}.</span>
+            </div>
+            <div class="md:col-span-7">
+              <p class="small-caps text-ink-muted mb-3">Discipline</p>
+              <h2 class="font-display text-4xl md:text-6xl text-ink leading-[0.95] mb-4">{d.name}</h2>
+              <p class="text-ink-soft text-lg leading-relaxed">{d.intro}</p>
+            </div>
+            <div class="md:col-span-4 md:text-right md:self-end">
+              <span class="font-mono text-[11px] uppercase tracking-[0.2em] text-ink-muted">
+                <span class="tabular text-copper">{d.services.length}</span> services in this discipline
+              </span>
+            </div>
+          </div>
+
+          <!-- Service grid -->
+          <div class="grid md:grid-cols-2 gap-px bg-rule border border-rule" data-reveal>
+            {d.services.map(s => (
+              <article class={`${idx % 2 === 0 ? 'bg-paper-soft' : 'bg-paper'} p-7 md:p-8 flex flex-col`}>
+                <h3 class="font-display text-2xl md:text-[1.75rem] text-ink leading-[1.15] mb-5">{s.name}</h3>
+
+                <p class="small-caps text-copper mb-2">The pain</p>
+                <p class="font-display-italic text-lg text-ink-soft leading-snug mb-5">"{s.pain}"</p>
+
+                <p class="small-caps text-copper mb-2">The outcome</p>
+                <p class="text-ink text-[15px] leading-relaxed mb-5">{s.outcome}</p>
+
+                <p class="small-caps text-ink-muted mb-3">What's included</p>
+                <ul class="space-y-1.5 mb-5">
+                  {s.included.map(i => (
+                    <li class="flex gap-2 items-start text-ink-soft text-sm leading-relaxed">
+                      <span class="font-mono text-[10px] text-copper mt-1.5 flex-shrink-0">→</span>
+                      <span>{i}</span>
+                    </li>
+                  ))}
+                </ul>
+
+                <div class="mt-auto pt-5 border-t border-rule/70">
+                  <p class="font-mono text-[10px] uppercase tracking-[0.15em] text-ink-muted mb-3">When you need this</p>
+                  <p class="text-ink text-sm leading-relaxed italic mb-4">{s.trigger}</p>
+                  <a
+                    href={mailto(s.name)}
+                    class="group inline-flex items-center gap-2 text-copper text-sm font-medium hover:gap-3 transition-all"
+                  >
+                    <span>Talk to me about this</span>
+                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
+                  </a>
+                </div>
+              </article>
+            ))}
+          </div>
+        </div>
+      </section>
+    ))}
+
+    <!-- Closing CTA -->
+    <section class="bg-ink text-paper py-24 md:py-32">
+      <div class="max-w-3xl mx-auto px-6 md:px-10 text-center" data-reveal>
+        <p class="small-caps text-copper mb-6">Ready to talk</p>
+        <h2 class="font-display text-5xl md:text-7xl text-paper leading-[0.92] mb-8">
+          Tell me what's <span class="italic font-display-italic">actually</span> breaking.
+        </h2>
+        <p class="text-paper/70 text-lg leading-relaxed mb-10">
+          A 30-minute discovery call, free, usually inside 48 hours of your first reach-out. Even if we don't end up working together, you'll leave with a clearer picture of what's worth fixing first.
+        </p>
+        <a
+          href="mailto:lmartinlapc@gmail.com?subject=Discovery%20call%20request"
+          class="inline-flex items-center gap-3 bg-copper text-paper px-7 py-4 rounded-full text-sm font-medium hover:bg-paper hover:text-ink transition-colors group"
+        >
+          <span>Email me about a discovery call</span>
+          <svg class="w-4 h-4 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
+        </a>
+      </div>
+    </section>
+  </main>
+  <Colophon />
+</Layout>
+
+<script>
+  const revealEls = document.querySelectorAll("[data-reveal]");
+  const observer = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("revealed");
+          observer.unobserve(entry.target);
+        }
+      });
+    },
+    { threshold: 0.05, rootMargin: "0px 0px -40px 0px" }
+  );
+  revealEls.forEach((el) => observer.observe(el));
+</script>

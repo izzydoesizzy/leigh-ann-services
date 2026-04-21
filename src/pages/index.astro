@@ -2,11 +2,16 @@
 import Layout from "../layouts/Layout.astro";
 import Masthead from "../components/Masthead.astro";
 import Overture from "../components/Overture.astro";
+import IsThisYou from "../components/IsThisYou.astro";
+import NotAFit from "../components/NotAFit.astro";
 import TwoPaths from "../components/TwoPaths.astro";
 import SelectedWork from "../components/SelectedWork.astro";
 import ByTheNumbers from "../components/ByTheNumbers.astro";
+import ROI from "../components/ROI.astro";
 import SkillsMatrix from "../components/SkillsMatrix.astro";
 import Services from "../components/Services.astro";
+import Process from "../components/Process.astro";
+import FAQ from "../components/FAQ.astro";
 import Recognition from "../components/Recognition.astro";
 import Testimonial from "../components/Testimonial.astro";
 import About from "../components/About.astro";
@@ -18,13 +23,18 @@ import Colophon from "../components/Colophon.astro";
   <Masthead />
   <main>
     <Overture />
+    <IsThisYou />
+    <NotAFit />
     <TwoPaths />
     <SelectedWork />
     <ByTheNumbers />
+    <ROI />
     <SkillsMatrix />
     <Services />
+    <Process />
     <Recognition />
     <Testimonial />
+    <FAQ />
     <About />
     <Contact />
   </main>
@@ -32,7 +42,6 @@ import Colophon from "../components/Colophon.astro";
 </Layout>
 
 <script>
-  // Scroll-reveal observer, matches the feel of her other sites.
   const revealEls = document.querySelectorAll("[data-reveal]");
   const observer = new IntersectionObserver(
     (entries) => {

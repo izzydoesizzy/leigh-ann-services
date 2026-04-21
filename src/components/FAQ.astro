@@ -1,0 +1,71 @@
+---
+const qs = [
+  {
+    q: "Why fractional and not just a full-time EA hire?",
+    a: "Three reasons. First, you're not 100% utilized yet, and a fractional EA sized to your actual need is half the cost of a misjudged full-time hire. Second, senior EA hiring takes 8 to 12 weeks and most searches run longer; fractional starts next week. Third, if you're unsure what the role should look like, a fractional engagement becomes a working job description for whoever you eventually hire. Several of my clients have used fractional time as the specification for their first full-time senior EA hire.",
+  },
+  {
+    q: "Why you and not a $50 an hour virtual assistant?",
+    a: "VAs execute tasks. I design the system the VA (or junior EA) will execute. A VA can book a flight. I can build the pre-trip briefing template, the priority-ranked calendar logic, the post-travel debrief, and the comms protocol with your investor relations team. Those are two different products. If your need is the first, hire a VA. If it's the second, hire me.",
+  },
+  {
+    q: "What happens when you're unavailable?",
+    a: "Every engagement includes a written response-time SLA (typically 4 business hours for async, same-day for urgent) and a pre-defined coverage plan for planned time off. I share my calendar with clients on request. For retainer engagements, I never take on more clients than I can give 48-hour response to.",
+  },
+  {
+    q: "How do you handle confidentiality?",
+    a: "NDA by default before any engagement starts. At Immunovant I managed pre-IPO materials, FDA correspondence, and C-suite communications with fireproof-lockbox protocols for hardcopy. At Ascend Wellness I handled board-level governance for a publicly traded company. I treat every client's information at that standard, not because the contract requires it, but because that's how I've always worked.",
+  },
+  {
+    q: "Can I upgrade from fractional to full-time later?",
+    a: "Yes, and I build that bridge into every engagement. If we end up deciding the need is full-time, I'll give you a hiring spec based on the actual work we've done together, and I'll credit the earned fractional fees against first-year compensation if you want to bring me on full-time. Same person, same systems, no transition tax.",
+  },
+  {
+    q: "What industries do you work in?",
+    a: "My direct experience is biotech, biopharma, Big Four accounting, expert-network consulting, and publicly traded cannabis. My best fits tend to be scale-ups in biotech, fintech, healthtech, or any company approaching or past an IPO. I don't do fractional for companies under 20 employees; there isn't enough operational complexity yet to justify the engagement.",
+  },
+  {
+    q: "How is pricing structured?",
+    a: "Outcome-based, never hourly. Flat fees tied to a specific deliverable. A diagnostic audit has a fixed price. A board cadence stand-up has a fixed price. A monthly retainer is priced against access and defined monthly outcomes, not hours. If I'm done in half the time, you pay the same; if it takes me longer than I scoped, you still pay the same. That asymmetry is intentional. It aligns my incentive with delivering the outcome efficiently.",
+  },
+  {
+    q: "What does the first month look like?",
+    a: "Week one is embedding: discovery calls, systems audit, a written diagnostic. Week two is scoping: a detailed plan for the remaining engagement with milestones. Weeks three and four are delivery against the highest-priority outcome. By day 30 you have a measurable change in the area we agreed to fix. If you don't see it, we have a conversation and I refund 100%.",
+  },
+];
+---
+
+<section class="bg-paper-soft py-24 md:py-32">
+  <div class="max-w-[1440px] mx-auto px-6 md:px-10">
+    <div class="grid md:grid-cols-12 gap-10 md:gap-16">
+      <div class="md:col-span-4" data-reveal>
+        <p class="small-caps text-copper mb-4">Real objections</p>
+        <h2 class="font-display text-5xl md:text-6xl text-ink leading-[0.92] mb-6">
+          The <span class="italic font-display-italic">questions</span> everyone asks.
+        </h2>
+        <p class="text-ink-soft text-[15px] leading-relaxed">
+          Not a generic FAQ. The actual things CEOs, CFOs, and Chiefs of Staff ask on the discovery call, answered directly.
+        </p>
+      </div>
+
+      <div class="md:col-span-8 divide-y divide-rule border-y border-rule" data-reveal>
+        {qs.map((item, idx) => (
+          <details class="group py-6">
+            <summary class="flex items-start justify-between gap-6 cursor-pointer list-none">
+              <div class="flex items-baseline gap-4 flex-1">
+                <span class="font-mono text-[10px] uppercase tracking-[0.25em] text-copper tabular mt-1">0{idx + 1}</span>
+                <h3 class="font-display text-xl md:text-2xl text-ink leading-snug flex-1">{item.q}</h3>
+              </div>
+              <svg class="w-5 h-5 text-ink-muted flex-shrink-0 mt-2 group-open:rotate-180 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M19 9l-7 7-7-7"/>
+              </svg>
+            </summary>
+            <div class="pl-0 md:pl-12 pt-4">
+              <p class="text-ink-soft text-[15px] leading-relaxed">{item.a}</p>
+            </div>
+          </details>
+        ))}
+      </div>
+    </div>
+  </div>
+</section>
