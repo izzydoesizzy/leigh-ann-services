@@ -1,5 +1,51 @@
 ---
-// Two clear pathways for how Leigh-Ann can work with you.
+// The fractional engagement ladder. Four shapes, no prices on the public page.
+// Pricing is conversation-first and surfaces after the discovery call via /packages.
+
+const CALENDLY_URL = "https://calendly.com/lmartinlapc/intro-call";
+
+const tiers = [
+  {
+    num: "01",
+    tier: "Entry",
+    name: "Executive Office Audit",
+    timeline: "2 weeks",
+    pitch: "You suspect something isn't working. You can't name exactly what. Start here.",
+    outcome: "A written diagnostic of your executive office, a prioritized roadmap, and recommendations you can act on with or without me.",
+    fit: "Founders, CEOs, and Chiefs of Staff who want a clear picture before committing to a longer engagement.",
+    accent: "copper",
+  },
+  {
+    num: "02",
+    tier: "Single outcome",
+    name: "Board cadence, earnings, or EA function",
+    timeline: "4 to 8 weeks",
+    pitch: "One specific problem. A flat-priced stand-up that lands one fixed outcome and hands off cleanly.",
+    outcome: "Pick one: a 12-month board calendar with committees wired, a 6 to 8 week earnings cycle that runs on a calendar, or an EA function redesigned and ready for hire.",
+    fit: "Pre-IPO or newly public companies with one visible gap. Scale-ups whose first real board is about to seat.",
+    accent: "copper",
+  },
+  {
+    num: "03",
+    tier: "Transformation",
+    name: "Public-Company Readiness",
+    timeline: "3 to 6 months",
+    pitch: "You're 12 to 18 months from an IPO. The executive office needs to stand up to underwriter diligence.",
+    outcome: "Board cadence, earnings prep, and EA function built as one coherent system. Monthly steering review against the readiness roadmap.",
+    fit: "Late-stage private companies preparing for S-1. Newly public companies where the first earnings cycle exposed everything.",
+    accent: "copper",
+  },
+  {
+    num: "04",
+    tier: "Scope-to-fit",
+    name: "Custom fractional engagement",
+    timeline: "Scoped after discovery",
+    pitch: "Your situation doesn't match the shapes above. Most serious engagements start here.",
+    outcome: "A fractional arrangement shaped around the specific thing breaking at your executive office. Flat-priced, outcome-anchored, built-in exit clause.",
+    fit: "Everyone whose need is real but not standard. The discovery call decides the shape.",
+    accent: "copper",
+  },
+];
 ---
 
 <section id="two-paths" class="bg-ink text-paper py-16 md:py-24 relative overflow-hidden">
@@ -7,107 +53,66 @@
     <div class="max-w-3xl mb-12 md:mb-16" data-reveal>
       <p class="small-caps text-copper mb-5">Chapter One</p>
       <h2 class="font-display text-4xl md:text-5xl text-paper leading-[0.95]">
-        Two ways to <span class="italic font-display-italic">work with me</span>.
+        Four shapes of <span class="italic font-display-italic">fractional</span>.
       </h2>
       <p class="mt-6 text-paper/65 text-base md:text-lg leading-relaxed">
-        A seasoned senior EA can fit either shape of need. Choose the one that matches your org, or reach out to talk about a hybrid.
+        Every engagement is flat-priced against a specific outcome, never hourly. Pricing is conversation-first; it lives in a written scope after the discovery call. Start where the pain is sharpest.
       </p>
     </div>
 
-    <div class="grid md:grid-cols-2 gap-8 md:gap-12">
-      <!-- Path 1: Part-time / Full-time -->
-      <article class="relative border border-paper/15 rounded-sm p-8 md:p-10 hover:border-copper/50 transition-colors" data-reveal>
-        <div class="absolute -top-3 left-8 bg-ink px-3">
-          <span class="font-mono text-[10px] uppercase tracking-[0.25em] text-copper">Path 01</span>
-        </div>
-        <h3 class="font-display text-3xl md:text-4xl text-paper leading-tight mb-6">
-          Hire me as your<br/>
-          <span class="italic font-display-italic text-copper">embedded</span> EA.
-        </h3>
-        <p class="text-paper/70 leading-relaxed mb-8">
-          For CEOs and founders who want a senior EA fully embedded with their executive office. Part-time (20 to 30 hours) or full-time.
-        </p>
-
-        <ul class="space-y-3 mb-10">
-          <li class="flex gap-3 items-start">
-            <span class="font-mono text-[10px] text-copper mt-1.5 flex-shrink-0">01</span>
-            <span class="text-paper/85 text-sm leading-relaxed">Calendar and correspondence for one to three execs</span>
-          </li>
-          <li class="flex gap-3 items-start">
-            <span class="font-mono text-[10px] text-copper mt-1.5 flex-shrink-0">02</span>
-            <span class="text-paper/85 text-sm leading-relaxed">Board, committee, and investor-relations coordination</span>
-          </li>
-          <li class="flex gap-3 items-start">
-            <span class="font-mono text-[10px] text-copper mt-1.5 flex-shrink-0">03</span>
-            <span class="text-paper/85 text-sm leading-relaxed">Team leadership, EA onboarding, and process documentation</span>
-          </li>
-          <li class="flex gap-3 items-start">
-            <span class="font-mono text-[10px] text-copper mt-1.5 flex-shrink-0">04</span>
-            <span class="text-paper/85 text-sm leading-relaxed">AI-fluent daily workflow (Claude, Perplexity, Salesforce CPA)</span>
-          </li>
-        </ul>
-
-        <div class="pt-6 border-t border-paper/10">
-          <div class="flex items-baseline justify-between mb-4">
-            <span class="small-caps text-paper/40">Target compensation</span>
-            <span class="font-mono text-sm text-paper tabular">$120K to $165K base</span>
+    <div class="grid md:grid-cols-2 gap-5 md:gap-6" data-reveal>
+      {tiers.map(t => (
+        <article class="relative border border-paper/15 rounded-sm p-7 md:p-8 hover:border-copper/50 transition-colors flex flex-col">
+          <div class="flex items-baseline justify-between mb-5">
+            <span class="font-mono text-[10px] uppercase tracking-[0.25em] text-copper">Tier {t.num}</span>
+            <span class="font-mono text-[10px] uppercase tracking-[0.2em] text-paper/40">{t.tier}</span>
           </div>
-          <a
-            href="#contact"
-            class="group inline-flex items-center gap-2 text-copper text-sm font-medium hover:gap-3 transition-all"
-          >
-            <span>Reach out about full-time</span>
-            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
-          </a>
-        </div>
-      </article>
 
-      <!-- Path 2: Fractional -->
-      <article class="relative bg-paper text-ink rounded-sm p-8 md:p-10 shadow-2xl" data-reveal>
-        <div class="absolute -top-3 left-8 bg-paper px-3">
-          <span class="font-mono text-[10px] uppercase tracking-[0.25em] text-copper">Path 02</span>
-        </div>
-        <h3 class="font-display text-3xl md:text-4xl text-ink leading-tight mb-6">
-          Engage me<br/>
-          <span class="italic font-display-italic text-copper">fractionally</span>.
-        </h3>
-        <p class="text-ink-soft leading-relaxed mb-8">
-          For founders scaling through a specific chapter without the budget or need for a full-time senior EA. Outcome-based engagements, not hourly.
-        </p>
+          <h3 class="font-display text-2xl md:text-3xl text-paper leading-tight mb-3">{t.name}</h3>
+          <p class="font-mono text-[11px] uppercase tracking-wider text-paper/50 mb-5 tabular">{t.timeline}</p>
 
-        <ul class="space-y-3 mb-10">
-          <li class="flex gap-3 items-start">
-            <span class="font-mono text-[10px] text-copper mt-1.5 flex-shrink-0">01</span>
-            <span class="text-ink-soft text-sm leading-relaxed">Board governance setup and quarterly cadence</span>
-          </li>
-          <li class="flex gap-3 items-start">
-            <span class="font-mono text-[10px] text-copper mt-1.5 flex-shrink-0">02</span>
-            <span class="text-ink-soft text-sm leading-relaxed">Earnings-call prep system for newly public or pre-IPO</span>
-          </li>
-          <li class="flex gap-3 items-start">
-            <span class="font-mono text-[10px] text-copper mt-1.5 flex-shrink-0">03</span>
-            <span class="text-ink-soft text-sm leading-relaxed">EA function build-out with onboarding frameworks</span>
-          </li>
-          <li class="flex gap-3 items-start">
-            <span class="font-mono text-[10px] text-copper mt-1.5 flex-shrink-0">04</span>
-            <span class="text-ink-soft text-sm leading-relaxed">Investor-relations operations and stakeholder systems</span>
-          </li>
-        </ul>
+          <p class="font-display-italic text-lg text-copper leading-snug mb-5">"{t.pitch}"</p>
 
-        <div class="pt-6 border-t border-rule">
-          <div class="flex items-baseline justify-between mb-4">
-            <span class="small-caps text-ink-muted">Engagement range</span>
-            <span class="font-mono text-sm text-ink tabular">$3K to $15K per project</span>
+          <div class="space-y-4 mb-6">
+            <div>
+              <p class="small-caps text-paper/40 mb-1.5">Outcome</p>
+              <p class="text-paper/85 text-sm leading-relaxed">{t.outcome}</p>
+            </div>
+            <div>
+              <p class="small-caps text-paper/40 mb-1.5">Best fit</p>
+              <p class="text-paper/75 text-sm leading-relaxed">{t.fit}</p>
+            </div>
           </div>
-          <a
-            href="#services"
-            class="group inline-flex items-center gap-2 text-copper text-sm font-medium hover:gap-3 transition-all"
-          >
-            <span>See fractional packages</span>
-            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
-          </a>
-        </div>
-      </article>
+
+          <div class="mt-auto pt-5 border-t border-paper/10">
+            <a
+              href={CALENDLY_URL}
+              target="_blank"
+              rel="noopener"
+              class="group inline-flex items-center gap-2 text-copper text-sm font-medium hover:gap-3 transition-all"
+            >
+              <span>Start with this tier</span>
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
+            </a>
+          </div>
+        </article>
+      ))}
+    </div>
+
+    <!-- Pricing note -->
+    <div class="mt-10 md:mt-12 pt-8 border-t border-paper/15 flex flex-col md:flex-row md:items-center md:justify-between gap-4" data-reveal>
+      <p class="font-display-italic text-xl text-paper/80 leading-snug max-w-2xl">
+        Pricing is deliberately off this page. The right number depends on company size, scope, and speed. It shows up in writing after the 20-minute call.
+      </p>
+      <a
+        href={CALENDLY_URL}
+        target="_blank"
+        rel="noopener"
+        class="inline-flex items-center gap-3 bg-copper text-paper px-6 py-3 rounded-full text-sm font-medium hover:bg-paper hover:text-ink transition-colors group flex-shrink-0"
+      >
+        <span>Book the 20-minute call</span>
+        <svg class="w-4 h-4 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
+      </a>
     </div>
   </div>
 </section>
