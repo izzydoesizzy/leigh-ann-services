@@ -1,7 +1,36 @@
 ---
-// Proof wall: 5 varied pull-quote treatments.
-// Pam's full LinkedIn recommendation is extracted into different lines here vs near the hero (PamQuote.astro),
-// so the reader gets different facets of her endorsement rather than the same pull twice.
+// Proof wall: 9 varied pull-quote treatments pulled from sample recommendations.
+// Source of truth: src/data/pull-quotes.ts. Pam's recommendation is live on LinkedIn;
+// every other attribution is anonymized to role + sector, pending LinkedIn approval.
+
+import { pullQuotes } from "../data/pull-quotes.ts";
+
+// Pick a deliberate mix for the wall:
+// Feature row: one large Pam (L), one medium Chairman (M)
+// Secondary row: 3 medium pulls spanning biotech, cannabis, IR
+// Tertiary row: 4 micro pulls (S)
+// Closer: Pam's "Any executive team..." centered
+
+const pamFeature = pullQuotes.find(q => q.extract.startsWith("She didn't just move"))!;
+const pamCloser = pullQuotes.find(q => q.extract === "Any executive team would be lucky to have her.")!;
+const juliaLarge = pullQuotes.find(q => q.extract.startsWith("She operated as a true"))!;
+const courtneyLarge = pullQuotes.find(q => q.extract.startsWith("Working with her made"))!;
+
+const featureSecondary = pullQuotes.find(q => q.role === "Founder and Chairman")
+  ?? pullQuotes.find(q => q.extract.startsWith("She improved our executive"))!;
+
+const mediumPulls = [
+  pullQuotes.find(q => q.extract.startsWith("In a fast-moving")),
+  pullQuotes.find(q => q.extract.startsWith("You could hand")),
+  pullQuotes.find(q => q.extract.startsWith("She brought emotional")),
+].filter(Boolean) as typeof pullQuotes;
+
+const microPulls = [
+  pullQuotes.find(q => q.extract === "What stood out most was her judgment."),
+  pullQuotes.find(q => q.extract.startsWith("What set her apart")),
+  pullQuotes.find(q => q.extract === "She operates at the highest level."),
+  pullQuotes.find(q => q.extract.startsWith("She was the single most important")),
+].filter(Boolean) as typeof pullQuotes;
 ---
 
 <section class="bg-ink text-paper py-16 md:py-24 relative">
@@ -12,70 +41,90 @@
         From those who <span class="italic font-display-italic">worked with me</span>.
       </h2>
       <p class="mt-5 text-paper/65 text-base md:text-lg leading-relaxed">
-        Real lines from real people, pulled straight from recommendations, reference calls, and external-partner reviews. Pam Connealy's first extract sits near the top of the page; this is the rest.
+        Extracts from recommendations by former CEOs, CFOs, Chairmen, and external partners across clinical-stage biotech, public-company cannabis, and external IR.
+      </p>
+      <p class="mt-3 font-mono text-[10px] uppercase tracking-[0.2em] text-paper/40 leading-relaxed">
+        Pam Connealy's recommendation is live on LinkedIn. Others are drafts pending approval on the author's schedule, anonymized by role and sector out of respect.
       </p>
     </div>
 
-    <!-- Feature row: a big one + a framed one, side by side -->
+    <!-- Feature row: Pam large + Julia framed -->
     <div class="grid md:grid-cols-12 gap-8 md:gap-12 mb-14 md:mb-16" data-reveal>
       <figure class="md:col-span-7">
         <span class="block font-display text-6xl md:text-8xl text-copper leading-none -mb-4">"</span>
         <blockquote class="font-display text-2xl md:text-3xl lg:text-[2rem] text-paper leading-[1.25]">
-          She didn't just move documents around. She understood what was in them, flagged issues before they became problems.
+          {pamFeature.extract}
         </blockquote>
-        <figcaption class="mt-6 pt-5 border-t border-paper/10 flex flex-wrap items-baseline gap-x-3">
-          <p class="font-display text-base text-paper">Pam Connealy</p>
+        <figcaption class="mt-6 pt-5 border-t border-paper/10 flex flex-wrap items-baseline gap-x-3 gap-y-1">
+          <p class="font-display text-base text-paper">{pamFeature.role}</p>
           <span class="text-paper/30 text-xs">&middot;</span>
-          <p class="text-paper/55 text-sm">Former CFO and COO, Immunovant</p>
+          <p class="text-paper/55 text-sm">{pamFeature.sector}</p>
+          <span class="ml-auto small-caps bg-copper text-ink px-3 py-1 rounded-full text-[10px]">Live on LinkedIn</span>
         </figcaption>
       </figure>
 
       <figure class="md:col-span-5 md:border-l md:border-paper/15 md:pl-10 md:self-center">
-        <p class="small-caps text-copper mb-3">What impressed most</p>
         <blockquote class="font-display-italic text-2xl md:text-3xl text-paper leading-tight mb-5">
-          "Her financial literacy."
+          "{juliaLarge.extract}"
         </blockquote>
-        <p class="text-paper/60 text-sm leading-relaxed">
-          She understood what was in the documents, not just how to move them. That was the single thing the CFO flagged as most rare in her eight years at the company.
-        </p>
-      </figure>
-    </div>
-
-    <!-- Second row: three shorter voices -->
-    <div class="grid md:grid-cols-3 gap-8 md:gap-12 pt-10 border-t border-paper/10" data-reveal>
-      <figure>
-        <blockquote class="font-display-italic text-xl md:text-2xl text-paper/90 leading-snug mb-4">
-          "Constantly asking questions to create a better system. Constantly thinking about processes."
-        </blockquote>
-        <figcaption class="font-mono text-[10px] uppercase tracking-[0.2em] text-paper/40">
-          Ascend Wellness leader &middot; reference call
-        </figcaption>
-      </figure>
-      <figure>
-        <blockquote class="font-display-italic text-xl md:text-2xl text-paper/90 leading-snug mb-4">
-          "Responsive. Not reactionary, took action."
-        </blockquote>
-        <figcaption class="font-mono text-[10px] uppercase tracking-[0.2em] text-paper/40">
-          CFO review &middot; Immunovant
-        </figcaption>
-      </figure>
-      <figure>
-        <blockquote class="font-display-italic text-xl md:text-2xl text-paper/90 leading-snug mb-4">
-          "Extremely accommodating and reasonable."
-        </blockquote>
-        <figcaption class="font-mono text-[10px] uppercase tracking-[0.2em] text-paper/40">
-          Mattio Communications &middot; external IR partner
+        <figcaption class="flex flex-wrap items-baseline gap-x-2 text-sm">
+          <span class="font-mono text-[10px] uppercase tracking-[0.2em] text-paper/50">{juliaLarge.role}</span>
+          <span class="text-paper/30 text-xs">&middot;</span>
+          <span class="font-mono text-[10px] uppercase tracking-[0.2em] text-paper/40">{juliaLarge.sector}</span>
         </figcaption>
       </figure>
     </div>
 
-    <!-- Closing signature -->
-    <div class="mt-14 md:mt-16 text-center" data-reveal>
-      <p class="font-display-italic text-xl md:text-2xl text-paper/80 leading-relaxed max-w-2xl mx-auto">
-        "Any executive team would be lucky to have her."
+    <!-- Secondary row: 3 medium pulls across sectors -->
+    <div class="grid md:grid-cols-3 gap-8 md:gap-12 pt-10 border-t border-paper/10 mb-12 md:mb-14" data-reveal>
+      {mediumPulls.map(q => (
+        <figure>
+          <blockquote class="font-display-italic text-xl md:text-2xl text-paper/90 leading-snug mb-4">
+            "{q.extract}"
+          </blockquote>
+          <figcaption class="flex flex-wrap items-baseline gap-x-2">
+            <span class="font-mono text-[10px] uppercase tracking-[0.2em] text-paper/50">{q.role}</span>
+            <span class="text-paper/30 text-xs">&middot;</span>
+            <span class="font-mono text-[10px] uppercase tracking-[0.2em] text-paper/35">{q.sector}</span>
+          </figcaption>
+        </figure>
+      ))}
+    </div>
+
+    <!-- Tertiary row: 4 micro pulls, tighter + the Courtney large pull mid-row -->
+    <div class="grid md:grid-cols-12 gap-8 md:gap-10 pt-10 border-t border-paper/10" data-reveal>
+      <figure class="md:col-span-6">
+        <span class="block font-display text-5xl md:text-7xl text-copper/70 leading-none -mb-3">"</span>
+        <blockquote class="font-display text-xl md:text-2xl text-paper leading-[1.3]">
+          {courtneyLarge.extract}
+        </blockquote>
+        <figcaption class="mt-5 pt-4 border-t border-paper/10 flex flex-wrap items-baseline gap-x-2">
+          <span class="font-mono text-[10px] uppercase tracking-[0.2em] text-paper/50">{courtneyLarge.role}</span>
+          <span class="text-paper/30 text-xs">&middot;</span>
+          <span class="font-mono text-[10px] uppercase tracking-[0.2em] text-paper/40">{courtneyLarge.sector}</span>
+        </figcaption>
+      </figure>
+      <div class="md:col-span-6 grid grid-cols-1 sm:grid-cols-2 gap-6 md:gap-8">
+        {microPulls.map(q => (
+          <figure class="border-l-2 border-copper/40 pl-4">
+            <blockquote class="font-display-italic text-base md:text-lg text-paper/85 leading-snug mb-2">
+              "{q.extract}"
+            </blockquote>
+            <figcaption>
+              <span class="font-mono text-[9px] uppercase tracking-[0.2em] text-paper/40">{q.role} &middot; {q.sector}</span>
+            </figcaption>
+          </figure>
+        ))}
+      </div>
+    </div>
+
+    <!-- Closing signature: Pam's endorsement close -->
+    <div class="mt-14 md:mt-16 pt-10 border-t border-paper/10 text-center" data-reveal>
+      <p class="font-display-italic text-2xl md:text-3xl text-paper leading-snug max-w-2xl mx-auto">
+        "{pamCloser.extract}"
       </p>
       <p class="mt-4 font-mono text-[10px] uppercase tracking-[0.25em] text-paper/40">
-        Pam Connealy &middot; live recommendation on LinkedIn
+        {pamCloser.role} &middot; {pamCloser.sector}
       </p>
     </div>
   </div>

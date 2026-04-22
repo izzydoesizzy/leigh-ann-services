@@ -1,6 +1,20 @@
 ---
 import Layout from "../layouts/Layout.astro";
 import { disciplines, totalServices } from "../components/ServicesIndex.astro";
+import { pullQuotes } from "../data/pull-quotes.ts";
+
+// Brief-friendly subset: print-first rhythm, 6 pulls total.
+const briefPamFeature = pullQuotes.find(q => q.extract.startsWith("She didn't just move"))!;
+const briefPamCloser = pullQuotes.find(q => q.extract === "Any executive team would be lucky to have her.")!;
+const briefJulia = pullQuotes.find(q => q.extract.startsWith("She operated as a true"))!;
+const briefCourtney = pullQuotes.find(q => q.extract.startsWith("Working with her made"))!;
+const briefShorts = [
+  pullQuotes.find(q => q.extract.startsWith("In a fast-moving")),
+  pullQuotes.find(q => q.extract.startsWith("You could hand")),
+  pullQuotes.find(q => q.extract === "What stood out most was her judgment."),
+  pullQuotes.find(q => q.extract === "She operates at the highest level."),
+  pullQuotes.find(q => q.extract.startsWith("Cannabis is a volatile")),
+].filter(Boolean) as typeof pullQuotes;
 
 const base = import.meta.env.BASE_URL;
 const CALENDLY_URL = "https://calendly.com/lmartinlapc/intro-call";
@@ -300,7 +314,7 @@ const press = [
     <!-- IV. Testimonials: pull-quote wall -->
     <section class="brief-page bg-ink text-paper py-16 md:py-20">
       <div class="max-w-5xl mx-auto px-6 md:px-10">
-        <div class="flex items-baseline gap-6 mb-12">
+        <div class="flex items-baseline gap-6 mb-10">
           <span class="font-display text-6xl text-copper leading-none">IV.</span>
           <div>
             <p class="small-caps text-copper mb-1">Chapter Four</p>
@@ -308,76 +322,69 @@ const press = [
           </div>
         </div>
 
-        <!-- Pam pull quotes, staggered -->
-        <div class="space-y-10 md:space-y-12 mb-14">
-          <figure class="grid md:grid-cols-12 gap-6 md:gap-10 items-start">
-            <div class="md:col-span-9 md:col-start-2">
-              <span class="block font-display text-6xl md:text-8xl text-copper leading-none -mb-4 md:-mb-6">"</span>
-              <blockquote class="font-display text-2xl md:text-3xl lg:text-[2.25rem] text-paper leading-[1.2]">
-                She didn't just move documents around. She understood what was in them, flagged issues before they became problems, and brought structured problem-solving to high-level executive operations.
-              </blockquote>
-              <figcaption class="mt-6 flex flex-wrap items-baseline gap-x-3 gap-y-1">
-                <p class="font-display text-base text-paper">Pam Connealy</p>
-                <span class="text-paper/40 text-xs">&middot;</span>
-                <p class="text-paper/55 text-sm">Former CFO and COO, Immunovant</p>
-              </figcaption>
-            </div>
-          </figure>
+        <p class="text-paper/65 text-sm md:text-base leading-relaxed max-w-2xl mb-4">
+          Extracts from recommendations by former CEOs, CFOs, Chairmen, and external partners across clinical-stage biotech, public-company cannabis, and external IR.
+        </p>
+        <p class="font-mono text-[10px] uppercase tracking-[0.2em] text-paper/40 leading-relaxed mb-10">
+          Pam Connealy is live on LinkedIn. Others are drafts pending approval, anonymized by role and sector.
+        </p>
 
-          <figure class="grid md:grid-cols-12 gap-6 md:gap-10 items-start">
-            <div class="md:col-span-8">
-              <blockquote class="font-display-italic text-xl md:text-2xl text-paper/90 leading-snug border-l-2 border-copper pl-5">
-                Reporting accuracy up 25%. Employee satisfaction up 22%. EA onboarding 20% faster. Leigh-Ann enhanced our operations across the board.
-              </blockquote>
-              <figcaption class="mt-4 pl-5 flex flex-wrap items-baseline gap-x-3">
-                <p class="font-mono text-[10px] uppercase tracking-[0.2em] text-paper/60">Pam Connealy</p>
-                <span class="text-paper/30 text-xs">&middot;</span>
-                <p class="font-mono text-[10px] uppercase tracking-[0.2em] text-paper/40">paraphrased from her recommendation</p>
-              </figcaption>
-            </div>
-            <div class="md:col-span-4 md:border-l md:border-paper/15 md:pl-8 md:self-center">
-              <p class="small-caps text-copper mb-2">What impressed most</p>
-              <p class="font-display-italic text-xl md:text-2xl text-paper leading-tight">"Her financial literacy."</p>
-            </div>
-          </figure>
+        <!-- Pam feature pull -->
+        <figure class="mb-12 pb-10 border-b border-paper/15">
+          <span class="block font-display text-6xl md:text-8xl text-copper leading-none -mb-4 md:-mb-6">"</span>
+          <blockquote class="font-display text-2xl md:text-3xl text-paper leading-[1.2]">
+            {briefPamFeature.extract}
+          </blockquote>
+          <figcaption class="mt-6 flex flex-wrap items-baseline gap-x-3 gap-y-1">
+            <p class="font-display text-base text-paper">{briefPamFeature.role}</p>
+            <span class="text-paper/40 text-xs">&middot;</span>
+            <p class="text-paper/55 text-sm">{briefPamFeature.sector}</p>
+            <span class="ml-auto small-caps bg-copper text-ink px-3 py-1 rounded-full text-[10px]">Live on LinkedIn</span>
+          </figcaption>
+        </figure>
 
-          <figure class="md:col-span-12">
-            <blockquote class="font-display text-xl md:text-2xl text-paper leading-snug max-w-3xl ml-auto text-right">
-              Any executive team would be lucky to have her.
+        <!-- Julia + Courtney large anonymized pulls -->
+        <div class="grid md:grid-cols-2 gap-10 mb-12">
+          <figure>
+            <blockquote class="font-display-italic text-xl md:text-2xl text-paper leading-snug mb-4 border-l-2 border-copper pl-5">
+              "{briefJulia.extract}"
             </blockquote>
-            <figcaption class="mt-4 max-w-3xl ml-auto text-right">
-              <p class="font-mono text-[10px] uppercase tracking-[0.2em] text-paper/50">Pam Connealy &middot; live recommendation on LinkedIn</p>
+            <figcaption class="pl-5 flex flex-wrap items-baseline gap-x-2">
+              <span class="font-mono text-[10px] uppercase tracking-[0.2em] text-paper/50">{briefJulia.role}</span>
+              <span class="text-paper/30 text-xs">&middot;</span>
+              <span class="font-mono text-[10px] uppercase tracking-[0.2em] text-paper/40">{briefJulia.sector}</span>
+            </figcaption>
+          </figure>
+          <figure>
+            <blockquote class="font-display-italic text-xl md:text-2xl text-paper leading-snug mb-4 border-l-2 border-copper pl-5">
+              "{briefCourtney.extract}"
+            </blockquote>
+            <figcaption class="pl-5 flex flex-wrap items-baseline gap-x-2">
+              <span class="font-mono text-[10px] uppercase tracking-[0.2em] text-paper/50">{briefCourtney.role}</span>
+              <span class="text-paper/30 text-xs">&middot;</span>
+              <span class="font-mono text-[10px] uppercase tracking-[0.2em] text-paper/40">{briefCourtney.sector}</span>
             </figcaption>
           </figure>
         </div>
 
-        <!-- Secondary voices -->
-        <div class="grid md:grid-cols-3 gap-8 pt-10 border-t border-paper/15">
-          <figure>
-            <blockquote class="font-display-italic text-lg text-paper/90 leading-snug mb-3">"She is constantly asking questions to create a better system. Constantly thinking about processes."</blockquote>
-            <figcaption class="font-mono text-[10px] uppercase tracking-[0.2em] text-paper/40">Ascend Wellness leader &middot; reference call</figcaption>
-          </figure>
-          <figure>
-            <blockquote class="font-display-italic text-lg text-paper/90 leading-snug mb-3">"Lovely to work with. Responsive. Not reactionary, took action."</blockquote>
-            <figcaption class="font-mono text-[10px] uppercase tracking-[0.2em] text-paper/40">CFO review, Immunovant</figcaption>
-          </figure>
-          <figure>
-            <blockquote class="font-display-italic text-lg text-paper/90 leading-snug mb-3">"Extremely accommodating and reasonable."</blockquote>
-            <figcaption class="font-mono text-[10px] uppercase tracking-[0.2em] text-paper/40">Mattio Communications &middot; external IR partner</figcaption>
-          </figure>
+        <!-- Shorter voices -->
+        <div class="grid md:grid-cols-3 gap-8 pt-10 border-t border-paper/15 mb-10">
+          {briefShorts.slice(0, 3).map(q => (
+            <figure>
+              <blockquote class="font-display-italic text-base md:text-lg text-paper/90 leading-snug mb-3">"{q.extract}"</blockquote>
+              <figcaption class="font-mono text-[9px] uppercase tracking-[0.2em] text-paper/40">{q.role} &middot; {q.sector}</figcaption>
+            </figure>
+          ))}
         </div>
 
-        <!-- Link to full Pam recommendation -->
-        <div class="mt-10 pt-6 border-t border-paper/10 text-center">
-          <a
-            href="https://www.linkedin.com/in/leigh-ann-martin"
-            target="_blank"
-            rel="noopener"
-            class="inline-flex items-center gap-2 text-copper hover:text-paper text-sm transition-colors"
-          >
-            <span class="small-caps">Read Pam's full recommendation on LinkedIn</span>
-            <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/></svg>
-          </a>
+        <!-- Closer -->
+        <div class="pt-10 border-t border-paper/15 text-center">
+          <p class="font-display-italic text-xl md:text-2xl text-paper leading-snug max-w-2xl mx-auto">
+            "{briefPamCloser.extract}"
+          </p>
+          <p class="mt-3 font-mono text-[10px] uppercase tracking-[0.25em] text-paper/40">
+            {briefPamCloser.role} &middot; {briefPamCloser.sector}
+          </p>
         </div>
       </div>
     </section>
