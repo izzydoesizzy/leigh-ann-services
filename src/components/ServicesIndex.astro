@@ -331,10 +331,10 @@ export const totalServices = disciplines.reduce((s, d) => s + d.services.length,
           </div>
         </div>
 
-        <!-- Compact service tiles: click to expand -->
-        <div class="grid gap-4 md:gap-5 md:grid-cols-2 lg:grid-cols-3 items-stretch">
+        <!-- Compact service tiles: click to expand. auto-rows-fr forces every card in a row to equal height so the CTA mt-auto has something to push against. -->
+        <div class="grid gap-4 md:gap-5 md:grid-cols-2 lg:grid-cols-3 auto-rows-fr items-stretch">
           {d.services.map(s => (
-            <details class="group bg-paper rounded-sm border border-rule hover:border-copper/40 hover:shadow-md transition-all open:flex open:flex-col h-full">
+            <details class="group bg-paper rounded-sm border border-rule hover:border-copper/40 hover:shadow-md transition-all flex flex-col h-full">
               <summary class="cursor-pointer p-5 md:p-6 flex items-start justify-between gap-4 list-none">
                 <div class="flex-1 min-w-0">
                   <h3 class="font-display text-lg md:text-xl text-ink leading-snug mb-2">{s.name}</h3>

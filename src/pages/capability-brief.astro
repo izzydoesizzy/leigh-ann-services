@@ -429,15 +429,15 @@ const press = [
           </div>
         </div>
 
-        <div class="space-y-10">
+        <div class="space-y-8">
           {disciplines.map(d => (
-            <div class="grid md:grid-cols-12 gap-6 md:gap-8 pb-8 border-b border-rule">
+            <div class="grid md:grid-cols-12 gap-6 md:gap-8 pb-6 border-b border-rule items-start">
               <div class="md:col-span-3">
                 <p class="font-display text-4xl text-copper leading-none mb-2">{d.roman}.</p>
                 <h3 class="font-display text-xl text-ink leading-tight mb-2">{d.name}</h3>
                 <p class="text-ink-muted text-xs leading-relaxed">{d.intro}</p>
               </div>
-              <ul class="md:col-span-9 grid sm:grid-cols-2 gap-x-6 gap-y-2">
+              <ul class="md:col-span-9 grid sm:grid-cols-2 gap-x-6 gap-y-2 auto-rows-min">
                 {d.services.map(s => (
                   <li class="flex gap-2.5 items-baseline text-sm">
                     <span class="font-mono text-[10px] text-copper flex-shrink-0 mt-0.5">●</span>
