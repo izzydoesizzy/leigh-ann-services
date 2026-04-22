@@ -1,42 +1,82 @@
 ---
-// Shorter stakeholder quotes pulled from intake notes.
-// Pam Connealy's full LinkedIn recommendation lives in PamQuote.astro near the hero.
-
-const shorter = [
-  {
-    text: "Lovely to work with, responsive, knew what I was doing. Not being reactionary, took action.",
-    author: "CFO review, Immunovant",
-  },
-  {
-    text: "Extremely accommodating and reasonable.",
-    author: "Mattio Communications, external IR partner",
-  },
-];
+// Proof wall: 5 varied pull-quote treatments.
+// Pam's full LinkedIn recommendation is extracted into different lines here vs near the hero (PamQuote.astro),
+// so the reader gets different facets of her endorsement rather than the same pull twice.
 ---
 
 <section class="bg-ink text-paper py-16 md:py-24 relative">
   <div class="max-w-6xl mx-auto px-6 md:px-10">
-    <div class="max-w-3xl mb-10 md:mb-14" data-reveal>
+    <div class="max-w-3xl mb-12 md:mb-16" data-reveal>
       <p class="small-caps text-copper mb-4">Chapter Seven</p>
       <h2 class="font-display text-4xl md:text-5xl text-paper leading-[0.95]">
         From those who <span class="italic font-display-italic">worked with me</span>.
       </h2>
       <p class="mt-5 text-paper/65 text-base md:text-lg leading-relaxed">
-        Short notes from the executives and partners who ran alongside me. Pam Connealy's full recommendation is at the top of the page; the Ascend reference sits mid-page after the case studies.
+        Real lines from real people, pulled straight from recommendations, reference calls, and external-partner reviews. Pam Connealy's first extract sits near the top of the page; this is the rest.
       </p>
     </div>
 
-    <div class="grid md:grid-cols-2 gap-8 md:gap-12 pt-10 border-t border-paper/10 max-w-4xl" data-reveal>
-      {shorter.map(s => (
-        <figure>
-          <blockquote class="font-display-italic text-xl md:text-2xl text-paper/90 leading-snug mb-4">
-            "{s.text}"
-          </blockquote>
-          <figcaption class="font-mono text-[10px] uppercase tracking-[0.2em] text-paper/40">
-            {s.author}
-          </figcaption>
-        </figure>
-      ))}
+    <!-- Feature row: a big one + a framed one, side by side -->
+    <div class="grid md:grid-cols-12 gap-8 md:gap-12 mb-14 md:mb-16" data-reveal>
+      <figure class="md:col-span-7">
+        <span class="block font-display text-6xl md:text-8xl text-copper leading-none -mb-4">"</span>
+        <blockquote class="font-display text-2xl md:text-3xl lg:text-[2rem] text-paper leading-[1.25]">
+          She didn't just move documents around. She understood what was in them, flagged issues before they became problems.
+        </blockquote>
+        <figcaption class="mt-6 pt-5 border-t border-paper/10 flex flex-wrap items-baseline gap-x-3">
+          <p class="font-display text-base text-paper">Pam Connealy</p>
+          <span class="text-paper/30 text-xs">&middot;</span>
+          <p class="text-paper/55 text-sm">Former CFO and COO, Immunovant</p>
+        </figcaption>
+      </figure>
+
+      <figure class="md:col-span-5 md:border-l md:border-paper/15 md:pl-10 md:self-center">
+        <p class="small-caps text-copper mb-3">What impressed most</p>
+        <blockquote class="font-display-italic text-2xl md:text-3xl text-paper leading-tight mb-5">
+          "Her financial literacy."
+        </blockquote>
+        <p class="text-paper/60 text-sm leading-relaxed">
+          She understood what was in the documents, not just how to move them. That was the single thing the CFO flagged as most rare in her eight years at the company.
+        </p>
+      </figure>
+    </div>
+
+    <!-- Second row: three shorter voices -->
+    <div class="grid md:grid-cols-3 gap-8 md:gap-12 pt-10 border-t border-paper/10" data-reveal>
+      <figure>
+        <blockquote class="font-display-italic text-xl md:text-2xl text-paper/90 leading-snug mb-4">
+          "Constantly asking questions to create a better system. Constantly thinking about processes."
+        </blockquote>
+        <figcaption class="font-mono text-[10px] uppercase tracking-[0.2em] text-paper/40">
+          Ascend Wellness leader &middot; reference call
+        </figcaption>
+      </figure>
+      <figure>
+        <blockquote class="font-display-italic text-xl md:text-2xl text-paper/90 leading-snug mb-4">
+          "Responsive. Not reactionary, took action."
+        </blockquote>
+        <figcaption class="font-mono text-[10px] uppercase tracking-[0.2em] text-paper/40">
+          CFO review &middot; Immunovant
+        </figcaption>
+      </figure>
+      <figure>
+        <blockquote class="font-display-italic text-xl md:text-2xl text-paper/90 leading-snug mb-4">
+          "Extremely accommodating and reasonable."
+        </blockquote>
+        <figcaption class="font-mono text-[10px] uppercase tracking-[0.2em] text-paper/40">
+          Mattio Communications &middot; external IR partner
+        </figcaption>
+      </figure>
+    </div>
+
+    <!-- Closing signature -->
+    <div class="mt-14 md:mt-16 text-center" data-reveal>
+      <p class="font-display-italic text-xl md:text-2xl text-paper/80 leading-relaxed max-w-2xl mx-auto">
+        "Any executive team would be lucky to have her."
+      </p>
+      <p class="mt-4 font-mono text-[10px] uppercase tracking-[0.25em] text-paper/40">
+        Pam Connealy &middot; live recommendation on LinkedIn
+      </p>
     </div>
   </div>
 </section>
