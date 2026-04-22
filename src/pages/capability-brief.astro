@@ -1,0 +1,572 @@
+---
+import Layout from "../layouts/Layout.astro";
+import { disciplines, totalServices } from "../components/ServicesIndex.astro";
+
+const base = import.meta.env.BASE_URL;
+const CALENDLY_URL = "https://calendly.com/lmartinlapc/intro-call";
+
+const stats = [
+  { value: "12+", label: "years supporting C-suite", sub: "PwC, Third Bridge, Immunovant, Ascend" },
+  { value: "5", label: "C-suite execs as sole EA", sub: "Immunovant, by March 2020" },
+  { value: "200+", label: "stakeholders coordinated", sub: "across 7 markets at Ascend" },
+  { value: "98%", label: "stakeholder satisfaction", sub: "C-suite, board, and IR partners" },
+  { value: "25%", label: "operational efficiency lift", sub: "M&A, IR, and ELT alignment" },
+  { value: "22%", label: "employee satisfaction lift", sub: "hybrid work and policy modernization" },
+  { value: "20%", label: "faster EA onboarding", sub: "scalable training frameworks" },
+  { value: "$10M+", label: "monthly processing", sub: "100% regulatory compliance" },
+];
+
+const cases = [
+  {
+    num: "01",
+    company: "Ascend Wellness Holdings",
+    role: "EA to the CEO and President",
+    headline: "Board cadence from zero.",
+    body: "When I arrived there were no board meetings on the calendar. I coordinated an 8-person quarterly board convening (4 external directors plus CEO, CFO, President, and Chief Counsel) and two standing committees (Audit and Compensation). Anchored dates against earnings and legal review windows, and locked in member availability 12 months ahead.",
+    metrics: [
+      { label: "months planned ahead", value: "12" },
+      { label: "standing committees", value: "2" },
+      { label: "board convening", value: "8-person" },
+    ],
+  },
+  {
+    num: "02",
+    company: "Immunovant",
+    role: "Senior EA to CEO and General Counsel",
+    headline: "The EA function, from zero.",
+    body: "Employee #17 to 19 at hire. Built the EA function from scratch as Immunovant scaled. Sole EA for five C-suite executives by March 2020. Designed onboarding programs for 6 administrative professionals that reduced ramp-up time by 20%. Co-founded the Culture Committee with HR and partnered with Facilities and ELT on policies that lifted employee satisfaction by 22%.",
+    metrics: [
+      { label: "C-suite execs as sole EA", value: "5" },
+      { label: "faster new-hire ramp", value: "20%" },
+      { label: "employee satisfaction lift", value: "22%" },
+    ],
+  },
+  {
+    num: "03",
+    company: "Ascend Wellness Holdings",
+    role: "EA, Investor Relations",
+    headline: "Earnings prep, rebuilt.",
+    body: "One cycle in-role exposed the gaps. July 2025, I rebuilt the system. Aligned external IR (Mattio Communications), Legal, VP Financial Planning, PR, and C-suite on a shared 6 to 8 week cadence with SharePoint template discipline. Granted the Chief Commercial Officer script access mid-cycle and pulled the VP of Marketing into live prep, closing the input loops that had forced post-draft revisions. Deployed for Q2 2025 and ran through my tenure.",
+    metrics: [
+      { label: "week system", value: "6 to 8" },
+      { label: "stakeholder satisfaction", value: "98%" },
+      { label: "efficiency improvement", value: "25%" },
+    ],
+  },
+];
+
+const process = [
+  { num: "01", phase: "Discovery", time: "Free, 30 minutes", title: "Tell me what's breaking.", body: "A short call, usually inside 48 hours of your reach-out. You describe the real pain, I ask the questions I need to scope a fit." },
+  { num: "02", phase: "Written scope", time: "2 business days", title: "I write back with the shape.", body: "A written scope with the specific outcome, deliverables, milestones, timeline, and investment. Flat-priced against the outcome, not hourly." },
+  { num: "03", phase: "Kickoff + audit", time: "Week 1", title: "I embed enough to see the real state.", body: "Discovery calls with 3 to 5 stakeholders. A pass through your systems. A written diagnostic by end of week one." },
+  { num: "04", phase: "Delivery cadence", time: "Weeks 2 through N", title: "Working sessions, async between.", body: "Weekly 45 to 60 minute live session. Async Friday progress memos. Your preferred comms tool for questions between. I build in your systems so the work survives my handoff." },
+  { num: "05", phase: "Handoff", time: "Final week", title: "You own it. I step back.", body: "Complete documentation, a recorded walkthrough for whoever runs it after me, and an optional 30-day check-in at no charge. Breaks in the first 90 days, I fix it on my time." },
+];
+
+const credentials = [
+  "Certified Administrative Professional (CAP), International Association of Administrative Professionals (IAAP)",
+  "Microsoft Office Certified Specialist",
+  "Salesforce Certified Platform Administrator",
+  "Strategic Project Management Certification (in progress)",
+  "B.S. Business Administration, SBCS Global Learning Institute, Trinidad & Tobago",
+  "Institute of Culinary Education, Culinary Arts, Highest Honors",
+];
+
+const press = [
+  { source: "The New York Times", title: "Pop-Up Dinners That Share a Culture, Course by Course", date: "January 2020" },
+  { source: "Eater", title: "The Uncertain Future of Pop-Up Restaurants", date: "May 2020" },
+  { source: "The Washington Post", title: "Featured chef and pop-up operator", date: "2020" },
+  { source: "Culinary Institute of America", title: "Worlds of Flavor International Conference workshop leader", date: "Napa Valley" },
+];
+---
+
+<Layout title="Capability Brief | Leigh-Ann Martin" bodyClass="paper-grain antialiased brief-doc">
+  <!-- Sticky action bar (screen only) -->
+  <div class="sticky top-0 z-50 bg-ink text-paper border-b border-paper/10 print:hidden">
+    <div class="max-w-6xl mx-auto px-6 md:px-10 py-3 flex items-center justify-between gap-4">
+      <div class="flex items-baseline gap-3">
+        <a href={base} class="font-mono text-[10px] uppercase tracking-[0.25em] text-paper/60 hover:text-copper transition-colors">&larr; Main site</a>
+        <span class="hidden md:inline font-mono text-[10px] uppercase tracking-[0.25em] text-paper/30">|</span>
+        <span class="hidden md:inline small-caps text-paper/70">Capability Brief, 2026</span>
+      </div>
+      <div class="flex items-center gap-3">
+        <button
+          id="print-btn"
+          class="inline-flex items-center gap-2 bg-copper text-paper px-4 py-2 rounded-full text-xs font-medium hover:bg-paper hover:text-ink transition-colors"
+        >
+          <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 17h2a2 2 0 002-2v-4a2 2 0 00-2-2H5a2 2 0 00-2 2v4a2 2 0 002 2h2m2 4h6a2 2 0 002-2v-4a2 2 0 00-2-2H9a2 2 0 00-2 2v4a2 2 0 002 2zm8-12V5a2 2 0 00-2-2H9a2 2 0 00-2 2v4h10z"/></svg>
+          <span>Save as PDF</span>
+        </button>
+        <a
+          href={CALENDLY_URL}
+          target="_blank"
+          rel="noopener"
+          class="inline-flex items-center gap-2 bg-paper text-ink px-4 py-2 rounded-full text-xs font-medium hover:bg-copper hover:text-paper transition-colors"
+        >
+          <span>Book intro call</span>
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <main class="bg-paper">
+    <!-- Cover -->
+    <section class="brief-page min-h-screen flex flex-col justify-between py-16 md:py-24">
+      <div class="max-w-5xl mx-auto px-6 md:px-10 w-full">
+        <div class="flex items-baseline justify-between mb-16">
+          <span class="small-caps text-ink-muted">Capability Brief</span>
+          <span class="font-mono text-[11px] uppercase tracking-[0.25em] text-ink-muted">Edition 2026</span>
+        </div>
+
+        <div class="grid md:grid-cols-12 gap-10 md:gap-16 items-end">
+          <div class="md:col-span-8">
+            <p class="small-caps text-copper mb-6">For the executive office that deserves better.</p>
+            <h1 class="font-display text-5xl md:text-7xl lg:text-[5.5rem] text-ink leading-[0.95] tracking-[-0.03em] mb-10">
+              Leigh-Ann <span class="italic font-display-italic text-copper">Martin</span>.
+            </h1>
+            <p class="text-xl md:text-2xl text-ink-soft leading-snug max-w-xl mb-8">
+              Senior Executive Assistant. Fractional partner. Twelve years running the operational layer beneath C-suite leaders.
+            </p>
+            <p class="font-mono text-[11px] uppercase tracking-[0.2em] text-ink-muted">
+              Board cadence &middot; Earnings coordination &middot; EA function build-out
+            </p>
+          </div>
+          <div class="md:col-span-4">
+            <figure>
+              <div class="aspect-[3/4] rounded-[2px] overflow-hidden bg-paper-deep shadow-[0_20px_60px_-20px_rgba(22,21,19,0.25)] print:shadow-none">
+                <img
+                  src={`${base}portrait.jpg`}
+                  alt="Leigh-Ann Martin"
+                  class="w-full h-full object-cover"
+                  style="object-position: center top;"
+                />
+              </div>
+              <figcaption class="mt-3 font-caption text-xs text-ink-muted italic">
+                New York, 2026.
+              </figcaption>
+            </figure>
+          </div>
+        </div>
+      </div>
+
+      <div class="max-w-5xl mx-auto px-6 md:px-10 w-full mt-16">
+        <div class="flex items-baseline justify-between pt-6 border-t border-ink">
+          <p class="font-mono text-[10px] uppercase tracking-[0.25em] text-ink-muted">lmartinlapc@gmail.com &middot; linkedin.com/in/leigh-ann-martin</p>
+          <p class="font-display-italic text-ink">vol. I</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Table of contents -->
+    <section class="brief-page bg-paper-soft py-16 md:py-20 border-y border-rule">
+      <div class="max-w-5xl mx-auto px-6 md:px-10">
+        <p class="small-caps text-copper mb-5">Contents</p>
+        <h2 class="font-display text-3xl md:text-4xl text-ink leading-[0.95] mb-10">What's in this brief.</h2>
+        <ol class="grid sm:grid-cols-2 gap-x-10 gap-y-3 text-ink">
+          <li class="flex items-baseline justify-between gap-4 border-b border-rule/50 pb-2"><span class="font-display text-lg">I. About</span><span class="font-mono text-xs text-ink-muted tabular">p. 03</span></li>
+          <li class="flex items-baseline justify-between gap-4 border-b border-rule/50 pb-2"><span class="font-display text-lg">II. By the numbers</span><span class="font-mono text-xs text-ink-muted tabular">p. 04</span></li>
+          <li class="flex items-baseline justify-between gap-4 border-b border-rule/50 pb-2"><span class="font-display text-lg">III. Selected work</span><span class="font-mono text-xs text-ink-muted tabular">p. 05</span></li>
+          <li class="flex items-baseline justify-between gap-4 border-b border-rule/50 pb-2"><span class="font-display text-lg">IV. How clients describe me</span><span class="font-mono text-xs text-ink-muted tabular">p. 07</span></li>
+          <li class="flex items-baseline justify-between gap-4 border-b border-rule/50 pb-2"><span class="font-display text-lg">V. The full services catalog</span><span class="font-mono text-xs text-ink-muted tabular">p. 08</span></li>
+          <li class="flex items-baseline justify-between gap-4 border-b border-rule/50 pb-2"><span class="font-display text-lg">VI. How I work</span><span class="font-mono text-xs text-ink-muted tabular">p. 12</span></li>
+          <li class="flex items-baseline justify-between gap-4 border-b border-rule/50 pb-2"><span class="font-display text-lg">VII. Engagement shapes</span><span class="font-mono text-xs text-ink-muted tabular">p. 13</span></li>
+          <li class="flex items-baseline justify-between gap-4 border-b border-rule/50 pb-2"><span class="font-display text-lg">VIII. Credentials</span><span class="font-mono text-xs text-ink-muted tabular">p. 14</span></li>
+          <li class="flex items-baseline justify-between gap-4 border-b border-rule/50 pb-2"><span class="font-display text-lg">IX. In the press</span><span class="font-mono text-xs text-ink-muted tabular">p. 15</span></li>
+          <li class="flex items-baseline justify-between gap-4 border-b border-rule/50 pb-2"><span class="font-display text-lg">X. Next steps</span><span class="font-mono text-xs text-ink-muted tabular">p. 16</span></li>
+        </ol>
+      </div>
+    </section>
+
+    <!-- I. About -->
+    <section class="brief-page py-16 md:py-20">
+      <div class="max-w-5xl mx-auto px-6 md:px-10">
+        <div class="flex items-baseline gap-6 mb-10">
+          <span class="font-display text-6xl text-copper leading-none">I.</span>
+          <div>
+            <p class="small-caps text-copper mb-1">Chapter One</p>
+            <h2 class="font-display text-3xl md:text-4xl text-ink leading-[0.95]">About.</h2>
+          </div>
+        </div>
+
+        <div class="grid md:grid-cols-12 gap-10">
+          <div class="md:col-span-8 space-y-5 text-ink text-lg leading-relaxed">
+            <p>
+              I grew up in Gasparillo, Trinidad, and my first job at 18 was at Petrotrin, the national oil company, in the Office of the VP of Oil and Refining. I moved to New York in 2006 and have been working in executive offices ever since. BearingPoint through PwC, Third Bridge, Immunovant, and Ascend Wellness Holdings. I was sole EA to five C-suite executives at pre-IPO Immunovant by March 2020. I built Ascend's quarterly board cadence from zero.
+            </p>
+            <p>
+              Parallel to my corporate career, I trained as a chef at the Institute of Culinary Education with highest honors and built <em>A Table For Four</em>, a pop-up dinner series that ran in New York, London, Wisconsin, and Grenada and was covered by <em>The New York Times</em>, <em>Eater</em>, and <em>The Washington Post</em>. That work taught me how to curate, host, and operate at volume. The two careers have always informed each other.
+            </p>
+            <p>
+              My approach is simple. Anticipate, don't react. Take ownership, don't just execute. Build systems that survive transitions. Treat confidentiality as default, not a policy. I work with Claude and Perplexity daily, hold my Certified Administrative Professional credential, and I'm Salesforce Certified Platform Administrator. I'd like to work with executives who value that, embedded or fractional.
+            </p>
+          </div>
+
+          <aside class="md:col-span-4 md:border-l md:border-rule md:pl-8">
+            <p class="small-caps text-copper mb-5">At a glance</p>
+            <dl class="space-y-5">
+              <div>
+                <dt class="font-mono text-[10px] uppercase tracking-[0.2em] text-ink-muted mb-1">Based</dt>
+                <dd class="text-ink text-base leading-snug">Union City, NJ &middot; NYC tri-state</dd>
+              </div>
+              <div>
+                <dt class="font-mono text-[10px] uppercase tracking-[0.2em] text-ink-muted mb-1">Open to</dt>
+                <dd class="text-ink text-base leading-snug">Hybrid or in-office senior EA roles in NYC. Fully remote fractional engagements.</dd>
+              </div>
+              <div>
+                <dt class="font-mono text-[10px] uppercase tracking-[0.2em] text-ink-muted mb-1">Sectors</dt>
+                <dd class="text-ink text-base leading-snug">Biotech, biopharma, finance, fintech, public-company operations</dd>
+              </div>
+              <div>
+                <dt class="font-mono text-[10px] uppercase tracking-[0.2em] text-ink-muted mb-1">Board work</dt>
+                <dd class="text-ink text-base leading-snug">Board Member, Kind Kitchen Group</dd>
+              </div>
+              <div>
+                <dt class="font-mono text-[10px] uppercase tracking-[0.2em] text-ink-muted mb-1">Languages</dt>
+                <dd class="text-ink text-base leading-snug">English (native) &middot; Trinidadian Creole (native)</dd>
+              </div>
+            </dl>
+          </aside>
+        </div>
+      </div>
+    </section>
+
+    <!-- II. By the numbers -->
+    <section class="brief-page bg-paper-deep py-16 md:py-20 border-y border-rule">
+      <div class="max-w-5xl mx-auto px-6 md:px-10">
+        <div class="flex items-baseline gap-6 mb-10">
+          <span class="font-display text-6xl text-copper leading-none">II.</span>
+          <div>
+            <p class="small-caps text-copper mb-1">Chapter Two</p>
+            <h2 class="font-display text-3xl md:text-4xl text-ink leading-[0.95]">By the numbers.</h2>
+          </div>
+        </div>
+
+        <p class="text-ink-soft text-base md:text-lg leading-relaxed max-w-2xl mb-10">
+          Resume-backed metrics. Every figure is attested to in the career documents my references would confirm.
+        </p>
+
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-px bg-rule border border-rule">
+          {stats.map((s, idx) => (
+            <div class="bg-paper-deep p-5 md:p-6 flex flex-col">
+              <span class="font-mono text-[10px] uppercase tracking-[0.25em] text-ink-muted mb-3 tabular">0{idx + 1}</span>
+              <span class="font-display text-4xl md:text-5xl text-ink leading-none tabular mb-3">{s.value}</span>
+              <span class="text-ink text-sm font-medium mb-1 leading-snug">{s.label}</span>
+              <span class="text-ink-muted text-xs leading-relaxed mt-auto">{s.sub}</span>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- III. Selected work -->
+    <section class="brief-page py-16 md:py-20">
+      <div class="max-w-5xl mx-auto px-6 md:px-10">
+        <div class="flex items-baseline gap-6 mb-10">
+          <span class="font-display text-6xl text-copper leading-none">III.</span>
+          <div>
+            <p class="small-caps text-copper mb-1">Chapter Three</p>
+            <h2 class="font-display text-3xl md:text-4xl text-ink leading-[0.95]">Selected work.</h2>
+          </div>
+        </div>
+
+        <div class="space-y-14">
+          {cases.map(c => (
+            <article class="grid md:grid-cols-12 gap-6 md:gap-10">
+              <div class="md:col-span-7">
+                <div class="border-t-2 border-ink pt-4 mb-5">
+                  <p class="small-caps text-copper">{c.company}</p>
+                  <p class="font-mono text-[10px] uppercase tracking-wider text-ink-muted mt-1">{c.role}</p>
+                </div>
+                <h3 class="font-display text-2xl md:text-3xl text-ink leading-[1.05] mb-4">{c.headline}</h3>
+                <p class="text-ink-soft leading-relaxed text-base">{c.body}</p>
+              </div>
+              <div class="md:col-span-5 md:pl-8 md:border-l md:border-rule">
+                <p class="small-caps text-ink-muted mb-5">By the numbers</p>
+                <dl class="space-y-4">
+                  {c.metrics.map(m => (
+                    <div>
+                      <dt class="font-mono text-[10px] text-ink-muted uppercase tracking-[0.2em] mb-1">{m.label}</dt>
+                      <dd class="font-display text-3xl text-copper leading-none tabular">{m.value}</dd>
+                    </div>
+                  ))}
+                </dl>
+              </div>
+            </article>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- IV. Testimonials -->
+    <section class="brief-page bg-ink text-paper py-16 md:py-20">
+      <div class="max-w-5xl mx-auto px-6 md:px-10">
+        <div class="flex items-baseline gap-6 mb-10">
+          <span class="font-display text-6xl text-copper leading-none">IV.</span>
+          <div>
+            <p class="small-caps text-copper mb-1">Chapter Four</p>
+            <h2 class="font-display text-3xl md:text-4xl text-paper leading-[0.95]">How clients describe me.</h2>
+          </div>
+        </div>
+
+        <!-- Featured: Pam Connealy -->
+        <figure class="mb-12 pb-12 border-b border-paper/15" data-reveal>
+          <span class="block font-display text-7xl md:text-9xl text-copper leading-none -mb-6">"</span>
+          <blockquote class="font-display text-xl md:text-2xl text-paper leading-[1.35] mb-6">
+            I worked alongside Leigh-Ann for several years at Immunovant, and she was one of the most reliable operational partners I've had. As CFO and later COO, I depended on precise coordination for board materials, quarterly reporting, and investor communications. Leigh-Ann enhanced our reporting accuracy by 25% by utilizing advanced analytics tools to translate executive vision into actionable operational initiatives. She partnered across HR, Facilities, and our Executive Leadership Team to modernize policies and implement hybrid work frameworks that improved employee satisfaction scores by 22%. She also designed and executed onboarding programs for 6 administrative professionals, reducing ramp-up time by 20%. What impressed me most was her financial literacy. She didn't just move documents around. She understood what was in them, flagged issues before they became problems, and brought structured problem-solving to high-level executive operations. Any executive team would be lucky to have her.
+          </blockquote>
+          <figcaption class="flex flex-wrap items-baseline gap-x-4 pt-5 border-t border-paper/10">
+            <p class="font-display text-lg text-paper">Pam Connealy</p>
+            <p class="text-paper/50 text-sm">Former CFO and COO, Immunovant</p>
+            <span class="ml-auto small-caps bg-copper text-ink px-3 py-1 rounded-full text-[10px]">Live on LinkedIn</span>
+          </figcaption>
+        </figure>
+
+        <!-- Shorter quotes -->
+        <div class="grid md:grid-cols-3 gap-8">
+          <figure>
+            <blockquote class="font-display-italic text-lg text-paper/90 leading-snug mb-3">"Lovely to work with, responsive, knew what I was doing. Not being reactionary, took action."</blockquote>
+            <figcaption class="font-mono text-[10px] uppercase tracking-[0.2em] text-paper/40">CFO review, Immunovant</figcaption>
+          </figure>
+          <figure>
+            <blockquote class="font-display-italic text-lg text-paper/90 leading-snug mb-3">"She is constantly asking questions to create a better system. Constantly thinking about processes."</blockquote>
+            <figcaption class="font-mono text-[10px] uppercase tracking-[0.2em] text-paper/40">Ascend leader reference</figcaption>
+          </figure>
+          <figure>
+            <blockquote class="font-display-italic text-lg text-paper/90 leading-snug mb-3">"Extremely accommodating and reasonable."</blockquote>
+            <figcaption class="font-mono text-[10px] uppercase tracking-[0.2em] text-paper/40">Mattio Communications, external IR partner</figcaption>
+          </figure>
+        </div>
+      </div>
+    </section>
+
+    <!-- V. Full services catalog -->
+    <section class="brief-page py-16 md:py-20">
+      <div class="max-w-5xl mx-auto px-6 md:px-10">
+        <div class="flex items-baseline gap-6 mb-10">
+          <span class="font-display text-6xl text-copper leading-none">V.</span>
+          <div>
+            <p class="small-caps text-copper mb-1">Chapter Five</p>
+            <h2 class="font-display text-3xl md:text-4xl text-ink leading-[0.95]">
+              The full services catalog.
+            </h2>
+            <p class="mt-3 text-ink-soft text-base leading-relaxed max-w-2xl">
+              <span class="tabular">{disciplines.length}</span> disciplines, <span class="tabular">{totalServices}</span> discrete services. Presented here as a scannable catalog. The main site has a click-to-expand version with pain, outcome, and what's included for each.
+            </p>
+          </div>
+        </div>
+
+        <div class="space-y-10">
+          {disciplines.map(d => (
+            <div class="grid md:grid-cols-12 gap-6 md:gap-8 pb-8 border-b border-rule">
+              <div class="md:col-span-3">
+                <p class="font-display text-4xl text-copper leading-none mb-2">{d.roman}.</p>
+                <h3 class="font-display text-xl text-ink leading-tight mb-2">{d.name}</h3>
+                <p class="text-ink-muted text-xs leading-relaxed">{d.intro}</p>
+              </div>
+              <ul class="md:col-span-9 grid sm:grid-cols-2 gap-x-6 gap-y-2">
+                {d.services.map(s => (
+                  <li class="flex gap-2.5 items-baseline text-sm">
+                    <span class="font-mono text-[10px] text-copper flex-shrink-0 mt-0.5">●</span>
+                    <span class="text-ink leading-snug">{s.name}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- VI. How I work -->
+    <section class="brief-page bg-paper-soft py-16 md:py-20 border-y border-rule">
+      <div class="max-w-5xl mx-auto px-6 md:px-10">
+        <div class="flex items-baseline gap-6 mb-10">
+          <span class="font-display text-6xl text-copper leading-none">VI.</span>
+          <div>
+            <p class="small-caps text-copper mb-1">Chapter Six</p>
+            <h2 class="font-display text-3xl md:text-4xl text-ink leading-[0.95]">How I work.</h2>
+          </div>
+        </div>
+
+        <div class="space-y-px bg-rule border-y-2 border-ink">
+          {process.map(s => (
+            <div class="bg-paper-soft grid md:grid-cols-12 gap-5 px-5 md:px-7 py-6">
+              <div class="md:col-span-1"><span class="font-display text-4xl text-copper leading-none tabular">{s.num}</span></div>
+              <div class="md:col-span-3">
+                <p class="small-caps text-ink-muted mb-1">{s.phase}</p>
+                <p class="font-mono text-[10px] uppercase tracking-wide text-ink-muted/70">{s.time}</p>
+              </div>
+              <div class="md:col-span-8">
+                <h3 class="font-display text-lg md:text-xl text-ink leading-tight mb-2">{s.title}</h3>
+                <p class="text-ink-soft text-sm leading-relaxed">{s.body}</p>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- VII. Engagement shapes -->
+    <section class="brief-page py-16 md:py-20">
+      <div class="max-w-5xl mx-auto px-6 md:px-10">
+        <div class="flex items-baseline gap-6 mb-10">
+          <span class="font-display text-6xl text-copper leading-none">VII.</span>
+          <div>
+            <p class="small-caps text-copper mb-1">Chapter Seven</p>
+            <h2 class="font-display text-3xl md:text-4xl text-ink leading-[0.95]">Two ways to work with me.</h2>
+          </div>
+        </div>
+
+        <div class="grid md:grid-cols-2 gap-6 md:gap-8">
+          <article class="border border-ink/15 rounded-sm p-6 md:p-8">
+            <p class="font-mono text-[10px] uppercase tracking-[0.25em] text-copper mb-4">Path 01</p>
+            <h3 class="font-display text-2xl md:text-3xl text-ink leading-tight mb-4">Hire me as your <span class="italic font-display-italic text-copper">embedded</span> EA.</h3>
+            <p class="text-ink-soft text-sm leading-relaxed mb-6">For CEOs and founders who want a senior EA fully embedded with their executive office. Part-time (20 to 30 hours) or full-time.</p>
+            <ul class="space-y-2 mb-6">
+              <li class="flex gap-2 items-start text-sm text-ink-soft"><span class="font-mono text-[10px] text-copper mt-1">01</span>Calendar and correspondence for 1 to 3 execs</li>
+              <li class="flex gap-2 items-start text-sm text-ink-soft"><span class="font-mono text-[10px] text-copper mt-1">02</span>Board, committee, and IR coordination</li>
+              <li class="flex gap-2 items-start text-sm text-ink-soft"><span class="font-mono text-[10px] text-copper mt-1">03</span>Team leadership, EA onboarding, process documentation</li>
+              <li class="flex gap-2 items-start text-sm text-ink-soft"><span class="font-mono text-[10px] text-copper mt-1">04</span>AI-fluent workflow (Claude, Perplexity, Salesforce CPA)</li>
+            </ul>
+            <div class="pt-5 border-t border-rule flex items-baseline justify-between">
+              <span class="small-caps text-ink-muted">Target compensation</span>
+              <span class="font-mono text-sm text-ink tabular">$120K to $165K base</span>
+            </div>
+          </article>
+          <article class="border border-ink/15 rounded-sm p-6 md:p-8 bg-paper-deep">
+            <p class="font-mono text-[10px] uppercase tracking-[0.25em] text-copper mb-4">Path 02</p>
+            <h3 class="font-display text-2xl md:text-3xl text-ink leading-tight mb-4">Engage me <span class="italic font-display-italic text-copper">fractionally</span>.</h3>
+            <p class="text-ink-soft text-sm leading-relaxed mb-6">For founders scaling through a specific chapter without the budget or need for a full-time senior EA. Outcome-based engagements, not hourly.</p>
+            <ul class="space-y-2 mb-6">
+              <li class="flex gap-2 items-start text-sm text-ink-soft"><span class="font-mono text-[10px] text-copper mt-1">01</span>Board governance setup and quarterly cadence</li>
+              <li class="flex gap-2 items-start text-sm text-ink-soft"><span class="font-mono text-[10px] text-copper mt-1">02</span>Earnings-call prep system for pre-IPO or newly public</li>
+              <li class="flex gap-2 items-start text-sm text-ink-soft"><span class="font-mono text-[10px] text-copper mt-1">03</span>EA function build-out with onboarding frameworks</li>
+              <li class="flex gap-2 items-start text-sm text-ink-soft"><span class="font-mono text-[10px] text-copper mt-1">04</span>IR operations and stakeholder systems</li>
+            </ul>
+            <div class="pt-5 border-t border-rule flex items-baseline justify-between">
+              <span class="small-caps text-ink-muted">Engagement range</span>
+              <span class="font-mono text-sm text-ink tabular">$3K to $15K per project</span>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- VIII. Credentials -->
+    <section class="brief-page bg-paper-soft py-16 md:py-20 border-y border-rule">
+      <div class="max-w-5xl mx-auto px-6 md:px-10">
+        <div class="flex items-baseline gap-6 mb-10">
+          <span class="font-display text-6xl text-copper leading-none">VIII.</span>
+          <div>
+            <p class="small-caps text-copper mb-1">Chapter Eight</p>
+            <h2 class="font-display text-3xl md:text-4xl text-ink leading-[0.95]">Credentials.</h2>
+          </div>
+        </div>
+        <ul class="grid sm:grid-cols-2 gap-x-10 gap-y-3">
+          {credentials.map(c => (
+            <li class="flex gap-3 items-baseline border-b border-rule/50 pb-3">
+              <span class="font-mono text-[10px] text-copper">◆</span>
+              <span class="text-ink text-base leading-snug">{c}</span>
+            </li>
+          ))}
+        </ul>
+      </div>
+    </section>
+
+    <!-- IX. Press -->
+    <section class="brief-page py-16 md:py-20">
+      <div class="max-w-5xl mx-auto px-6 md:px-10">
+        <div class="flex items-baseline gap-6 mb-10">
+          <span class="font-display text-6xl text-copper leading-none">IX.</span>
+          <div>
+            <p class="small-caps text-copper mb-1">Chapter Nine</p>
+            <h2 class="font-display text-3xl md:text-4xl text-ink leading-[0.95]">In the press.</h2>
+          </div>
+        </div>
+        <p class="text-ink-soft text-base md:text-lg leading-relaxed max-w-2xl mb-10">
+          Coverage of my pop-up dinner series and food writing. Not directly relevant to board prep, but it's how I learned to handle stakeholders at volume.
+        </p>
+        <div class="grid sm:grid-cols-2 gap-px bg-rule border-y-2 border-ink">
+          {press.map(f => (
+            <div class="bg-paper p-6 flex flex-col min-h-[150px]">
+              <p class="font-display text-xl text-ink leading-tight mb-4">{f.source}</p>
+              <p class="text-ink-soft text-sm leading-relaxed mb-auto">{f.title}</p>
+              <p class="font-mono text-[10px] uppercase tracking-[0.2em] text-ink-muted mt-4">{f.date}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- X. Next steps -->
+    <section class="brief-page bg-ink text-paper py-16 md:py-20">
+      <div class="max-w-5xl mx-auto px-6 md:px-10">
+        <div class="flex items-baseline gap-6 mb-10">
+          <span class="font-display text-6xl text-copper leading-none">X.</span>
+          <div>
+            <p class="small-caps text-copper mb-1">Chapter Ten</p>
+            <h2 class="font-display text-3xl md:text-4xl text-paper leading-[0.95]">Next steps.</h2>
+          </div>
+        </div>
+
+        <p class="font-display text-2xl md:text-3xl text-paper leading-snug max-w-3xl mb-10">
+          If any chapter of this brief reads like a mirror, the next step is a 20-minute intro call. Free, no pitch.
+        </p>
+
+        <div class="grid md:grid-cols-2 gap-5 mb-10">
+          <a
+            href={CALENDLY_URL}
+            target="_blank"
+            rel="noopener"
+            class="group bg-copper text-paper p-6 md:p-8 rounded-sm hover:bg-paper hover:text-ink transition-colors flex flex-col print:border print:border-paper/20"
+          >
+            <span class="small-caps text-paper/60 group-hover:text-ink/60 mb-4">Primary</span>
+            <p class="font-display text-2xl md:text-3xl text-paper group-hover:text-ink leading-tight mb-3">Book a 20-minute intro call</p>
+            <p class="font-mono text-xs text-paper/80 group-hover:text-ink/80 tabular mt-auto">Calendly &middot; direct booking</p>
+          </a>
+          <a
+            href="mailto:lmartinlapc@gmail.com?subject=Re%3A%20Capability%20Brief&body=Hi%20Leigh-Ann%2C%0A%0AI%20just%20read%20through%20your%20capability%20brief.%20Here%27s%20what%27s%20going%20on%20at%20our%20executive%20office%3A%0A%0A"
+            class="group border-2 border-paper/30 p-6 md:p-8 rounded-sm hover:border-copper transition-colors flex flex-col"
+          >
+            <span class="small-caps text-paper/60 mb-4">Or</span>
+            <p class="font-display text-2xl md:text-3xl text-paper leading-tight mb-3">Email me directly</p>
+            <p class="font-mono text-xs text-paper/80 tabular mt-auto">lmartinlapc@gmail.com</p>
+          </a>
+        </div>
+
+        <div class="flex items-center gap-4 justify-center pt-8 border-t border-paper/15">
+          <div class="w-8 h-px bg-paper/30"></div>
+          <span class="font-display-italic text-lg text-copper">fin.</span>
+          <div class="w-8 h-px bg-paper/30"></div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <script>
+    const btn = document.getElementById("print-btn");
+    btn?.addEventListener("click", () => window.print());
+  </script>
+
+  <style>
+    @media print {
+      .brief-doc {
+        background: white !important;
+      }
+      .brief-page {
+        page-break-after: always;
+        break-after: page;
+      }
+      .brief-page:last-child {
+        page-break-after: auto;
+      }
+      .paper-grain::before {
+        display: none !important;
+      }
+      @page {
+        margin: 18mm 14mm;
+        size: letter;
+      }
+    }
+  </style>
+</Layout>
