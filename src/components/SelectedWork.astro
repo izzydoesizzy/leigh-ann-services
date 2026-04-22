@@ -46,73 +46,28 @@ const cases = [
     accent: "copper",
     role: "EA, Investor Relations",
   },
-  {
-    num: "04",
-    company: "PwC",
-    sector: "Big Four public accounting",
-    headline: "A nine-month season, delivered.",
-    pull: "I loved working at PwC. I left reluctantly.",
-    body: "Senior Team Assistant for the NY Metro State and Local Tax Department. Supported three tax service lines (Indirect, Income/Franchise, Credit & Incentives) across the full associate-to-MD ladder. Stewarded the Thought Leadership MD's weekly budget-tracking workflow through the WHIP report at 3 purchase orders by 500 companies.",
-    metrics: [
-      { label: "on-time delivery", value: "98%" },
-      { label: "payment reconciliation", value: "100%" },
-      { label: "TAs mentored", value: "4" },
-    ],
-    accent: "sage",
-    role: "Senior Team Assistant, SALT",
-  },
-  {
-    num: "05",
-    company: "Immunovant",
-    sector: "FDA and investor-relations coordination",
-    headline: "FDA-ready, IPO-ready.",
-    pull: "Coordinating FDA meeting readiness across the CMO, General Counsel, and CEO, including hardcopy lockbox for sensitive correspondence.",
-    body: "Managed clinical-trial ad-board convenings across multiple trial phases, owned CEO and CFO calendar time for investor meetings, and ran pre-IPO investor-relations coordination alongside the IR manager across press releases, earnings cycles, and no-deal roadshows.",
-    metrics: [
-      { label: "decision velocity gain", value: "30%" },
-      { label: "C-suite execs coordinated", value: "5" },
-      { label: "Culture Committee founder", value: "yes" },
-    ],
-    accent: "copper",
-    role: "Senior EA to CEO and GC",
-  },
-  {
-    num: "06",
-    company: "BearingPoint",
-    sector: "Global financial operations",
-    headline: "Ten million a month, on the dot.",
-    pull: "Managed $10M-plus monthly in payment processing with 99% accuracy and 100% regulatory compliance.",
-    body: "First US corporate role. Optimized cash management workflows with AP and AR teams, reducing billing discrepancies by 20%. Operated through Chapter 11 bankruptcy proceedings while coordinating with offshore teams in India and the British Virgin Islands.",
-    metrics: [
-      { label: "monthly processing", value: "$10M+" },
-      { label: "accuracy rate", value: "99%" },
-      { label: "regulatory compliance", value: "100%" },
-    ],
-    accent: "sage",
-    role: "Financial Operations Administrator",
-  },
 ];
 ---
 
-<section id="work" class="py-24 md:py-32 bg-paper">
-  <div class="max-w-[1440px] mx-auto px-6 md:px-10">
+<section id="work" class="py-16 md:py-24 bg-paper">
+  <div class="max-w-6xl mx-auto px-6 md:px-10">
     <!-- Section heading -->
-    <div class="grid md:grid-cols-12 gap-8 mb-16 md:mb-24" data-reveal>
+    <div class="grid md:grid-cols-12 gap-8 mb-12 md:mb-16" data-reveal>
       <div class="md:col-span-4">
         <p class="small-caps text-copper mb-4">Chapter Two</p>
-        <h2 class="font-display text-5xl md:text-7xl text-ink leading-[0.9]">
+        <h2 class="font-display text-4xl md:text-5xl text-ink leading-[0.95]">
           Selected <span class="italic font-display-italic">work</span>.
         </h2>
       </div>
       <div class="md:col-span-6 md:col-start-7 flex items-end">
-        <p class="text-ink-soft text-lg leading-relaxed">
-          Six moments that show the shape of my work. Every metric cited is in my resume and verifiable through references. No composites, no estimates rounded up.
+        <p class="text-ink-soft text-base md:text-lg leading-relaxed">
+          Three moments that show the shape of my work. Every metric cited is in my resume and verifiable through references.
         </p>
       </div>
     </div>
 
     <!-- Cases: alternating ratios for magazine pacing -->
-    <div class="space-y-24 md:space-y-32">
+    <div class="space-y-16 md:space-y-24">
       {cases.map((c, idx) => {
         const isEven = idx % 2 === 0;
         const accentClass = c.accent === "copper" ? "text-copper" : "text-sage";
@@ -138,27 +93,27 @@ const cases = [
                 </div>
               </div>
 
-              <div class="grid md:grid-cols-12 gap-8 md:gap-12">
+              <div class="grid md:grid-cols-12 gap-6 md:gap-10">
                 <div class="md:col-span-7">
-                  <h3 class="font-display text-4xl md:text-6xl text-ink leading-[0.95] mb-8">
+                  <h3 class="font-display text-3xl md:text-5xl text-ink leading-[0.98] mb-6">
                     {c.headline}
                   </h3>
-                  <blockquote class="font-display-italic text-2xl md:text-3xl text-copper leading-snug border-l-2 border-copper pl-6 mb-8">
+                  <blockquote class="font-display-italic text-xl md:text-2xl text-copper leading-snug border-l-2 border-copper pl-5 mb-6">
                     "{c.pull}"
                   </blockquote>
-                  <p class="text-ink-soft leading-relaxed text-[17px]">
+                  <p class="text-ink-soft leading-relaxed text-base md:text-[17px]">
                     {c.body}
                   </p>
                 </div>
 
                 {/* Metrics rail */}
                 <div class="md:col-span-5 md:pl-8 md:border-l md:border-rule">
-                  <p class="small-caps text-ink-muted mb-6">By the numbers</p>
-                  <dl class="space-y-6">
+                  <p class="small-caps text-ink-muted mb-5">By the numbers</p>
+                  <dl class="space-y-5">
                     {c.metrics.map(m => (
                       <div>
                         <dt class="font-mono text-[10px] text-ink-muted uppercase tracking-[0.2em] mb-1">{m.label}</dt>
-                        <dd class={`font-display text-4xl md:text-5xl ${accentClass} leading-none tabular`}>{m.value}</dd>
+                        <dd class={`font-display text-3xl md:text-4xl ${accentClass} leading-none tabular`}>{m.value}</dd>
                       </div>
                     ))}
                   </dl>

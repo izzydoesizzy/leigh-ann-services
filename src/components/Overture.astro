@@ -1,12 +1,19 @@
 ---
 const base = import.meta.env.BASE_URL;
+
+const stats = [
+  { value: "12+", label: "years supporting C-suite" },
+  { value: "200+", label: "stakeholders coordinated" },
+  { value: "98%", label: "stakeholder satisfaction" },
+  { value: "25%", label: "operational efficiency lift" },
+];
 ---
 
 <!-- Hero / Overture: pain-led headline with portrait, anchors the whole case for hiring -->
 <section class="relative overflow-hidden">
-  <div class="max-w-[1440px] mx-auto px-6 md:px-10 pt-12 md:pt-20 pb-16 md:pb-24">
+  <div class="max-w-6xl mx-auto px-6 md:px-10 pt-10 md:pt-16 pb-12 md:pb-20">
     <!-- Issue heading -->
-    <div class="flex items-baseline justify-between mb-10 md:mb-16" data-reveal>
+    <div class="flex items-baseline justify-between mb-8 md:mb-12" data-reveal>
       <div class="flex items-baseline gap-4 md:gap-6">
         <span class="small-caps text-ink-muted">Vol. I</span>
         <span class="hidden md:inline text-ink-muted font-mono text-[11px]">&middot;</span>
@@ -18,35 +25,31 @@ const base = import.meta.env.BASE_URL;
     <div class="grid md:grid-cols-12 gap-8 md:gap-12 items-end">
       <!-- Left: pain-led display headline -->
       <div class="md:col-span-7" data-reveal>
-        <p class="small-caps text-copper mb-6">The Dossier</p>
-        <h1 class="font-display text-[12vw] md:text-[6.5rem] lg:text-[8rem] text-ink leading-[0.92] tracking-[-0.035em]">
+        <p class="small-caps text-copper mb-5">The Dossier</p>
+        <h1 class="font-display text-[8vw] md:text-[4.5rem] lg:text-[5.5rem] text-ink leading-[0.95] tracking-[-0.03em]">
           The executive office
           <br/>should run on
           <span class="italic font-display-italic text-copper">systems</span>,
           <br/>not heroics.
         </h1>
 
-        <p class="mt-10 md:mt-12 text-lg md:text-xl text-ink-soft leading-relaxed max-w-2xl">
-          If board prep is a quarterly fire drill, if earnings coordination lives in someone's head, if your EA function was built for the company you were two funding rounds ago, we should talk.
+        <p class="mt-8 md:mt-10 text-lg md:text-xl text-ink-soft leading-relaxed max-w-xl">
+          If board prep is a quarterly fire drill, if earnings coordination lives in someone's head, if your EA function was built for the company you were two funding rounds ago, we should talk. Twelve years rebuilding board cadence, investor-relations coordination, and the EA function itself, for pre-IPO biotech, public-company cannabis, and Big Four.
         </p>
 
-        <p class="mt-6 text-base md:text-lg text-ink-muted leading-relaxed max-w-2xl">
-          I rebuild the three things that break first as executive offices scale: <span class="text-ink font-medium">board cadence</span>, <span class="text-ink font-medium">investor-relations coordination</span>, and the <span class="text-ink font-medium">EA function itself</span>. Twelve years of doing this for pre-IPO biotech, public-company cannabis, and Big Four.
-        </p>
-
-        <div class="mt-10 md:mt-14 flex flex-col sm:flex-row gap-3">
+        <div class="mt-8 md:mt-10 flex flex-col sm:flex-row gap-3">
           <a
-            href="#two-paths"
+            href="#contact"
             class="group inline-flex items-center justify-center gap-3 bg-ink text-paper px-7 py-4 rounded-full text-sm font-medium hover:bg-copper transition-colors"
           >
-            <span>Part-time or full-time hire</span>
+            <span>Start the conversation</span>
             <svg class="w-4 h-4 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
           </a>
           <a
-            href={`${base}services`}
-            class="group inline-flex items-center justify-center gap-3 bg-paper border-2 border-ink text-ink px-7 py-4 rounded-full text-sm font-medium hover:bg-ink hover:text-paper transition-colors"
+            href="#two-paths"
+            class="group inline-flex items-center justify-center gap-3 text-ink px-5 py-4 text-sm font-medium hover:text-copper transition-colors"
           >
-            <span>See fractional services</span>
+            <span>How I work</span>
             <svg class="w-4 h-4 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
           </a>
         </div>
@@ -67,7 +70,7 @@ const base = import.meta.env.BASE_URL;
           <figcaption class="mt-4 pt-3 border-t border-ink/20">
             <p class="font-mono text-[10px] uppercase tracking-[0.2em] text-ink-muted mb-1">Portrait</p>
             <p class="font-caption text-sm text-ink-soft italic leading-snug">
-              Leigh-Ann Martin, New York, 2026. Senior Executive Assistant. Fractional partner. Founding Member and Lead of Immunovant's Culture Committee.
+              Leigh-Ann Martin, New York, 2026. Senior Executive Assistant. Fractional partner.
             </p>
           </figcaption>
 
@@ -79,24 +82,16 @@ const base = import.meta.env.BASE_URL;
       </div>
     </div>
 
-    <!-- Lower strip: the three things she fixes -->
-    <div class="mt-16 md:mt-24 pt-8 border-t border-rule" data-reveal>
-      <div class="grid md:grid-cols-3 gap-8 md:gap-12">
-        <div>
-          <p class="font-mono text-[10px] uppercase tracking-[0.2em] text-copper mb-3">She fixes 01</p>
-          <p class="font-display text-2xl text-ink leading-tight">Board cadence that doesn't exist yet.</p>
-          <p class="text-ink-muted text-sm mt-3 leading-relaxed">Quarterly rhythm, 12-month forward calendar, audit and compensation committees wired.</p>
-        </div>
-        <div>
-          <p class="font-mono text-[10px] uppercase tracking-[0.2em] text-copper mb-3">She fixes 02</p>
-          <p class="font-display text-2xl text-ink leading-tight">Earnings comms that live in someone's head.</p>
-          <p class="text-ink-muted text-sm mt-3 leading-relaxed">6 to 8 week repeatable prep cadence, external IR alignment, stakeholder access.</p>
-        </div>
-        <div>
-          <p class="font-mono text-[10px] uppercase tracking-[0.2em] text-copper mb-3">She fixes 03</p>
-          <p class="font-display text-2xl text-ink leading-tight">An EA function built for yesterday.</p>
-          <p class="text-ink-muted text-sm mt-3 leading-relaxed">First-hire or scale-up. Onboarding framework, knowledge base, team cadence.</p>
-        </div>
+    <!-- Lower strip: resume-backed stats -->
+    <div class="mt-12 md:mt-16 pt-8 border-t border-rule" data-reveal>
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-6 md:gap-10">
+        {stats.map((s, idx) => (
+          <div>
+            <p class="font-mono text-[10px] uppercase tracking-[0.2em] text-copper mb-2 tabular">0{idx + 1}</p>
+            <p class="font-display text-4xl md:text-5xl text-ink leading-none tabular mb-2">{s.value}</p>
+            <p class="text-ink-muted text-xs md:text-sm leading-snug">{s.label}</p>
+          </div>
+        ))}
       </div>
     </div>
   </div>
