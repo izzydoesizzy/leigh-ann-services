@@ -78,12 +78,36 @@ const process = [
 ];
 
 const credentials = [
-  "Certified Administrative Professional (CAP), International Association of Administrative Professionals (IAAP)",
-  "Microsoft Office Certified Specialist",
-  "Salesforce Certified Platform Administrator",
-  "Strategic Project Management Certification (in progress)",
-  "B.S. Business Administration, SBCS Global Learning Institute, Trinidad & Tobago",
-  "Institute of Culinary Education, Culinary Arts, Highest Honors",
+  {
+    kind: "Professional",
+    name: "Certified Administrative Professional",
+    detail: "CAP &middot; International Association of Administrative Professionals",
+  },
+  {
+    kind: "Platform",
+    name: "Salesforce Certified Platform Administrator",
+    detail: "Salesforce, current",
+  },
+  {
+    kind: "Platform",
+    name: "Microsoft Office Certified Specialist",
+    detail: "Microsoft, certified",
+  },
+  {
+    kind: "Professional",
+    name: "Strategic Project Management",
+    detail: "In progress",
+  },
+  {
+    kind: "Education",
+    name: "B.S. Business Administration",
+    detail: "SBCS Global Learning Institute, Trinidad and Tobago",
+  },
+  {
+    kind: "Education",
+    name: "Institute of Culinary Education",
+    detail: "Culinary Arts, Highest Honors",
+  },
 ];
 
 const press = [
@@ -525,14 +549,16 @@ const press = [
             <h2 class="font-display text-3xl md:text-4xl text-ink leading-[0.95]">Credentials.</h2>
           </div>
         </div>
-        <ul class="grid sm:grid-cols-2 gap-x-10 gap-y-3">
+
+        <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-px bg-rule border border-rule">
           {credentials.map(c => (
-            <li class="flex gap-3 items-baseline border-b border-rule/50 pb-3">
-              <span class="font-mono text-[10px] text-copper">◆</span>
-              <span class="text-ink text-base leading-snug">{c}</span>
-            </li>
+            <article class="bg-paper-soft p-5 md:p-6 flex flex-col">
+              <p class="font-mono text-[10px] uppercase tracking-[0.25em] text-copper mb-3">{c.kind}</p>
+              <h3 class="font-display text-lg md:text-xl text-ink leading-tight mb-2">{c.name}</h3>
+              <p class="font-mono text-[11px] uppercase tracking-wide text-ink-muted leading-relaxed mt-auto pt-3" set:html={c.detail} />
+            </article>
           ))}
-        </ul>
+        </div>
       </div>
     </section>
 

@@ -64,14 +64,13 @@ const credentials = [
 
     <div class="grid md:grid-cols-3 gap-px bg-rule border border-rule" data-reveal>
       {columns.map(col => (
-        <div class="bg-paper p-8 md:p-10">
-          <div class="flex items-baseline gap-4 mb-6">
+        <div class="bg-paper p-8 md:p-10 flex flex-col">
+          <!-- Header block with reserved height so columns align across titles of different lengths -->
+          <div class="flex items-baseline gap-4 mb-3 min-h-[3.25rem]">
             <span class="font-display text-5xl text-copper leading-none">{col.roman}.</span>
-            <div>
-              <p class="small-caps text-ink-muted">{col.subtitle}</p>
-            </div>
+            <p class="small-caps text-ink-muted leading-snug">{col.subtitle}</p>
           </div>
-          <h3 class="font-display text-2xl md:text-3xl text-ink leading-tight mb-8">{col.title}</h3>
+          <h3 class="font-display text-2xl md:text-3xl text-ink leading-[1.1] mb-8 min-h-[2.4em]">{col.title}</h3>
           <ul class="space-y-3">
             {col.items.map(item => (
               <li class="flex gap-3 items-start">
