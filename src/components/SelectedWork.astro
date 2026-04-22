@@ -5,6 +5,7 @@ const cases = [
     num: "01",
     company: "Ascend Wellness Holdings",
     sector: "Public cannabis, CSE + OTCQX",
+    stakes: "A public company without a board rhythm is a governance headline waiting to happen.",
     headline: "Board cadence from zero.",
     pull: "When I arrived there were no board meetings on the calendar. I left with the full 2026 board and committee calendar planned 12 months ahead.",
     body: "Coordinated an 8-person quarterly board convening (4 external directors plus CEO, CFO, President, and Chief Counsel) and two standing committees (Audit and Compensation). Anchored dates against earnings and legal review windows, and locked in member availability through proactive outreach.",
@@ -20,6 +21,7 @@ const cases = [
     num: "02",
     company: "Immunovant",
     sector: "Pre-IPO clinical-stage biopharma",
+    stakes: "Five C-suite execs, one pre-IPO clinical-stage biotech, one EA. That EA had to be right the first time.",
     headline: "The EA function, from zero.",
     pull: "Employee #17 to 19 at hire. Sole EA for five C-suite executives by March 2020.",
     body: "Built the executive-assistant function from scratch as Immunovant scaled. Designed onboarding programs for 6 administrative professionals that reduced ramp-up time by 20%. Co-founded the Culture Committee with HR and partnered with Facilities and ELT on policies that lifted employee satisfaction scores by 22%.",
@@ -35,6 +37,7 @@ const cases = [
     num: "03",
     company: "Ascend Wellness Holdings",
     sector: "Public cannabis, 200+ stakeholders",
+    stakes: "Three people each held a piece of the script, 6 weeks before the call. That's how companies lose analyst trust.",
     headline: "Earnings prep, rebuilt.",
     pull: "One cycle in-role exposed the gaps. July 2025, I rebuilt the system. Deployed it for Q2 2025 and ran it through my tenure.",
     body: "Aligned external IR (Mattio Communications), Legal, VP Financial Planning, PR, and C-suite on a shared 6 to 8 week cadence with SharePoint template discipline. Granted the Chief Commercial Officer script access mid-cycle and pulled the VP of Marketing into live prep, closing the input loops that had forced post-draft revisions.",
@@ -95,6 +98,10 @@ const cases = [
 
               <div class="grid md:grid-cols-12 gap-6 md:gap-10">
                 <div class="md:col-span-7">
+                  <div class="border-l-2 border-copper/40 pl-4 mb-6">
+                    <p class="small-caps text-copper mb-1">Stakes</p>
+                    <p class="font-display-italic text-base md:text-lg text-ink-soft leading-snug">{c.stakes}</p>
+                  </div>
                   <h3 class="font-display text-3xl md:text-5xl text-ink leading-[0.98] mb-6">
                     {c.headline}
                   </h3>
