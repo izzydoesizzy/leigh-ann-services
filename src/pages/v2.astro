@@ -1,0 +1,230 @@
+---
+import Layout from "../layouts/Layout.astro";
+import VariantSwitcher from "../components/VariantSwitcher.astro";
+
+const base = import.meta.env.BASE_URL;
+
+const icps = [
+  { title: "The pre-IPO founder", pain: "EA function is one person, and it's cracking." },
+  { title: "The public-company CEO", pain: "Earnings week consumes the entire company." },
+  { title: "The Chief of Staff", pain: "You're the executive ops backstop, and it's eating strategy time." },
+];
+
+const cases = [
+  { company: "Ascend Wellness Holdings", metric: "12 months", label: "board calendar planned ahead", body: "Quarterly board cadence from zero. Full 2026 board and committee calendar locked in Sept 2025." },
+  { company: "Immunovant", metric: "5", label: "C-suite execs as sole EA", body: "Employee #17 to 19. Sole EA for CEO, GC, CMO, CFO, CTDO by March 2020. Built the function from zero." },
+  { company: "Ascend Wellness Holdings", metric: "6 to 8 wks", label: "earnings prep cadence", body: "Rebuilt earnings-call prep in July 2025. Aligned IR, Legal, Finance, PR, C-suite on shared calendar." },
+];
+
+const services = [
+  { name: "Board cadence setup", kicker: "Board & Governance" },
+  { name: "Earnings prep system", kicker: "Investor Relations" },
+  { name: "EA function build-out", kicker: "EA Function" },
+  { name: "FDA meeting readiness", kicker: "FDA & Regulatory" },
+  { name: "M&A meeting facilitation", kicker: "M&A & Strategic" },
+  { name: "Investor CRM setup", kicker: "Investor Relations" },
+];
+
+const stats = [
+  { value: "12+", label: "years C-suite" },
+  { value: "200+", label: "stakeholders" },
+  { value: "98%", label: "satisfaction" },
+  { value: "25%", label: "efficiency lift" },
+];
+---
+
+<Layout title="v2 Minimalist · Leigh-Ann Martin" bodyClass="bg-white text-neutral-900 antialiased" noindex={true}>
+  <!-- v2 custom styles -->
+  <style is:global>
+    .v2 { font-family: "Inter", system-ui, sans-serif; }
+    .v2-display { font-family: "Inter", system-ui, sans-serif; letter-spacing: -0.035em; }
+    .v2-mono { font-family: "JetBrains Mono", ui-monospace, monospace; }
+    .v2-accent { color: #1D4ED8; }
+    .v2-accent-bg { background: #1D4ED8; }
+    .v2-rule { border-color: #E5E5E5; }
+  </style>
+
+  <div class="v2 min-h-screen bg-white">
+    <!-- Navbar -->
+    <header class="sticky top-0 z-40 bg-white/90 backdrop-blur-md border-b v2-rule">
+      <div class="max-w-6xl mx-auto px-6 lg:px-8 h-14 flex items-center justify-between">
+        <a href={base} class="flex items-center gap-2">
+          <span class="w-6 h-6 rounded-sm v2-accent-bg text-white text-[10px] font-bold flex items-center justify-center">LA</span>
+          <span class="text-sm font-semibold tracking-tight">Leigh-Ann Martin</span>
+        </a>
+        <nav class="hidden md:flex items-center gap-7 text-sm">
+          <a href="#work" class="text-neutral-600 hover:text-neutral-900 transition-colors">Work</a>
+          <a href="#services" class="text-neutral-600 hover:text-neutral-900 transition-colors">Services</a>
+          <a href="#about" class="text-neutral-600 hover:text-neutral-900 transition-colors">About</a>
+          <a href="#contact" class="text-xs font-medium text-white v2-accent-bg px-3.5 py-1.5 rounded-md hover:opacity-90 transition-opacity">Get in touch →</a>
+        </nav>
+      </div>
+    </header>
+
+    <!-- Hero -->
+    <section class="max-w-6xl mx-auto px-6 lg:px-8 pt-20 md:pt-32 pb-20 md:pb-32">
+      <div class="flex items-center gap-2 mb-10">
+        <span class="w-2 h-2 v2-accent-bg rounded-full"></span>
+        <span class="v2-mono text-[11px] uppercase tracking-[0.2em] text-neutral-500">Available · NYC tri-state</span>
+      </div>
+
+      <h1 class="v2-display text-5xl md:text-7xl lg:text-[5.5rem] font-bold leading-[0.95] tracking-[-0.04em] max-w-5xl">
+        The executive office should run on <span class="v2-accent">systems</span>, not heroics.
+      </h1>
+
+      <p class="mt-10 text-lg md:text-xl text-neutral-600 leading-relaxed max-w-2xl">
+        Twelve years rebuilding the three things that break first as executive offices scale: board cadence, investor-relations coordination, and the EA function itself. Pre-IPO biotech, public-company cannabis, Big Four.
+      </p>
+
+      <div class="mt-10 flex flex-wrap gap-3">
+        <a href="#contact" class="v2-accent-bg text-white px-5 py-3 rounded-md text-sm font-medium hover:opacity-90 transition-opacity inline-flex items-center gap-2">
+          Hire me part-time or full-time
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
+        </a>
+        <a href="#services" class="border v2-rule text-neutral-900 px-5 py-3 rounded-md text-sm font-medium hover:bg-neutral-50 transition-colors inline-flex items-center gap-2">
+          See fractional services
+        </a>
+      </div>
+
+      <!-- Chef credential strip -->
+      <div class="mt-20 pt-8 border-t v2-rule flex flex-wrap items-center gap-x-6 gap-y-2 v2-mono text-[11px] uppercase tracking-wider text-neutral-500">
+        <span>Also a classically trained chef</span>
+        <span class="text-neutral-300">·</span>
+        <span>New York Times, 2020</span>
+        <span class="text-neutral-300">·</span>
+        <span>Culinary Institute of America workshop leader</span>
+      </div>
+    </section>
+
+    <!-- Stats bar -->
+    <section class="border-y v2-rule bg-neutral-50">
+      <div class="max-w-6xl mx-auto px-6 lg:px-8 py-14 md:py-16 grid grid-cols-2 md:grid-cols-4 gap-8">
+        {stats.map(s => (
+          <div>
+            <div class="v2-display text-4xl md:text-5xl font-bold tracking-[-0.03em]">{s.value}</div>
+            <div class="v2-mono text-[11px] uppercase tracking-wider text-neutral-500 mt-2">{s.label}</div>
+          </div>
+        ))}
+      </div>
+    </section>
+
+    <!-- ICP -->
+    <section class="max-w-6xl mx-auto px-6 lg:px-8 py-20 md:py-28">
+      <div class="mb-12 md:mb-16">
+        <div class="v2-mono text-[11px] uppercase tracking-[0.2em] v2-accent mb-3">01 · Who this is for</div>
+        <h2 class="v2-display text-4xl md:text-5xl font-bold tracking-[-0.035em] max-w-3xl">
+          Three profiles where I do my best work.
+        </h2>
+      </div>
+
+      <div class="grid md:grid-cols-3 gap-5">
+        {icps.map((p, i) => (
+          <div class="border v2-rule rounded-lg p-6 md:p-7 hover:border-neutral-900 transition-colors group">
+            <div class="v2-mono text-[11px] uppercase tracking-wider text-neutral-500 mb-4">0{i+1}</div>
+            <h3 class="v2-display text-xl font-semibold tracking-tight mb-3">{p.title}</h3>
+            <p class="text-neutral-600 leading-relaxed text-[15px]">{p.pain}</p>
+          </div>
+        ))}
+      </div>
+    </section>
+
+    <!-- Case studies -->
+    <section id="work" class="border-t v2-rule bg-neutral-50">
+      <div class="max-w-6xl mx-auto px-6 lg:px-8 py-20 md:py-28">
+        <div class="mb-12 md:mb-16 flex flex-wrap items-end justify-between gap-6">
+          <div>
+            <div class="v2-mono text-[11px] uppercase tracking-[0.2em] v2-accent mb-3">02 · Selected work</div>
+            <h2 class="v2-display text-4xl md:text-5xl font-bold tracking-[-0.035em] max-w-3xl">
+              Three moments, backed by the resume.
+            </h2>
+          </div>
+          <a href={`${base}`} class="v2-mono text-[11px] uppercase tracking-wider v2-accent hover:underline">View all 6 →</a>
+        </div>
+
+        <div class="grid md:grid-cols-3 gap-5">
+          {cases.map(c => (
+            <article class="bg-white border v2-rule rounded-lg p-7 flex flex-col">
+              <div class="v2-mono text-[11px] uppercase tracking-wider text-neutral-500 mb-4">{c.company}</div>
+              <div class="v2-display text-5xl md:text-6xl font-bold tracking-[-0.04em] v2-accent mb-2">{c.metric}</div>
+              <div class="v2-mono text-[11px] uppercase tracking-wider text-neutral-500 mb-5">{c.label}</div>
+              <p class="text-neutral-700 text-[15px] leading-relaxed mt-auto">{c.body}</p>
+            </article>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- Services -->
+    <section id="services" class="max-w-6xl mx-auto px-6 lg:px-8 py-20 md:py-28">
+      <div class="mb-12 md:mb-16">
+        <div class="v2-mono text-[11px] uppercase tracking-[0.2em] v2-accent mb-3">03 · Services</div>
+        <h2 class="v2-display text-4xl md:text-5xl font-bold tracking-[-0.035em] max-w-3xl">
+          Eight disciplines. Thirty-seven services. Pricing is a conversation.
+        </h2>
+      </div>
+
+      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-3">
+        {services.map(s => (
+          <a href="#contact" class="group border v2-rule rounded-lg p-5 hover:border-neutral-900 hover:bg-neutral-50 transition-all">
+            <div class="v2-mono text-[11px] uppercase tracking-wider text-neutral-500 mb-2">{s.kicker}</div>
+            <div class="flex items-center justify-between gap-3">
+              <span class="v2-display text-lg font-semibold tracking-tight">{s.name}</span>
+              <svg class="w-4 h-4 text-neutral-400 group-hover:text-neutral-900 group-hover:translate-x-0.5 transition-all" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
+            </div>
+          </a>
+        ))}
+      </div>
+
+      <div class="mt-8 text-center">
+        <a href={`${base}services`} class="v2-mono text-[11px] uppercase tracking-wider v2-accent hover:underline">See all 37 services →</a>
+      </div>
+    </section>
+
+    <!-- Testimonial -->
+    <section class="border-t v2-rule bg-neutral-50">
+      <div class="max-w-4xl mx-auto px-6 lg:px-8 py-20 md:py-28">
+        <div class="v2-mono text-[11px] uppercase tracking-[0.2em] v2-accent mb-6">04 · Recommendation, live on LinkedIn</div>
+        <blockquote class="v2-display text-2xl md:text-3xl font-medium leading-[1.35] tracking-[-0.02em] text-neutral-900">
+          "Leigh-Ann was one of the most reliable operational partners I've had. She enhanced our reporting accuracy by 25%, partnered with HR, Facilities, and ELT to improve employee satisfaction scores by 22%, and designed onboarding programs for 6 administrative professionals that reduced ramp-up time by 20%."
+        </blockquote>
+        <div class="mt-8 flex items-center gap-4 pt-6 border-t v2-rule">
+          <div class="w-10 h-10 rounded-full bg-neutral-900 text-white flex items-center justify-center text-xs font-bold">PC</div>
+          <div>
+            <div class="text-sm font-semibold">Pam Connealy</div>
+            <div class="v2-mono text-[11px] uppercase tracking-wider text-neutral-500">Former CFO & COO · Immunovant</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Contact -->
+    <section id="contact" class="bg-neutral-900 text-white">
+      <div class="max-w-4xl mx-auto px-6 lg:px-8 py-24 md:py-32">
+        <div class="v2-mono text-[11px] uppercase tracking-[0.2em] v2-accent mb-6" style="color: #93C5FD;">05 · Let's talk</div>
+        <h2 class="v2-display text-5xl md:text-7xl font-bold tracking-[-0.04em] leading-[0.95] max-w-3xl">
+          Tell me what's actually breaking.
+        </h2>
+        <p class="mt-8 text-lg text-neutral-300 leading-relaxed max-w-2xl">
+          A 30-minute discovery call. Free, usually inside 48 hours of your first reach-out. Even if we don't end up working together, you'll leave with a clearer picture of what's worth fixing first.
+        </p>
+        <div class="mt-10 flex flex-wrap gap-3">
+          <a href="mailto:lmartinlapc@gmail.com" class="bg-white text-neutral-900 px-6 py-3.5 rounded-md text-sm font-semibold hover:bg-neutral-100 transition-colors inline-flex items-center gap-2">
+            lmartinlapc@gmail.com
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
+          </a>
+          <a href="https://www.linkedin.com/in/leigh-ann-martin" target="_blank" rel="noopener" class="border border-white/20 text-white px-6 py-3.5 rounded-md text-sm font-medium hover:bg-white/10 transition-colors inline-flex items-center gap-2">
+            LinkedIn
+          </a>
+        </div>
+      </div>
+      <div class="border-t border-white/10">
+        <div class="max-w-6xl mx-auto px-6 lg:px-8 py-6 flex items-center justify-between v2-mono text-[11px] uppercase tracking-wider text-neutral-500">
+          <span>© 2026 Leigh-Ann Martin</span>
+          <span>v2 Minimalist preview</span>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <VariantSwitcher current="v2" theme="light" />
+</Layout>

@@ -1,0 +1,260 @@
+---
+import Layout from "../layouts/Layout.astro";
+import VariantSwitcher from "../components/VariantSwitcher.astro";
+
+const base = import.meta.env.BASE_URL;
+
+const icps = [
+  { num: "01", title: "PRE-IPO FOUNDER", pain: "EA FUNCTION = 1 PERSON. IT'S CRACKING." },
+  { num: "02", title: "PUBLIC-CO. CEO", pain: "EARNINGS WEEK EATS THE COMPANY. EVERY QUARTER." },
+  { num: "03", title: "CHIEF OF STAFF", pain: "STRATEGY TIME = BURNED BY OPERATIONAL TRIAGE." },
+];
+
+const cases = [
+  { id: "A", company: "ASCEND WELLNESS HOLDINGS", metric: "12", unit: "MONTHS", label: "BOARD CALENDAR · PLANNED AHEAD", body: "BOARD CADENCE: ZERO TO QUARTERLY. FULL 2026 BOARD + COMMITTEE CALENDAR LOCKED SEPT 2025." },
+  { id: "B", company: "IMMUNOVANT", metric: "05", unit: "C-SUITE", label: "EXECS · SOLE EA", body: "EMPLOYEE #17 / 18 / 19. CEO + GC + CMO + CFO + CTDO. BY MARCH 2020. EA FUNCTION BUILT FROM ZERO." },
+  { id: "C", company: "ASCEND WELLNESS HOLDINGS", metric: "6-8", unit: "WEEKS", label: "EARNINGS PREP · REPEATABLE", body: "JULY 2025 REBUILD. IR, LEGAL, FINANCE, PR, C-SUITE ON SHARED CAL. DEPLOYED Q2 2025." },
+];
+---
+
+<Layout title="v4 Brutalist · Leigh-Ann Martin" bodyClass="bg-[#EDEAE2] text-black antialiased" noindex={true}>
+  <style is:global>
+    .v4 { font-family: "Inter", sans-serif; }
+    .v4-display { font-family: "Space Mono", "JetBrains Mono", ui-monospace, monospace; font-weight: 700; letter-spacing: -0.03em; }
+    .v4-mono { font-family: "JetBrains Mono", "Space Mono", ui-monospace, monospace; }
+    .v4-jolt { color: #FF3300; }
+    .v4-jolt-bg { background: #FF3300; }
+    .v4-jolt-border { border-color: #FF3300; }
+    .v4-border { border-color: #000000; }
+    .v4-bg-concrete { background: #EDEAE2; }
+    .v4-bg-bone { background: #F7F5EF; }
+    .v4-stripe {
+      background-image: repeating-linear-gradient(
+        45deg,
+        transparent,
+        transparent 8px,
+        rgba(0,0,0,0.04) 8px,
+        rgba(0,0,0,0.04) 16px
+      );
+    }
+  </style>
+
+  <div class="v4 min-h-screen v4-bg-concrete">
+    <!-- Header: thick black bars -->
+    <header class="border-b-[3px] v4-border">
+      <div class="max-w-[1600px] mx-auto px-6 lg:px-10 py-4 flex items-center justify-between">
+        <a href={base} class="flex items-center gap-3">
+          <div class="w-8 h-8 v4-jolt-bg text-white v4-mono font-bold text-sm flex items-center justify-center">LA</div>
+          <span class="v4-mono text-sm font-bold uppercase tracking-wide">MARTIN // EXECUTIVE OPS</span>
+        </a>
+        <nav class="hidden md:flex items-center gap-1">
+          <a href="#work" class="v4-mono text-[11px] uppercase tracking-wider px-3 py-2 hover:v4-jolt transition-colors font-bold">WORK</a>
+          <span class="w-px h-4 bg-black"></span>
+          <a href="#services" class="v4-mono text-[11px] uppercase tracking-wider px-3 py-2 hover:v4-jolt transition-colors font-bold">SERVICES</a>
+          <span class="w-px h-4 bg-black"></span>
+          <a href="#contact" class="v4-mono text-[11px] uppercase tracking-wider bg-black text-white px-4 py-2 hover:v4-jolt-bg transition-colors font-bold">CONTACT &rarr;</a>
+        </nav>
+      </div>
+    </header>
+
+    <!-- Running marquee-style stat bar -->
+    <div class="border-b-[3px] v4-border v4-jolt-bg text-white">
+      <div class="max-w-[1600px] mx-auto px-6 lg:px-10 py-2 flex items-center justify-between v4-mono text-[11px] font-bold uppercase tracking-wider overflow-hidden">
+        <span>STATUS: AVAILABLE</span>
+        <span class="hidden md:inline">●</span>
+        <span class="hidden md:inline">12+ YRS / C-SUITE</span>
+        <span class="hidden md:inline">●</span>
+        <span class="hidden md:inline">NYC TRI-STATE</span>
+        <span class="hidden md:inline">●</span>
+        <span>EST. 2006</span>
+      </div>
+    </div>
+
+    <!-- Hero -->
+    <section class="max-w-[1600px] mx-auto px-6 lg:px-10 py-16 md:py-20 border-b-[3px] v4-border">
+      <div class="grid md:grid-cols-12 gap-0">
+        <div class="md:col-span-8 md:pr-10 md:border-r-[3px] v4-border">
+          <div class="v4-mono text-[11px] font-bold uppercase tracking-wider mb-6">
+            <span class="v4-jolt">■</span> FILE // LEIGH-ANN MARTIN / EA / FRACTIONAL
+          </div>
+          <h1 class="v4-display text-[11vw] md:text-[5.5rem] lg:text-[7rem] leading-[0.9] uppercase">
+            EXECUTIVE<br/>
+            OFFICE<br/>
+            AS <span class="v4-jolt">SYSTEM</span>.<br/>
+            NOT <del class="decoration-4 decoration-black">HEROICS</del>.
+          </h1>
+        </div>
+        <div class="md:col-span-4 md:pl-10 pt-10 md:pt-0 flex flex-col justify-between">
+          <div>
+            <div class="v4-mono text-[11px] font-bold uppercase tracking-wider mb-4">BRIEF</div>
+            <p class="v4-mono text-sm leading-[1.7] uppercase">
+              12 YRS / C-SUITE / 3 INDUSTRIES. REBUILDS THE 3 THINGS THAT BREAK FIRST: BOARD CADENCE / IR / EA FUNCTION. PRE-IPO BIOTECH, PUBLIC CANNABIS, BIG FOUR.
+            </p>
+          </div>
+          <div class="mt-10 pt-8 border-t-[3px] v4-border">
+            <div class="v4-mono text-[11px] font-bold uppercase tracking-wider mb-3">FOOTNOTE</div>
+            <p class="v4-mono text-xs leading-[1.6] uppercase">ALSO / CLASSICALLY-TRAINED CHEF / NYT FEATURED / C.I.A. WORKSHOP LEADER.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- CTA row -->
+      <div class="grid md:grid-cols-2 gap-0 mt-12 border-[3px] v4-border">
+        <a href="#contact" class="bg-black text-white p-6 md:p-8 flex items-center justify-between hover:v4-jolt-bg transition-colors group">
+          <span class="v4-display text-xl md:text-2xl uppercase">HIRE :: PART-TIME / FULL-TIME</span>
+          <svg class="w-6 h-6 group-hover:translate-x-2 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="butt" stroke-linejoin="miter" stroke-width="3" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
+        </a>
+        <a href="#services" class="v4-bg-bone text-black p-6 md:p-8 flex items-center justify-between hover:v4-jolt-bg hover:text-white transition-colors group border-l-[3px] v4-border">
+          <span class="v4-display text-xl md:text-2xl uppercase">ENGAGE :: FRACTIONAL</span>
+          <svg class="w-6 h-6 group-hover:translate-x-2 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="butt" stroke-linejoin="miter" stroke-width="3" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
+        </a>
+      </div>
+    </section>
+
+    <!-- Stats -->
+    <section class="border-b-[3px] v4-border bg-black text-white">
+      <div class="max-w-[1600px] mx-auto px-6 lg:px-10 py-12 md:py-14 grid grid-cols-2 md:grid-cols-4 gap-0 divide-x-[3px] divide-[#FF3300]">
+        {[
+          { value: "12+", label: "YRS / C-SUITE" },
+          { value: "200+", label: "STAKEHOLDERS" },
+          { value: "98%", label: "SATISFACTION" },
+          { value: "25%", label: "EFFICIENCY LIFT" },
+        ].map((s, i) => (
+          <div class={`px-6 ${i === 0 ? '' : 'pl-8'} ${i === 3 ? '' : 'pr-8'}`}>
+            <div class="v4-display text-5xl md:text-6xl leading-none">{s.value}</div>
+            <div class="v4-mono text-[11px] uppercase tracking-wider font-bold mt-3 v4-jolt">{s.label}</div>
+          </div>
+        ))}
+      </div>
+    </section>
+
+    <!-- ICP -->
+    <section class="max-w-[1600px] mx-auto px-6 lg:px-10 py-20 md:py-28 border-b-[3px] v4-border">
+      <div class="mb-14">
+        <div class="v4-mono text-[11px] font-bold uppercase tracking-wider mb-3">SEC / 01 // WHO THIS IS FOR</div>
+        <h2 class="v4-display text-4xl md:text-6xl uppercase leading-[0.95]">
+          PROFILES<br/><span class="v4-jolt">//</span> MATCH YOURS.
+        </h2>
+      </div>
+
+      <div class="grid md:grid-cols-3 gap-0 border-[3px] v4-border">
+        {icps.map((p, i) => (
+          <div class={`p-8 md:p-10 ${i !== 2 ? 'md:border-r-[3px] v4-border' : ''} ${i === 0 ? 'border-b-[3px] md:border-b-0 v4-border' : i === 1 ? 'border-b-[3px] md:border-b-0 v4-border' : ''} bg-[#F7F5EF] hover:v4-jolt-bg hover:text-white transition-colors group`}>
+            <div class="v4-display text-7xl mb-6 group-hover:text-white">{p.num}</div>
+            <div class="v4-mono text-[11px] font-bold uppercase tracking-wider mb-3">PROFILE</div>
+            <h3 class="v4-display text-xl md:text-2xl uppercase mb-6">{p.title}</h3>
+            <p class="v4-mono text-sm leading-[1.7] uppercase font-medium">{p.pain}</p>
+          </div>
+        ))}
+      </div>
+    </section>
+
+    <!-- Cases -->
+    <section id="work" class="max-w-[1600px] mx-auto px-6 lg:px-10 py-20 md:py-28 border-b-[3px] v4-border">
+      <div class="mb-14 flex flex-wrap items-end justify-between gap-6">
+        <div>
+          <div class="v4-mono text-[11px] font-bold uppercase tracking-wider mb-3">SEC / 02 // EVIDENCE</div>
+          <h2 class="v4-display text-4xl md:text-6xl uppercase leading-[0.95]">
+            CASE<br/>FILES.
+          </h2>
+        </div>
+        <a href={`${base}`} class="v4-mono text-[11px] font-bold uppercase tracking-wider bg-black text-white px-4 py-2 hover:v4-jolt-bg transition-colors">ALL 6 &rarr;</a>
+      </div>
+
+      <div class="grid md:grid-cols-3 gap-0 border-[3px] v4-border">
+        {cases.map((c, i) => (
+          <article class={`p-8 md:p-10 bg-[#F7F5EF] ${i !== 2 ? 'md:border-r-[3px] v4-border' : ''} ${i < 2 ? 'border-b-[3px] md:border-b-0 v4-border' : ''}`}>
+            <div class="flex items-start justify-between mb-8">
+              <div class="v4-display text-6xl v4-jolt leading-none">{c.id}</div>
+              <div class="v4-mono text-[10px] uppercase tracking-wider text-right">
+                <div class="font-bold">{c.company}</div>
+              </div>
+            </div>
+
+            <div class="v4-display text-6xl md:text-7xl leading-[0.9] mb-3">{c.metric}</div>
+            <div class="v4-mono text-sm font-bold uppercase tracking-wide mb-6 v4-jolt">{c.unit}</div>
+
+            <div class="v4-mono text-[11px] uppercase tracking-wider font-bold mb-3 pb-3 border-b-2 v4-border">{c.label}</div>
+            <p class="v4-mono text-sm leading-[1.7] uppercase font-medium">{c.body}</p>
+          </article>
+        ))}
+      </div>
+    </section>
+
+    <!-- Services -->
+    <section id="services" class="max-w-[1600px] mx-auto px-6 lg:px-10 py-20 md:py-28 border-b-[3px] v4-border">
+      <div class="mb-14">
+        <div class="v4-mono text-[11px] font-bold uppercase tracking-wider mb-3">SEC / 03 // SERVICES MANIFEST</div>
+        <h2 class="v4-display text-4xl md:text-6xl uppercase leading-[0.95] mb-6">
+          08 DISCIPLINES. <span class="v4-jolt">37</span> SERVICES.
+        </h2>
+        <p class="v4-mono text-sm uppercase font-medium max-w-2xl">PRICING = CONVERSATION. NOT PUBLIC. NEVER HOURLY.</p>
+      </div>
+
+      <div class="grid md:grid-cols-2 gap-0 border-[3px] v4-border">
+        {[
+          "I.  BOARD & GOVERNANCE       ≫ 7 SERVICES",
+          "II. INVESTOR RELATIONS       ≫ 6 SERVICES",
+          "III.EXECUTIVE PARTNERSHIP    ≫ 6 SERVICES",
+          "IV. EA FUNCTION BUILD-OUT    ≫ 4 SERVICES",
+          "V.  FDA & REGULATORY         ≫ 4 SERVICES",
+          "VI. M&A & STRATEGIC          ≫ 4 SERVICES",
+          "VII.FINANCIAL OPERATIONS     ≫ 3 SERVICES",
+          "VIII.PROCESS & DOCUMENTATION ≫ 3 SERVICES",
+        ].map((line, i) => (
+          <a href={`${base}services`} class={`p-6 md:p-7 v4-mono text-sm md:text-base font-bold uppercase tracking-wide bg-[#F7F5EF] hover:v4-jolt-bg hover:text-white transition-colors ${i % 2 === 0 ? 'md:border-r-[3px]' : ''} border-b-[3px] v4-border last:border-b-0 ${i >= 6 ? 'md:border-b-0' : ''}`}>
+            <div class="whitespace-pre">{line}</div>
+          </a>
+        ))}
+      </div>
+    </section>
+
+    <!-- Testimonial -->
+    <section class="v4-stripe border-b-[3px] v4-border">
+      <div class="max-w-[1600px] mx-auto px-6 lg:px-10 py-20 md:py-28">
+        <div class="v4-mono text-[11px] font-bold uppercase tracking-wider mb-8">SEC / 04 // ON RECORD</div>
+        <div class="bg-black text-white p-8 md:p-12 max-w-5xl">
+          <blockquote class="v4-mono text-lg md:text-2xl leading-[1.5] font-bold uppercase mb-8">
+            "LEIGH-ANN = MOST RELIABLE OPERATIONAL PARTNER I'VE HAD. REPORTING ACCURACY +25%. EMPLOYEE SATISFACTION +22%. NEW-HIRE RAMP TIME -20%. SHE DIDN'T JUST MOVE DOCUMENTS. SHE UNDERSTOOD WHAT WAS IN THEM, FLAGGED ISSUES BEFORE THEY WERE PROBLEMS."
+          </blockquote>
+          <div class="flex items-center gap-4 pt-6 border-t-2 v4-jolt-border">
+            <div class="w-10 h-10 v4-jolt-bg flex items-center justify-center v4-mono font-bold text-sm">PC</div>
+            <div>
+              <div class="v4-mono font-bold uppercase text-sm">PAM CONNEALY</div>
+              <div class="v4-mono text-[11px] uppercase tracking-wider v4-jolt font-bold">FMR CFO & COO // IMMUNOVANT</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Contact -->
+    <section id="contact" class="bg-black text-white">
+      <div class="max-w-[1600px] mx-auto px-6 lg:px-10 py-20 md:py-28">
+        <div class="v4-mono text-[11px] font-bold uppercase tracking-wider mb-6 v4-jolt">SEC / 05 // TRANSMIT</div>
+        <h2 class="v4-display text-5xl md:text-8xl uppercase leading-[0.9] mb-10">
+          TELL ME<br/>WHAT'S <span class="v4-jolt">BREAKING</span>.
+        </h2>
+        <p class="v4-mono text-sm md:text-base uppercase leading-[1.7] font-medium max-w-2xl mb-12">
+          30-MIN DISCOVERY CALL. ZERO CHARGE. INSIDE 48 HOURS. YOU LEAVE WITH A ROADMAP, WHETHER WE WORK TOGETHER OR NOT.
+        </p>
+
+        <a href="mailto:lmartinlapc@gmail.com" class="inline-flex items-stretch border-[3px] border-white hover:v4-jolt-bg hover:border-[#FF3300] transition-colors group">
+          <span class="p-6 v4-display text-2xl md:text-3xl uppercase border-r-[3px] border-white group-hover:border-[#FF3300]">LMARTINLAPC@GMAIL.COM</span>
+          <span class="p-6 flex items-center">
+            <svg class="w-8 h-8 group-hover:translate-x-2 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="butt" stroke-linejoin="miter" stroke-width="3" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
+          </span>
+        </a>
+      </div>
+
+      <div class="border-t-[3px] v4-jolt-border">
+        <div class="max-w-[1600px] mx-auto px-6 lg:px-10 py-4 flex items-center justify-between v4-mono text-[11px] font-bold uppercase tracking-wider">
+          <span class="text-white">© 2026 // MARTIN EXECUTIVE OPS</span>
+          <span class="v4-jolt">V4 BRUTALIST PREVIEW</span>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <VariantSwitcher current="v4" theme="dark" />
+</Layout>

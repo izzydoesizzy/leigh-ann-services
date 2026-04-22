@@ -1,0 +1,286 @@
+---
+import Layout from "../layouts/Layout.astro";
+import VariantSwitcher from "../components/VariantSwitcher.astro";
+
+const base = import.meta.env.BASE_URL;
+
+const icps = [
+  { num: "01", title: "The founder at the pre-IPO threshold", pain: "The executive office was built for a smaller company. It will not survive the S-1 process in its current form." },
+  { num: "02", title: "The chief executive of a public concern", pain: "Each quarterly cycle consumes the leadership team. The process does not persist." },
+  { num: "03", title: "The Chief of Staff", pain: "Your strategic mandate is being crowded out by operational triage. The tactical layer requires a senior operator." },
+];
+
+const cases = [
+  { roman: "I.", company: "Ascend Wellness Holdings", body: "Quarterly board cadence established from first principles. Full calendar year locked twelve months ahead.", metric: "XII months ahead" },
+  { roman: "II.", company: "Immunovant", body: "Sole executive assistant to five C-suite principals by March 2020. The EA function built from nothing.", metric: "V principals" },
+  { roman: "III.", company: "Ascend Wellness Holdings", body: "Earnings-call coordination rebuilt into a repeatable cadence. Deployed inside one quarter.", metric: "VI–VIII weeks" },
+];
+---
+
+<Layout title="v5 Dark luxe · Leigh-Ann Martin" bodyClass="bg-[#0E0E10] text-[#FAF5EC] antialiased" noindex={true}>
+  <style is:global>
+    .v5 { font-family: "Inter", sans-serif; }
+    .v5-display { font-family: "Playfair Display", Georgia, serif; letter-spacing: -0.02em; }
+    .v5-display-italic { font-family: "Playfair Display", Georgia, serif; font-style: italic; }
+    .v5-serif-body { font-family: "Playfair Display", Georgia, serif; font-weight: 400; }
+    .v5-brass { color: #C9A24B; }
+    .v5-brass-bg { background: #C9A24B; }
+    .v5-brass-border { border-color: #C9A24B; }
+    .v5-cream { color: #FAF5EC; }
+    .v5-muted { color: #8A8373; }
+    .v5-panel { background: #1A1A1C; }
+    .v5-panel-deep { background: #121214; }
+    .v5-rule-faint { border-color: rgba(250, 245, 236, 0.1); }
+    .v5-rule-brass { border-color: rgba(201, 162, 75, 0.4); }
+    .v5-label {
+      font-family: "Inter", sans-serif;
+      font-size: 0.6875rem;
+      font-weight: 500;
+      letter-spacing: 0.28em;
+      text-transform: uppercase;
+    }
+    .v5-brass-gradient {
+      background: linear-gradient(135deg, #C9A24B 0%, #9E7C2E 60%, #C9A24B 100%);
+    }
+    .v5-dot-grid {
+      background-image: radial-gradient(rgba(201, 162, 75, 0.08) 1px, transparent 1px);
+      background-size: 24px 24px;
+    }
+  </style>
+
+  <div class="v5 min-h-screen bg-[#0E0E10] text-[#FAF5EC]">
+    <!-- Header -->
+    <header class="border-b v5-rule-faint bg-[#0E0E10]/90 backdrop-blur-md sticky top-0 z-40">
+      <div class="max-w-6xl mx-auto px-6 lg:px-10 py-5 flex items-center justify-between">
+        <a href={base} class="flex items-baseline gap-3">
+          <span class="v5-display text-2xl font-black">Martin</span>
+          <span class="v5-display-italic text-sm v5-brass">&amp; Associates</span>
+        </a>
+        <nav class="hidden md:flex items-center gap-8">
+          <a href="#work" class="v5-label v5-muted hover:v5-cream transition-colors">Work</a>
+          <a href="#services" class="v5-label v5-muted hover:v5-cream transition-colors">Services</a>
+          <a href="#about" class="v5-label v5-muted hover:v5-cream transition-colors">About</a>
+          <a href="#contact" class="v5-label v5-brass hover:underline">Correspond →</a>
+        </nav>
+      </div>
+    </header>
+
+    <!-- Hero -->
+    <section class="relative overflow-hidden">
+      <div class="absolute inset-0 v5-dot-grid opacity-60"></div>
+      <div class="relative max-w-6xl mx-auto px-6 lg:px-10 pt-20 md:pt-32 pb-24 md:pb-36">
+        <!-- Ornamental top -->
+        <div class="flex items-center gap-4 mb-14">
+          <div class="w-12 h-px v5-brass-bg"></div>
+          <span class="v5-label v5-brass">Private practice</span>
+          <div class="flex-1 h-px v5-rule-brass border-t"></div>
+          <span class="v5-label v5-muted">MMXXVI</span>
+        </div>
+
+        <h1 class="v5-display font-black text-[12vw] md:text-[7rem] lg:text-[9rem] leading-[0.88]">
+          Counsel <span class="v5-display-italic font-medium v5-brass">for</span><br/>
+          the office<br/>
+          of the <span class="v5-display-italic font-medium v5-brass">principal</span>.
+        </h1>
+
+        <div class="mt-14 grid md:grid-cols-12 gap-6 items-end">
+          <div class="md:col-span-7">
+            <p class="v5-serif-body text-xl md:text-2xl leading-[1.55] v5-cream max-w-2xl">
+              Twelve years of senior executive support across biopharmaceuticals, public finance, and public-company operations. Retained by a small number of principals who require operational rigor, institutional judgment, and absolute discretion.
+            </p>
+          </div>
+          <div class="md:col-span-5 md:text-right">
+            <div class="v5-label v5-muted mb-2">Engagement by invitation</div>
+            <a href="#contact" class="inline-flex items-center gap-3 v5-brass-bg text-black px-7 py-4 text-sm font-semibold uppercase tracking-wider hover:bg-[#FAF5EC] transition-colors">
+              <span>Submit inquiry</span>
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
+            </a>
+          </div>
+        </div>
+
+        <!-- Foundational rail -->
+        <div class="mt-20 pt-10 border-t v5-rule-faint grid sm:grid-cols-3 gap-6 text-center sm:text-left">
+          <div>
+            <div class="v5-label v5-brass mb-2">Current engagements</div>
+            <div class="v5-display text-3xl font-semibold">Selective</div>
+          </div>
+          <div class="sm:border-x v5-rule-faint sm:px-6">
+            <div class="v5-label v5-brass mb-2">Geography</div>
+            <div class="v5-display text-3xl font-semibold">New York <span class="v5-display-italic text-xl v5-muted">et alia</span></div>
+          </div>
+          <div>
+            <div class="v5-label v5-brass mb-2">Also by craft</div>
+            <div class="v5-display-italic text-3xl font-medium v5-brass">Chef, NYT 2020</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Stats / proof -->
+    <section class="border-y v5-rule-brass v5-panel">
+      <div class="max-w-6xl mx-auto px-6 lg:px-10 py-14 md:py-16 grid grid-cols-2 md:grid-cols-4 gap-6 text-center">
+        {[
+          { value: "XII+", label: "years · C-suite" },
+          { value: "CC+", label: "stakeholders" },
+          { value: "98%", label: "satisfaction" },
+          { value: "XXV%", label: "efficiency lift" },
+        ].map((s, i) => (
+          <div class={`${i > 0 ? "md:border-l v5-rule-faint" : ""} px-4`}>
+            <div class="v5-display font-black text-5xl md:text-6xl v5-brass leading-none tabular">{s.value}</div>
+            <div class="v5-label v5-muted mt-4">{s.label}</div>
+          </div>
+        ))}
+      </div>
+    </section>
+
+    <!-- ICP -->
+    <section class="max-w-6xl mx-auto px-6 lg:px-10 py-24 md:py-32">
+      <div class="text-center mb-16">
+        <div class="flex items-center justify-center gap-4 mb-6">
+          <div class="w-8 h-px v5-brass-bg"></div>
+          <span class="v5-label v5-brass">The Practice</span>
+          <div class="w-8 h-px v5-brass-bg"></div>
+        </div>
+        <h2 class="v5-display font-black text-4xl md:text-6xl leading-[1.05] max-w-4xl mx-auto">
+          For principals of <span class="v5-display-italic font-medium v5-brass">three distinct profiles</span>.
+        </h2>
+      </div>
+
+      <div class="space-y-px bg-[#2A2A2C]">
+        {icps.map(p => (
+          <div class="v5-panel grid md:grid-cols-12 gap-6 p-8 md:p-12 hover:v5-panel-deep transition-colors">
+            <div class="md:col-span-2">
+              <div class="v5-display-italic text-6xl v5-brass leading-none">{p.num}</div>
+            </div>
+            <div class="md:col-span-10">
+              <h3 class="v5-display text-2xl md:text-3xl font-semibold mb-4">{p.title}</h3>
+              <p class="v5-serif-body italic text-lg md:text-xl leading-[1.55] v5-muted">"{p.pain}"</p>
+            </div>
+          </div>
+        ))}
+      </div>
+    </section>
+
+    <!-- Case files -->
+    <section id="work" class="v5-panel-deep border-y v5-rule-brass">
+      <div class="max-w-6xl mx-auto px-6 lg:px-10 py-24 md:py-32">
+        <div class="text-center mb-16">
+          <div class="flex items-center justify-center gap-4 mb-6">
+            <div class="w-8 h-px v5-brass-bg"></div>
+            <span class="v5-label v5-brass">Representative Matters</span>
+            <div class="w-8 h-px v5-brass-bg"></div>
+          </div>
+          <h2 class="v5-display font-black text-4xl md:text-6xl leading-[1.05]">
+            Three <span class="v5-display-italic font-medium v5-brass">matters</span>.
+          </h2>
+        </div>
+
+        <div class="grid md:grid-cols-3 gap-px bg-[#2A2A2C]">
+          {cases.map(c => (
+            <article class="v5-panel-deep p-8 md:p-10">
+              <div class="v5-display-italic text-5xl v5-brass mb-6 leading-none">{c.roman}</div>
+              <div class="v5-label v5-muted mb-4">{c.company}</div>
+              <div class="v5-display text-4xl md:text-5xl v5-brass font-black leading-none mb-6 tabular">{c.metric}</div>
+              <p class="v5-serif-body text-lg v5-cream leading-[1.55] italic">{c.body}</p>
+            </article>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- Testimonial -->
+    <section class="max-w-4xl mx-auto px-6 lg:px-10 py-24 md:py-32 text-center">
+      <div class="v5-display-italic text-[10rem] md:text-[14rem] v5-brass leading-none mb-0">"</div>
+      <blockquote class="v5-display text-2xl md:text-4xl font-medium italic leading-[1.3] v5-cream -mt-16 md:-mt-24">
+        Leigh-Ann was one of the most reliable operational partners I have had. She enhanced our reporting accuracy by 25 percent, improved employee satisfaction scores by 22 percent, and designed onboarding programs that reduced new-hire ramp-up time by 20 percent.
+      </blockquote>
+      <div class="mt-12 flex items-center justify-center gap-4">
+        <span class="w-12 h-px v5-brass-bg"></span>
+        <div>
+          <div class="v5-display text-xl font-semibold">Pam Connealy</div>
+          <div class="v5-label v5-muted mt-2">Former CFO &amp; COO · Immunovant</div>
+        </div>
+        <span class="w-12 h-px v5-brass-bg"></span>
+      </div>
+      <div class="mt-4 v5-label v5-brass">Recommendation on record, LinkedIn</div>
+    </section>
+
+    <!-- Practice areas -->
+    <section id="services" class="v5-panel border-y v5-rule-brass">
+      <div class="max-w-6xl mx-auto px-6 lg:px-10 py-24 md:py-32">
+        <div class="text-center mb-14">
+          <div class="flex items-center justify-center gap-4 mb-6">
+            <div class="w-8 h-px v5-brass-bg"></div>
+            <span class="v5-label v5-brass">The Services</span>
+            <div class="w-8 h-px v5-brass-bg"></div>
+          </div>
+          <h2 class="v5-display font-black text-4xl md:text-6xl leading-[1.05] max-w-4xl mx-auto">
+            Eight disciplines. <span class="v5-display-italic font-medium v5-brass">Thirty-seven</span> services.
+          </h2>
+        </div>
+
+        <div class="grid md:grid-cols-2 gap-x-10 gap-y-0 border-t v5-rule-faint">
+          {[
+            { roman: "I.", name: "Board & Governance", body: "Quarterly cadence, forward calendar, committee work." },
+            { roman: "II.", name: "Investor Relations", body: "Earnings prep, agency partnership, roadshow coordination." },
+            { roman: "III.", name: "Executive Partnership", body: "Calendar, briefings, decision memos, correspondence." },
+            { roman: "IV.", name: "EA Function Build-Out", body: "First-hire support, onboarding, team cadence." },
+            { roman: "V.", name: "FDA & Regulatory", body: "Meeting readiness, lockbox discipline, ad-boards." },
+            { roman: "VI.", name: "M&A & Strategic", body: "Pipeline, facilitation, diligence coordination." },
+            { roman: "VII.", name: "Financial Operations", body: "Budget tracking, reconciliation, T&E oversight." },
+            { roman: "VIII.", name: "Process & Documentation", body: "SOPs, culture committee, policy modernization." },
+          ].map(p => (
+            <div class="grid grid-cols-12 gap-4 py-7 border-b v5-rule-faint">
+              <div class="col-span-2 v5-display-italic text-2xl v5-brass">{p.roman}</div>
+              <div class="col-span-10">
+                <h3 class="v5-display text-xl font-semibold mb-2">{p.name}</h3>
+                <p class="v5-serif-body text-base italic v5-muted leading-[1.5]">{p.body}</p>
+              </div>
+            </div>
+          ))}
+        </div>
+
+        <div class="mt-12 text-center">
+          <a href={`${base}services`} class="v5-label v5-brass hover:underline">View full service index →</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Contact -->
+    <section id="contact" class="relative overflow-hidden">
+      <div class="absolute inset-0 v5-dot-grid opacity-60"></div>
+      <div class="relative max-w-4xl mx-auto px-6 lg:px-10 py-24 md:py-36 text-center">
+        <div class="flex items-center justify-center gap-4 mb-8">
+          <div class="w-8 h-px v5-brass-bg"></div>
+          <span class="v5-label v5-brass">Correspondence</span>
+          <div class="w-8 h-px v5-brass-bg"></div>
+        </div>
+
+        <h2 class="v5-display font-black text-5xl md:text-7xl leading-[1.02] mb-10">
+          Conversations are <span class="v5-display-italic font-medium v5-brass">by invitation</span>.
+        </h2>
+
+        <p class="v5-serif-body italic text-xl md:text-2xl v5-muted leading-[1.55] mb-12 max-w-2xl mx-auto">
+          Initial discovery is conducted without charge. Engagements are retained on a fixed-fee basis, scoped to a defined outcome, and bounded by a written scope of work.
+        </p>
+
+        <div class="inline-block border v5-brass-border p-10 v5-panel-deep">
+          <div class="v5-label v5-brass mb-4">Principal contact</div>
+          <a href="mailto:lmartinlapc@gmail.com" class="v5-display text-2xl md:text-3xl font-semibold hover:v5-brass transition-colors">lmartinlapc@gmail.com</a>
+          <div class="mt-6 pt-6 border-t v5-rule-faint v5-label v5-muted">
+            New York Tri-State · Response inside one business day
+          </div>
+        </div>
+      </div>
+
+      <div class="border-t v5-rule-faint">
+        <div class="max-w-6xl mx-auto px-6 lg:px-10 py-6 flex items-center justify-between">
+          <span class="v5-display-italic text-sm v5-muted">Martin &amp; Associates · MMXXVI</span>
+          <span class="v5-label v5-brass">v5 Dark luxe preview</span>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <VariantSwitcher current="v5" theme="dark" />
+</Layout>

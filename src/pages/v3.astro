@@ -1,0 +1,250 @@
+---
+import Layout from "../layouts/Layout.astro";
+import VariantSwitcher from "../components/VariantSwitcher.astro";
+
+const base = import.meta.env.BASE_URL;
+
+const icps = [
+  { title: "The Pre-IPO Founder", pain: "The executive-assistant function was designed for a smaller company. It will not survive the S-1 process." },
+  { title: "The Public-Company Chief Executive", pain: "Each quarterly earnings cycle is a fresh excavation. The process does not persist from one quarter to the next." },
+  { title: "The Chief of Staff", pain: "Your strategic mandate is being crowded out by operational triage. You require a senior operator to absorb the tactical layer." },
+];
+
+const cases = [
+  { company: "Ascend Wellness Holdings", years: "2025", metric: "12 Months", label: "Board calendar planned ahead", body: "Quarterly board cadence established from first principles. Full 2026 board and committee calendar locked September 2025." },
+  { company: "Immunovant", years: "2019 to 2024", metric: "V", label: "C-suite executives, sole EA", body: "Joined as approximately the 18th employee. Sole executive assistant to the CEO, General Counsel, CMO, CFO, and CTDO by March 2020." },
+  { company: "Ascend Wellness Holdings", years: "2025", metric: "§ 6–8", label: "Earnings prep cadence, in weeks", body: "Rebuilt earnings-call coordination July 2025. Aligned IR, Legal, Finance, PR, and the C-suite on a shared calendar." },
+];
+---
+
+<Layout title="v3 Institutional · Leigh-Ann Martin" bodyClass="bg-[#FBF7EE] text-[#1A1A1A] antialiased" noindex={true}>
+  <style is:global>
+    .v3 { font-family: "Cormorant Garamond", "Playfair Display", Georgia, serif; }
+    .v3-display { font-family: "Playfair Display", Georgia, serif; letter-spacing: -0.01em; font-feature-settings: "liga", "dlig"; }
+    .v3-body { font-family: "Cormorant Garamond", Georgia, serif; }
+    .v3-label { font-family: "Inter", sans-serif; letter-spacing: 0.22em; text-transform: uppercase; font-size: 0.6875rem; font-weight: 600; }
+    .v3-gold { color: #9F7C2A; }
+    .v3-gold-bg { background: #9F7C2A; }
+    .v3-navy { color: #0B2545; }
+    .v3-navy-bg { background: #0B2545; }
+    .v3-ivory { color: #FBF7EE; }
+    .v3-slate { color: #3E4C59; }
+    .v3-rule-gold { border-color: #9F7C2A; }
+    .v3-rule-ink { border-color: #1A1A1A; }
+    .v3-ornament { display: inline-block; width: 1.5rem; height: 1px; background: #9F7C2A; vertical-align: middle; }
+  </style>
+
+  <div class="v3 min-h-screen">
+    <!-- Top rule + masthead -->
+    <header class="border-t-[3px] v3-rule-gold">
+      <div class="max-w-5xl mx-auto px-6 lg:px-10 py-5 border-b v3-rule-ink flex items-center justify-between">
+        <a href={base} class="flex items-baseline gap-3">
+          <span class="v3-display text-2xl font-bold v3-navy">Martin</span>
+          <span class="v3-label v3-slate hidden sm:inline">Executive Operations</span>
+        </a>
+        <nav class="hidden md:flex items-center gap-8">
+          <a href="#work" class="v3-label v3-slate hover:v3-navy transition-colors">Practice</a>
+          <a href="#services" class="v3-label v3-slate hover:v3-navy transition-colors">Advisory</a>
+          <a href="#about" class="v3-label v3-slate hover:v3-navy transition-colors">About</a>
+          <a href="#contact" class="v3-label v3-gold hover:underline">Correspond →</a>
+        </nav>
+      </div>
+    </header>
+
+    <!-- Hero -->
+    <section class="max-w-5xl mx-auto px-6 lg:px-10 pt-16 md:pt-24 pb-20 md:pb-28 text-center">
+      <div class="v3-label v3-gold mb-6">
+        <span class="v3-ornament"></span> &nbsp; Est. Practice Est. 2026 &nbsp; <span class="v3-ornament"></span>
+      </div>
+
+      <h1 class="v3-display text-5xl md:text-7xl lg:text-[5rem] font-normal leading-[1.05] v3-navy max-w-4xl mx-auto">
+        Counsel to the office of the <em class="italic v3-gold">Chief Executive</em>.
+      </h1>
+
+      <div class="flex items-center justify-center gap-4 my-10">
+        <span class="w-16 h-px v3-rule-gold border-t"></span>
+        <span class="v3-display italic text-xl v3-slate">Leigh-Ann Martin</span>
+        <span class="w-16 h-px v3-rule-gold border-t"></span>
+      </div>
+
+      <p class="v3-body text-xl md:text-2xl leading-[1.55] v3-slate max-w-3xl mx-auto">
+        Twelve years of senior executive support across biopharma, the Big Four, and public-company operations. Retained by principals who require operational rigor, confidential discretion, and institutional judgment at the highest level.
+      </p>
+
+      <div class="mt-12 flex flex-wrap gap-4 justify-center">
+        <a href="#contact" class="v3-navy-bg v3-ivory px-7 py-3.5 text-sm font-medium hover:bg-[#133d6d] transition-colors v3-label tracking-[0.18em]" style="font-family: 'Inter';">
+          Initiate Engagement
+        </a>
+        <a href="#services" class="border v3-rule-ink v3-navy px-7 py-3.5 text-sm font-medium hover:bg-[#0B2545] hover:text-[#FBF7EE] transition-colors v3-label tracking-[0.18em]" style="font-family: 'Inter';">
+          Review Practice Areas
+        </a>
+      </div>
+    </section>
+
+    <!-- Ornamental divider -->
+    <div class="max-w-5xl mx-auto px-6 lg:px-10 flex items-center gap-4">
+      <div class="flex-1 h-px v3-rule-ink border-t"></div>
+      <span class="v3-display italic v3-gold text-2xl leading-none">❦</span>
+      <div class="flex-1 h-px v3-rule-ink border-t"></div>
+    </div>
+
+    <!-- Credentials rail -->
+    <section class="max-w-5xl mx-auto px-6 lg:px-10 py-14">
+      <div class="v3-label v3-gold text-center mb-8">Matters Previously Served</div>
+      <div class="grid sm:grid-cols-2 md:grid-cols-3 gap-y-6 gap-x-10 text-center">
+        <div>
+          <div class="v3-display text-3xl v3-navy">Ascend Wellness</div>
+          <div class="v3-label v3-slate mt-2">Publicly Traded · CSE & OTCQX</div>
+        </div>
+        <div>
+          <div class="v3-display text-3xl v3-navy">Immunovant</div>
+          <div class="v3-label v3-slate mt-2">Pre-IPO Clinical-Stage Biopharma</div>
+        </div>
+        <div>
+          <div class="v3-display text-3xl v3-navy">PricewaterhouseCoopers</div>
+          <div class="v3-label v3-slate mt-2">State & Local Tax · NY Metro</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Icpt / Who We Represent -->
+    <section class="v3-navy-bg v3-ivory py-20 md:py-28">
+      <div class="max-w-5xl mx-auto px-6 lg:px-10">
+        <div class="text-center mb-14">
+          <div class="v3-label v3-gold mb-6">
+            <span class="v3-ornament"></span> &nbsp; Practice Focus &nbsp; <span class="v3-ornament"></span>
+          </div>
+          <h2 class="v3-display text-4xl md:text-6xl font-normal leading-[1.05]">
+            For principals of <em class="italic v3-gold">three distinct profiles</em>.
+          </h2>
+        </div>
+
+        <div class="space-y-px bg-white/10">
+          {icps.map((p, i) => (
+            <div class="v3-navy-bg grid md:grid-cols-12 gap-6 p-8 md:p-10 hover:bg-[#133d6d] transition-colors">
+              <div class="md:col-span-2">
+                <div class="v3-display italic text-5xl v3-gold">
+                  {i === 0 ? "I." : i === 1 ? "II." : "III."}
+                </div>
+              </div>
+              <div class="md:col-span-10">
+                <h3 class="v3-display text-2xl md:text-3xl mb-3 font-medium">{p.title}</h3>
+                <p class="v3-body text-lg leading-[1.55] text-white/75 italic">"{p.pain}"</p>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- Cases -->
+    <section id="work" class="max-w-5xl mx-auto px-6 lg:px-10 py-20 md:py-28">
+      <div class="text-center mb-14">
+        <div class="v3-label v3-gold mb-6">
+          <span class="v3-ornament"></span> &nbsp; Selected Engagements &nbsp; <span class="v3-ornament"></span>
+        </div>
+        <h2 class="v3-display text-4xl md:text-6xl font-normal leading-[1.05] v3-navy">
+          Three <em class="italic v3-gold">matters</em>.
+        </h2>
+      </div>
+
+      <div class="grid md:grid-cols-3 gap-0 border-t border-b v3-rule-ink divide-x divide-[#1A1A1A]">
+        {cases.map(c => (
+          <article class="px-6 py-10 text-center">
+            <div class="v3-label v3-gold mb-3">{c.years}</div>
+            <div class="v3-display text-sm v3-slate mb-6 italic">{c.company}</div>
+            <div class="v3-display text-5xl md:text-6xl v3-navy font-bold leading-none mb-2">{c.metric}</div>
+            <div class="v3-label v3-slate mt-2 mb-6">{c.label}</div>
+            <p class="v3-body text-lg v3-slate leading-[1.55]">{c.body}</p>
+          </article>
+        ))}
+      </div>
+    </section>
+
+    <!-- Testimonial -->
+    <section class="bg-[#F4EDD3] py-20 md:py-28">
+      <div class="max-w-4xl mx-auto px-6 lg:px-10 text-center">
+        <div class="v3-display italic text-6xl v3-gold leading-none mb-4">"</div>
+        <blockquote class="v3-display text-2xl md:text-3xl font-normal italic leading-[1.45] v3-navy">
+          Leigh-Ann was one of the most reliable operational partners I have had. She enhanced our reporting accuracy by 25 percent, improved employee satisfaction scores by 22 percent through policy modernization, and designed onboarding programs that reduced new-hire ramp-up time by 20 percent. She understood what was in every document she touched, flagged issues before they became problems, and brought structured problem-solving to high-level executive operations.
+        </blockquote>
+        <div class="mt-10 flex items-center justify-center gap-4">
+          <span class="w-12 h-px v3-rule-gold border-t"></span>
+          <div>
+            <div class="v3-display italic text-lg v3-navy">Pam Connealy</div>
+            <div class="v3-label v3-slate mt-1">Former CFO & COO, Immunovant</div>
+          </div>
+          <span class="w-12 h-px v3-rule-gold border-t"></span>
+        </div>
+        <div class="mt-6 v3-label v3-gold">Recommendation on record, LinkedIn</div>
+      </div>
+    </section>
+
+    <!-- Practice areas / services -->
+    <section id="services" class="max-w-5xl mx-auto px-6 lg:px-10 py-20 md:py-28">
+      <div class="text-center mb-14">
+        <div class="v3-label v3-gold mb-6">
+          <span class="v3-ornament"></span> &nbsp; Practice Areas &nbsp; <span class="v3-ornament"></span>
+        </div>
+        <h2 class="v3-display text-4xl md:text-6xl font-normal leading-[1.05] v3-navy max-w-3xl mx-auto">
+          Eight disciplines. Thirty-seven engagements.
+        </h2>
+      </div>
+
+      <div class="grid md:grid-cols-2 gap-x-10 gap-y-0 border-t v3-rule-ink">
+        {[
+          { roman: "I.", title: "Board & Governance", body: "Quarterly cadence, 12-month calendar, Audit and Compensation committees, chairman relations." },
+          { roman: "II.", title: "Investor Relations", body: "Earnings prep system, external IR partnership, no-deal roadshow, investor CRM." },
+          { roman: "III.", title: "Executive Partnership", body: "Calendar architecture, anticipatory briefings, decision memos, confidential correspondence." },
+          { roman: "IV.", title: "EA Function Build-Out", body: "First-hire support, 30/60/90-day frameworks, team cadence, institutional memory." },
+          { roman: "V.", title: "FDA & Regulatory", body: "Meeting readiness, hardcopy correspondence discipline, ad-board coordination, filing support." },
+          { roman: "VI.", title: "M&A & Strategic", body: "Weekly meeting facilitation, pipeline dashboards, diligence coordination, follow-up tracking." },
+          { roman: "VII.", title: "Financial Operations", body: "Budget tracking, WHIP reporting, purchase order reconciliation, expense oversight." },
+          { roman: "VIII.", title: "Process & Documentation", body: "SOPs, procedure manuals, Culture Committee stand-up, policy modernization." },
+        ].map(p => (
+          <div class="grid grid-cols-12 gap-4 py-7 border-b v3-rule-ink">
+            <div class="col-span-2 v3-display italic text-2xl v3-gold">{p.roman}</div>
+            <div class="col-span-10">
+              <h3 class="v3-display text-xl v3-navy font-medium mb-2">{p.title}</h3>
+              <p class="v3-body text-base v3-slate leading-[1.5]">{p.body}</p>
+            </div>
+          </div>
+        ))}
+      </div>
+
+      <div class="mt-10 text-center">
+        <a href={`${base}services`} class="v3-label v3-gold hover:underline">Review all 37 engagements →</a>
+      </div>
+    </section>
+
+    <!-- Contact -->
+    <section id="contact" class="v3-navy-bg v3-ivory">
+      <div class="max-w-3xl mx-auto px-6 lg:px-10 py-20 md:py-28 text-center">
+        <div class="v3-label v3-gold mb-6">
+          <span class="v3-ornament"></span> &nbsp; Correspondence &nbsp; <span class="v3-ornament"></span>
+        </div>
+        <h2 class="v3-display text-5xl md:text-6xl font-normal leading-[1.05] mb-8">
+          Initial conversations are <em class="italic v3-gold">by invitation</em>.
+        </h2>
+        <p class="v3-body text-xl leading-[1.55] text-white/75 mb-12 max-w-2xl mx-auto">
+          Discovery calls are conducted without charge. Engagements are retained on a fixed-fee basis, scoped to a defined outcome.
+        </p>
+
+        <div class="border v3-rule-gold p-8 md:p-10 bg-white/5">
+          <div class="v3-label v3-gold mb-3">Principal Contact</div>
+          <a href="mailto:lmartinlapc@gmail.com" class="v3-display text-2xl md:text-3xl hover:underline">lmartinlapc@gmail.com</a>
+          <div class="mt-6 v3-label text-white/50">New York · NY Tri-State Area</div>
+        </div>
+      </div>
+
+      <div class="border-t border-white/10">
+        <div class="max-w-5xl mx-auto px-6 lg:px-10 py-6 flex items-center justify-between v3-label text-white/40">
+          <span>Martin · Executive Operations · 2026</span>
+          <span>v3 Institutional preview</span>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <VariantSwitcher current="v3" theme="light" />
+</Layout>
