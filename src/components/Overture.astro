@@ -58,6 +58,11 @@ const stats = [
             <svg class="w-4 h-4 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
           </a>
         </div>
+
+        <!-- Capacity signal -->
+        <p class="mt-6 font-mono text-[11px] uppercase tracking-[0.2em] text-ink-muted">
+          <span class="text-copper">&#x25CF;</span> Booking for Q2 2026 &middot; 2 of 3 slots remain &middot; Q3 availability opens June 15
+        </p>
       </div>
 
       <!-- Right: portrait + caption block -->
@@ -79,9 +84,10 @@ const stats = [
             </p>
           </figcaption>
 
-          <!-- Floating badge -->
-          <div class="absolute -left-4 md:-left-8 top-6 bg-copper text-paper px-3 py-1.5 rotate-[-4deg] shadow-lg">
-            <span class="small-caps text-paper">Available now</span>
+          <!-- Floating availability badge. TODO: update slot count + quarter as availability changes. -->
+          <div class="absolute -left-4 md:-left-8 top-6 bg-copper text-paper px-3 py-2 rotate-[-4deg] shadow-lg max-w-[180px]">
+            <span class="small-caps text-paper leading-tight block">2 slots &middot; Q2 2026</span>
+            <span class="font-mono text-[9px] uppercase tracking-wider text-paper/80 block mt-0.5">Booking now</span>
           </div>
         </figure>
       </div>
