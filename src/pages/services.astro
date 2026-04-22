@@ -3,17 +3,33 @@ import Layout from "../layouts/Layout.astro";
 import Masthead from "../components/Masthead.astro";
 import Colophon from "../components/Colophon.astro";
 import ServicesIndex, { disciplines, totalServices } from "../components/ServicesIndex.astro";
+
+const base = import.meta.env.BASE_URL;
+// TODO: keep this in sync with Overture.astro
+const CALENDLY_URL = "https://calendly.com/lmartinlapc/intro-call";
+
+// Mirror the Overture hero-footer stats so both pages share the same 4 figures.
+const stats = [
+  { value: "12+", label: "years supporting C-suite" },
+  { value: "200+", label: "stakeholders coordinated" },
+  { value: "98%", label: "stakeholder satisfaction" },
+  { value: "25%", label: "operational efficiency lift" },
+];
+
+const mailto = `mailto:lmartinlapc@gmail.com?subject=${encodeURIComponent("Services inquiry")}&body=${encodeURIComponent("Hi Leigh-Ann,\n\nI was looking through your services page and I'd like to talk about:\n\n[which service or discipline]\n\nHere's what's going on at our executive office:\n\n[brief context]\n\nBest,")}`;
 ---
 
 <Layout title="Services | Leigh-Ann Martin" description="Every granular fractional EA service Leigh-Ann Martin offers, organized by discipline. Board cadence, investor relations, FDA coordination, EA function build-out, and more.">
   <Masthead />
   <main>
     <!-- Hero -->
-    <section class="pt-20 md:pt-16 pb-10 md:pb-14 bg-paper">
+    <section class="pt-20 md:pt-16 pb-12 md:pb-16 bg-paper">
       <div class="max-w-6xl mx-auto px-6 md:px-10">
+        <!-- Editorial row -->
         <div class="flex items-baseline justify-between mb-8" data-reveal>
           <div class="flex items-baseline gap-6">
             <span class="small-caps text-ink-muted">Vol. I</span>
+            <span class="hidden md:inline text-ink-muted font-mono text-[11px]">&middot;</span>
             <span class="hidden md:inline small-caps text-ink-muted">The service index</span>
           </div>
           <span class="small-caps text-ink-muted tabular">2026</span>
@@ -32,8 +48,25 @@ import ServicesIndex, { disciplines, totalServices } from "../components/Service
               <span class="font-display text-copper tabular">{totalServices} services</span>, organized into <span class="font-display text-copper tabular">{disciplines.length} disciplines</span>. Each one named after a specific pain, scoped against a specific outcome. Click a tile to expand.
             </p>
             <p class="mt-4 font-mono text-[11px] uppercase tracking-wider text-ink-muted">
-              No prices on this page. Pricing is conversation-first, always.
+              No prices on this page. Pricing is conversation-first.
             </p>
+            <!-- Capacity ticker: mirror Overture.astro -->
+            <p class="mt-4 font-mono text-[11px] uppercase tracking-[0.2em] text-ink-muted leading-relaxed">
+              <span class="text-copper">&#x25CF;</span> Booking for Q2 2026 &middot; 2 of 3 slots remain &middot; Q3 availability opens June 15
+            </p>
+          </div>
+        </div>
+
+        <!-- Stats strip: echoes the Overture footer -->
+        <div class="mt-12 md:mt-16 pt-8 border-t border-rule" data-reveal>
+          <div class="grid grid-cols-2 md:grid-cols-4 gap-6 md:gap-10">
+            {stats.map((s, idx) => (
+              <div>
+                <p class="font-mono text-[10px] uppercase tracking-[0.2em] text-copper mb-2 tabular">0{idx + 1}</p>
+                <p class="font-display text-4xl md:text-5xl text-ink leading-none tabular mb-2">{s.value}</p>
+                <p class="text-ink-muted text-xs md:text-sm leading-snug">{s.label}</p>
+              </div>
+            ))}
           </div>
         </div>
       </div>
@@ -51,28 +84,96 @@ import ServicesIndex, { disciplines, totalServices } from "../components/Service
       </div>
     </nav>
 
-    <!-- Disciplines + tiles -->
-    <ServicesIndex />
+    <!-- Disciplines + tiles, with a sage interlude between III and IV -->
+    <ServicesIndex beforeId="fda-regulatory">
+      <div slot="interlude" class="bg-sage text-paper py-14 md:py-20 border-y border-rule">
+        <div class="max-w-6xl mx-auto px-6 md:px-10">
+          <div class="grid md:grid-cols-12 gap-10 md:gap-14 items-center" data-reveal>
+            <div class="md:col-span-7">
+              <p class="small-caps text-copper mb-4">An editorial aside</p>
+              <p class="font-display-italic text-2xl md:text-3xl text-paper leading-[1.25]">
+                Nineteen services, five disciplines. Every one of them is a specific bleed I've personally staunched at PwC, Immunovant, or Ascend. No upsell, no filler.
+              </p>
+            </div>
+            <div class="md:col-span-5 md:border-l md:border-paper/20 md:pl-10">
+              <p class="small-caps text-paper/60 mb-3">Not sure which service?</p>
+              <p class="text-paper/85 text-base leading-relaxed mb-6">
+                Start with Tier 01: the 2-week Executive Office Audit tells you which services you actually need, in what order, with estimated effort.
+              </p>
+              <a
+                href={CALENDLY_URL}
+                target="_blank"
+                rel="noopener"
+                class="group inline-flex items-center gap-3 bg-copper text-paper px-6 py-3 rounded-full text-sm font-medium hover:bg-paper hover:text-ink transition-colors"
+              >
+                <span>Book the 20-minute intro call</span>
+                <svg class="w-4 h-4 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </ServicesIndex>
 
-    <!-- Closing CTA -->
-    <section class="bg-ink text-paper py-16 md:py-24">
-      <div class="max-w-3xl mx-auto px-6 md:px-10 text-center" data-reveal>
-        <p class="small-caps text-copper mb-5">Ready to talk</p>
-        <h2 class="font-display text-4xl md:text-5xl text-paper leading-[0.95] mb-6">
-          Tell me what's <span class="italic font-display-italic">actually</span> breaking.
-        </h2>
-        <p class="text-paper/70 text-base md:text-lg leading-relaxed mb-8">
-          A 20-minute intro call, free, usually inside 48 hours of your first reach-out. Even if we don't end up working together, you'll leave with a clearer picture of what's worth fixing first.
-        </p>
-        <a
-          href="https://calendly.com/lmartinlapc/intro-call"
-          target="_blank"
-          rel="noopener"
-          class="inline-flex items-center gap-3 bg-copper text-paper px-7 py-4 rounded-full text-sm font-medium hover:bg-paper hover:text-ink transition-colors group"
-        >
-          <span>Book a 20-minute intro call</span>
-          <svg class="w-4 h-4 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
-        </a>
+    <!-- Closing CTA: mirrors Contact.astro -->
+    <section id="contact" class="bg-ink text-paper py-16 md:py-24 relative overflow-hidden">
+      <div class="max-w-6xl mx-auto px-6 md:px-10">
+        <div class="max-w-4xl mx-auto">
+          <p class="small-caps text-copper mb-5 text-center" data-reveal>The invitation</p>
+
+          <h2 class="font-display text-[9vw] md:text-[5.5rem] lg:text-[6.5rem] text-paper leading-[0.95] text-center mb-8 md:mb-10" data-reveal>
+            Let's talk <span class="italic font-display-italic text-copper">shop</span>.
+          </h2>
+
+          <p class="text-paper/70 text-lg md:text-xl leading-relaxed text-center max-w-2xl mx-auto mb-10 md:mb-12" data-reveal>
+            If one of the nineteen services above reads like a mirror, the next step is a 20-minute call. Tell me what's actually breaking at your executive office and what a good outcome looks like in the first 90 days.
+          </p>
+
+          <div class="grid md:grid-cols-2 gap-6 md:gap-8 mb-10" data-reveal>
+            <a
+              href={CALENDLY_URL}
+              target="_blank"
+              rel="noopener"
+              class="group bg-copper text-paper p-8 md:p-10 rounded-sm hover:bg-paper hover:text-ink transition-colors flex flex-col"
+            >
+              <div class="flex items-center justify-between mb-6">
+                <span class="small-caps text-paper/60 group-hover:text-ink/60">Primary</span>
+                <svg class="w-5 h-5 text-paper/60 group-hover:text-ink group-hover:translate-x-1 transition-all" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
+              </div>
+              <p class="font-display text-3xl md:text-4xl text-paper group-hover:text-ink leading-tight mb-4">Book a 20-minute intro call</p>
+              <p class="font-mono text-sm text-paper/80 group-hover:text-ink/80 tabular mb-2">Calendly &middot; direct booking</p>
+              <p class="text-paper/60 group-hover:text-ink/60 text-sm mt-auto pt-6">Free. Usually inside 48 hours.</p>
+            </a>
+
+            <a
+              href={mailto}
+              class="group border-2 border-paper/30 p-8 md:p-10 rounded-sm hover:border-copper transition-colors flex flex-col"
+            >
+              <div class="flex items-center justify-between mb-6">
+                <span class="small-caps text-paper/60">Or</span>
+                <svg class="w-5 h-5 text-paper/60 group-hover:text-copper group-hover:translate-x-1 transition-all" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
+              </div>
+              <p class="font-display text-3xl md:text-4xl text-paper leading-tight mb-4">Email me directly</p>
+              <p class="font-mono text-sm text-paper/80 tabular mb-2">lmartinlapc@gmail.com</p>
+              <p class="text-paper/60 text-sm mt-auto pt-6">Reply within one business day.</p>
+            </a>
+          </div>
+
+          <!-- Tertiary link to the brief -->
+          <p class="text-center mb-12" data-reveal>
+            <a href={`${base}capability-brief`} class="inline-flex items-center gap-2 text-paper/70 hover:text-copper text-sm transition-colors">
+              <span class="small-caps">Or read the full capability brief</span>
+              <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
+            </a>
+          </p>
+
+          <!-- Closing editorial ornament -->
+          <div class="flex items-center gap-6 justify-center pt-10 border-t border-paper/15" data-reveal>
+            <div class="w-12 h-px bg-copper"></div>
+            <span class="font-display-italic text-2xl text-copper tracking-wide">fin.</span>
+            <div class="w-12 h-px bg-copper"></div>
+          </div>
+        </div>
       </div>
     </section>
   </main>
