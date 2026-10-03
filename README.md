@@ -25,6 +25,8 @@ The simplified one-page site, built in October 2026 from Leigh-Ann's outline: he
 
 Both use the same `BOOK_CALL_URL` constant at the top of their page file. It currently points at Calendly; swap it for the Google intake form when that's ready.
 
+**Heading picker.** Both pages have a floating "Heading 1 / 2" pill at the bottom so Leigh-Ann can flip between candidate hero headings. The candidates (title + lead paragraph) live in `src/data/headings.ts`; the pill is `src/components/HeadingSwitcher.astro`. Append `?heading=2` to a URL to open a page on a given heading. Once she's chosen, delete the unused entry, remove the `<HeadingSwitcher>` from both pages and the `data-heading-*` hooks in their heroes.
+
 ---
 
 ## 2. Previous site (editorial)
@@ -110,7 +112,10 @@ src/
   components/
     editorial/                   sections of the previous site (Masthead, Overture, TwoPaths, …)
     mockups/VariantSwitcher.astro
-  data/pull-quotes.ts            anonymised testimonials used by the editorial pages
+    HeadingSwitcher.astro        floating picker for the candidate hero headings on / and /new
+  data/
+    headings.ts                  candidate hero headings (title + lead paragraph) for / and /new
+    pull-quotes.ts               anonymised testimonials used by the editorial pages
 public/portrait.jpg              the one portrait every version uses
 docs/screenshots/                header (PNG) + full-page (JPG) shots of every page
 ```
