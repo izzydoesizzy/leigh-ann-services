@@ -1,0 +1,326 @@
+---
+// /new: the simplified site in the "Teal & Clay" theme (Variation C from the
+// leigh-ann-ea hero explorations). Same structure and copy as the homepage,
+// one action (Book a call), no pricing on the page.
+import NewLayout from "../layouts/NewLayout.astro";
+
+const base = import.meta.env.BASE_URL;
+
+// TODO: swap for the Google intake form URL once it's ready. Every "Book a call" button uses this.
+const BOOK_CALL_URL = "https://calendly.com/leighannmartin/30min";
+
+const pills = [
+  "12+ years in executive operations",
+  "Startups to public companies",
+  "Google Workspace",
+  "Remote · NYC tri-state",
+];
+
+const skills = [
+  { name: "Calendar management", note: "Meetings, priorities and time protected for the work that matters." },
+  { name: "Inbox management", note: "Triage, drafting and nothing important slipping through." },
+  { name: "Project management", note: "Timelines, owners and next steps everyone can see." },
+  { name: "Invoices, AR and AP tracking", note: "Know what's been billed, what's been paid and what's outstanding." },
+  { name: "Client and event folders", note: "One organized place for every client, project and event." },
+  { name: "Contracts and follow-ups", note: "Agreements tracked, renewals flagged, loops closed." },
+  { name: "Operations and systems", note: "Simple processes that keep the business running without you in every detail." },
+  { name: "Google Workspace workflows", note: "Gmail, Calendar, Drive, Docs and Sheets set up to work together." },
+];
+
+const fit = [
+  "Small and medium-sized businesses",
+  "Owners and leaders who need their operations organized",
+  "Teams that want steady support without hiring a full-time person",
+  "Businesses that need reliable help behind the scenes",
+];
+
+const industries = [
+  "Biotech and life sciences",
+  "Finance and professional services",
+  "Research and consulting",
+  "Public-company operations",
+  "Energy",
+  "Food and hospitality",
+];
+
+const cases = [
+  {
+    label: "A growing company with no admin structure",
+    problem: "A small, fast-growing biotech team was adding people quickly. There was no executive support function and no shared way of doing things.",
+    did: "I built the support function from scratch: calendars, onboarding, shared processes and the day-to-day systems for five senior leaders.",
+    changed: "Five senior leaders were supported by one organized system, and new administrative hires got up to speed 20% faster.",
+    shows: "Building systems and structure from zero",
+  },
+  {
+    label: "Recurring meetings that kept getting scrambled",
+    problem: "Important quarterly meetings had nothing on the calendar. Every cycle started from scratch and depended on last-minute chasing.",
+    did: "I set up a simple recurring schedule, mapped it against the company's busiest weeks, and confirmed everyone's availability well ahead of time.",
+    changed: "A full year of meetings was planned 12 months in advance, and prep became routine instead of a fire drill.",
+    shows: "Calendar, coordination and follow-up",
+  },
+];
+
+const ways = [
+  {
+    name: "Done by you",
+    summary: "You run it. I set you up.",
+    body: "I review how things work today, then hand you simple systems, templates and a clear plan you can keep running on your own.",
+  },
+  {
+    name: "Done with you",
+    summary: "You work on it together.",
+    body: "Regular check-ins and hands-on support while you build better habits and processes side by side.",
+  },
+  {
+    name: "Done for you",
+    summary: "I take it off your plate.",
+    body: "I handle the day-to-day operations work directly, so you can focus on running the business.",
+  },
+];
+---
+
+<NewLayout title="Leigh-Ann Martin | Executive operations support" noindex={true}>
+  <!-- Header: name + the one action -->
+  <header class="sticky top-0 z-50 bg-ivory/90 backdrop-blur-md border-b border-line">
+    <nav class="max-w-5xl mx-auto px-6 h-[4.5rem] flex items-center justify-between">
+      <a href={`${base}new`} class="font-serif text-xl text-espresso">Leigh-Ann Martin</a>
+      <div class="flex items-center gap-8">
+        <a href="#about" class="hidden sm:inline text-[0.95rem] font-medium text-stone hover:text-espresso transition-colors">About</a>
+        <a href="#services" class="hidden sm:inline text-[0.95rem] font-medium text-stone hover:text-espresso transition-colors">What I do</a>
+        <a href="#packages" class="hidden sm:inline text-[0.95rem] font-medium text-stone hover:text-espresso transition-colors">Work with me</a>
+        <a href={BOOK_CALL_URL} target="_blank" rel="noopener" class="btn btn-primary text-sm">Book a call</a>
+      </div>
+    </nav>
+  </header>
+
+  <main>
+    <!-- 1. Hero -->
+    <section class="relative overflow-hidden bg-ivory">
+      <div class="hero-block" aria-hidden="true"><span class="ghost-circle"></span></div>
+      <div class="relative max-w-5xl mx-auto px-6 pt-14 pb-16 md:py-24 grid md:grid-cols-12 gap-12 items-center">
+        <div class="md:col-span-7" data-reveal>
+          <p class="eyebrow">Fractional executive operations &middot; Small &amp; growing businesses</p>
+          <h1 class="mt-5 text-[2.3rem] md:text-[3.4rem] leading-[1.12] text-espresso">
+            The work behind the work, done
+            <span class="flourish">beautifully<svg viewBox="0 0 220 14" preserveAspectRatio="none" aria-hidden="true"><path d="M4 10 C 60 2, 160 2, 216 8" fill="none" stroke="#C0563B" stroke-width="5" stroke-linecap="round"/></svg></span>.
+          </h1>
+          <p class="mt-6 accent-line text-teal text-xl md:text-2xl">
+            Order, clarity, and calm &mdash; for leaders with too much on their plate.
+          </p>
+          <p class="mt-6 text-stone text-lg leading-relaxed max-w-xl">
+            I'm Leigh-Ann. I help business owners get their calendars, inboxes, projects and paperwork into systems that run smoothly, so you can focus on the work only you can do.
+          </p>
+          <div class="mt-9 flex flex-wrap gap-4">
+            <a href={BOOK_CALL_URL} target="_blank" rel="noopener" class="btn btn-primary">Book a call</a>
+            <a href="#about" class="btn btn-outline">More about me</a>
+          </div>
+          <ul class="mt-9 flex flex-wrap gap-2.5 list-none p-0">
+            {pills.map((p) => <li class="pill">{p}</li>)}
+          </ul>
+        </div>
+        <div class="md:col-span-5 flex justify-center md:justify-end hero-media-mobile" data-reveal>
+          <img
+            src={`${base}portrait.jpg`}
+            alt="Leigh-Ann Martin"
+            width="330"
+            height="430"
+            class="img-arch w-[min(19.5rem,70vw)] aspect-[33/43]"
+            style="object-position: center top;"
+          />
+        </div>
+      </div>
+    </section>
+
+    <!-- 2. About -->
+    <section id="about" class="bg-paper border-y border-line scroll-mt-20">
+      <div class="max-w-3xl mx-auto px-6 py-20 md:py-24" data-reveal>
+        <p class="eyebrow">Hi, I'm Leigh-Ann</p>
+        <h2 class="mt-4 text-3xl md:text-4xl text-espresso leading-tight">The steady hand behind the scenes.</h2>
+        <div class="mt-7 space-y-5 text-[1.05rem] leading-[1.8] text-ink/90">
+          <p>
+            I've spent more than 12 years in operations and executive support, from growing startups to public companies. Along the way I've built support functions from scratch, kept busy leadership teams organized, and turned messy processes into simple ones that people actually use.
+          </p>
+          <p>
+            I work quietly and carefully. I pay attention to the details, I follow through, and I like leaving things more organized than I found them. You can count on me to keep things moving without needing to be reminded.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- 3. Core skills -->
+    <section id="services" class="bg-ivory scroll-mt-20">
+      <div class="max-w-5xl mx-auto px-6 py-20 md:py-24">
+        <div class="max-w-2xl" data-reveal>
+          <p class="eyebrow">What I do</p>
+          <h2 class="mt-4 text-3xl md:text-4xl text-espresso leading-tight">Core support</h2>
+          <p class="mt-4 text-stone text-lg leading-relaxed">The everyday operations work that keeps a business organized.</p>
+        </div>
+        <ul class="mt-12 grid sm:grid-cols-2 gap-5 list-none p-0" data-reveal>
+          {skills.map((s) => (
+            <li class="card p-6 flex gap-4">
+              <span class="shrink-0 mt-1.5 w-2.5 h-2.5 rounded-full bg-teal" aria-hidden="true"></span>
+              <div>
+                <p class="font-semibold text-espresso">{s.name}</p>
+                <p class="mt-1 text-stone leading-relaxed text-[0.95rem]">{s.note}</p>
+              </div>
+            </li>
+          ))}
+        </ul>
+      </div>
+    </section>
+
+    <!-- 4 + 5. Who I work with / Experience -->
+    <section class="bg-linen">
+      <div class="max-w-5xl mx-auto px-6 py-20 md:py-24 grid md:grid-cols-2 gap-14">
+        <div data-reveal>
+          <p class="eyebrow">Who I work with</p>
+          <h2 class="mt-4 text-3xl md:text-4xl text-espresso leading-tight">A good fit if you need structure.</h2>
+          <ul class="mt-7 space-y-3 list-none p-0">
+            {fit.map((f) => (
+              <li class="flex gap-3 text-ink leading-relaxed">
+                <span class="text-teal mt-0.5 font-semibold">&#x2713;</span>
+                <span>{f}</span>
+              </li>
+            ))}
+          </ul>
+          <p class="mt-7 accent-line text-teal text-lg">
+            I'm not trying to be everything to everyone.
+          </p>
+          <p class="mt-2 text-stone leading-relaxed">
+            I do my best work for businesses that need systems, organization and dependable operational support.
+          </p>
+        </div>
+        <div data-reveal>
+          <p class="eyebrow">Experience</p>
+          <h2 class="mt-4 text-3xl md:text-4xl text-espresso leading-tight">Many kinds of businesses.</h2>
+          <p class="mt-7 text-ink leading-relaxed">
+            I've supported teams in very different settings, from small startups to established companies. Here are some of the industries I've worked in:
+          </p>
+          <ul class="mt-6 flex flex-wrap gap-2.5 list-none p-0">
+            {industries.map((i) => <li class="pill">{i}</li>)}
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- 6. Case studies -->
+    <section id="work" class="bg-ivory">
+      <div class="max-w-5xl mx-auto px-6 py-20 md:py-24">
+        <div class="max-w-2xl" data-reveal>
+          <p class="eyebrow">Examples</p>
+          <h2 class="mt-4 text-3xl md:text-4xl text-espresso leading-tight">What this looks like in practice</h2>
+        </div>
+        <div class="mt-12 grid md:grid-cols-2 gap-6">
+          {cases.map((c) => (
+            <article class="card p-8" data-reveal>
+              <h3 class="text-2xl text-espresso leading-tight">{c.label}</h3>
+              <dl class="mt-6 space-y-5">
+                <div>
+                  <dt class="eyebrow text-stone">The problem</dt>
+                  <dd class="mt-1 text-ink leading-relaxed">{c.problem}</dd>
+                </div>
+                <div>
+                  <dt class="eyebrow text-stone">What I did</dt>
+                  <dd class="mt-1 text-ink leading-relaxed">{c.did}</dd>
+                </div>
+                <div>
+                  <dt class="eyebrow text-stone">What changed</dt>
+                  <dd class="mt-1 text-ink leading-relaxed">{c.changed}</dd>
+                </div>
+              </dl>
+              <p class="mt-6 pt-5 border-t border-line accent-line text-teal">{c.shows}</p>
+            </article>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- 7 + 8. How we can work together / Engagement terms -->
+    <section id="packages" class="relative overflow-hidden bg-sage scroll-mt-20">
+      <span class="absolute -top-24 -left-24 w-80 h-80 rounded-full border border-teal/20" aria-hidden="true"></span>
+      <div class="relative max-w-5xl mx-auto px-6 py-20 md:py-24">
+        <div class="max-w-2xl" data-reveal>
+          <p class="eyebrow">How we can work together</p>
+          <h2 class="mt-4 text-3xl md:text-4xl text-espresso leading-tight">Three ways to work together</h2>
+          <p class="mt-4 text-ink text-lg leading-relaxed">
+            Choose how hands-on you want me to be. We'll shape the details together on a call.
+          </p>
+        </div>
+        <div class="mt-12 grid md:grid-cols-3 gap-6" data-reveal>
+          {ways.map((w) => (
+            <article class="card p-8">
+              <h3 class="text-2xl text-espresso">{w.name}</h3>
+              <p class="mt-2 accent-line text-teal text-lg">{w.summary}</p>
+              <p class="mt-4 text-stone leading-relaxed text-[0.95rem]">{w.body}</p>
+            </article>
+          ))}
+        </div>
+        <div class="mt-14 pt-10 border-t border-teal/20 grid md:grid-cols-12 gap-6" data-reveal>
+          <p class="md:col-span-4 eyebrow">How engagements work</p>
+          <div class="md:col-span-8 space-y-4 text-ink leading-relaxed">
+            <p>
+              I like to start with a <strong class="font-semibold text-espresso">1 to 3 month engagement</strong>. It gives us both time to see if it's a good fit and keeps the scope clear from day one.
+            </p>
+            <p>
+              Longer-term support is available when the project calls for it. This is focused, part-time support with a clear scope, not full-time availability.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 9. Main CTA -->
+    <section id="contact" class="bg-linen">
+      <div class="max-w-2xl mx-auto px-6 py-24 md:py-28 text-center" data-reveal>
+        <h2 class="text-3xl md:text-5xl text-espresso leading-tight">Let's see if we're a good fit.</h2>
+        <p class="mt-5 text-stone text-lg leading-relaxed max-w-lg mx-auto">
+          Book a call and tell me a bit about your business and where you need support. A short form will help us make the most of our time together.
+        </p>
+        <div class="mt-8">
+          <a href={BOOK_CALL_URL} target="_blank" rel="noopener" class="btn btn-primary">Book a call</a>
+        </div>
+        <p class="mt-6 accent-line text-teal text-lg">I work with a small number of clients at a time.</p>
+      </div>
+    </section>
+  </main>
+
+  <footer class="bg-espresso text-ivory/80">
+    <div class="max-w-5xl mx-auto px-6 py-12 grid gap-8 md:grid-cols-[1.6fr_1fr]">
+      <div>
+        <p class="font-serif text-2xl text-ivory">Leigh-Ann Martin</p>
+        <p class="mt-3 text-sm text-ivory/55 leading-relaxed max-w-xs">
+          Fractional executive operations support for small and growing businesses.
+        </p>
+      </div>
+      <div class="text-sm">
+        <p class="font-medium text-ivory mb-3">Elsewhere</p>
+        <ul class="space-y-2 text-ivory/60 list-none p-0">
+          <li><a href="https://www.linkedin.com/in/leigh-ann-martin" target="_blank" rel="noopener" class="hover:text-ivory transition-colors">LinkedIn</a></li>
+          <li><a href="mailto:lmartinlapc@gmail.com" class="hover:text-ivory transition-colors">lmartinlapc@gmail.com</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="border-t border-ivory/10">
+      <div class="max-w-5xl mx-auto px-6 py-5 text-xs text-ivory/40 flex flex-col sm:flex-row justify-between gap-2">
+        <p>&copy; {new Date().getFullYear()} Leigh-Ann Martin. All rights reserved.</p>
+        <p>New York tri-state area &middot; Working with clients remotely</p>
+      </div>
+    </div>
+  </footer>
+</NewLayout>
+
+<script>
+  const revealEls = document.querySelectorAll("[data-reveal]");
+  const observer = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("revealed");
+          observer.unobserve(entry.target);
+        }
+      });
+    },
+    { threshold: 0.08, rootMargin: "0px 0px -60px 0px" }
+  );
+  revealEls.forEach((el) => observer.observe(el));
+</script>
