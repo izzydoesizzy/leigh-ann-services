@@ -3,11 +3,19 @@
 // leigh-ann-ea hero explorations). Same structure and copy as the homepage,
 // one action (Book a call), no pricing on the page.
 import NewLayout from "../layouts/TealLayout.astro";
+import HeadingSwitcher from "../components/HeadingSwitcher.astro";
+import { headings } from "../data/headings";
 
 const base = import.meta.env.BASE_URL;
 
 // TODO: swap for the Google intake form URL once it's ready. Every "Book a call" button uses this.
 const BOOK_CALL_URL = "https://calendly.com/leighannmartin/30min";
+
+// The flourish underlines the last word of the heading; trailing punctuation sits outside it.
+const headingMatch = headings[0].title.match(/^(.*?)\s*(\S+?)([.!?]*)$/);
+const headingLead = headingMatch ? headingMatch[1] + " " : "";
+const headingLast = headingMatch ? headingMatch[2] : headings[0].title;
+const headingTail = headingMatch ? headingMatch[3] : "";
 
 const pills = [
   "12+ years in executive operations",
@@ -101,15 +109,12 @@ const ways = [
         <div class="md:col-span-7" data-reveal>
           <p class="eyebrow">Fractional executive operations &middot; Small &amp; growing businesses</p>
           <h1 class="mt-5 text-[2.3rem] md:text-[3.4rem] leading-[1.12] text-espresso">
-            The work behind the work, done
-            <span class="flourish">beautifully<svg viewBox="0 0 220 14" preserveAspectRatio="none" aria-hidden="true"><path d="M4 10 C 60 2, 160 2, 216 8" fill="none" stroke="#C0563B" stroke-width="5" stroke-linecap="round"/></svg></span>.
+            <span data-heading-lead>{headingLead}</span><span class="flourish"><span data-heading-last>{headingLast}</span><svg viewBox="0 0 220 14" preserveAspectRatio="none" aria-hidden="true"><path d="M4 10 C 60 2, 160 2, 216 8" fill="none" stroke="#C0563B" stroke-width="5" stroke-linecap="round"/></svg></span><span data-heading-tail>{headingTail}</span>
           </h1>
           <p class="mt-6 accent-line text-teal text-xl md:text-2xl">
             Order, clarity, and calm &mdash; for leaders with too much on their plate.
           </p>
-          <p class="mt-6 text-stone text-lg leading-relaxed max-w-xl">
-            I'm Leigh-Ann. I help business owners get their calendars, inboxes, projects and paperwork into systems that run smoothly, so you can focus on the work only you can do.
-          </p>
+          <p class="mt-6 text-stone text-lg leading-relaxed max-w-xl" data-heading-sub>{headings[0].sub}</p>
           <div class="mt-9 flex flex-wrap gap-4">
             <a href={BOOK_CALL_URL} target="_blank" rel="noopener" class="btn btn-primary">Book a call</a>
             <a href="#about" class="btn btn-outline">More about me</a>
@@ -307,6 +312,8 @@ const ways = [
       </div>
     </div>
   </footer>
+
+  <HeadingSwitcher headings={headings} theme="dark" />
 </NewLayout>
 
 <script>

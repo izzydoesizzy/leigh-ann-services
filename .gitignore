@@ -22,6 +22,9 @@ pnpm-debug.log*
 # astro
 .astro/
 
+# og image explorations (node scripts/og/render.mjs --all)
+scripts/og/out/
+
 # editor
 .vscode/*
 !.vscode/extensions.json

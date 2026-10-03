@@ -1,0 +1,82 @@
+---
+// Floating picker so Leigh-Ann can flip between candidate hero headings on the
+// live site. Remove it (and the data-heading-* hooks in the hero) once she's chosen.
+// The choice is kept in localStorage and can be preset with ?heading=2.
+interface Heading {
+  title: string;
+  sub: string;
+}
+interface Props {
+  headings: Heading[];
+  theme?: "light" | "dark";
+}
+const { headings, theme = "light" } = Astro.props;
+
+const bg = theme === "dark" ? "bg-black/80 text-white/90 border-white/15" : "bg-white/90 text-black border-black/10";
+const label = theme === "dark" ? "text-white/40" : "text-black/40";
+---
+
+<div
+  id="heading-switcher"
+  data-headings={JSON.stringify(headings)}
+  class={`fixed bottom-4 left-1/2 -translate-x-1/2 z-[100] ${bg} backdrop-blur-md border rounded-full shadow-lg px-2 py-1.5 flex items-center gap-1`}
+>
+  <span class={`text-[10px] uppercase tracking-[0.2em] px-3 hidden sm:inline ${label}`}>Heading</span>
+  {headings.map((_, i) => (
+    <button type="button" data-heading-pick={i} class="text-[11px] font-medium px-3 py-1.5 rounded-full whitespace-nowrap transition-colors">
+      {i + 1}
+    </button>
+  ))}
+</div>
+
+<script>
+  const root = document.getElementById("heading-switcher");
+  if (root) {
+    const headings = JSON.parse(root.dataset.headings ?? "[]") as { title: string; sub: string }[];
+    const dark = root.classList.contains("bg-black/80");
+    const active = dark ? ["bg-white/15", "text-white"] : ["bg-black", "text-white"];
+    const inactive = dark ? ["text-white/60", "hover:text-white"] : ["text-black/60", "hover:text-black"];
+    const buttons = Array.from(root.querySelectorAll<HTMLButtonElement>("[data-heading-pick]"));
+    const KEY = "heading-choice";
+
+    const apply = (i: number) => {
+      const h = headings[i];
+      if (!h) return;
+      const lead = document.querySelector("[data-heading-lead]");
+      const last = document.querySelector("[data-heading-last]");
+      const tail = document.querySelector("[data-heading-tail]");
+      const title = document.querySelector("[data-heading-title]");
+      if (lead && last && tail) {
+        // Flourish variant: underline the last word, keep trailing punctuation outside it.
+        const m = h.title.match(/^(.*?)\s*(\S+?)([.!?]*)$/);
+        lead.textContent = m ? m[1] + " " : "";
+        last.textContent = m ? m[2] : h.title;
+        tail.textContent = m ? m[3] : "";
+      } else if (title) {
+        title.textContent = h.title;
+      }
+      const sub = document.querySelector("[data-heading-sub]");
+      if (sub) sub.textContent = h.sub;
+      buttons.forEach((b, j) => {
+        b.classList.remove(...active, ...inactive);
+        b.classList.add(...(j === i ? active : inactive));
+      });
+      try { localStorage.setItem(KEY, String(i)); } catch {}
+    };
+
+    buttons.forEach((b, i) => b.addEventListener("click", () => apply(i)));
+
+    const params = new URLSearchParams(location.search);
+    const fromUrl = Number(params.get("heading"));
+    let start = 0;
+    if (fromUrl >= 1 && fromUrl <= headings.length) {
+      start = fromUrl - 1;
+      params.delete("heading");
+      const qs = params.toString();
+      history.replaceState(null, "", location.pathname + (qs ? `?${qs}` : "") + location.hash);
+    } else {
+      try { start = Number(localStorage.getItem(KEY)) || 0; } catch {}
+    }
+    apply(Math.min(start, headings.length - 1));
+  }
+</script>
