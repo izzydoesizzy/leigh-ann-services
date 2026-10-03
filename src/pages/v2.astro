@@ -1,230 +1,300 @@
 ---
+// v2: the simplified site. One page, one action (Book a call).
+// No pricing here on purpose. Pricing, budget and fit screening live in the intake form.
 import Layout from "../layouts/Layout.astro";
-import VariantSwitcher from "../components/VariantSwitcher.astro";
 
 const base = import.meta.env.BASE_URL;
 
-const icps = [
-  { title: "The pre-IPO founder", pain: "EA function is one person, and it's cracking." },
-  { title: "The public-company CEO", pain: "Earnings week consumes the entire company." },
-  { title: "The Chief of Staff", pain: "You're the executive ops backstop, and it's eating strategy time." },
+// TODO: swap for the Google intake form URL once it's ready. Every "Book a call" button uses this.
+const BOOK_CALL_URL = "https://calendly.com/leighannmartin/30min";
+
+const skills = [
+  { name: "Calendar management", note: "Meetings, priorities and time protected for the work that matters." },
+  { name: "Inbox management", note: "Triage, drafting and nothing important slipping through." },
+  { name: "Project management", note: "Timelines, owners and next steps everyone can see." },
+  { name: "Invoices, AR and AP tracking", note: "Know what's been billed, what's been paid and what's outstanding." },
+  { name: "Client and event folders", note: "One organized place for every client, project and event." },
+  { name: "Contracts and follow-ups", note: "Agreements tracked, renewals flagged, loops closed." },
+  { name: "Operations and systems", note: "Simple processes that keep the business running without you in every detail." },
+  { name: "Google Workspace workflows", note: "Gmail, Calendar, Drive, Docs and Sheets set up to work together." },
+];
+
+const fit = [
+  "Small and medium-sized businesses",
+  "Owners and leaders who need their operations organized",
+  "Teams that want steady support without hiring a full-time person",
+  "Businesses that need reliable help behind the scenes",
+];
+
+const industries = [
+  "Biotech and life sciences",
+  "Finance and professional services",
+  "Research and consulting",
+  "Public-company operations",
+  "Energy",
+  "Food and hospitality",
 ];
 
 const cases = [
-  { company: "Ascend Wellness Holdings", metric: "12 months", label: "board calendar planned ahead", body: "Quarterly board cadence from zero. Full 2026 board and committee calendar locked in Sept 2025." },
-  { company: "Immunovant", metric: "5", label: "C-suite execs as sole EA", body: "Employee #17 to 19. Sole EA for CEO, GC, CMO, CFO, CTDO by March 2020. Built the function from zero." },
-  { company: "Ascend Wellness Holdings", metric: "6 to 8 wks", label: "earnings prep cadence", body: "Rebuilt earnings-call prep in July 2025. Aligned IR, Legal, Finance, PR, C-suite on shared calendar." },
+  {
+    label: "A growing company with no admin structure",
+    problem: "A small, fast-growing biotech team was adding people quickly. There was no executive support function and no shared way of doing things.",
+    did: "I built the support function from scratch: calendars, onboarding, shared processes and the day-to-day systems for five senior leaders.",
+    changed: "Five senior leaders were supported by one organized system, and new administrative hires got up to speed 20% faster.",
+    shows: "Building systems and structure from zero",
+  },
+  {
+    label: "Recurring meetings that kept getting scrambled",
+    problem: "Important quarterly meetings had nothing on the calendar. Every cycle started from scratch and depended on last-minute chasing.",
+    did: "I set up a simple recurring schedule, mapped it against the company's busiest weeks, and confirmed everyone's availability well ahead of time.",
+    changed: "A full year of meetings was planned 12 months in advance, and prep became routine instead of a fire drill.",
+    shows: "Calendar, coordination and follow-up",
+  },
 ];
 
-const services = [
-  { name: "Board cadence setup", kicker: "Board & Governance" },
-  { name: "Earnings prep system", kicker: "Investor Relations" },
-  { name: "EA function build-out", kicker: "EA Function" },
-  { name: "FDA meeting readiness", kicker: "FDA & Regulatory" },
-  { name: "M&A meeting facilitation", kicker: "M&A & Strategic" },
-  { name: "Investor CRM setup", kicker: "Investor Relations" },
-];
-
-const stats = [
-  { value: "12+", label: "years C-suite" },
-  { value: "200+", label: "stakeholders" },
-  { value: "98%", label: "satisfaction" },
-  { value: "25%", label: "efficiency lift" },
+const ways = [
+  {
+    name: "Done by you",
+    summary: "You run it. I set you up.",
+    body: "I review how things work today, then hand you simple systems, templates and a clear plan you can keep running on your own.",
+  },
+  {
+    name: "Done with you",
+    summary: "You work on it together.",
+    body: "Regular check-ins and hands-on support while you build better habits and processes side by side.",
+  },
+  {
+    name: "Done for you",
+    summary: "I take it off your plate.",
+    body: "I handle the day-to-day operations work directly, so you can focus on running the business.",
+  },
 ];
 ---
 
-<Layout title="v2 Minimalist · Leigh-Ann Martin" bodyClass="bg-white text-neutral-900 antialiased" noindex={true}>
-  <!-- v2 custom styles -->
-  <style is:global>
-    .v2 { font-family: "Inter", system-ui, sans-serif; }
-    .v2-display { font-family: "Inter", system-ui, sans-serif; letter-spacing: -0.035em; }
-    .v2-mono { font-family: "JetBrains Mono", ui-monospace, monospace; }
-    .v2-accent { color: #1D4ED8; }
-    .v2-accent-bg { background: #1D4ED8; }
-    .v2-rule { border-color: #E5E5E5; }
-  </style>
+<Layout
+  title="Leigh-Ann Martin | Executive operations support"
+  description="Leigh-Ann Martin provides clear, practical executive operations support for small and growing businesses. Simple packages, a human approach, and a straightforward way to book a call."
+  noindex={true}
+>
+  <!-- Header: name + the one action -->
+  <header class="sticky top-0 z-50 bg-paper/90 backdrop-blur-md border-b border-rule">
+    <div class="max-w-5xl mx-auto px-6 h-16 flex items-center justify-between">
+      <a href={`${base}v2`} class="font-display text-xl text-ink">Leigh-Ann Martin</a>
+      <a
+        href={BOOK_CALL_URL}
+        target="_blank"
+        rel="noopener"
+        class="text-sm font-medium bg-ink text-paper px-5 py-2.5 rounded-full hover:bg-copper transition-colors"
+      >Book a call</a>
+    </div>
+  </header>
 
-  <div class="v2 min-h-screen bg-white">
-    <!-- Navbar -->
-    <header class="sticky top-0 z-40 bg-white/90 backdrop-blur-md border-b v2-rule">
-      <div class="max-w-6xl mx-auto px-6 lg:px-8 h-14 flex items-center justify-between">
-        <a href={base} class="flex items-center gap-2">
-          <span class="w-6 h-6 rounded-sm v2-accent-bg text-white text-[10px] font-bold flex items-center justify-center">LA</span>
-          <span class="text-sm font-semibold tracking-tight">Leigh-Ann Martin</span>
-        </a>
-        <nav class="hidden md:flex items-center gap-7 text-sm">
-          <a href="#work" class="text-neutral-600 hover:text-neutral-900 transition-colors">Work</a>
-          <a href="#services" class="text-neutral-600 hover:text-neutral-900 transition-colors">Services</a>
-          <a href="#about" class="text-neutral-600 hover:text-neutral-900 transition-colors">About</a>
-          <a href="#contact" class="text-xs font-medium text-white v2-accent-bg px-3.5 py-1.5 rounded-md hover:opacity-90 transition-opacity">Get in touch →</a>
-        </nav>
-      </div>
-    </header>
-
-    <!-- Hero -->
-    <section class="max-w-6xl mx-auto px-6 lg:px-8 pt-20 md:pt-32 pb-20 md:pb-32">
-      <div class="flex items-center gap-2 mb-10">
-        <span class="w-2 h-2 v2-accent-bg rounded-full"></span>
-        <span class="v2-mono text-[11px] uppercase tracking-[0.2em] text-neutral-500">Available · NYC tri-state</span>
-      </div>
-
-      <h1 class="v2-display text-5xl md:text-7xl lg:text-[5.5rem] font-bold leading-[0.95] tracking-[-0.04em] max-w-5xl">
-        The executive office should run on <span class="v2-accent">systems</span>, not heroics.
-      </h1>
-
-      <p class="mt-10 text-lg md:text-xl text-neutral-600 leading-relaxed max-w-2xl">
-        Twelve years rebuilding the three things that break first as executive offices scale: board cadence, investor-relations coordination, and the EA function itself. Pre-IPO biotech, public-company cannabis, Big Four.
-      </p>
-
-      <div class="mt-10 flex flex-wrap gap-3">
-        <a href="#contact" class="v2-accent-bg text-white px-5 py-3 rounded-md text-sm font-medium hover:opacity-90 transition-opacity inline-flex items-center gap-2">
-          Hire me part-time or full-time
-          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
-        </a>
-        <a href="#services" class="border v2-rule text-neutral-900 px-5 py-3 rounded-md text-sm font-medium hover:bg-neutral-50 transition-colors inline-flex items-center gap-2">
-          See fractional services
-        </a>
-      </div>
-
-      <!-- Chef credential strip -->
-      <div class="mt-20 pt-8 border-t v2-rule flex flex-wrap items-center gap-x-6 gap-y-2 v2-mono text-[11px] uppercase tracking-wider text-neutral-500">
-        <span>Also a classically trained chef</span>
-        <span class="text-neutral-300">·</span>
-        <span>New York Times, 2020</span>
-        <span class="text-neutral-300">·</span>
-        <span>Culinary Institute of America workshop leader</span>
-      </div>
-    </section>
-
-    <!-- Stats bar -->
-    <section class="border-y v2-rule bg-neutral-50">
-      <div class="max-w-6xl mx-auto px-6 lg:px-8 py-14 md:py-16 grid grid-cols-2 md:grid-cols-4 gap-8">
-        {stats.map(s => (
-          <div>
-            <div class="v2-display text-4xl md:text-5xl font-bold tracking-[-0.03em]">{s.value}</div>
-            <div class="v2-mono text-[11px] uppercase tracking-wider text-neutral-500 mt-2">{s.label}</div>
-          </div>
-        ))}
-      </div>
-    </section>
-
-    <!-- ICP -->
-    <section class="max-w-6xl mx-auto px-6 lg:px-8 py-20 md:py-28">
-      <div class="mb-12 md:mb-16">
-        <div class="v2-mono text-[11px] uppercase tracking-[0.2em] v2-accent mb-3">01 · Who this is for</div>
-        <h2 class="v2-display text-4xl md:text-5xl font-bold tracking-[-0.035em] max-w-3xl">
-          Three profiles where I do my best work.
-        </h2>
-      </div>
-
-      <div class="grid md:grid-cols-3 gap-5">
-        {icps.map((p, i) => (
-          <div class="border v2-rule rounded-lg p-6 md:p-7 hover:border-neutral-900 transition-colors group">
-            <div class="v2-mono text-[11px] uppercase tracking-wider text-neutral-500 mb-4">0{i+1}</div>
-            <h3 class="v2-display text-xl font-semibold tracking-tight mb-3">{p.title}</h3>
-            <p class="text-neutral-600 leading-relaxed text-[15px]">{p.pain}</p>
-          </div>
-        ))}
-      </div>
-    </section>
-
-    <!-- Case studies -->
-    <section id="work" class="border-t v2-rule bg-neutral-50">
-      <div class="max-w-6xl mx-auto px-6 lg:px-8 py-20 md:py-28">
-        <div class="mb-12 md:mb-16 flex flex-wrap items-end justify-between gap-6">
-          <div>
-            <div class="v2-mono text-[11px] uppercase tracking-[0.2em] v2-accent mb-3">02 · Selected work</div>
-            <h2 class="v2-display text-4xl md:text-5xl font-bold tracking-[-0.035em] max-w-3xl">
-              Three moments, backed by the resume.
-            </h2>
-          </div>
-          <a href={`${base}`} class="v2-mono text-[11px] uppercase tracking-wider v2-accent hover:underline">View all 6 →</a>
+  <main>
+    <!-- 1. Hero -->
+    <section class="px-6 pt-16 pb-20 md:pt-24 md:pb-28">
+      <div class="max-w-5xl mx-auto grid md:grid-cols-12 gap-12 items-center">
+        <div class="md:col-span-7" data-reveal>
+          <p class="small-caps text-copper mb-6">Fractional executive operations</p>
+          <h1 class="font-display text-5xl md:text-6xl text-ink mb-8">
+            Calm, organized operations for small and growing businesses.
+          </h1>
+          <p class="text-lg md:text-xl text-ink-soft leading-relaxed mb-10 max-w-xl">
+            I'm Leigh-Ann. I help business owners get their calendars, inboxes, projects and paperwork into systems that run smoothly, so you can focus on the work only you can do.
+          </p>
+          <a
+            href={BOOK_CALL_URL}
+            target="_blank"
+            rel="noopener"
+            class="inline-flex items-center gap-3 bg-ink text-paper px-7 py-4 rounded-full font-medium hover:bg-copper transition-colors"
+          >
+            Book a call
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
+          </a>
         </div>
+        <div class="md:col-span-5" data-reveal>
+          <img
+            src={`${base}portrait.jpg`}
+            alt="Leigh-Ann Martin"
+            class="w-full aspect-[4/5] object-cover rounded-2xl"
+            style="object-position: center top;"
+          />
+        </div>
+      </div>
+    </section>
 
-        <div class="grid md:grid-cols-3 gap-5">
-          {cases.map(c => (
-            <article class="bg-white border v2-rule rounded-lg p-7 flex flex-col">
-              <div class="v2-mono text-[11px] uppercase tracking-wider text-neutral-500 mb-4">{c.company}</div>
-              <div class="v2-display text-5xl md:text-6xl font-bold tracking-[-0.04em] v2-accent mb-2">{c.metric}</div>
-              <div class="v2-mono text-[11px] uppercase tracking-wider text-neutral-500 mb-5">{c.label}</div>
-              <p class="text-neutral-700 text-[15px] leading-relaxed mt-auto">{c.body}</p>
+    <!-- 2. About -->
+    <section id="about" class="px-6 py-20 bg-paper-soft border-y border-rule">
+      <div class="max-w-3xl mx-auto" data-reveal>
+        <p class="small-caps text-copper mb-4">About</p>
+        <h2 class="font-display text-4xl md:text-5xl text-ink mb-8">The steady hand behind the scenes.</h2>
+        <div class="space-y-5 text-lg text-ink-soft leading-relaxed">
+          <p>
+            I've spent more than 12 years in operations and executive support, from growing startups to public companies. Along the way I've built support functions from scratch, kept busy leadership teams organized, and turned messy processes into simple ones that people actually use.
+          </p>
+          <p>
+            I work quietly and carefully. I pay attention to the details, I follow through, and I like leaving things more organized than I found them. You can count on me to keep things moving without needing to be reminded.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- 3. Core skills -->
+    <section id="services" class="px-6 py-20 md:py-28">
+      <div class="max-w-5xl mx-auto">
+        <div class="max-w-2xl mb-12" data-reveal>
+          <p class="small-caps text-copper mb-4">What I do</p>
+          <h2 class="font-display text-4xl md:text-5xl text-ink mb-5">Core support</h2>
+          <p class="text-lg text-ink-soft leading-relaxed">The everyday operations work that keeps a business organized.</p>
+        </div>
+        <ul class="grid sm:grid-cols-2 gap-x-12 border-t border-rule" data-reveal>
+          {skills.map((s) => (
+            <li class="py-6 border-b border-rule">
+              <p class="font-medium text-ink mb-1">{s.name}</p>
+              <p class="text-ink-muted leading-relaxed">{s.note}</p>
+            </li>
+          ))}
+        </ul>
+      </div>
+    </section>
+
+    <!-- 4 + 5. Who I work with / Experience -->
+    <section class="px-6 py-20 bg-paper-deep/60 border-y border-rule">
+      <div class="max-w-5xl mx-auto grid md:grid-cols-2 gap-16">
+        <div data-reveal>
+          <p class="small-caps text-copper mb-4">Who I work with</p>
+          <h2 class="font-display text-3xl md:text-4xl text-ink mb-6">A good fit if you need structure.</h2>
+          <ul class="space-y-3 mb-6">
+            {fit.map((f) => (
+              <li class="flex gap-3 text-ink-soft leading-relaxed">
+                <span class="text-copper mt-0.5">&#x2713;</span>
+                <span>{f}</span>
+              </li>
+            ))}
+          </ul>
+          <p class="text-ink-muted leading-relaxed">
+            I'm not trying to be everything to everyone. I do my best work for businesses that need systems, organization and dependable operational support.
+          </p>
+        </div>
+        <div data-reveal>
+          <p class="small-caps text-copper mb-4">Experience</p>
+          <h2 class="font-display text-3xl md:text-4xl text-ink mb-6">Many kinds of businesses.</h2>
+          <p class="text-ink-soft leading-relaxed mb-6">
+            I've supported teams in very different settings, from small startups to established companies. Here are some of the industries I've worked in:
+          </p>
+          <ul class="flex flex-wrap gap-2">
+            {industries.map((i) => (
+              <li class="text-sm text-ink bg-paper border border-rule rounded-full px-4 py-2">{i}</li>
+            ))}
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- 6. Case studies -->
+    <section id="work" class="px-6 py-20 md:py-28">
+      <div class="max-w-5xl mx-auto">
+        <div class="max-w-2xl mb-12" data-reveal>
+          <p class="small-caps text-copper mb-4">Examples</p>
+          <h2 class="font-display text-4xl md:text-5xl text-ink">What this looks like in practice</h2>
+        </div>
+        <div class="grid md:grid-cols-2 gap-6">
+          {cases.map((c) => (
+            <article class="bg-paper-soft border border-rule rounded-2xl p-8" data-reveal>
+              <h3 class="font-display text-2xl text-ink mb-6 leading-tight">{c.label}</h3>
+              <dl class="space-y-5">
+                <div>
+                  <dt class="small-caps text-ink-muted mb-1">The problem</dt>
+                  <dd class="text-ink-soft leading-relaxed">{c.problem}</dd>
+                </div>
+                <div>
+                  <dt class="small-caps text-ink-muted mb-1">What I did</dt>
+                  <dd class="text-ink-soft leading-relaxed">{c.did}</dd>
+                </div>
+                <div>
+                  <dt class="small-caps text-ink-muted mb-1">What changed</dt>
+                  <dd class="text-ink-soft leading-relaxed">{c.changed}</dd>
+                </div>
+              </dl>
+              <p class="mt-6 pt-5 border-t border-rule text-sm text-sage font-medium">{c.shows}</p>
             </article>
           ))}
         </div>
       </div>
     </section>
 
-    <!-- Services -->
-    <section id="services" class="max-w-6xl mx-auto px-6 lg:px-8 py-20 md:py-28">
-      <div class="mb-12 md:mb-16">
-        <div class="v2-mono text-[11px] uppercase tracking-[0.2em] v2-accent mb-3">03 · Services</div>
-        <h2 class="v2-display text-4xl md:text-5xl font-bold tracking-[-0.035em] max-w-3xl">
-          Eight disciplines. Thirty-seven services. Pricing is a conversation.
-        </h2>
-      </div>
-
-      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-3">
-        {services.map(s => (
-          <a href="#contact" class="group border v2-rule rounded-lg p-5 hover:border-neutral-900 hover:bg-neutral-50 transition-all">
-            <div class="v2-mono text-[11px] uppercase tracking-wider text-neutral-500 mb-2">{s.kicker}</div>
-            <div class="flex items-center justify-between gap-3">
-              <span class="v2-display text-lg font-semibold tracking-tight">{s.name}</span>
-              <svg class="w-4 h-4 text-neutral-400 group-hover:text-neutral-900 group-hover:translate-x-0.5 transition-all" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
-            </div>
-          </a>
-        ))}
-      </div>
-
-      <div class="mt-8 text-center">
-        <a href={`${base}services`} class="v2-mono text-[11px] uppercase tracking-wider v2-accent hover:underline">See all 37 services →</a>
-      </div>
-    </section>
-
-    <!-- Testimonial -->
-    <section class="border-t v2-rule bg-neutral-50">
-      <div class="max-w-4xl mx-auto px-6 lg:px-8 py-20 md:py-28">
-        <div class="v2-mono text-[11px] uppercase tracking-[0.2em] v2-accent mb-6">04 · Recommendation, live on LinkedIn</div>
-        <blockquote class="v2-display text-2xl md:text-3xl font-medium leading-[1.35] tracking-[-0.02em] text-neutral-900">
-          "Leigh-Ann was one of the most reliable operational partners I've had. She enhanced our reporting accuracy by 25%, partnered with HR, Facilities, and ELT to improve employee satisfaction scores by 22%, and designed onboarding programs for 6 administrative professionals that reduced ramp-up time by 20%."
-        </blockquote>
-        <div class="mt-8 flex items-center gap-4 pt-6 border-t v2-rule">
-          <div class="w-10 h-10 rounded-full bg-neutral-900 text-white flex items-center justify-center text-xs font-bold">PC</div>
-          <div>
-            <div class="text-sm font-semibold">Pam Connealy</div>
-            <div class="v2-mono text-[11px] uppercase tracking-wider text-neutral-500">Former CFO & COO · Immunovant</div>
+    <!-- 7 + 8. How we can work together / Engagement terms -->
+    <section id="packages" class="px-6 py-20 md:py-28 bg-ink text-paper">
+      <div class="max-w-5xl mx-auto">
+        <div class="max-w-2xl mb-12" data-reveal>
+          <p class="small-caps text-copper mb-4">How we can work together</p>
+          <h2 class="font-display text-4xl md:text-5xl mb-5">Three ways to work together</h2>
+          <p class="text-lg text-paper/70 leading-relaxed">
+            Choose how hands-on you want me to be. We'll shape the details together on a call.
+          </p>
+        </div>
+        <div class="grid md:grid-cols-3 gap-6 mb-14" data-reveal>
+          {ways.map((w) => (
+            <article class="border border-paper/15 rounded-2xl p-8">
+              <h3 class="font-display text-2xl mb-2">{w.name}</h3>
+              <p class="text-copper font-medium mb-4">{w.summary}</p>
+              <p class="text-paper/70 leading-relaxed">{w.body}</p>
+            </article>
+          ))}
+        </div>
+        <div class="border-t border-paper/15 pt-10 grid md:grid-cols-12 gap-6" data-reveal>
+          <p class="md:col-span-4 small-caps text-paper/50">How engagements work</p>
+          <div class="md:col-span-8 space-y-4 text-paper/80 leading-relaxed">
+            <p>
+              I like to start with a <strong class="text-paper font-medium">1 to 3 month engagement</strong>. It gives us both time to see if it's a good fit and keeps the scope clear from day one.
+            </p>
+            <p>
+              Longer-term support is available when the project calls for it. This is focused, part-time support with a clear scope, not full-time availability.
+            </p>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- Contact -->
-    <section id="contact" class="bg-neutral-900 text-white">
-      <div class="max-w-4xl mx-auto px-6 lg:px-8 py-24 md:py-32">
-        <div class="v2-mono text-[11px] uppercase tracking-[0.2em] v2-accent mb-6" style="color: #93C5FD;">05 · Let's talk</div>
-        <h2 class="v2-display text-5xl md:text-7xl font-bold tracking-[-0.04em] leading-[0.95] max-w-3xl">
-          Tell me what's actually breaking.
-        </h2>
-        <p class="mt-8 text-lg text-neutral-300 leading-relaxed max-w-2xl">
-          A 30-minute discovery call. Free, usually inside 48 hours of your first reach-out. Even if we don't end up working together, you'll leave with a clearer picture of what's worth fixing first.
+    <!-- 9. Main CTA -->
+    <section id="contact" class="px-6 py-24 md:py-32">
+      <div class="max-w-2xl mx-auto text-center" data-reveal>
+        <h2 class="font-display text-4xl md:text-6xl text-ink mb-6">Let's see if we're a good fit.</h2>
+        <p class="text-lg text-ink-soft leading-relaxed mb-10">
+          Book a call and tell me a bit about your business and where you need support. A short form will help us make the most of our time together.
         </p>
-        <div class="mt-10 flex flex-wrap gap-3">
-          <a href="mailto:lmartinlapc@gmail.com" class="bg-white text-neutral-900 px-6 py-3.5 rounded-md text-sm font-semibold hover:bg-neutral-100 transition-colors inline-flex items-center gap-2">
-            lmartinlapc@gmail.com
-            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
-          </a>
-          <a href="https://www.linkedin.com/in/leigh-ann-martin" target="_blank" rel="noopener" class="border border-white/20 text-white px-6 py-3.5 rounded-md text-sm font-medium hover:bg-white/10 transition-colors inline-flex items-center gap-2">
-            LinkedIn
-          </a>
-        </div>
-      </div>
-      <div class="border-t border-white/10">
-        <div class="max-w-6xl mx-auto px-6 lg:px-8 py-6 flex items-center justify-between v2-mono text-[11px] uppercase tracking-wider text-neutral-500">
-          <span>© 2026 Leigh-Ann Martin</span>
-          <span>v2 Minimalist preview</span>
-        </div>
+        <a
+          href={BOOK_CALL_URL}
+          target="_blank"
+          rel="noopener"
+          class="inline-flex items-center gap-3 bg-ink text-paper px-8 py-4 rounded-full font-medium hover:bg-copper transition-colors"
+        >
+          Book a call
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
+        </a>
       </div>
     </section>
-  </div>
+  </main>
 
-  <VariantSwitcher current="v2" theme="light" />
+  <footer class="px-6 py-10 border-t border-rule">
+    <div class="max-w-5xl mx-auto flex flex-col sm:flex-row justify-between gap-3 text-sm text-ink-muted">
+      <p>&copy; {new Date().getFullYear()} Leigh-Ann Martin</p>
+      <p>New York tri-state area &middot; Working with clients remotely</p>
+    </div>
+  </footer>
 </Layout>
+
+<script>
+  const revealEls = document.querySelectorAll("[data-reveal]");
+  const observer = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("revealed");
+          observer.unobserve(entry.target);
+        }
+      });
+    },
+    { threshold: 0.08, rootMargin: "0px 0px -60px 0px" }
+  );
+  revealEls.forEach((el) => observer.observe(el));
+</script>
