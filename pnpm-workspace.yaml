@@ -1,0 +1,5 @@
+# pnpm 10 refuses to run dependency postinstall scripts unless they're
+# allow-listed here. Astro needs these two or the install fails in CI.
+onlyBuiltDependencies:
+  - esbuild
+  - sharp
