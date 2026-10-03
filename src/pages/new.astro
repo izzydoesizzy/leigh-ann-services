@@ -24,15 +24,35 @@ const pills = [
   "Remote · NYC tri-state",
 ];
 
-const skills = [
-  { name: "Calendar management", note: "Meetings, priorities and time protected for the work that matters." },
-  { name: "Inbox management", note: "Triage, drafting and nothing important slipping through." },
-  { name: "Project management", note: "Timelines, owners and next steps everyone can see." },
-  { name: "Invoices, AR and AP tracking", note: "Know what's been billed, what's been paid and what's outstanding." },
-  { name: "Client and event folders", note: "One organized place for every client, project and event." },
-  { name: "Contracts and follow-ups", note: "Agreements tracked, renewals flagged, loops closed." },
-  { name: "Operations and systems", note: "Simple processes that keep the business running without you in every detail." },
-  { name: "Google Workspace workflows", note: "Gmail, Calendar, Drive, Docs and Sheets set up to work together." },
+const groups = [
+  {
+    title: "Calendar and inbox",
+    items: [
+      { name: "Calendar management", note: "Meetings, priorities and time protected for the work that matters." },
+      { name: "Inbox management", note: "Triage, drafting and nothing important slipping through." },
+    ],
+  },
+  {
+    title: "Projects and clients",
+    items: [
+      { name: "Project management", note: "Timelines, owners and next steps everyone can see." },
+      { name: "Client and event folders", note: "One organized place for every client, project and event." },
+      { name: "Contracts and follow-ups", note: "Agreements tracked, renewals flagged, loops closed." },
+    ],
+  },
+  {
+    title: "Finance admin",
+    items: [
+      { name: "Invoice and payment tracking", note: "Know what you've billed, what's been paid, what you owe and what's still outstanding." },
+    ],
+  },
+  {
+    title: "Systems",
+    items: [
+      { name: "Operations and systems", note: "Simple processes that keep the business running without you in every detail." },
+      { name: "Workflows in Google Workspace or your current tools", note: "Gmail, Calendar, Drive, Docs and Sheets set up to work together, or the tools you already use. Nothing new to buy." },
+    ],
+  },
 ];
 
 const fit = [
@@ -107,16 +127,13 @@ const ways = [
       <div class="hero-block" aria-hidden="true"><span class="ghost-circle"></span></div>
       <div class="relative max-w-5xl mx-auto px-6 pt-14 pb-16 md:py-24 grid md:grid-cols-12 gap-12 items-center">
         <div class="md:col-span-7" data-reveal>
-          <p class="eyebrow">Fractional executive operations &middot; Small &amp; growing businesses</p>
+          <p class="eyebrow">Part-time operations support &middot; Small &amp; growing businesses</p>
           <h1 class="mt-5 text-[2.3rem] md:text-[3.4rem] leading-[1.12] text-espresso">
             <span data-heading-lead>{headingLead}</span><span class="flourish"><span data-heading-last>{headingLast}</span><svg viewBox="0 0 220 14" preserveAspectRatio="none" aria-hidden="true"><path d="M4 10 C 60 2, 160 2, 216 8" fill="none" stroke="#C0563B" stroke-width="5" stroke-linecap="round"/></svg></span><span data-heading-tail>{headingTail}</span>
           </h1>
-          <p class="mt-6 accent-line text-teal text-xl md:text-2xl">
-            Order, clarity, and calm &mdash; for leaders with too much on their plate.
-          </p>
-          <p class="mt-6 text-stone text-lg leading-relaxed max-w-xl" data-heading-sub>{headings[0].sub}</p>
+          <p class="mt-9 text-stone text-lg leading-relaxed max-w-xl" data-heading-sub>{headings[0].sub}</p>
           <div class="mt-9 flex flex-wrap gap-4">
-            <a href={BOOK_CALL_URL} target="_blank" rel="noopener" class="btn btn-primary">Book a call</a>
+            <a href={BOOK_CALL_URL} target="_blank" rel="noopener" class="btn btn-primary">Book a 30-minute intro call</a>
             <a href="#about" class="btn btn-outline">More about me</a>
           </div>
           <ul class="mt-9 flex flex-wrap gap-2.5 list-none p-0">
@@ -140,7 +157,7 @@ const ways = [
     <section id="about" class="bg-paper border-y border-line scroll-mt-20">
       <div class="max-w-3xl mx-auto px-6 py-20 md:py-24" data-reveal>
         <p class="eyebrow">Hi, I'm Leigh-Ann</p>
-        <h2 class="mt-4 text-3xl md:text-4xl text-espresso leading-tight">The steady hand behind the scenes.</h2>
+        <h2 class="mt-4 text-3xl md:text-4xl text-espresso leading-tight">12+ years in operations and executive support</h2>
         <div class="mt-7 space-y-5 text-[1.05rem] leading-[1.8] text-ink/90">
           <p>
             I've spent more than 12 years in operations and executive support, from growing startups to public companies. Along the way I've built support functions from scratch, kept busy leadership teams organized, and turned messy processes into simple ones that people actually use.
@@ -157,20 +174,27 @@ const ways = [
       <div class="max-w-5xl mx-auto px-6 py-20 md:py-24">
         <div class="max-w-2xl" data-reveal>
           <p class="eyebrow">What I do</p>
-          <h2 class="mt-4 text-3xl md:text-4xl text-espresso leading-tight">Core support</h2>
-          <p class="mt-4 text-stone text-lg leading-relaxed">The everyday operations work that keeps a business organized.</p>
+          <h2 class="mt-4 text-3xl md:text-4xl text-espresso leading-tight">Services</h2>
+          <p class="mt-4 text-stone text-lg leading-relaxed">The everyday operations work that keeps a business organized, built in Google Workspace or the tools you already use.</p>
         </div>
-        <ul class="mt-12 grid sm:grid-cols-2 gap-5 list-none p-0" data-reveal>
-          {skills.map((s) => (
-            <li class="card p-6 flex gap-4">
-              <span class="shrink-0 mt-1.5 w-2.5 h-2.5 rounded-full bg-teal" aria-hidden="true"></span>
-              <div>
-                <p class="font-semibold text-espresso">{s.name}</p>
-                <p class="mt-1 text-stone leading-relaxed text-[0.95rem]">{s.note}</p>
-              </div>
-            </li>
+        <div class="mt-12 grid sm:grid-cols-2 gap-5" data-reveal>
+          {groups.map((g) => (
+            <div class="card p-6">
+              <h3 class="text-xl text-espresso">{g.title}</h3>
+              <ul class="mt-4 space-y-4 list-none p-0">
+                {g.items.map((s) => (
+                  <li class="flex gap-4">
+                    <span class="shrink-0 mt-1.5 w-2.5 h-2.5 rounded-full bg-teal" aria-hidden="true"></span>
+                    <div>
+                      <p class="font-semibold text-espresso">{s.name}</p>
+                      <p class="mt-1 text-stone leading-relaxed text-[0.95rem]">{s.note}</p>
+                    </div>
+                  </li>
+                ))}
+              </ul>
+            </div>
           ))}
-        </ul>
+        </div>
       </div>
     </section>
 
@@ -179,7 +203,7 @@ const ways = [
       <div class="max-w-5xl mx-auto px-6 py-20 md:py-24 grid md:grid-cols-2 gap-14">
         <div data-reveal>
           <p class="eyebrow">Who I work with</p>
-          <h2 class="mt-4 text-3xl md:text-4xl text-espresso leading-tight">A good fit if you need structure.</h2>
+          <h2 class="mt-4 text-3xl md:text-4xl text-espresso leading-tight">Owners and teams who need organized operations.</h2>
           <ul class="mt-7 space-y-3 list-none p-0">
             {fit.map((f) => (
               <li class="flex gap-3 text-ink leading-relaxed">
@@ -197,7 +221,7 @@ const ways = [
         </div>
         <div data-reveal>
           <p class="eyebrow">Experience</p>
-          <h2 class="mt-4 text-3xl md:text-4xl text-espresso leading-tight">Many kinds of businesses.</h2>
+          <h2 class="mt-4 text-3xl md:text-4xl text-espresso leading-tight">Industries I've worked in</h2>
           <p class="mt-7 text-ink leading-relaxed">
             I've supported teams in very different settings, from small startups to established companies. Here are some of the industries I've worked in:
           </p>
@@ -213,7 +237,7 @@ const ways = [
       <div class="max-w-5xl mx-auto px-6 py-20 md:py-24">
         <div class="max-w-2xl" data-reveal>
           <p class="eyebrow">Examples</p>
-          <h2 class="mt-4 text-3xl md:text-4xl text-espresso leading-tight">What this looks like in practice</h2>
+          <h2 class="mt-4 text-3xl md:text-4xl text-espresso leading-tight">How I've helped other businesses</h2>
         </div>
         <div class="mt-12 grid md:grid-cols-2 gap-6">
           {cases.map((c) => (
@@ -278,11 +302,13 @@ const ways = [
     <section id="contact" class="bg-linen">
       <div class="max-w-2xl mx-auto px-6 py-24 md:py-28 text-center" data-reveal>
         <h2 class="text-3xl md:text-5xl text-espresso leading-tight">Let's see if we're a good fit.</h2>
-        <p class="mt-5 text-stone text-lg leading-relaxed max-w-lg mx-auto">
-          Book a call and tell me a bit about your business and where you need support. A short form will help us make the most of our time together.
-        </p>
+        <ol class="mt-8 text-left max-w-md mx-auto space-y-4 list-none p-0 text-stone text-lg leading-relaxed">
+          <li class="flex gap-4"><span class="font-serif text-2xl text-teal leading-none shrink-0 w-5">1</span><span>Book an intro call and fill in a short form about your business and where you need support.</span></li>
+          <li class="flex gap-4"><span class="font-serif text-2xl text-teal leading-none shrink-0 w-5">2</span><span>On the call we shape the details together: what you need and how hands-on you want me to be.</span></li>
+          <li class="flex gap-4"><span class="font-serif text-2xl text-teal leading-none shrink-0 w-5">3</span><span>We start with a 1 to 3 month engagement.</span></li>
+        </ol>
         <div class="mt-8">
-          <a href={BOOK_CALL_URL} target="_blank" rel="noopener" class="btn btn-primary">Book a call</a>
+          <a href={BOOK_CALL_URL} target="_blank" rel="noopener" class="btn btn-primary">Book a 30-minute intro call</a>
         </div>
         <p class="mt-6 accent-line text-teal text-lg">I work with a small number of clients at a time.</p>
       </div>
@@ -294,7 +320,7 @@ const ways = [
       <div>
         <p class="font-serif text-2xl text-ivory">Leigh-Ann Martin</p>
         <p class="mt-3 text-sm text-ivory/55 leading-relaxed max-w-xs">
-          Fractional executive operations support for small and growing businesses.
+          Part-time operations support for small and growing businesses.
         </p>
       </div>
       <div class="text-sm">

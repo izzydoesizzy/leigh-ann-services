@@ -3,10 +3,10 @@
 export const headings = [
   {
     title: "Reliable operations support, without hiring full-time",
-    sub: "I'm Leigh-Ann. I set up and run the operations side of small businesses: calendars, inboxes, invoicing, client and project tracking, and simple Google Workspace systems that don't need extra software or extra staff.",
+    sub: "I'm Leigh-Ann. I set up and run the operations side of small businesses: calendars, inboxes, invoicing, and client and project tracking. Everything is built in Google Workspace or the tools you already use, so there's no new software to buy and no extra hire.",
   },
   {
     title: "Calm, organized operations for small and growing businesses.",
-    sub: "I'm Leigh-Ann. I help owners get their calendars, inboxes, invoicing and client tracking into simple Google Workspace systems, so the business runs smoothly without a full-time hire or expensive tools.",
+    sub: "I'm Leigh-Ann. I help owners get their calendars, inboxes, invoicing and client tracking organized, using Google Workspace or the tools you already use, so the business runs smoothly without a full-time hire or new software.",
   },
 ];
