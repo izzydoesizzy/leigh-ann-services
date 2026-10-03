@@ -132,6 +132,8 @@ pnpm build      # output in dist/
 
 Pushing to `main` deploys everything in `dist/` to GitHub Pages via `.github/workflows/deploy.yml`. Work on a branch and merge when ready.
 
+**Share images** (the preview card when a link is pasted into LinkedIn, iMessage, Slack, etc.): `public/og.png` for `/` and `public/og-new.png` for `/new`, both 1200×630. They're rendered from `scripts/og/template.html` with `node scripts/og/render.mjs` (needs Playwright). The headline is hard-coded in the template; update it there once Leigh-Ann picks a heading, re-run, and commit the PNGs. Add `--all` to dump the other four concepts into `scripts/og/out/`.
+
 **Refreshing the screenshots** after a visual change: run `pnpm build && pnpm preview`, then take a 1280px-wide header shot (800px tall viewport) and a full-page JPEG for each page and drop them in `docs/screenshots/` using the existing names.
 
 **Adding a page:** put it under `src/pages/`, add a row to the `/archive` directory (`src/pages/archive/index.astro`) and to this README, and add its screenshots.

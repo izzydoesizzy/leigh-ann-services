@@ -12,6 +12,9 @@ const {
   description = "Leigh-Ann Martin provides clear, practical executive operations support for small and growing businesses.",
   noindex = false,
 } = Astro.props;
+
+// Social previews need an absolute URL; the PNG is 1200x630 in public/.
+const ogImage = new URL(`${import.meta.env.BASE_URL}og-new.png`, Astro.site).href;
 ---
 
 <!doctype html>
@@ -25,6 +28,10 @@ const {
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
     <meta property="og:type" content="website" />
+    <meta property="og:image" content={ogImage} />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta name="twitter:card" content="summary_large_image" />
     <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Crect width='24' height='24' fill='%23FAF7F1'/%3E%3Ctext x='12' y='16' text-anchor='middle' font-family='Georgia' font-size='14' font-weight='700' fill='%232E6B60'%3ELA%3C/text%3E%3C/svg%3E" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
