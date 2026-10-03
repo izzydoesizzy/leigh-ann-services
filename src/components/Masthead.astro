@@ -5,16 +5,16 @@ const base = import.meta.env.BASE_URL;
 <!-- Editorial masthead: thin ruled header with a left wordmark and right nav -->
 <header class="sticky top-0 z-50 bg-paper/85 backdrop-blur-md border-b border-rule">
   <div class="max-w-6xl mx-auto px-6 md:px-10 h-14 flex items-center justify-between">
-    <a href={base} class="flex items-center gap-3 group">
+    <a href={`${base}v2`} class="flex items-center gap-3 group">
       <span class="inline-flex items-center justify-center w-7 h-7 rounded-full bg-ink text-paper font-display text-[11px] font-semibold tracking-tight">LA</span>
       <span class="font-display text-lg text-ink group-hover:text-copper transition-colors leading-none">Leigh-Ann Martin</span>
     </a>
     <nav class="hidden md:flex items-center gap-8">
-      <a href={`${base}#two-paths`} class="small-caps text-ink-soft hover:text-ink transition-colors">Engage</a>
-      <a href={`${base}#work`} class="small-caps text-ink-soft hover:text-ink transition-colors">Work</a>
+      <a href={`${base}v2#two-paths`} class="small-caps text-ink-soft hover:text-ink transition-colors">Engage</a>
+      <a href={`${base}v2#work`} class="small-caps text-ink-soft hover:text-ink transition-colors">Work</a>
       <a href={`${base}services`} class="small-caps text-ink-soft hover:text-ink transition-colors">Services</a>
-      <a href={`${base}#about`} class="small-caps text-ink-soft hover:text-ink transition-colors">About</a>
-      <a href={`${base}#contact`} class="small-caps bg-ink text-paper px-4 py-2 rounded-full hover:bg-copper transition-colors">Get in touch</a>
+      <a href={`${base}v2#about`} class="small-caps text-ink-soft hover:text-ink transition-colors">About</a>
+      <a href={`${base}v2#contact`} class="small-caps bg-ink text-paper px-4 py-2 rounded-full hover:bg-copper transition-colors">Get in touch</a>
     </nav>
     <button id="mobile-menu-btn" class="md:hidden p-1 text-ink" aria-label="Toggle menu">
       <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -26,11 +26,11 @@ const base = import.meta.env.BASE_URL;
   <!-- Mobile drawer -->
   <div id="mobile-menu" class="md:hidden hidden border-t border-rule bg-paper">
     <nav class="max-w-[1440px] mx-auto px-6 py-6 flex flex-col gap-4">
-      <a href={`${base}#two-paths`} class="small-caps text-ink-soft py-2 border-b border-rule/60">Engage</a>
-      <a href={`${base}#work`} class="small-caps text-ink-soft py-2 border-b border-rule/60">Work</a>
+      <a href={`${base}v2#two-paths`} class="small-caps text-ink-soft py-2 border-b border-rule/60">Engage</a>
+      <a href={`${base}v2#work`} class="small-caps text-ink-soft py-2 border-b border-rule/60">Work</a>
       <a href={`${base}services`} class="small-caps text-ink-soft py-2 border-b border-rule/60">Services</a>
-      <a href={`${base}#about`} class="small-caps text-ink-soft py-2 border-b border-rule/60">About</a>
-      <a href={`${base}#contact`} class="small-caps bg-ink text-paper px-4 py-3 rounded-full text-center mt-2">Get in touch</a>
+      <a href={`${base}v2#about`} class="small-caps text-ink-soft py-2 border-b border-rule/60">About</a>
+      <a href={`${base}v2#contact`} class="small-caps bg-ink text-paper px-4 py-3 rounded-full text-center mt-2">Get in touch</a>
     </nav>
   </div>
 </header>
