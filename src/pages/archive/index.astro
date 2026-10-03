@@ -1,0 +1,68 @@
+---
+// /archive: a plain directory of every page in this repo, so anyone can find
+// the live link for a version without digging through the source.
+// Keep this list in sync with README.md.
+import TealLayout from "../../layouts/TealLayout.astro";
+
+const base = import.meta.env.BASE_URL;
+
+const groups = [
+  {
+    title: "Current candidates",
+    note: "The simplified one-page site, built from Leigh-Ann's October 2026 outline. Same content, two visual themes.",
+    pages: [
+      { path: "", name: "Homepage", theme: "Editorial (ivory, copper, Fraunces + Inter)", diff: "Simplified structure in the original site's palette." },
+      { path: "new", name: "Teal & Clay", theme: "Teal & Clay (ivory, sage, teal, Fraunces + Figtree)", diff: "Same structure and copy, warmer theme with the arch portrait hero." },
+    ],
+  },
+  {
+    title: "Previous site (editorial)",
+    note: "The long-form fractional-EA site that was the homepage until October 2026. Aimed at pre-IPO and public-company executives.",
+    pages: [
+      { path: "archive/editorial", name: "Homepage", theme: "Editorial", diff: "17 sections: personas, four engagement tiers, case studies, skills matrix, FAQ, press." },
+      { path: "archive/editorial/services", name: "Services index", theme: "Editorial", diff: "Full catalogue of 37 services across disciplines." },
+      { path: "archive/editorial/packages", name: "Packages", theme: "Editorial", diff: "Priced packages. Unlinked; shared only after a discovery call." },
+      { path: "archive/editorial/capability-brief", name: "Capability brief", theme: "Editorial, dark", diff: "Print-style one-pager version of the editorial site." },
+    ],
+  },
+  {
+    title: "Style mockups",
+    note: "Four alternative looks for the previous site, built to pick a visual direction. Content is a trimmed copy of the editorial homepage.",
+    pages: [
+      { path: "archive/mockups/minimalist", name: "Minimalist", theme: "White, Inter, hairlines", diff: "Quiet, product-site feel." },
+      { path: "archive/mockups/institutional", name: "Institutional", theme: "Navy, gold, serif", diff: "Law-firm / advisory feel." },
+      { path: "archive/mockups/brutalist", name: "Brutalist", theme: "Black, bone, mono", diff: "Heavy rules, uppercase, grid." },
+      { path: "archive/mockups/dark-luxe", name: "Dark luxe", theme: "Near-black, gold", diff: "Dark, high-contrast, luxury feel." },
+    ],
+  },
+];
+---
+
+<TealLayout title="Page directory | Leigh-Ann Martin" noindex={true}>
+  <main class="max-w-3xl mx-auto px-6 py-16 md:py-24">
+    <p class="eyebrow">Internal</p>
+    <h1 class="mt-4 text-3xl md:text-4xl text-espresso">Every page in this site</h1>
+    <p class="mt-4 text-stone leading-relaxed">
+      Quick reference for the different versions. Screenshots and a fuller description of each live in the repo README.
+    </p>
+
+    {groups.map((g) => (
+      <section class="mt-14">
+        <h2 class="text-2xl text-espresso">{g.title}</h2>
+        <p class="mt-2 text-stone leading-relaxed">{g.note}</p>
+        <ul class="mt-6 space-y-3 list-none p-0">
+          {g.pages.map((p) => (
+            <li class="card p-5">
+              <div class="flex flex-wrap items-baseline justify-between gap-2">
+                <a href={`${base}${p.path}`} class="font-semibold text-espresso hover:text-teal transition-colors">{p.name}</a>
+                <code class="text-xs text-stone">/{p.path}</code>
+              </div>
+              <p class="mt-1.5 text-sm text-ink">{p.diff}</p>
+              <p class="mt-1 text-xs text-stone">Theme: {p.theme}</p>
+            </li>
+          ))}
+        </ul>
+      </section>
+    ))}
+  </main>
+</TealLayout>

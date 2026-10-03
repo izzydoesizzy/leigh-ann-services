@@ -1,6 +1,6 @@
 ---
-import Layout from "../layouts/Layout.astro";
-import VariantSwitcher from "../components/VariantSwitcher.astro";
+import Layout from "../../../layouts/EditorialLayout.astro";
+import VariantSwitcher from "../../../components/mockups/VariantSwitcher.astro";
 
 const base = import.meta.env.BASE_URL;
 
@@ -43,7 +43,7 @@ const cases = [
     <!-- Header: thick black bars -->
     <header class="border-b-[3px] v4-border">
       <div class="max-w-[1600px] mx-auto px-6 lg:px-10 py-4 flex items-center justify-between">
-        <a href={base} class="flex items-center gap-3">
+        <a href={`${base}archive/editorial`} class="flex items-center gap-3">
           <div class="w-8 h-8 v4-jolt-bg text-white v4-mono font-bold text-sm flex items-center justify-center">LA</div>
           <span class="v4-mono text-sm font-bold uppercase tracking-wide">MARTIN // EXECUTIVE OPS</span>
         </a>
@@ -158,7 +158,7 @@ const cases = [
             CASE<br/>FILES.
           </h2>
         </div>
-        <a href={`${base}`} class="v4-mono text-[11px] font-bold uppercase tracking-wider bg-black text-white px-4 py-2 hover:v4-jolt-bg transition-colors">ALL 6 &rarr;</a>
+        <a href={`${base}archive/editorial#work`} class="v4-mono text-[11px] font-bold uppercase tracking-wider bg-black text-white px-4 py-2 hover:v4-jolt-bg transition-colors">ALL 6 &rarr;</a>
       </div>
 
       <div class="grid md:grid-cols-3 gap-0 border-[3px] v4-border">
@@ -202,7 +202,7 @@ const cases = [
           "VII.FINANCIAL OPERATIONS     ≫ 3 SERVICES",
           "VIII.PROCESS & DOCUMENTATION ≫ 3 SERVICES",
         ].map((line, i) => (
-          <a href={`${base}services`} class={`p-6 md:p-7 v4-mono text-sm md:text-base font-bold uppercase tracking-wide bg-[#F7F5EF] hover:v4-jolt-bg hover:text-white transition-colors ${i % 2 === 0 ? 'md:border-r-[3px]' : ''} border-b-[3px] v4-border last:border-b-0 ${i >= 6 ? 'md:border-b-0' : ''}`}>
+          <a href={`${base}archive/editorial/services`} class={`p-6 md:p-7 v4-mono text-sm md:text-base font-bold uppercase tracking-wide bg-[#F7F5EF] hover:v4-jolt-bg hover:text-white transition-colors ${i % 2 === 0 ? 'md:border-r-[3px]' : ''} border-b-[3px] v4-border last:border-b-0 ${i >= 6 ? 'md:border-b-0' : ''}`}>
             <div class="whitespace-pre">{line}</div>
           </a>
         ))}

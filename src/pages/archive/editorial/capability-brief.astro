@@ -1,7 +1,7 @@
 ---
-import Layout from "../layouts/Layout.astro";
-import { disciplines, totalServices } from "../components/ServicesIndex.astro";
-import { pullQuotes } from "../data/pull-quotes.ts";
+import Layout from "../../../layouts/EditorialLayout.astro";
+import { disciplines, totalServices } from "../../../components/editorial/ServicesIndex.astro";
+import { pullQuotes } from "../../../data/pull-quotes.ts";
 
 // Brief-friendly subset: print-first rhythm, 6 pulls total.
 const briefPamFeature = pullQuotes.find(q => q.extract.startsWith("She didn't just move"))!;
@@ -123,7 +123,7 @@ const press = [
   <div class="sticky top-0 z-50 bg-ink text-paper border-b border-paper/10 print:hidden">
     <div class="max-w-6xl mx-auto px-6 md:px-10 py-3 flex items-center justify-between gap-4">
       <div class="flex items-baseline gap-3">
-        <a href={`${base}v2`} class="font-mono text-[10px] uppercase tracking-[0.25em] text-paper/60 hover:text-copper transition-colors">&larr; Main site</a>
+        <a href={`${base}archive/editorial`} class="font-mono text-[10px] uppercase tracking-[0.25em] text-paper/60 hover:text-copper transition-colors">&larr; Main site</a>
         <span class="hidden md:inline font-mono text-[10px] uppercase tracking-[0.25em] text-paper/30">|</span>
         <span class="hidden md:inline small-caps text-paper/70">Capability Brief, 2026</span>
       </div>
@@ -424,7 +424,7 @@ const press = [
               The full services catalog.
             </h2>
             <p class="mt-3 text-ink-soft text-base leading-relaxed max-w-2xl">
-              <span class="tabular">{disciplines.length}</span> disciplines, <span class="tabular">{totalServices}</span> discrete services. Presented here as a scannable catalog. The full pain, outcome, and what's included for each service lives at <a href={`${base}services`} class="u-link text-copper hover:text-ink transition-colors">the services page</a>.
+              <span class="tabular">{disciplines.length}</span> disciplines, <span class="tabular">{totalServices}</span> discrete services. Presented here as a scannable catalog. The full pain, outcome, and what's included for each service lives at <a href={`${base}archive/editorial/services`} class="u-link text-copper hover:text-ink transition-colors">the services page</a>.
             </p>
           </div>
         </div>

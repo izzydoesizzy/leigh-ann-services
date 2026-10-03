@@ -1,0 +1,60 @@
+---
+import Layout from "../../../layouts/EditorialLayout.astro";
+import Masthead from "../../../components/editorial/Masthead.astro";
+import Overture from "../../../components/editorial/Overture.astro";
+import PamQuote from "../../../components/editorial/PamQuote.astro";
+import IsThisYou from "../../../components/editorial/IsThisYou.astro";
+import NotAFit from "../../../components/editorial/NotAFit.astro";
+import TwoPaths from "../../../components/editorial/TwoPaths.astro";
+import SelectedWork from "../../../components/editorial/SelectedWork.astro";
+import SecondQuote from "../../../components/editorial/SecondQuote.astro";
+import ROI from "../../../components/editorial/ROI.astro";
+import SkillsMatrix from "../../../components/editorial/SkillsMatrix.astro";
+import Services from "../../../components/editorial/Services.astro";
+import Process from "../../../components/editorial/Process.astro";
+import FAQ from "../../../components/editorial/FAQ.astro";
+import Recognition from "../../../components/editorial/Recognition.astro";
+import Testimonial from "../../../components/editorial/Testimonial.astro";
+import About from "../../../components/editorial/About.astro";
+import Contact from "../../../components/editorial/Contact.astro";
+import Colophon from "../../../components/editorial/Colophon.astro";
+---
+
+<Layout title="Leigh-Ann Martin | Senior EA, fractional partner" noindex={true}>
+  <Masthead />
+  <main>
+    <Overture />
+    <PamQuote />
+    <About />
+    <IsThisYou />
+    <NotAFit />
+    <TwoPaths />
+    <SelectedWork />
+    <SecondQuote />
+    <ROI />
+    <SkillsMatrix />
+    <Services />
+    <Process />
+    <Recognition />
+    <Testimonial />
+    <FAQ />
+    <Contact />
+  </main>
+  <Colophon />
+</Layout>
+
+<script>
+  const revealEls = document.querySelectorAll("[data-reveal]");
+  const observer = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("revealed");
+          observer.unobserve(entry.target);
+        }
+      });
+    },
+    { threshold: 0.08, rootMargin: "0px 0px -60px 0px" }
+  );
+  revealEls.forEach((el) => observer.observe(el));
+</script>

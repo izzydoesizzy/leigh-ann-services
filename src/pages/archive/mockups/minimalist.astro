@@ -1,6 +1,6 @@
 ---
-import Layout from "../layouts/Layout.astro";
-import VariantSwitcher from "../components/VariantSwitcher.astro";
+import Layout from "../../../layouts/EditorialLayout.astro";
+import VariantSwitcher from "../../../components/mockups/VariantSwitcher.astro";
 
 const base = import.meta.env.BASE_URL;
 
@@ -48,7 +48,7 @@ const stats = [
     <!-- Navbar -->
     <header class="sticky top-0 z-40 bg-white/90 backdrop-blur-md border-b v2-rule">
       <div class="max-w-6xl mx-auto px-6 lg:px-8 h-14 flex items-center justify-between">
-        <a href={base} class="flex items-center gap-2">
+        <a href={`${base}archive/editorial`} class="flex items-center gap-2">
           <span class="w-6 h-6 rounded-sm v2-accent-bg text-white text-[10px] font-bold flex items-center justify-center">LA</span>
           <span class="text-sm font-semibold tracking-tight">Leigh-Ann Martin</span>
         </a>
@@ -138,7 +138,7 @@ const stats = [
               Three moments, backed by the resume.
             </h2>
           </div>
-          <a href={`${base}`} class="v2-mono text-[11px] uppercase tracking-wider v2-accent hover:underline">View all 6 →</a>
+          <a href={`${base}archive/editorial#work`} class="v2-mono text-[11px] uppercase tracking-wider v2-accent hover:underline">View all 6 →</a>
         </div>
 
         <div class="grid md:grid-cols-3 gap-5">
@@ -176,7 +176,7 @@ const stats = [
       </div>
 
       <div class="mt-8 text-center">
-        <a href={`${base}services`} class="v2-mono text-[11px] uppercase tracking-wider v2-accent hover:underline">See all 37 services →</a>
+        <a href={`${base}archive/editorial/services`} class="v2-mono text-[11px] uppercase tracking-wider v2-accent hover:underline">See all 37 services →</a>
       </div>
     </section>
 
