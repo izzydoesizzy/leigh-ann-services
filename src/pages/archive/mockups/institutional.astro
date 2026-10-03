@@ -1,6 +1,6 @@
 ---
-import Layout from "../layouts/Layout.astro";
-import VariantSwitcher from "../components/VariantSwitcher.astro";
+import Layout from "../../../layouts/EditorialLayout.astro";
+import VariantSwitcher from "../../../components/mockups/VariantSwitcher.astro";
 
 const base = import.meta.env.BASE_URL;
 
@@ -38,7 +38,7 @@ const cases = [
     <!-- Top rule + masthead -->
     <header class="border-t-[3px] v3-rule-gold">
       <div class="max-w-5xl mx-auto px-6 lg:px-10 py-5 border-b v3-rule-ink flex items-center justify-between">
-        <a href={base} class="flex items-baseline gap-3">
+        <a href={`${base}archive/editorial`} class="flex items-baseline gap-3">
           <span class="v3-display text-2xl font-bold v3-navy">Martin</span>
           <span class="v3-label v3-slate hidden sm:inline">Executive Operations</span>
         </a>
@@ -213,7 +213,7 @@ const cases = [
       </div>
 
       <div class="mt-10 text-center">
-        <a href={`${base}services`} class="v3-label v3-gold hover:underline">Review all 37 engagements →</a>
+        <a href={`${base}archive/editorial/services`} class="v3-label v3-gold hover:underline">Review all 37 engagements →</a>
       </div>
     </section>
 

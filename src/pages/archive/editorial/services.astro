@@ -1,8 +1,8 @@
 ---
-import Layout from "../layouts/Layout.astro";
-import Masthead from "../components/Masthead.astro";
-import Colophon from "../components/Colophon.astro";
-import ServicesIndex, { disciplines, totalServices } from "../components/ServicesIndex.astro";
+import Layout from "../../../layouts/EditorialLayout.astro";
+import Masthead from "../../../components/editorial/Masthead.astro";
+import Colophon from "../../../components/editorial/Colophon.astro";
+import ServicesIndex, { disciplines, totalServices } from "../../../components/editorial/ServicesIndex.astro";
 
 const base = import.meta.env.BASE_URL;
 const CALENDLY_URL = "https://calendly.com/leighannmartin/30min";
@@ -160,7 +160,7 @@ const mailto = `mailto:lmartinlapc@gmail.com?subject=${encodeURIComponent("Servi
 
           <!-- Tertiary link to the brief -->
           <p class="text-center mb-12" data-reveal>
-            <a href={`${base}capability-brief`} class="inline-flex items-center gap-2 text-paper/70 hover:text-copper text-sm transition-colors">
+            <a href={`${base}archive/editorial/capability-brief`} class="inline-flex items-center gap-2 text-paper/70 hover:text-copper text-sm transition-colors">
               <span class="small-caps">Or read the full capability brief</span>
               <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
             </a>

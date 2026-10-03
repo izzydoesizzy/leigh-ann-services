@@ -22,7 +22,7 @@ const base = import.meta.env.BASE_URL;
       </div>
       <div class="md:col-span-4 md:text-right">
         <a
-          href={`${base}services`}
+          href={`${base}archive/editorial/services`}
           class="inline-flex items-center gap-3 bg-copper text-paper px-7 py-4 rounded-full text-sm font-medium hover:bg-paper hover:text-ink transition-colors group"
         >
           <span>Browse all services</span>
@@ -34,7 +34,7 @@ const base = import.meta.env.BASE_URL;
     <nav class="mt-8 pt-6 border-t border-paper/15 flex flex-wrap gap-x-5 gap-y-2" data-reveal>
       <span class="font-mono text-[10px] uppercase tracking-[0.2em] text-paper/40 flex-shrink-0">Disciplines</span>
       {disciplines.map(d => (
-        <a href={`${base}services#${d.id}`} class="text-paper/80 text-xs md:text-sm hover:text-copper transition-colors whitespace-nowrap">
+        <a href={`${base}archive/editorial/services#${d.id}`} class="text-paper/80 text-xs md:text-sm hover:text-copper transition-colors whitespace-nowrap">
           {d.roman}. {d.name}
         </a>
       ))}
