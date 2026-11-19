@@ -38,7 +38,7 @@ The long-form fractional-EA site that was the homepage until October 2026, aimed
 | Homepage | https://izzydoesizzy.github.io/leigh-ann-services/archive/editorial | `src/pages/archive/editorial/index.astro` | 17 sections. Assembled from the components in `src/components/editorial/`. |
 | Services index | https://izzydoesizzy.github.io/leigh-ann-services/archive/editorial/services | `src/pages/archive/editorial/services.astro` | Catalogue of 37 services across disciplines. Linked from the editorial homepage. |
 | Packages | https://izzydoesizzy.github.io/leigh-ann-services/archive/editorial/packages | `src/pages/archive/editorial/packages.astro` | Priced packages. Deliberately unlinked; shared only after a discovery call. |
-| Capability brief | https://izzydoesizzy.github.io/leigh-ann-services/archive/editorial/capability-brief | `src/pages/archive/editorial/capability-brief.astro` | Dark, print-style one-pager version of the editorial site. |
+| Capability brief | https://izzydoesizzy.github.io/leigh-ann-services/archive/editorial/capability-brief | `src/pages/archive/editorial/capability-brief.astro` | Dark, print-style one-pager version of the editorial site. Also served at its original URL, https://izzydoesizzy.github.io/leigh-ann-services/capability-brief (`src/pages/capability-brief.astro`, a copy with adjusted import paths; edit both). |
 
 | Homepage | Services index |
 |---|---|
@@ -84,7 +84,7 @@ Slugs were flattened out in October 2026. If you have an old link:
 | `/` (editorial homepage) | `/archive/editorial` |
 | `/services` | `/archive/editorial/services` |
 | `/packages` | `/archive/editorial/packages` |
-| `/capability-brief` | `/archive/editorial/capability-brief` |
+| `/capability-brief` | `/archive/editorial/capability-brief` (original URL restored too) |
 | `/v2` (mockup) | `/archive/mockups/minimalist` |
 | `/v3` | `/archive/mockups/institutional` |
 | `/v4` | `/archive/mockups/brutalist` |
