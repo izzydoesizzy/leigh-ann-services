@@ -1,5 +1,5 @@
-// Renders the social share images into public/: og.png (editorial, for /) and
-// og-new.png (teal, for /new). Run from the repo root: node scripts/og/render.mjs
+// Renders the social share images into public/: og-new.png (teal, now the share image for / and
+// /capability-brief) and og.png (editorial, used by the archived pages). Run from the repo root: node scripts/og/render.mjs
 // Pass --all to also dump every variation into scripts/og/out/ for comparison.
 import { chromium } from 'playwright';
 import { mkdirSync } from 'node:fs';

@@ -11,18 +11,16 @@ const updated = "November 2026";
 const groups = [
   {
     title: "Capability brief",
-    note: "Updated from your voice note, your update doc, and our last calls. Same content in two styles. Both have a Save as PDF button.",
+    note: "Updated from your voice note, your update doc, and our last calls. It has a Save as PDF button.",
     pages: [
-      { href: `${base}capability-brief/`, name: "Capability brief, editorial style", path: "/capability-brief", body: "Ivory and copper, print-style chapters. Matches the main homepage." },
-      { href: `${base}new/capability-brief/`, name: "Capability brief, Teal & Clay style", path: "/new/capability-brief", body: "Warmer look with the arch portrait. Matches the /new homepage." },
+      { href: `${base}capability-brief/`, name: "Capability brief", path: "/capability-brief", body: "The eight-chapter brief, in the Teal & Clay style." },
     ],
   },
   {
     title: "Website",
-    note: "The simplified one-page site. Same content in two styles. Every Book a call button now goes to your intake form.",
+    note: "The simplified one-page site. Every Book a call button goes to your intake form.",
     pages: [
-      { href: base, name: "Homepage, editorial style", path: "/", body: "The current homepage." },
-      { href: `${base}new/`, name: "Homepage, Teal & Clay style", path: "/new", body: "The alternative style, for comparison." },
+      { href: base, name: "Homepage", path: "/", body: "The main site, in the Teal & Clay style." },
     ],
   },
   {
@@ -34,8 +32,10 @@ const groups = [
   },
   {
     title: "For comparison",
-    note: "Older versions, kept so nothing is lost.",
+    note: "The Editorial style (ivory and copper) and older versions, kept so nothing is lost.",
     pages: [
+      { href: `${base}archive/editorial/capability-brief-2026-11/`, name: "Capability brief, Editorial style", path: "/archive/editorial/capability-brief-2026-11", body: "Same content as the main brief, in the previous look." },
+      { href: `${base}archive/editorial/simplified/`, name: "Homepage, Editorial style", path: "/archive/editorial/simplified", body: "Same content as the main homepage, in the previous look." },
       { href: `${base}archive/editorial/capability-brief/`, name: "Previous capability brief", path: "/archive/editorial/capability-brief", body: "The brief before this round of changes." },
       { href: `${base}archive/`, name: "Every page on the site", path: "/archive", body: "Full directory, including the previous site and the four style mockups." },
     ],
@@ -51,6 +51,8 @@ const changes = [
   "Credentials: updated exactly as in your doc.",
   "Removed: Four shapes of fractional, and In the press.",
   "Next steps and every Book a call button: now go to your intake form, and the call is 30 minutes.",
+  "Style: the Teal & Clay look is now the main one for the homepage and the brief. The Editorial versions are saved under For comparison.",
+  "Homepage heading: Reliable operations support, without hiring full-time. The heading picker is gone.",
 ];
 
 const questions = [
@@ -60,7 +62,6 @@ const questions = [
   "Cover: does \"For the executive office that deserves better\" still fit? Is \"Open to: hybrid or in-office senior EA roles in NYC\" still true?",
   "Credentials: an expected date for the Salesforce certification?",
   "Packages and How I work: do these sound like you? They were drafted from our calls.",
-  "Style: editorial or Teal & Clay, for the brief and the site?",
 ];
 ---
 

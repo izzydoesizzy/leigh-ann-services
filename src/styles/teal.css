@@ -2,7 +2,7 @@
  * /new design system: "Teal & Clay" (Variation C from the leigh-ann-ea hero
  * explorations). Ivory paper, espresso text, teal accent, a sage colour block,
  * and one clay flourish. Fraunces for headlines, Figtree for everything else.
- * Self-contained: only NewLayout imports this. The rest of the site keeps
+ * Self-contained: only TealLayout imports this. The rest of the site keeps
  * using global.css untouched.
  */
 
