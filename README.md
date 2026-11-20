@@ -28,7 +28,7 @@ The simplified one-page site, built in October 2026 from Leigh-Ann's outline: he
 
 Every **Book a call** button on both pages, and on both capability briefs, goes to the Google intake form. The link is set once, as `BOOK_URL` in `src/data/capability-brief.ts`.
 
-**Heading picker.** Both pages have a floating "Heading 1 / 2" pill at the bottom so Leigh-Ann can flip between candidate hero headings. The candidates (title + lead paragraph) live in `src/data/headings.ts`; the pill is `src/components/HeadingSwitcher.astro`. Append `?heading=2` to a URL to open a page on a given heading. Once she's chosen, delete the unused entry, remove the `<HeadingSwitcher>` from both pages and the `data-heading-*` hooks in their heroes.
+**Hero heading.** Leigh-Ann chose "Reliable operations support, without hiring full-time" in November 2026, so the heading picker is gone. The heading and lead paragraph live in `src/data/headings.ts` and both pages read from it. The share images use the same headline, hard-coded in `scripts/og/template.html`.
 
 ---
 
@@ -131,6 +131,8 @@ Four alternative looks for the previous site, built to pick a visual direction. 
 ## Change log
 
 **November 2026**
+- Leigh-Ann chose hero heading 1. Removed the heading picker from `/` and `/new` and deleted the unused heading.
+- Small wording edits from her highlighted doc: "started at age 18", "event management industries", and "I manage" the To Be Hosted trackers.
 - Restored `/capability-brief`, which went missing when the October reorganisation moved the old brief to `/archive/editorial/capability-brief`.
 - Rewrote the brief from Leigh-Ann's notes and calls (see section 2): new bio, To Be Hosted case study, simpler testimonials, packages instead of the 37-service catalog, new process, updated credentials. Removed "Four shapes of fractional" and "In the press".
 - Added a Teal & Clay version at `/new/capability-brief`, and moved the brief's copy into `src/data/capability-brief.ts` so both versions share it.
@@ -141,7 +143,7 @@ Four alternative looks for the previous site, built to pick a visual direction. 
 **October 2026**
 - Simplified one-page site became the homepage; `/new` added in the Teal & Clay theme.
 - Everything older moved under `/archive` (see Old slugs below).
-- Heading picker and share images added to `/` and `/new`.
+- Heading picker and share images added to `/` and `/new`. (Picker removed in November once Leigh-Ann chose heading 1.)
 
 ---
 
@@ -185,10 +187,9 @@ src/
   components/
     editorial/                   sections of the previous site (Masthead, Overture, TwoPaths, …)
     mockups/VariantSwitcher.astro
-    HeadingSwitcher.astro        floating picker for the candidate hero headings on / and /new
   data/
     capability-brief.ts          all copy for both capability briefs, plus BOOK_URL and EMAIL used site-wide
-    headings.ts                  candidate hero headings (title + lead paragraph) for / and /new
+    headings.ts                  hero heading + lead paragraph for / and /new
     pull-quotes.ts               anonymised testimonials used by the briefs and editorial pages
 public/portrait.jpg              the one portrait every version uses
 docs/screenshots/                header (PNG) + full-page (JPG) shots of every page
@@ -206,7 +207,7 @@ pnpm build      # output in dist/
 
 Pushing to `main` deploys everything in `dist/` to GitHub Pages via `.github/workflows/deploy.yml`. Work on a branch and merge when ready.
 
-**Share images** (the preview card when a link is pasted into LinkedIn, iMessage, Slack, etc.): `public/og.png` for `/` and `public/og-new.png` for `/new`, both 1200×630. They're rendered from `scripts/og/template.html` with `node scripts/og/render.mjs` (needs Playwright). The headline is hard-coded in the template; update it there once Leigh-Ann picks a heading, re-run, and commit the PNGs. Add `--all` to dump the other four concepts into `scripts/og/out/`.
+**Share images** (the preview card when a link is pasted into LinkedIn, iMessage, Slack, etc.): `public/og.png` for `/` and `public/og-new.png` for `/new`, both 1200×630. They're rendered from `scripts/og/template.html` with `node scripts/og/render.mjs` (needs Playwright). The headline is hard-coded in the template and already matches the chosen heading; if the heading ever changes, update it there, re-run, and commit the PNGs. Add `--all` to dump the other four concepts into `scripts/og/out/`.
 
 **Refreshing the screenshots** after a visual change: run `pnpm build && pnpm preview`, then take a 1280px-wide header shot (800px tall viewport) and a full-page JPEG for each page and drop them in `docs/screenshots/` using the existing names.
 

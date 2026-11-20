@@ -3,7 +3,6 @@
 // leigh-ann-ea hero explorations). Same structure and copy as the homepage,
 // one action (Book a call), no pricing on the page.
 import NewLayout from "../layouts/TealLayout.astro";
-import HeadingSwitcher from "../components/HeadingSwitcher.astro";
 import { headings } from "../data/headings";
 // Every Book a call button uses this: the Google intake form, which then offers a 30-minute slot.
 import { BOOK_URL as BOOK_CALL_URL } from "../data/capability-brief.ts";
@@ -129,9 +128,9 @@ const ways = [
         <div class="md:col-span-7" data-reveal>
           <p class="eyebrow">Part-time operations support &middot; Small &amp; growing businesses</p>
           <h1 class="mt-5 text-[2.3rem] md:text-[3.4rem] leading-[1.12] text-espresso">
-            <span data-heading-lead>{headingLead}</span><span class="flourish"><span data-heading-last>{headingLast}</span><svg viewBox="0 0 220 14" preserveAspectRatio="none" aria-hidden="true"><path d="M4 10 C 60 2, 160 2, 216 8" fill="none" stroke="#C0563B" stroke-width="5" stroke-linecap="round"/></svg></span><span data-heading-tail>{headingTail}</span>
+            {headingLead}<span class="flourish">{headingLast}<svg viewBox="0 0 220 14" preserveAspectRatio="none" aria-hidden="true"><path d="M4 10 C 60 2, 160 2, 216 8" fill="none" stroke="#C0563B" stroke-width="5" stroke-linecap="round"/></svg></span>{headingTail}
           </h1>
-          <p class="mt-9 text-stone text-lg leading-relaxed max-w-xl" data-heading-sub>{headings[0].sub}</p>
+          <p class="mt-9 text-stone text-lg leading-relaxed max-w-xl">{headings[0].sub}</p>
           <div class="mt-9 flex flex-wrap gap-4">
             <a href={BOOK_CALL_URL} target="_blank" rel="noopener" class="btn btn-primary">Book a 30-minute intro call</a>
             <a href="#about" class="btn btn-outline">More about me</a>
@@ -338,8 +337,6 @@ const ways = [
       </div>
     </div>
   </footer>
-
-  <HeadingSwitcher headings={headings} theme="dark" />
 </NewLayout>
 
 <script>
