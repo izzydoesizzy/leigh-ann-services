@@ -1,0 +1,127 @@
+---
+// /review: a start page for Leigh-Ann. Links to every page she needs to look
+// at this round, what changed, and what we still need from her.
+// Keep in sync with README.md (section "Review page").
+import TealLayout from "../layouts/TealLayout.astro";
+import { BOOK_URL, EMAIL } from "../data/capability-brief.ts";
+
+const base = import.meta.env.BASE_URL;
+const updated = "November 2026";
+
+const groups = [
+  {
+    title: "Capability brief",
+    note: "Updated from your voice note, your update doc, and our last calls. Same content in two styles. Both have a Save as PDF button.",
+    pages: [
+      { href: `${base}capability-brief/`, name: "Capability brief, editorial style", path: "/capability-brief", body: "Ivory and copper, print-style chapters. Matches the main homepage." },
+      { href: `${base}new/capability-brief/`, name: "Capability brief, Teal & Clay style", path: "/new/capability-brief", body: "Warmer look with the arch portrait. Matches the /new homepage." },
+    ],
+  },
+  {
+    title: "Website",
+    note: "The simplified one-page site. Same content in two styles. Every Book a call button now goes to your intake form.",
+    pages: [
+      { href: base, name: "Homepage, editorial style", path: "/", body: "The current homepage." },
+      { href: `${base}new/`, name: "Homepage, Teal & Clay style", path: "/new", body: "The alternative style, for comparison." },
+    ],
+  },
+  {
+    title: "Booking",
+    note: "Where Book a call goes. The form qualifies the lead, then offers a 30-minute slot on your calendar.",
+    pages: [
+      { href: BOOK_URL, name: "Intake form", path: "Google Form", body: "Fill it in as a test to see what a new lead experiences.", external: true },
+    ],
+  },
+  {
+    title: "For comparison",
+    note: "Older versions, kept so nothing is lost.",
+    pages: [
+      { href: `${base}archive/editorial/capability-brief/`, name: "Previous capability brief", path: "/archive/editorial/capability-brief", body: "The brief before this round of changes." },
+      { href: `${base}archive/`, name: "Every page on the site", path: "/archive", body: "Full directory, including the previous site and the four style mockups." },
+    ],
+  },
+];
+
+const changes = [
+  "Cover and About: your new bio, tagline, At a glance details, and info@leighannmartin.com.",
+  "Selected work: added To Be Hosted as the first case study. Ascend and Immunovant kept as they were.",
+  "How clients describe me: simpler layout, fewer quotes, less focus on Ascend.",
+  "Services catalog replaced with three ways to work together: done by you, done with you, done for you. Your four disciplines are woven in underneath. No prices.",
+  "How I work: now runs intake form, discovery call, scope, kickoff, handoff or ongoing.",
+  "Credentials: updated exactly as in your doc.",
+  "Removed: Four shapes of fractional, and In the press.",
+  "Next steps and every Book a call button: now go to your intake form, and the call is 30 minutes.",
+];
+
+const questions = [
+  "To Be Hosted: your title, whether we can name the company publicly, and one before-and-after with a couple of numbers. The numbers panel on that case study is a placeholder.",
+  "LinkedIn recommendations: paste the text of the new ones you want added, with each person's name and title.",
+  "By the numbers: keep or cut the line \"Resume-backed metrics. Every figure is attested to…\"?",
+  "Cover: does \"For the executive office that deserves better\" still fit? Is \"Open to: hybrid or in-office senior EA roles in NYC\" still true?",
+  "Credentials: an expected date for the Salesforce certification?",
+  "Packages and How I work: do these sound like you? They were drafted from our calls.",
+  "Style: editorial or Teal & Clay, for the brief and the site?",
+];
+---
+
+<TealLayout title="Start here | Leigh-Ann Martin" noindex={true}>
+  <main class="max-w-3xl mx-auto px-6 py-16 md:py-24">
+    <p class="eyebrow">For Leigh-Ann &middot; Updated {updated}</p>
+    <h1 class="mt-4 text-4xl md:text-5xl text-espresso leading-tight">Start here.</h1>
+    <p class="mt-5 text-stone text-lg leading-relaxed">
+      Everything to look at from this round of updates, in one place. Open the links, then send your answers to the questions at the bottom.
+    </p>
+
+    {groups.map((g) => (
+      <section class="mt-14">
+        <h2 class="text-2xl text-espresso">{g.title}</h2>
+        <p class="mt-2 text-stone leading-relaxed">{g.note}</p>
+        <ul class="mt-6 space-y-3 list-none p-0">
+          {g.pages.map((p) => (
+            <li>
+              <a
+                href={p.href}
+                {...(p.external ? { target: "_blank", rel: "noopener" } : {})}
+                class="card p-5 block group hover:border-teal transition-colors"
+              >
+                <div class="flex flex-wrap items-baseline justify-between gap-2">
+                  <span class="font-semibold text-espresso group-hover:text-teal transition-colors">{p.name} &rarr;</span>
+                  <code class="text-xs text-stone">{p.path}</code>
+                </div>
+                <p class="mt-1.5 text-sm text-ink">{p.body}</p>
+              </a>
+            </li>
+          ))}
+        </ul>
+      </section>
+    ))}
+
+    <section class="mt-16 pt-12 border-t border-line">
+      <h2 class="text-2xl text-espresso">What changed in the brief</h2>
+      <ul class="mt-6 space-y-3 list-none p-0">
+        {changes.map((c) => (
+          <li class="flex gap-3 text-ink leading-relaxed">
+            <span class="text-teal mt-0.5 font-semibold">&#x2713;</span>
+            <span>{c}</span>
+          </li>
+        ))}
+      </ul>
+    </section>
+
+    <section class="mt-16 rounded-[1.25rem] bg-sage p-7 md:p-9">
+      <h2 class="text-2xl text-espresso">What we need from you</h2>
+      <ol class="mt-6 space-y-4 list-none p-0">
+        {questions.map((q, i) => (
+          <li class="flex gap-4 text-ink leading-relaxed">
+            <span class="font-serif text-2xl text-teal leading-none shrink-0 w-6">{i + 1}</span>
+            <span>{q}</span>
+          </li>
+        ))}
+      </ol>
+    </section>
+
+    <p class="mt-12 text-sm text-stone">
+      Questions about this page? Reply to Izzy. Site email: <a href={`mailto:${EMAIL}`} class="text-teal hover:text-teal-deep">{EMAIL}</a>
+    </p>
+  </main>
+</TealLayout>
