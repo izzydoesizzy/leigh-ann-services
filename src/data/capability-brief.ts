@@ -40,7 +40,7 @@ export const cases = [
     company: "To Be Hosted",
     role: "Fractional EA and operations partner to the founder",
     headline: "A small business, run on systems.",
-    body: "To Be Hosted is an event management company. I run the operational layer for the founder and her team: calendar, scheduling, meeting prep, expense and income coding, invoices and receipts, gifting, reservations, and travel for a team of four. I built the master project and client trackers, the client and event folders, and contract and invoice tracking, all inside the Google Workspace the business already pays for. On the growth side, I develop proposals, run new business outreach and follow-up, and join new client meetings when it helps.",
+    body: "To Be Hosted is an event management company. I run the operational layer for the founder and her team: calendar, scheduling, meeting prep, expense and income coding, invoices and receipts, gifting, reservations, and travel for a team of four. I manage the master project and client trackers, the client and event folders, and contract and invoice tracking, all inside the Google Workspace the business already pays for. On the growth side, I develop proposals, run new business outreach and follow-up, and join new client meetings when it helps.",
     metrics: [
       { label: "people supported", value: "Founder + 4" },
       { label: "built in", value: "Google Workspace" },
@@ -154,7 +154,7 @@ export const credentials = [
 
 // Chapter 1 bio. Paragraphs contain a little inline HTML (<em>), so render with set:html.
 export const bio = [
-  "I grew up in Trinidad &amp; Tobago, where I started at 18 in the Office of the VP of Oil and Refining at the Petroleum Company of Trinidad &amp; Tobago. I moved to New York City in 2006 and have worked in executive offices ever since. I've supported C-suite and senior leaders in financial investment, insight and research, public accounting, biopharma, and event management.",
+  "I grew up in Trinidad &amp; Tobago, where I started at age 18 in the Office of the VP of Oil and Refining at the Petroleum Company of Trinidad &amp; Tobago. I moved to New York City in 2006 and have worked in executive offices ever since. I've supported C-suite and senior leaders in financial investment, insight and research, public accounting, biopharma and event management industries.",
   "Alongside 12+ years as a Senior Administrative Professional, I trained as a chef at the Institute of Culinary Education and graduated with high honors. I also built <em>A Table For Four</em>, a pop-up dinner series that ran in New York, London, Wisconsin, and Grenada. <em>The New York Times</em>, <em>Eater</em>, and <em>The Washington Post</em> covered it. It taught me to curate, lead, and operate at any volume. The two careers have always fed each other.",
   "My approach is simple. Anticipate, don't react. Own it, don't just execute. Build systems that survive transitions. Treat confidentiality as the default, not a policy.",
   "I'm a Certified Administrative Professional, fluent in AI tools and the trusted platforms offices run on. I do my best work with executives who value that, whether I'm embedded or fractional.",
