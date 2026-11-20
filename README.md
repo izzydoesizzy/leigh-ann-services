@@ -3,7 +3,10 @@
 Astro + Tailwind static site, deployed to GitHub Pages on every push to `main`.
 
 **Live base URL:** https://izzydoesizzy.github.io/leigh-ann-services/
+**Start here (for Leigh-Ann):** https://izzydoesizzy.github.io/leigh-ann-services/review
 **Page directory (in the browser):** https://izzydoesizzy.github.io/leigh-ann-services/archive
+**Intake form (every Book a call button):** https://docs.google.com/forms/d/1NiMiUdhcx3ph5VCF6yI_nZJgvUZbihtdkXCPmrCju1E/viewform
+**Contact email used on every page:** info@leighannmartin.com
 
 The repo holds several versions of the site side by side. This file is the map. Every page below has a header screenshot (first screen at 1280px) and a full-page screenshot in [`docs/screenshots/`](docs/screenshots/). Click any full-page thumbnail to open it at full size.
 
@@ -25,13 +28,61 @@ The simplified one-page site, built in October 2026 from Leigh-Ann's outline: he
 
 Every **Book a call** button on both pages, and on both capability briefs, goes to the Google intake form. The link is set once, as `BOOK_URL` in `src/data/capability-brief.ts`.
 
-**Capability brief.** The brief also exists in both themes: [`/capability-brief`](https://izzydoesizzy.github.io/leigh-ann-services/capability-brief) (editorial, `src/pages/capability-brief.astro`) and [`/new/capability-brief`](https://izzydoesizzy.github.io/leigh-ann-services/new/capability-brief) (Teal & Clay, `src/pages/new/capability-brief.astro`). All of its copy lives in `src/data/capability-brief.ts`, so edit it there and both versions update. Both have a **Save as PDF** button and link **Book a call** to the Google intake form.
-
 **Heading picker.** Both pages have a floating "Heading 1 / 2" pill at the bottom so Leigh-Ann can flip between candidate hero headings. The candidates (title + lead paragraph) live in `src/data/headings.ts`; the pill is `src/components/HeadingSwitcher.astro`. Append `?heading=2` to a URL to open a page on a given heading. Once she's chosen, delete the unused entry, remove the `<HeadingSwitcher>` from both pages and the `data-heading-*` hooks in their heroes.
 
 ---
 
-## 2. Previous site (editorial)
+## 2. Capability brief (updated November 2026)
+
+A long-form brief to send to prospects, also printable to PDF. Rebuilt in November 2026 from Leigh-Ann's voice note, her "Cap Briefing Updates" doc, and the Oct 1 and Nov 7 calls. Same content in two visual themes.
+
+| | Editorial | Teal & Clay |
+|---|---|---|
+| **Live** | https://izzydoesizzy.github.io/leigh-ann-services/capability-brief | https://izzydoesizzy.github.io/leigh-ann-services/new/capability-brief |
+| **Source** | `src/pages/capability-brief.astro` | `src/pages/new/capability-brief.astro` |
+| **Theme** | Editorial, matches `/` | Teal & Clay, matches `/new` |
+| **Indexed** | Yes | No (preview) |
+| **Header** | ![](docs/screenshots/capability-brief-header.png) | ![](docs/screenshots/new-capability-brief-header.png) |
+| **Full page** | [![](docs/screenshots/capability-brief-header.png)](docs/screenshots/capability-brief-full.jpg) | [![](docs/screenshots/new-capability-brief-header.png)](docs/screenshots/new-capability-brief-full.jpg) |
+
+**All the copy lives in one file:** `src/data/capability-brief.ts`. Edit it there and both pages update. It holds the bio, At a glance, stats, case studies, packages, process steps, credentials, the email address and the booking link (`BOOK_URL`, also used by `/` and `/new`). Testimonials come from `src/data/pull-quotes.ts`.
+
+**Chapters:**
+
+1. **About**: Leigh-Ann's bio and an At a glance panel.
+2. **By the numbers**: eight headline metrics.
+3. **Selected work**: To Be Hosted (fractional EA and operations, current client), then Ascend board cadence, Immunovant EA function, and Ascend earnings prep.
+4. **How clients describe me**: one feature quote from Pam Connealy, four short quotes, and a closer. Only Pam's is live on LinkedIn; the rest are anonymised by role.
+5. **Ways to work together**: done by you, done with you, done for you, plus the four disciplines (operations, executive partnership, board and governance, investor relations). No prices, by decision.
+6. **How I work**: intake form, discovery call, scope, kickoff, handoff or ongoing.
+7. **Credentials**
+8. **Next steps**: Book a call (intake form) or email.
+
+**Placeholders waiting on Leigh-Ann** (also listed on `/review`):
+- The To Be Hosted metrics panel ("Founder + 4 / Google Workspace / Admin to proposals"), and her title there.
+- The new LinkedIn recommendations she wants added.
+- Whether to keep the "Resume-backed metrics…" line in chapter 2.
+- The cover line and the "Open to" line, which may no longer fit.
+- An expected date for the Salesforce certification.
+
+The previous version of the brief is kept unchanged at `/archive/editorial/capability-brief` (section 3).
+
+---
+
+## 3. Review page for Leigh-Ann
+
+| | |
+|---|---|
+| **Live** | https://izzydoesizzy.github.io/leigh-ann-services/review |
+| **Source** | `src/pages/review.astro` |
+| **Theme** | Teal & Clay. Not indexed. |
+| **Screenshot** | [![](docs/screenshots/review-header.png)](docs/screenshots/review-full.jpg) |
+
+One page to send her: links to both briefs, both homepages, the intake form and the older versions, a list of what changed, and the open questions. The lists are plain arrays at the top of the file, so update them each review round.
+
+---
+
+## 4. Previous site (editorial)
 
 The long-form fractional-EA site that was the homepage until October 2026, aimed at pre-IPO and public-company executives: personas, four engagement tiers, case studies with metrics, a skills matrix, FAQ, press. Kept intact under `/archive/editorial/` with its three subpages. All noindex.
 
@@ -40,7 +91,7 @@ The long-form fractional-EA site that was the homepage until October 2026, aimed
 | Homepage | https://izzydoesizzy.github.io/leigh-ann-services/archive/editorial | `src/pages/archive/editorial/index.astro` | 17 sections. Assembled from the components in `src/components/editorial/`. |
 | Services index | https://izzydoesizzy.github.io/leigh-ann-services/archive/editorial/services | `src/pages/archive/editorial/services.astro` | Catalogue of 37 services across disciplines. Linked from the editorial homepage. |
 | Packages | https://izzydoesizzy.github.io/leigh-ann-services/archive/editorial/packages | `src/pages/archive/editorial/packages.astro` | Priced packages. Deliberately unlinked; shared only after a discovery call. |
-| Capability brief | https://izzydoesizzy.github.io/leigh-ann-services/archive/editorial/capability-brief | `src/pages/archive/editorial/capability-brief.astro` | Dark, print-style one-pager version of the editorial site. Frozen snapshot of the pre-November 2026 version; the current brief is described in section 1. |
+| Capability brief | https://izzydoesizzy.github.io/leigh-ann-services/archive/editorial/capability-brief | `src/pages/archive/editorial/capability-brief.astro` | The brief as it was before the November 2026 update, frozen. Has its own copy inline; it does not read `src/data/capability-brief.ts`. The current brief is section 2. |
 
 | Homepage | Services index |
 |---|---|
@@ -54,7 +105,7 @@ The long-form fractional-EA site that was the homepage until October 2026, aimed
 
 ---
 
-## 3. Style mockups
+## 5. Style mockups
 
 Four alternative looks for the previous site, built to pick a visual direction. Content is a trimmed copy of the editorial homepage, so only the styling differs. Each has a floating "Preview" switcher at the bottom to jump between them. All noindex.
 
@@ -77,6 +128,23 @@ Four alternative looks for the previous site, built to pick a visual direction. 
 
 ---
 
+## Change log
+
+**November 2026**
+- Restored `/capability-brief`, which went missing when the October reorganisation moved the old brief to `/archive/editorial/capability-brief`.
+- Rewrote the brief from Leigh-Ann's notes and calls (see section 2): new bio, To Be Hosted case study, simpler testimonials, packages instead of the 37-service catalog, new process, updated credentials. Removed "Four shapes of fractional" and "In the press".
+- Added a Teal & Clay version at `/new/capability-brief`, and moved the brief's copy into `src/data/capability-brief.ts` so both versions share it.
+- Every **Book a call** button on `/`, `/new` and both briefs now goes to the Google intake form instead of Calendly. The archived pages still link to Calendly.
+- Replaced the old Gmail address with info@leighannmartin.com on every page, archive included.
+- Added the `/review` start page for Leigh-Ann.
+
+**October 2026**
+- Simplified one-page site became the homepage; `/new` added in the Teal & Clay theme.
+- Everything older moved under `/archive` (see Old slugs below).
+- Heading picker and share images added to `/` and `/new`.
+
+---
+
 ## Old slugs
 
 Slugs were flattened out in October 2026. If you have an old link:
@@ -86,7 +154,7 @@ Slugs were flattened out in October 2026. If you have an old link:
 | `/` (editorial homepage) | `/archive/editorial` |
 | `/services` | `/archive/editorial/services` |
 | `/packages` | `/archive/editorial/packages` |
-| `/capability-brief` | `/archive/editorial/capability-brief` (old version; `/capability-brief` now serves the updated brief) |
+| `/capability-brief` | Still `/capability-brief`, now the updated brief. The old version is at `/archive/editorial/capability-brief`. |
 | `/v2` (mockup) | `/archive/mockups/minimalist` |
 | `/v3` | `/archive/mockups/institutional` |
 | `/v4` | `/archive/mockups/brutalist` |
@@ -101,13 +169,16 @@ src/
   pages/
     index.astro                  /                       simplified site, editorial theme
     new.astro                    /new                    simplified site, teal & clay theme
+    capability-brief.astro       /capability-brief       capability brief, editorial theme
+    new/capability-brief.astro   /new/capability-brief   capability brief, teal & clay theme
+    review.astro                 /review                 start page for Leigh-Ann: links, changes, questions
     archive/
       index.astro                /archive                directory of every page
       editorial/                 /archive/editorial/…    previous site + subpages
       mockups/                   /archive/mockups/…      four style mockups
   layouts/
-    EditorialLayout.astro        loads styles/editorial.css (used by /, archive/editorial, mockups)
-    TealLayout.astro             loads styles/teal.css     (used by /new, /archive)
+    EditorialLayout.astro        loads styles/editorial.css (used by /, /capability-brief, archive/editorial, mockups)
+    TealLayout.astro             loads styles/teal.css     (used by /new, /new/capability-brief, /review, /archive)
   styles/
     editorial.css                ivory / ink / copper tokens, Fraunces + Inter
     teal.css                     ivory / sage / teal / clay tokens, Fraunces + Figtree
@@ -116,8 +187,9 @@ src/
     mockups/VariantSwitcher.astro
     HeadingSwitcher.astro        floating picker for the candidate hero headings on / and /new
   data/
+    capability-brief.ts          all copy for both capability briefs, plus BOOK_URL and EMAIL used site-wide
     headings.ts                  candidate hero headings (title + lead paragraph) for / and /new
-    pull-quotes.ts               anonymised testimonials used by the editorial pages
+    pull-quotes.ts               anonymised testimonials used by the briefs and editorial pages
 public/portrait.jpg              the one portrait every version uses
 docs/screenshots/                header (PNG) + full-page (JPG) shots of every page
 ```
