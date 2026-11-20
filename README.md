@@ -25,6 +25,8 @@ The simplified one-page site, built in October 2026 from Leigh-Ann's outline: he
 
 Both use the same `BOOK_CALL_URL` constant at the top of their page file. It currently points at Calendly; swap it for the Google intake form when that's ready.
 
+**Capability brief.** The brief also exists in both themes: [`/capability-brief`](https://izzydoesizzy.github.io/leigh-ann-services/capability-brief) (editorial, `src/pages/capability-brief.astro`) and [`/new/capability-brief`](https://izzydoesizzy.github.io/leigh-ann-services/new/capability-brief) (Teal & Clay, `src/pages/new/capability-brief.astro`). All of its copy lives in `src/data/capability-brief.ts`, so edit it there and both versions update. Both have a **Save as PDF** button and link **Book a call** to the Google intake form.
+
 **Heading picker.** Both pages have a floating "Heading 1 / 2" pill at the bottom so Leigh-Ann can flip between candidate hero headings. The candidates (title + lead paragraph) live in `src/data/headings.ts`; the pill is `src/components/HeadingSwitcher.astro`. Append `?heading=2` to a URL to open a page on a given heading. Once she's chosen, delete the unused entry, remove the `<HeadingSwitcher>` from both pages and the `data-heading-*` hooks in their heroes.
 
 ---
@@ -38,7 +40,7 @@ The long-form fractional-EA site that was the homepage until October 2026, aimed
 | Homepage | https://izzydoesizzy.github.io/leigh-ann-services/archive/editorial | `src/pages/archive/editorial/index.astro` | 17 sections. Assembled from the components in `src/components/editorial/`. |
 | Services index | https://izzydoesizzy.github.io/leigh-ann-services/archive/editorial/services | `src/pages/archive/editorial/services.astro` | Catalogue of 37 services across disciplines. Linked from the editorial homepage. |
 | Packages | https://izzydoesizzy.github.io/leigh-ann-services/archive/editorial/packages | `src/pages/archive/editorial/packages.astro` | Priced packages. Deliberately unlinked; shared only after a discovery call. |
-| Capability brief | https://izzydoesizzy.github.io/leigh-ann-services/archive/editorial/capability-brief | `src/pages/archive/editorial/capability-brief.astro` | Dark, print-style one-pager version of the editorial site. Also served at its original URL, https://izzydoesizzy.github.io/leigh-ann-services/capability-brief (`src/pages/capability-brief.astro`, a copy with adjusted import paths; edit both). |
+| Capability brief | https://izzydoesizzy.github.io/leigh-ann-services/archive/editorial/capability-brief | `src/pages/archive/editorial/capability-brief.astro` | Dark, print-style one-pager version of the editorial site. Frozen snapshot of the pre-November 2026 version; the current brief is described in section 1. |
 
 | Homepage | Services index |
 |---|---|
@@ -84,7 +86,7 @@ Slugs were flattened out in October 2026. If you have an old link:
 | `/` (editorial homepage) | `/archive/editorial` |
 | `/services` | `/archive/editorial/services` |
 | `/packages` | `/archive/editorial/packages` |
-| `/capability-brief` | `/archive/editorial/capability-brief` (original URL restored too) |
+| `/capability-brief` | `/archive/editorial/capability-brief` (old version; `/capability-brief` now serves the updated brief) |
 | `/v2` (mockup) | `/archive/mockups/minimalist` |
 | `/v3` | `/archive/mockups/institutional` |
 | `/v4` | `/archive/mockups/brutalist` |
