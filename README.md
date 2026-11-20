@@ -23,7 +23,7 @@ The simplified one-page site, built in October 2026 from Leigh-Ann's outline: he
 | **Header** | ![](docs/screenshots/home-header.png) | ![](docs/screenshots/new-header.png) |
 | **Full page** | [![](docs/screenshots/home-header.png)](docs/screenshots/home-full.jpg) | [![](docs/screenshots/new-header.png)](docs/screenshots/new-full.jpg) |
 
-Both use the same `BOOK_CALL_URL` constant at the top of their page file. It currently points at Calendly; swap it for the Google intake form when that's ready.
+Every **Book a call** button on both pages, and on both capability briefs, goes to the Google intake form. The link is set once, as `BOOK_URL` in `src/data/capability-brief.ts`.
 
 **Capability brief.** The brief also exists in both themes: [`/capability-brief`](https://izzydoesizzy.github.io/leigh-ann-services/capability-brief) (editorial, `src/pages/capability-brief.astro`) and [`/new/capability-brief`](https://izzydoesizzy.github.io/leigh-ann-services/new/capability-brief) (Teal & Clay, `src/pages/new/capability-brief.astro`). All of its copy lives in `src/data/capability-brief.ts`, so edit it there and both versions update. Both have a **Save as PDF** button and link **Book a call** to the Google intake form.
 

@@ -4,11 +4,11 @@
 import Layout from "../layouts/EditorialLayout.astro";
 import HeadingSwitcher from "../components/HeadingSwitcher.astro";
 import { headings } from "../data/headings";
+// Every Book a call button uses this: the Google intake form, which then offers a 30-minute slot.
+import { BOOK_URL as BOOK_CALL_URL } from "../data/capability-brief.ts";
 
 const base = import.meta.env.BASE_URL;
 
-// TODO: swap for the Google intake form URL once it's ready. Every "Book a call" button uses this.
-const BOOK_CALL_URL = "https://calendly.com/leighannmartin/30min";
 
 const groups = [
   {
