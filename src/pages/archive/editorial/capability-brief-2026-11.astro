@@ -1,0 +1,434 @@
+---
+import Layout from "../../../layouts/EditorialLayout.astro";
+import {
+  briefPamFeature, briefPamCloser, briefJulia, briefCourtney, briefShorts, sectorLabel,
+  BOOK_URL, EMAIL, stats, cases, process, packages, disciplinesCovered, credentials,
+  bio, glance, tagline,
+} from "../../../data/capability-brief.ts";
+
+const base = import.meta.env.BASE_URL;
+
+---
+
+<Layout noindex={true} title="Capability Brief | Leigh-Ann Martin" bodyClass="paper-grain antialiased brief-doc">
+  <!-- Sticky action bar (screen only) -->
+  <div class="sticky top-0 z-50 bg-ink text-paper border-b border-paper/10 print:hidden">
+    <div class="max-w-6xl mx-auto px-6 md:px-10 py-3 flex items-center justify-between gap-4">
+      <div class="flex items-baseline gap-3">
+        <a href={`${base}archive/editorial/simplified`} class="font-mono text-[10px] uppercase tracking-[0.25em] text-paper/60 hover:text-copper transition-colors">&larr; Main site</a>
+        <span class="hidden md:inline font-mono text-[10px] uppercase tracking-[0.25em] text-paper/30">|</span>
+        <span class="hidden md:inline small-caps text-paper/70">Capability Brief, 2026</span>
+      </div>
+      <div class="flex items-center gap-3">
+        <button
+          id="print-btn"
+          class="inline-flex items-center gap-2 bg-copper text-paper px-4 py-2 rounded-full text-xs font-medium hover:bg-paper hover:text-ink transition-colors"
+        >
+          <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 17h2a2 2 0 002-2v-4a2 2 0 00-2-2H5a2 2 0 00-2 2v4a2 2 0 002 2h2m2 4h6a2 2 0 002-2v-4a2 2 0 00-2-2H9a2 2 0 00-2 2v4a2 2 0 002 2zm8-12V5a2 2 0 00-2-2H9a2 2 0 00-2 2v4h10z"/></svg>
+          <span>Save as PDF</span>
+        </button>
+        <a
+          href={BOOK_URL}
+          target="_blank"
+          rel="noopener"
+          class="inline-flex items-center gap-2 bg-paper text-ink px-4 py-2 rounded-full text-xs font-medium hover:bg-copper hover:text-paper transition-colors"
+        >
+          <span>Book a call</span>
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <main class="bg-paper">
+    <!-- Cover -->
+    <section class="brief-page min-h-screen flex flex-col justify-between py-16 md:py-24">
+      <div class="max-w-5xl mx-auto px-6 md:px-10 w-full">
+        <div class="flex items-baseline justify-between mb-16">
+          <span class="small-caps text-ink-muted">Capability Brief</span>
+          <span class="font-mono text-[11px] uppercase tracking-[0.25em] text-ink-muted">Edition 2026</span>
+        </div>
+
+        <div class="grid md:grid-cols-12 gap-10 md:gap-16 items-end">
+          <div class="md:col-span-8">
+            <p class="small-caps text-copper mb-6">For the executive office that deserves better.</p>
+            <h1 class="font-display text-5xl md:text-7xl lg:text-[5.5rem] text-ink leading-[0.95] tracking-[-0.03em] mb-10">
+              Leigh-Ann <span class="italic font-display-italic text-copper">Martin</span>.
+            </h1>
+            <p class="text-xl md:text-2xl text-ink-soft leading-snug max-w-xl mb-8">
+              Senior Executive Assistant. Fractional partner. Twelve years running the operational layer beneath C-suite leaders.
+            </p>
+            <p class="font-mono text-[11px] uppercase tracking-[0.2em] text-ink-muted" set:html={tagline} />
+          </div>
+          <div class="md:col-span-4">
+            <figure>
+              <div class="aspect-[3/4] rounded-[2px] overflow-hidden bg-paper-deep shadow-[0_20px_60px_-20px_rgba(22,21,19,0.25)] print:shadow-none">
+                <img
+                  src={`${base}portrait.jpg`}
+                  alt="Leigh-Ann Martin"
+                  class="w-full h-full object-cover"
+                  style="object-position: center top;"
+                />
+              </div>
+              <figcaption class="mt-3 font-caption text-xs text-ink-muted italic">
+                New York, 2026.
+              </figcaption>
+            </figure>
+          </div>
+        </div>
+      </div>
+
+      <div class="max-w-5xl mx-auto px-6 md:px-10 w-full mt-16">
+        <div class="flex items-baseline justify-between pt-6 border-t border-ink">
+          <p class="font-mono text-[10px] uppercase tracking-[0.25em] text-ink-muted">{EMAIL} &middot; linkedin.com/in/leigh-ann-martin</p>
+          <p class="font-display-italic text-ink">vol. I</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Table of contents -->
+    <section class="brief-page bg-paper-soft py-16 md:py-20 border-y border-rule">
+      <div class="max-w-5xl mx-auto px-6 md:px-10">
+        <p class="small-caps text-copper mb-5">Contents</p>
+        <h2 class="font-display text-3xl md:text-4xl text-ink leading-[0.95] mb-10">What's in this brief.</h2>
+        <ol class="grid sm:grid-cols-2 gap-x-10 gap-y-3 text-ink">
+          <li class="border-b border-rule/50 pb-2"><span class="font-display text-lg">I. About</span></li>
+          <li class="border-b border-rule/50 pb-2"><span class="font-display text-lg">II. By the numbers</span></li>
+          <li class="border-b border-rule/50 pb-2"><span class="font-display text-lg">III. Selected work</span></li>
+          <li class="border-b border-rule/50 pb-2"><span class="font-display text-lg">IV. How clients describe me</span></li>
+          <li class="border-b border-rule/50 pb-2"><span class="font-display text-lg">V. Ways to work together</span></li>
+          <li class="border-b border-rule/50 pb-2"><span class="font-display text-lg">VI. How I work</span></li>
+          <li class="border-b border-rule/50 pb-2"><span class="font-display text-lg">VII. Credentials</span></li>
+          <li class="border-b border-rule/50 pb-2"><span class="font-display text-lg">VIII. Next steps</span></li>
+        </ol>
+      </div>
+    </section>
+
+    <!-- I. About -->
+    <section class="brief-page py-16 md:py-20">
+      <div class="max-w-5xl mx-auto px-6 md:px-10">
+        <div class="flex items-baseline gap-6 mb-10">
+          <span class="font-display text-6xl text-copper leading-none">I.</span>
+          <div>
+            <p class="small-caps text-copper mb-1">Chapter One</p>
+            <h2 class="font-display text-3xl md:text-4xl text-ink leading-[0.95]">About.</h2>
+          </div>
+        </div>
+
+        <div class="grid md:grid-cols-12 gap-10">
+          <div class="md:col-span-8 space-y-5 text-ink text-lg leading-relaxed">
+            {bio.map(p => <p set:html={p} />)}
+          </div>
+
+          <aside class="md:col-span-4 md:border-l md:border-rule md:pl-8">
+            <p class="small-caps text-copper mb-5">At a glance</p>
+            <dl class="space-y-5">
+              {glance.map(g => (
+                <div>
+                  <dt class="font-mono text-[10px] uppercase tracking-[0.2em] text-ink-muted mb-1">{g.label}</dt>
+                  <dd class="text-ink text-base leading-snug" set:html={g.value} />
+                </div>
+              ))}
+            </dl>
+          </aside>
+        </div>
+      </div>
+    </section>
+
+    <!-- II. By the numbers -->
+    <section class="brief-page bg-paper-deep py-16 md:py-20 border-y border-rule">
+      <div class="max-w-5xl mx-auto px-6 md:px-10">
+        <div class="flex items-baseline gap-6 mb-10">
+          <span class="font-display text-6xl text-copper leading-none">II.</span>
+          <div>
+            <p class="small-caps text-copper mb-1">Chapter Two</p>
+            <h2 class="font-display text-3xl md:text-4xl text-ink leading-[0.95]">By the numbers.</h2>
+          </div>
+        </div>
+
+        <p class="text-ink-soft text-base md:text-lg leading-relaxed max-w-2xl mb-10">
+          Resume-backed metrics. Every figure is attested to in the career documents my references would confirm.
+        </p>
+
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-px bg-rule border border-rule">
+          {stats.map((s, idx) => (
+            <div class="bg-paper-deep p-5 md:p-6 flex flex-col">
+              <span class="font-mono text-[10px] uppercase tracking-[0.25em] text-ink-muted mb-3 tabular">0{idx + 1}</span>
+              <span class="font-display text-4xl md:text-5xl text-ink leading-none tabular mb-3">{s.value}</span>
+              <span class="text-ink text-sm font-medium mb-1 leading-snug">{s.label}</span>
+              <span class="text-ink-muted text-xs leading-relaxed mt-auto">{s.sub}</span>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- III. Selected work -->
+    <section class="brief-page py-16 md:py-20">
+      <div class="max-w-5xl mx-auto px-6 md:px-10">
+        <div class="flex items-baseline gap-6 mb-10">
+          <span class="font-display text-6xl text-copper leading-none">III.</span>
+          <div>
+            <p class="small-caps text-copper mb-1">Chapter Three</p>
+            <h2 class="font-display text-3xl md:text-4xl text-ink leading-[0.95]">Selected work.</h2>
+          </div>
+        </div>
+
+        <div class="space-y-14">
+          {cases.map(c => (
+            <article class="grid md:grid-cols-12 gap-6 md:gap-10">
+              <div class="md:col-span-7">
+                <div class="border-t-2 border-ink pt-4 mb-5">
+                  <p class="small-caps text-copper">{c.company}</p>
+                  <p class="font-mono text-[10px] uppercase tracking-wider text-ink-muted mt-1">{c.role}</p>
+                </div>
+                <h3 class="font-display text-2xl md:text-3xl text-ink leading-[1.05] mb-4">{c.headline}</h3>
+                <p class="text-ink-soft leading-relaxed text-base">{c.body}</p>
+              </div>
+              <div class="md:col-span-5 md:pl-8 md:border-l md:border-rule">
+                <p class="small-caps text-ink-muted mb-5">By the numbers</p>
+                <dl class="space-y-4">
+                  {c.metrics.map(m => (
+                    <div>
+                      <dt class="font-mono text-[10px] text-ink-muted uppercase tracking-[0.2em] mb-1">{m.label}</dt>
+                      <dd class="font-display text-3xl text-copper leading-none tabular">{m.value}</dd>
+                    </div>
+                  ))}
+                </dl>
+              </div>
+            </article>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- IV. Testimonials: pull-quote wall -->
+    <section class="brief-page bg-ink text-paper py-16 md:py-20">
+      <div class="max-w-5xl mx-auto px-6 md:px-10">
+        <div class="flex items-baseline gap-6 mb-10">
+          <span class="font-display text-6xl text-copper leading-none">IV.</span>
+          <div>
+            <p class="small-caps text-copper mb-1">Chapter Four</p>
+            <h2 class="font-display text-3xl md:text-4xl text-paper leading-[0.95]">How clients describe me.</h2>
+          </div>
+        </div>
+
+        <p class="text-paper/65 text-sm md:text-base leading-relaxed max-w-2xl mb-4">
+          Extracts from recommendations by former executives and partners I've worked alongside.
+        </p>
+        <p class="font-mono text-[10px] uppercase tracking-[0.2em] text-paper/40 leading-relaxed mb-10">
+          Pam Connealy is live on LinkedIn. Others are drafts pending approval, anonymized by role and sector.
+        </p>
+
+        <!-- Pam feature pull -->
+        <figure class="mb-12 pb-10 border-b border-paper/15">
+          <span class="block font-display text-6xl md:text-8xl text-copper leading-none -mb-4 md:-mb-6">"</span>
+          <blockquote class="font-display text-2xl md:text-3xl text-paper leading-[1.2]">
+            {briefPamFeature.extract}
+          </blockquote>
+          <figcaption class="mt-6 flex flex-wrap items-baseline gap-x-3 gap-y-1">
+            <p class="font-display text-base text-paper">{briefPamFeature.role}</p>
+            <span class="text-paper/40 text-xs">&middot;</span>
+            <p class="text-paper/55 text-sm">{briefPamFeature.sector}</p>
+            <span class="ml-auto small-caps bg-copper text-ink px-3 py-1 rounded-full text-[10px]">Live on LinkedIn</span>
+          </figcaption>
+        </figure>
+
+        <!-- Supporting quotes: one simple grid -->
+        <div class="grid md:grid-cols-2 gap-x-10 gap-y-10 mb-12">
+          {[briefJulia, briefCourtney, ...briefShorts].map(q => (
+            <figure class="border-l-2 border-copper pl-5">
+              <blockquote class="font-display-italic text-lg md:text-xl text-paper leading-snug mb-3">"{q.extract}"</blockquote>
+              <figcaption class="font-mono text-[10px] uppercase tracking-[0.2em] text-paper/50">{q.role} &middot; {sectorLabel(q.sector)}</figcaption>
+            </figure>
+          ))}
+        </div>
+
+        <!-- Closer -->
+        <div class="pt-10 border-t border-paper/15 text-center">
+          <p class="font-display-italic text-xl md:text-2xl text-paper leading-snug max-w-2xl mx-auto">
+            "{briefPamCloser.extract}"
+          </p>
+          <p class="mt-3 font-mono text-[10px] uppercase tracking-[0.25em] text-paper/40">
+            {briefPamCloser.role} &middot; {briefPamCloser.sector}
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- V. Ways to work together -->
+    <section class="brief-page py-16 md:py-20">
+      <div class="max-w-5xl mx-auto px-6 md:px-10">
+        <div class="flex items-baseline gap-6 mb-10">
+          <span class="font-display text-6xl text-copper leading-none">V.</span>
+          <div>
+            <p class="small-caps text-copper mb-1">Chapter Five</p>
+            <h2 class="font-display text-3xl md:text-4xl text-ink leading-[0.95]">Ways to work together.</h2>
+            <p class="mt-3 text-ink-soft text-base leading-relaxed max-w-2xl">
+              Business systems for founders, small businesses, and executive offices. Every engagement starts with a conversation about what's breaking. Then I recommend one of three ways to work together.
+            </p>
+          </div>
+        </div>
+
+        <div class="grid md:grid-cols-3 gap-5 md:gap-6 mb-14">
+          {packages.map((pk, i) => (
+            <article class={`border border-ink/15 rounded-sm p-6 md:p-7 flex flex-col ${i === 1 ? "bg-paper-deep" : ""}`}>
+              <p class="font-mono text-[10px] uppercase tracking-[0.25em] text-copper mb-1">{pk.num}</p>
+              <p class="font-mono text-[10px] uppercase tracking-[0.2em] text-ink-muted mb-4">{pk.tag}</p>
+              <h3 class="font-display text-2xl md:text-3xl text-ink leading-tight mb-4">{pk.name}</h3>
+              <p class="text-ink-soft text-sm leading-relaxed mb-5">{pk.body}</p>
+              <p class="text-ink text-sm leading-relaxed mt-auto pt-4 border-t border-rule"><span class="small-caps text-copper">Best for:</span> {pk.for}</p>
+            </article>
+          ))}
+        </div>
+
+        <p class="small-caps text-ink-muted mb-5">What it can cover</p>
+        <div class="grid sm:grid-cols-2 md:grid-cols-4 gap-px bg-rule border-y-2 border-ink">
+          {disciplinesCovered.map(d => (
+            <div class="bg-paper p-5 md:p-6">
+              <h3 class="font-display text-lg text-ink leading-tight mb-2">{d.name}</h3>
+              <p class="text-ink-soft text-sm leading-relaxed">{d.body}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- VI. How I work -->
+    <section class="brief-page bg-paper-soft py-16 md:py-20 border-y border-rule">
+      <div class="max-w-5xl mx-auto px-6 md:px-10">
+        <div class="flex items-baseline gap-6 mb-10">
+          <span class="font-display text-6xl text-copper leading-none">VI.</span>
+          <div>
+            <p class="small-caps text-copper mb-1">Chapter Six</p>
+            <h2 class="font-display text-3xl md:text-4xl text-ink leading-[0.95]">How I work.</h2>
+          </div>
+        </div>
+
+        <div class="space-y-px bg-rule border-y-2 border-ink">
+          {process.map(s => (
+            <div class="bg-paper-soft grid md:grid-cols-12 gap-5 px-5 md:px-7 py-6">
+              <div class="md:col-span-1"><span class="font-display text-4xl text-copper leading-none tabular">{s.num}</span></div>
+              <div class="md:col-span-3">
+                <p class="small-caps text-ink-muted mb-1">{s.phase}</p>
+                <p class="font-mono text-[10px] uppercase tracking-wide text-ink-muted/70">{s.time}</p>
+              </div>
+              <div class="md:col-span-8">
+                <h3 class="font-display text-lg md:text-xl text-ink leading-tight mb-2">{s.title}</h3>
+                <p class="text-ink-soft text-sm leading-relaxed">{s.body}</p>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- VII. Credentials -->
+    <section class="brief-page bg-paper-soft py-16 md:py-20 border-y border-rule">
+      <div class="max-w-5xl mx-auto px-6 md:px-10">
+        <div class="flex items-baseline gap-6 mb-10">
+          <span class="font-display text-6xl text-copper leading-none">VII.</span>
+          <div>
+            <p class="small-caps text-copper mb-1">Chapter Seven</p>
+            <h2 class="font-display text-3xl md:text-4xl text-ink leading-[0.95]">Credentials.</h2>
+          </div>
+        </div>
+
+        <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-px bg-rule border border-rule">
+          {credentials.map(c => (
+            <article class="bg-paper-soft p-5 md:p-6 flex flex-col">
+              <p class="font-mono text-[10px] uppercase tracking-[0.25em] text-copper mb-3">{c.kind}</p>
+              <h3 class="font-display text-lg md:text-xl text-ink leading-tight mb-2">{c.name}</h3>
+              <p class="font-mono text-[11px] uppercase tracking-wide text-ink-muted leading-relaxed mt-auto pt-3" set:html={c.detail} />
+            </article>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- VIII. Next steps -->
+    <section class="brief-page bg-ink text-paper py-16 md:py-20">
+      <div class="max-w-5xl mx-auto px-6 md:px-10">
+        <div class="flex items-baseline gap-6 mb-10">
+          <span class="font-display text-6xl text-copper leading-none">VIII.</span>
+          <div>
+            <p class="small-caps text-copper mb-1">Chapter Eight</p>
+            <h2 class="font-display text-3xl md:text-4xl text-paper leading-[0.95]">Next steps.</h2>
+          </div>
+        </div>
+
+        <p class="font-display text-2xl md:text-3xl text-paper leading-snug max-w-3xl mb-10">
+          If any chapter of this brief sounds like your week, the next step is a free 30-minute call. Fill out a two-minute form, then pick a time.
+        </p>
+
+        <div class="grid md:grid-cols-2 gap-5 mb-10">
+          <a
+            href={BOOK_URL}
+            target="_blank"
+            rel="noopener"
+            class="group bg-copper text-paper p-6 md:p-8 rounded-sm hover:bg-paper hover:text-ink transition-colors flex flex-col print:border print:border-paper/20"
+          >
+            <span class="small-caps text-paper/60 group-hover:text-ink/60 mb-4">Start here</span>
+            <p class="font-display text-2xl md:text-3xl text-paper group-hover:text-ink leading-tight mb-3">Book a 30-minute call</p>
+            <p class="font-mono text-xs text-paper/80 group-hover:text-ink/80 tabular mt-auto">Short form &middot; then pick a time</p>
+          </a>
+          <a
+            href={`mailto:${EMAIL}?subject=Re%3A%20Capability%20Brief&body=Hi%20Leigh-Ann%2C%0A%0AI%20just%20read%20through%20your%20capability%20brief.%20Here%27s%20what%27s%20going%20on%3A%0A%0A`}
+            class="group border-2 border-paper/30 p-6 md:p-8 rounded-sm hover:border-copper transition-colors flex flex-col"
+          >
+            <span class="small-caps text-paper/60 mb-4">Or</span>
+            <p class="font-display text-2xl md:text-3xl text-paper leading-tight mb-3">Email me directly</p>
+            <p class="font-mono text-xs text-paper/80 tabular mt-auto">{EMAIL}</p>
+          </a>
+        </div>
+
+        <div class="flex items-center gap-4 justify-center pt-8 border-t border-paper/15">
+          <div class="w-8 h-px bg-paper/30"></div>
+          <span class="font-display-italic text-lg text-copper">fin.</span>
+          <div class="w-8 h-px bg-paper/30"></div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <script>
+    const btn = document.getElementById("print-btn");
+    btn?.addEventListener("click", () => window.print());
+
+    // Reveal on scroll: elements with [data-reveal] start at opacity 0 and fade in on intersect.
+    const revealEls = document.querySelectorAll("[data-reveal]");
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("revealed");
+            observer.unobserve(entry.target);
+          }
+        });
+      },
+      { threshold: 0.05, rootMargin: "0px 0px -40px 0px" }
+    );
+    revealEls.forEach((el) => observer.observe(el));
+  </script>
+
+  <style>
+    @media print {
+      .brief-doc {
+        background: white !important;
+      }
+      .brief-page {
+        page-break-after: always;
+        break-after: page;
+      }
+      .brief-page:last-child {
+        page-break-after: auto;
+      }
+      .paper-grain::before {
+        display: none !important;
+      }
+      @page {
+        margin: 18mm 14mm;
+        size: letter;
+      }
+    }
+  </style>
+</Layout>

@@ -8,25 +8,25 @@ const base = import.meta.env.BASE_URL;
 
 const groups = [
   {
-    title: "Current candidates",
-    note: "The simplified one-page site, built from Leigh-Ann's October 2026 outline. Same content, two visual themes.",
+    title: "Main site",
+    note: "The simplified one-page site and the capability brief, in the Teal & Clay theme. This is what visitors see. Updated November 2026 from Leigh-Ann's notes and recent calls.",
     pages: [
-      { path: "", name: "Homepage", theme: "Editorial (ivory, copper, Fraunces + Inter)", diff: "Simplified structure in the original site's palette." },
-      { path: "new", name: "Teal & Clay", theme: "Teal & Clay (ivory, sage, teal, Fraunces + Figtree)", diff: "Same structure and copy, warmer theme with the arch portrait hero." },
-    ],
-  },
-  {
-    title: "Capability brief",
-    note: "Updated November 2026 from Leigh-Ann's notes and recent calls. Same content in two visual themes; copy lives in src/data/capability-brief.ts.",
-    pages: [
-      { path: "capability-brief", name: "Capability brief (editorial)", theme: "Editorial", diff: "Eight chapters, print-ready. Save as PDF button." },
-      { path: "new/capability-brief", name: "Capability brief (Teal & Clay)", theme: "Teal & Clay", diff: "Same eight chapters in the /new style." },
+      { path: "", name: "Homepage", theme: "Teal & Clay (ivory, sage, teal, Fraunces + Figtree)", diff: "Simplified one-page site with the arch portrait hero." },
+      { path: "capability-brief", name: "Capability brief", theme: "Teal & Clay", diff: "Eight chapters, print-ready. Save as PDF button. Copy lives in src/data/capability-brief.ts." },
       { path: "review", name: "Start here (review page)", theme: "Teal & Clay", diff: "Links, what changed, and open questions for Leigh-Ann." },
     ],
   },
   {
-    title: "Previous site (editorial)",
-    note: "The long-form fractional-EA site that was the homepage until October 2026. Aimed at pre-IPO and public-company executives.",
+    title: "Editorial theme (archived November 2026)",
+    note: "The same homepage and brief in the original Editorial look (ivory, copper, Fraunces + Inter). Replaced as the main look by Teal & Clay. Both briefs read the same copy file.",
+    pages: [
+      { path: "archive/editorial/simplified", name: "Homepage", theme: "Editorial", diff: "Simplified one-page site in the Editorial theme." },
+      { path: "archive/editorial/capability-brief-2026-11", name: "Capability brief (November 2026 update)", theme: "Editorial", diff: "The updated eight-chapter brief in the Editorial theme." },
+    ],
+  },
+  {
+    title: "Previous long-form site (editorial)",
+    note: "The site that was the homepage until October 2026. Aimed at pre-IPO and public-company executives.",
     pages: [
       { path: "archive/editorial", name: "Homepage", theme: "Editorial", diff: "17 sections: personas, four engagement tiers, case studies, skills matrix, FAQ, press." },
       { path: "archive/editorial/services", name: "Services index", theme: "Editorial", diff: "Full catalogue of 37 services across disciplines." },
@@ -45,6 +45,7 @@ const groups = [
     ],
   },
 ];
+
 ---
 
 <TealLayout title="Page directory | Leigh-Ann Martin" noindex={true}>

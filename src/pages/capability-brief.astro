@@ -1,434 +1,346 @@
 ---
-import Layout from "../layouts/EditorialLayout.astro";
+// /capability-brief: the capability brief in the "Teal & Clay" theme (the main
+// version). All copy lives in src/data/capability-brief.ts. The Editorial-theme
+// version, which reads the same file, is archived at
+// /archive/editorial/capability-brief-2026-11.
+import TealLayout from "../layouts/TealLayout.astro";
 import {
   briefPamFeature, briefPamCloser, briefJulia, briefCourtney, briefShorts, sectorLabel,
-  BOOK_URL, EMAIL, stats, cases, process, packages, disciplinesCovered, credentials,
+  BOOK_URL, EMAIL, LINKEDIN, stats, cases, process, packages, disciplinesCovered, credentials,
   bio, glance, tagline,
 } from "../data/capability-brief.ts";
 
 const base = import.meta.env.BASE_URL;
 
+const contents = [
+  "About",
+  "By the numbers",
+  "Selected work",
+  "How clients describe me",
+  "Ways to work together",
+  "How I work",
+  "Credentials",
+  "Next steps",
+];
 ---
 
-<Layout title="Capability Brief | Leigh-Ann Martin" bodyClass="paper-grain antialiased brief-doc">
-  <!-- Sticky action bar (screen only) -->
-  <div class="sticky top-0 z-50 bg-ink text-paper border-b border-paper/10 print:hidden">
-    <div class="max-w-6xl mx-auto px-6 md:px-10 py-3 flex items-center justify-between gap-4">
-      <div class="flex items-baseline gap-3">
-        <a href={`${base}archive/editorial`} class="font-mono text-[10px] uppercase tracking-[0.25em] text-paper/60 hover:text-copper transition-colors">&larr; Main site</a>
-        <span class="hidden md:inline font-mono text-[10px] uppercase tracking-[0.25em] text-paper/30">|</span>
-        <span class="hidden md:inline small-caps text-paper/70">Capability Brief, 2026</span>
+<TealLayout
+  title="Capability Brief | Leigh-Ann Martin"
+  description="Leigh-Ann Martin's capability brief: experience, selected work, ways to work together, and how to get started."
+>
+  <!-- Header: name + actions (hidden in print) -->
+  <header class="sticky top-0 z-50 bg-ivory/90 backdrop-blur-md border-b border-line print:hidden">
+    <nav class="max-w-5xl mx-auto px-6 h-[4.5rem] flex items-center justify-between gap-4">
+      <div class="flex items-baseline gap-4 min-w-0">
+        <a href={base} class="font-serif text-xl text-espresso whitespace-nowrap">Leigh-Ann Martin</a>
+        <span class="hidden md:inline eyebrow text-stone">Capability brief, 2026</span>
       </div>
       <div class="flex items-center gap-3">
-        <button
-          id="print-btn"
-          class="inline-flex items-center gap-2 bg-copper text-paper px-4 py-2 rounded-full text-xs font-medium hover:bg-paper hover:text-ink transition-colors"
-        >
-          <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 17h2a2 2 0 002-2v-4a2 2 0 00-2-2H5a2 2 0 00-2 2v4a2 2 0 002 2h2m2 4h6a2 2 0 002-2v-4a2 2 0 00-2-2H9a2 2 0 00-2 2v4a2 2 0 002 2zm8-12V5a2 2 0 00-2-2H9a2 2 0 00-2 2v4h10z"/></svg>
-          <span>Save as PDF</span>
-        </button>
-        <a
-          href={BOOK_URL}
-          target="_blank"
-          rel="noopener"
-          class="inline-flex items-center gap-2 bg-paper text-ink px-4 py-2 rounded-full text-xs font-medium hover:bg-copper hover:text-paper transition-colors"
-        >
-          <span>Book a call</span>
-        </a>
+        <button id="print-btn" type="button" class="btn btn-outline text-sm hidden sm:inline-flex cursor-pointer">Save as PDF</button>
+        <a href={BOOK_URL} target="_blank" rel="noopener" class="btn btn-primary text-sm">Book a call</a>
       </div>
-    </div>
-  </div>
+    </nav>
+  </header>
 
-  <main class="bg-paper">
+  <main>
     <!-- Cover -->
-    <section class="brief-page min-h-screen flex flex-col justify-between py-16 md:py-24">
-      <div class="max-w-5xl mx-auto px-6 md:px-10 w-full">
-        <div class="flex items-baseline justify-between mb-16">
-          <span class="small-caps text-ink-muted">Capability Brief</span>
-          <span class="font-mono text-[11px] uppercase tracking-[0.25em] text-ink-muted">Edition 2026</span>
+    <section class="brief-page relative overflow-hidden bg-ivory">
+      <div class="hero-block" aria-hidden="true"><span class="ghost-circle"></span></div>
+      <div class="relative max-w-5xl mx-auto px-6 pt-14 pb-16 md:py-24 grid md:grid-cols-12 gap-12 items-center">
+        <div class="md:col-span-7">
+          <p class="eyebrow">Capability brief &middot; Edition 2026</p>
+          <h1 class="mt-5 text-[2.6rem] md:text-[4rem] leading-[1.08] text-espresso">
+            Leigh-Ann <span class="flourish">Martin<svg viewBox="0 0 220 14" preserveAspectRatio="none" aria-hidden="true"><path d="M4 10 C 60 2, 160 2, 216 8" fill="none" stroke="#C0563B" stroke-width="5" stroke-linecap="round"/></svg></span>
+          </h1>
+          <p class="mt-9 text-stone text-lg md:text-xl leading-relaxed max-w-xl">
+            Senior Executive Assistant. Fractional partner. Twelve years running the operational layer beneath C-suite leaders.
+          </p>
+          <p class="mt-6 accent-line text-teal text-lg" set:html={tagline} />
+          <ul class="mt-9 flex flex-wrap gap-2.5 list-none p-0">
+            <li class="pill">{EMAIL}</li>
+            <li class="pill">{LINKEDIN}</li>
+          </ul>
         </div>
-
-        <div class="grid md:grid-cols-12 gap-10 md:gap-16 items-end">
-          <div class="md:col-span-8">
-            <p class="small-caps text-copper mb-6">For the executive office that deserves better.</p>
-            <h1 class="font-display text-5xl md:text-7xl lg:text-[5.5rem] text-ink leading-[0.95] tracking-[-0.03em] mb-10">
-              Leigh-Ann <span class="italic font-display-italic text-copper">Martin</span>.
-            </h1>
-            <p class="text-xl md:text-2xl text-ink-soft leading-snug max-w-xl mb-8">
-              Senior Executive Assistant. Fractional partner. Twelve years running the operational layer beneath C-suite leaders.
-            </p>
-            <p class="font-mono text-[11px] uppercase tracking-[0.2em] text-ink-muted" set:html={tagline} />
-          </div>
-          <div class="md:col-span-4">
-            <figure>
-              <div class="aspect-[3/4] rounded-[2px] overflow-hidden bg-paper-deep shadow-[0_20px_60px_-20px_rgba(22,21,19,0.25)] print:shadow-none">
-                <img
-                  src={`${base}portrait.jpg`}
-                  alt="Leigh-Ann Martin"
-                  class="w-full h-full object-cover"
-                  style="object-position: center top;"
-                />
-              </div>
-              <figcaption class="mt-3 font-caption text-xs text-ink-muted italic">
-                New York, 2026.
-              </figcaption>
-            </figure>
-          </div>
-        </div>
-      </div>
-
-      <div class="max-w-5xl mx-auto px-6 md:px-10 w-full mt-16">
-        <div class="flex items-baseline justify-between pt-6 border-t border-ink">
-          <p class="font-mono text-[10px] uppercase tracking-[0.25em] text-ink-muted">{EMAIL} &middot; linkedin.com/in/leigh-ann-martin</p>
-          <p class="font-display-italic text-ink">vol. I</p>
+        <div class="md:col-span-5 flex justify-center md:justify-end hero-media-mobile">
+          <img
+            src={`${base}portrait.jpg`}
+            alt="Leigh-Ann Martin"
+            width="330"
+            height="430"
+            class="img-arch w-[min(19.5rem,70vw)] aspect-[33/43]"
+            style="object-position: center top;"
+          />
         </div>
       </div>
     </section>
 
-    <!-- Table of contents -->
-    <section class="brief-page bg-paper-soft py-16 md:py-20 border-y border-rule">
-      <div class="max-w-5xl mx-auto px-6 md:px-10">
-        <p class="small-caps text-copper mb-5">Contents</p>
-        <h2 class="font-display text-3xl md:text-4xl text-ink leading-[0.95] mb-10">What's in this brief.</h2>
-        <ol class="grid sm:grid-cols-2 gap-x-10 gap-y-3 text-ink">
-          <li class="border-b border-rule/50 pb-2"><span class="font-display text-lg">I. About</span></li>
-          <li class="border-b border-rule/50 pb-2"><span class="font-display text-lg">II. By the numbers</span></li>
-          <li class="border-b border-rule/50 pb-2"><span class="font-display text-lg">III. Selected work</span></li>
-          <li class="border-b border-rule/50 pb-2"><span class="font-display text-lg">IV. How clients describe me</span></li>
-          <li class="border-b border-rule/50 pb-2"><span class="font-display text-lg">V. Ways to work together</span></li>
-          <li class="border-b border-rule/50 pb-2"><span class="font-display text-lg">VI. How I work</span></li>
-          <li class="border-b border-rule/50 pb-2"><span class="font-display text-lg">VII. Credentials</span></li>
-          <li class="border-b border-rule/50 pb-2"><span class="font-display text-lg">VIII. Next steps</span></li>
+    <!-- Contents -->
+    <section class="bg-paper border-y border-line">
+      <div class="max-w-5xl mx-auto px-6 py-12 md:py-14">
+        <p class="eyebrow">What's in this brief</p>
+        <ol class="mt-6 grid grid-cols-2 md:grid-cols-4 gap-x-8 gap-y-4 list-none p-0">
+          {contents.map((c, i) => (
+            <li class="flex items-baseline gap-3">
+              <span class="font-serif text-xl text-teal leading-none w-5 shrink-0">{i + 1}</span>
+              <a href={`#ch-${i + 1}`} class="text-espresso font-medium hover:text-teal transition-colors">{c}</a>
+            </li>
+          ))}
         </ol>
       </div>
     </section>
 
-    <!-- I. About -->
-    <section class="brief-page py-16 md:py-20">
-      <div class="max-w-5xl mx-auto px-6 md:px-10">
-        <div class="flex items-baseline gap-6 mb-10">
-          <span class="font-display text-6xl text-copper leading-none">I.</span>
-          <div>
-            <p class="small-caps text-copper mb-1">Chapter One</p>
-            <h2 class="font-display text-3xl md:text-4xl text-ink leading-[0.95]">About.</h2>
+    <!-- 1. About -->
+    <section id="ch-1" class="brief-page bg-ivory scroll-mt-20">
+      <div class="max-w-5xl mx-auto px-6 py-20 md:py-24 grid md:grid-cols-12 gap-12">
+        <div class="md:col-span-7">
+          <p class="eyebrow">1 &middot; About</p>
+          <h2 class="mt-4 text-3xl md:text-4xl text-espresso leading-tight">Hi, I'm Leigh-Ann.</h2>
+          <div class="mt-7 space-y-5 text-[1.05rem] leading-[1.8] text-ink/90">
+            {bio.map((p) => <p set:html={p} />)}
           </div>
         </div>
-
-        <div class="grid md:grid-cols-12 gap-10">
-          <div class="md:col-span-8 space-y-5 text-ink text-lg leading-relaxed">
-            {bio.map(p => <p set:html={p} />)}
-          </div>
-
-          <aside class="md:col-span-4 md:border-l md:border-rule md:pl-8">
-            <p class="small-caps text-copper mb-5">At a glance</p>
-            <dl class="space-y-5">
-              {glance.map(g => (
+        <aside class="md:col-span-5">
+          <div class="card p-7 md:p-8">
+            <p class="eyebrow">At a glance</p>
+            <dl class="mt-5 space-y-5">
+              {glance.map((g) => (
                 <div>
-                  <dt class="font-mono text-[10px] uppercase tracking-[0.2em] text-ink-muted mb-1">{g.label}</dt>
-                  <dd class="text-ink text-base leading-snug" set:html={g.value} />
+                  <dt class="eyebrow text-stone">{g.label}</dt>
+                  <dd class="mt-1 text-espresso leading-relaxed" set:html={g.value} />
                 </div>
               ))}
             </dl>
-          </aside>
-        </div>
+          </div>
+        </aside>
       </div>
     </section>
 
-    <!-- II. By the numbers -->
-    <section class="brief-page bg-paper-deep py-16 md:py-20 border-y border-rule">
-      <div class="max-w-5xl mx-auto px-6 md:px-10">
-        <div class="flex items-baseline gap-6 mb-10">
-          <span class="font-display text-6xl text-copper leading-none">II.</span>
-          <div>
-            <p class="small-caps text-copper mb-1">Chapter Two</p>
-            <h2 class="font-display text-3xl md:text-4xl text-ink leading-[0.95]">By the numbers.</h2>
-          </div>
+    <!-- 2. By the numbers -->
+    <section id="ch-2" class="brief-page bg-linen scroll-mt-20">
+      <div class="max-w-5xl mx-auto px-6 py-20 md:py-24">
+        <div class="max-w-2xl">
+          <p class="eyebrow">2 &middot; By the numbers</p>
+          <h2 class="mt-4 text-3xl md:text-4xl text-espresso leading-tight">Twelve years, measured.</h2>
+          <p class="mt-4 text-stone text-lg leading-relaxed">
+            Resume-backed metrics. Every figure is attested to in the career documents my references would confirm.
+          </p>
         </div>
-
-        <p class="text-ink-soft text-base md:text-lg leading-relaxed max-w-2xl mb-10">
-          Resume-backed metrics. Every figure is attested to in the career documents my references would confirm.
-        </p>
-
-        <div class="grid grid-cols-2 md:grid-cols-4 gap-px bg-rule border border-rule">
-          {stats.map((s, idx) => (
-            <div class="bg-paper-deep p-5 md:p-6 flex flex-col">
-              <span class="font-mono text-[10px] uppercase tracking-[0.25em] text-ink-muted mb-3 tabular">0{idx + 1}</span>
-              <span class="font-display text-4xl md:text-5xl text-ink leading-none tabular mb-3">{s.value}</span>
-              <span class="text-ink text-sm font-medium mb-1 leading-snug">{s.label}</span>
-              <span class="text-ink-muted text-xs leading-relaxed mt-auto">{s.sub}</span>
+        <div class="mt-12 grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-5">
+          {stats.map((s) => (
+            <div class="card p-5 md:p-6 flex flex-col">
+              <span class="font-serif text-4xl md:text-[2.75rem] text-teal leading-none">{s.value}</span>
+              <span class="mt-4 font-semibold text-espresso leading-snug">{s.label}</span>
+              <span class="mt-1 text-stone text-sm leading-relaxed">{s.sub}</span>
             </div>
           ))}
         </div>
       </div>
     </section>
 
-    <!-- III. Selected work -->
-    <section class="brief-page py-16 md:py-20">
-      <div class="max-w-5xl mx-auto px-6 md:px-10">
-        <div class="flex items-baseline gap-6 mb-10">
-          <span class="font-display text-6xl text-copper leading-none">III.</span>
-          <div>
-            <p class="small-caps text-copper mb-1">Chapter Three</p>
-            <h2 class="font-display text-3xl md:text-4xl text-ink leading-[0.95]">Selected work.</h2>
-          </div>
+    <!-- 3. Selected work -->
+    <section id="ch-3" class="brief-page bg-ivory scroll-mt-20">
+      <div class="max-w-5xl mx-auto px-6 py-20 md:py-24">
+        <div class="max-w-2xl">
+          <p class="eyebrow">3 &middot; Selected work</p>
+          <h2 class="mt-4 text-3xl md:text-4xl text-espresso leading-tight">How I've helped other businesses</h2>
         </div>
-
-        <div class="space-y-14">
-          {cases.map(c => (
-            <article class="grid md:grid-cols-12 gap-6 md:gap-10">
-              <div class="md:col-span-7">
-                <div class="border-t-2 border-ink pt-4 mb-5">
-                  <p class="small-caps text-copper">{c.company}</p>
-                  <p class="font-mono text-[10px] uppercase tracking-wider text-ink-muted mt-1">{c.role}</p>
-                </div>
-                <h3 class="font-display text-2xl md:text-3xl text-ink leading-[1.05] mb-4">{c.headline}</h3>
-                <p class="text-ink-soft leading-relaxed text-base">{c.body}</p>
+        <div class="mt-12 space-y-6">
+          {cases.map((c) => (
+            <article class="case card p-7 md:p-9 grid md:grid-cols-12 gap-8">
+              <div class="md:col-span-8">
+                <p class="eyebrow">{c.company}</p>
+                <p class="mt-1 text-stone text-sm">{c.role}</p>
+                <h3 class="mt-4 text-2xl md:text-[1.75rem] text-espresso leading-tight">{c.headline}</h3>
+                <p class="mt-4 text-ink leading-relaxed">{c.body}</p>
               </div>
-              <div class="md:col-span-5 md:pl-8 md:border-l md:border-rule">
-                <p class="small-caps text-ink-muted mb-5">By the numbers</p>
-                <dl class="space-y-4">
-                  {c.metrics.map(m => (
-                    <div>
-                      <dt class="font-mono text-[10px] text-ink-muted uppercase tracking-[0.2em] mb-1">{m.label}</dt>
-                      <dd class="font-display text-3xl text-copper leading-none tabular">{m.value}</dd>
-                    </div>
-                  ))}
-                </dl>
-              </div>
+              <dl class="md:col-span-4 md:border-l md:border-line md:pl-8 space-y-5 self-center">
+                {c.metrics.map((m) => (
+                  <div>
+                    <dd class="font-serif text-2xl md:text-3xl text-teal leading-tight">{m.value}</dd>
+                    <dt class="mt-1 text-stone text-sm">{m.label}</dt>
+                  </div>
+                ))}
+              </dl>
             </article>
           ))}
         </div>
       </div>
     </section>
 
-    <!-- IV. Testimonials: pull-quote wall -->
-    <section class="brief-page bg-ink text-paper py-16 md:py-20">
-      <div class="max-w-5xl mx-auto px-6 md:px-10">
-        <div class="flex items-baseline gap-6 mb-10">
-          <span class="font-display text-6xl text-copper leading-none">IV.</span>
-          <div>
-            <p class="small-caps text-copper mb-1">Chapter Four</p>
-            <h2 class="font-display text-3xl md:text-4xl text-paper leading-[0.95]">How clients describe me.</h2>
-          </div>
+    <!-- 4. Testimonials -->
+    <section id="ch-4" class="brief-page bg-espresso text-ivory scroll-mt-20">
+      <div class="max-w-5xl mx-auto px-6 py-20 md:py-24">
+        <div class="max-w-2xl">
+          <p class="eyebrow text-teal-soft">4 &middot; In their words</p>
+          <h2 class="mt-4 text-3xl md:text-4xl text-ivory leading-tight">How clients describe me</h2>
+          <p class="mt-4 text-ivory/60 leading-relaxed">
+            Extracts from recommendations by former executives and partners I've worked alongside. Pam Connealy's is live on LinkedIn; the others are shown by role.
+          </p>
         </div>
 
-        <p class="text-paper/65 text-sm md:text-base leading-relaxed max-w-2xl mb-4">
-          Extracts from recommendations by former executives and partners I've worked alongside.
-        </p>
-        <p class="font-mono text-[10px] uppercase tracking-[0.2em] text-paper/40 leading-relaxed mb-10">
-          Pam Connealy is live on LinkedIn. Others are drafts pending approval, anonymized by role and sector.
-        </p>
-
-        <!-- Pam feature pull -->
-        <figure class="mb-12 pb-10 border-b border-paper/15">
-          <span class="block font-display text-6xl md:text-8xl text-copper leading-none -mb-4 md:-mb-6">"</span>
-          <blockquote class="font-display text-2xl md:text-3xl text-paper leading-[1.2]">
-            {briefPamFeature.extract}
+        <figure class="mt-12">
+          <blockquote class="font-serif text-2xl md:text-[2.1rem] text-ivory leading-snug">
+            &ldquo;{briefPamFeature.extract}&rdquo;
           </blockquote>
-          <figcaption class="mt-6 flex flex-wrap items-baseline gap-x-3 gap-y-1">
-            <p class="font-display text-base text-paper">{briefPamFeature.role}</p>
-            <span class="text-paper/40 text-xs">&middot;</span>
-            <p class="text-paper/55 text-sm">{briefPamFeature.sector}</p>
-            <span class="ml-auto small-caps bg-copper text-ink px-3 py-1 rounded-full text-[10px]">Live on LinkedIn</span>
+          <figcaption class="mt-5 text-ivory/70">
+            <span class="font-semibold text-ivory">{briefPamFeature.role}</span> &middot; {briefPamFeature.sector}
           </figcaption>
         </figure>
 
-        <!-- Supporting quotes: one simple grid -->
-        <div class="grid md:grid-cols-2 gap-x-10 gap-y-10 mb-12">
-          {[briefJulia, briefCourtney, ...briefShorts].map(q => (
-            <figure class="border-l-2 border-copper pl-5">
-              <blockquote class="font-display-italic text-lg md:text-xl text-paper leading-snug mb-3">"{q.extract}"</blockquote>
-              <figcaption class="font-mono text-[10px] uppercase tracking-[0.2em] text-paper/50">{q.role} &middot; {sectorLabel(q.sector)}</figcaption>
+        <div class="mt-12 pt-10 border-t border-ivory/15 grid md:grid-cols-2 gap-x-10 gap-y-9">
+          {[briefJulia, briefCourtney, ...briefShorts].map((q) => (
+            <figure>
+              <blockquote class="accent-line text-xl text-ivory/95 leading-snug">&ldquo;{q.extract}&rdquo;</blockquote>
+              <figcaption class="mt-3 text-sm text-ivory/55">{q.role} &middot; {sectorLabel(q.sector)}</figcaption>
             </figure>
           ))}
         </div>
 
-        <!-- Closer -->
-        <div class="pt-10 border-t border-paper/15 text-center">
-          <p class="font-display-italic text-xl md:text-2xl text-paper leading-snug max-w-2xl mx-auto">
-            "{briefPamCloser.extract}"
-          </p>
-          <p class="mt-3 font-mono text-[10px] uppercase tracking-[0.25em] text-paper/40">
-            {briefPamCloser.role} &middot; {briefPamCloser.sector}
-          </p>
-        </div>
+        <p class="mt-12 pt-10 border-t border-ivory/15 text-center accent-line text-teal-soft text-xl md:text-2xl">
+          &ldquo;{briefPamCloser.extract}&rdquo;
+          <span class="block mt-2 font-sans not-italic text-sm text-ivory/55">Pam Connealy</span>
+        </p>
       </div>
     </section>
 
-    <!-- V. Ways to work together -->
-    <section class="brief-page py-16 md:py-20">
-      <div class="max-w-5xl mx-auto px-6 md:px-10">
-        <div class="flex items-baseline gap-6 mb-10">
-          <span class="font-display text-6xl text-copper leading-none">V.</span>
-          <div>
-            <p class="small-caps text-copper mb-1">Chapter Five</p>
-            <h2 class="font-display text-3xl md:text-4xl text-ink leading-[0.95]">Ways to work together.</h2>
-            <p class="mt-3 text-ink-soft text-base leading-relaxed max-w-2xl">
-              Business systems for founders, small businesses, and executive offices. Every engagement starts with a conversation about what's breaking. Then I recommend one of three ways to work together.
-            </p>
-          </div>
+    <!-- 5. Ways to work together -->
+    <section id="ch-5" class="brief-page relative overflow-hidden bg-sage scroll-mt-20">
+      <span class="absolute -top-24 -left-24 w-80 h-80 rounded-full border border-teal/20" aria-hidden="true"></span>
+      <div class="relative max-w-5xl mx-auto px-6 py-20 md:py-24">
+        <div class="max-w-2xl">
+          <p class="eyebrow">5 &middot; Ways to work together</p>
+          <h2 class="mt-4 text-3xl md:text-4xl text-espresso leading-tight">Three ways to work together</h2>
+          <p class="mt-4 text-ink text-lg leading-relaxed">
+            Business systems for founders, small businesses, and executive offices. Every engagement starts with a conversation about what's breaking. Then I recommend one of three ways to work together.
+          </p>
         </div>
-
-        <div class="grid md:grid-cols-3 gap-5 md:gap-6 mb-14">
-          {packages.map((pk, i) => (
-            <article class={`border border-ink/15 rounded-sm p-6 md:p-7 flex flex-col ${i === 1 ? "bg-paper-deep" : ""}`}>
-              <p class="font-mono text-[10px] uppercase tracking-[0.25em] text-copper mb-1">{pk.num}</p>
-              <p class="font-mono text-[10px] uppercase tracking-[0.2em] text-ink-muted mb-4">{pk.tag}</p>
-              <h3 class="font-display text-2xl md:text-3xl text-ink leading-tight mb-4">{pk.name}</h3>
-              <p class="text-ink-soft text-sm leading-relaxed mb-5">{pk.body}</p>
-              <p class="text-ink text-sm leading-relaxed mt-auto pt-4 border-t border-rule"><span class="small-caps text-copper">Best for:</span> {pk.for}</p>
+        <div class="mt-12 grid md:grid-cols-3 gap-6">
+          {packages.map((pk) => (
+            <article class="card p-7 md:p-8 flex flex-col">
+              <h3 class="text-2xl text-espresso">{pk.name}</h3>
+              <p class="mt-2 accent-line text-teal text-lg">{pk.tag}</p>
+              <p class="mt-4 text-stone leading-relaxed text-[0.95rem]">{pk.body}</p>
+              <div class="mt-auto pt-6">
+                <div class="pt-5 border-t border-line md:min-h-[7.5rem]">
+                  <p class="eyebrow text-stone">Best for</p>
+                  <p class="mt-1 text-ink text-[0.95rem] leading-relaxed">{pk.for}</p>
+                </div>
+              </div>
             </article>
           ))}
         </div>
-
-        <p class="small-caps text-ink-muted mb-5">What it can cover</p>
-        <div class="grid sm:grid-cols-2 md:grid-cols-4 gap-px bg-rule border-y-2 border-ink">
-          {disciplinesCovered.map(d => (
-            <div class="bg-paper p-5 md:p-6">
-              <h3 class="font-display text-lg text-ink leading-tight mb-2">{d.name}</h3>
-              <p class="text-ink-soft text-sm leading-relaxed">{d.body}</p>
-            </div>
-          ))}
+        <div class="mt-14 pt-10 border-t border-teal/20">
+          <p class="eyebrow">What it can cover</p>
+          <div class="mt-6 grid sm:grid-cols-2 md:grid-cols-4 gap-x-8 gap-y-6">
+            {disciplinesCovered.map((d) => (
+              <div>
+                <h3 class="text-xl text-espresso">{d.name}</h3>
+                <p class="mt-2 text-ink/80 text-[0.95rem] leading-relaxed">{d.body}</p>
+              </div>
+            ))}
+          </div>
         </div>
       </div>
     </section>
 
-    <!-- VI. How I work -->
-    <section class="brief-page bg-paper-soft py-16 md:py-20 border-y border-rule">
-      <div class="max-w-5xl mx-auto px-6 md:px-10">
-        <div class="flex items-baseline gap-6 mb-10">
-          <span class="font-display text-6xl text-copper leading-none">VI.</span>
-          <div>
-            <p class="small-caps text-copper mb-1">Chapter Six</p>
-            <h2 class="font-display text-3xl md:text-4xl text-ink leading-[0.95]">How I work.</h2>
-          </div>
-        </div>
-
-        <div class="space-y-px bg-rule border-y-2 border-ink">
-          {process.map(s => (
-            <div class="bg-paper-soft grid md:grid-cols-12 gap-5 px-5 md:px-7 py-6">
-              <div class="md:col-span-1"><span class="font-display text-4xl text-copper leading-none tabular">{s.num}</span></div>
-              <div class="md:col-span-3">
-                <p class="small-caps text-ink-muted mb-1">{s.phase}</p>
-                <p class="font-mono text-[10px] uppercase tracking-wide text-ink-muted/70">{s.time}</p>
+    <!-- 6. How I work -->
+    <section id="ch-6" class="brief-page bg-ivory scroll-mt-20">
+      <div class="max-w-3xl mx-auto px-6 py-20 md:py-24">
+        <p class="eyebrow">6 &middot; How I work</p>
+        <h2 class="mt-4 text-3xl md:text-4xl text-espresso leading-tight">From first call to handoff</h2>
+        <ol class="mt-10 space-y-8 list-none p-0">
+          {process.map((s, i) => (
+            <li class="flex gap-5">
+              <span class="font-serif text-3xl text-teal leading-none shrink-0 w-7">{i + 1}</span>
+              <div>
+                <p class="eyebrow text-stone">{s.phase} &middot; {s.time}</p>
+                <h3 class="mt-1 text-xl text-espresso leading-snug">{s.title}</h3>
+                <p class="mt-2 text-stone leading-relaxed">{s.body}</p>
               </div>
-              <div class="md:col-span-8">
-                <h3 class="font-display text-lg md:text-xl text-ink leading-tight mb-2">{s.title}</h3>
-                <p class="text-ink-soft text-sm leading-relaxed">{s.body}</p>
-              </div>
-            </div>
+            </li>
           ))}
-        </div>
+        </ol>
       </div>
     </section>
 
-    <!-- VII. Credentials -->
-    <section class="brief-page bg-paper-soft py-16 md:py-20 border-y border-rule">
-      <div class="max-w-5xl mx-auto px-6 md:px-10">
-        <div class="flex items-baseline gap-6 mb-10">
-          <span class="font-display text-6xl text-copper leading-none">VII.</span>
-          <div>
-            <p class="small-caps text-copper mb-1">Chapter Seven</p>
-            <h2 class="font-display text-3xl md:text-4xl text-ink leading-[0.95]">Credentials.</h2>
-          </div>
-        </div>
-
-        <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-px bg-rule border border-rule">
-          {credentials.map(c => (
-            <article class="bg-paper-soft p-5 md:p-6 flex flex-col">
-              <p class="font-mono text-[10px] uppercase tracking-[0.25em] text-copper mb-3">{c.kind}</p>
-              <h3 class="font-display text-lg md:text-xl text-ink leading-tight mb-2">{c.name}</h3>
-              <p class="font-mono text-[11px] uppercase tracking-wide text-ink-muted leading-relaxed mt-auto pt-3" set:html={c.detail} />
+    <!-- 7. Credentials -->
+    <section id="ch-7" class="brief-page bg-paper border-y border-line scroll-mt-20">
+      <div class="max-w-5xl mx-auto px-6 py-20 md:py-24">
+        <p class="eyebrow">7 &middot; Credentials</p>
+        <h2 class="mt-4 text-3xl md:text-4xl text-espresso leading-tight">Training and certifications</h2>
+        <div class="mt-10 grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
+          {credentials.map((c) => (
+            <article class="rounded-[1.25rem] border border-line bg-ivory p-6 flex flex-col">
+              <p class="eyebrow">{c.kind}</p>
+              <h3 class="mt-3 text-xl text-espresso leading-snug">{c.name}</h3>
+              <p class="mt-auto pt-4 text-stone text-sm leading-relaxed" set:html={c.detail} />
             </article>
           ))}
         </div>
       </div>
     </section>
 
-    <!-- VIII. Next steps -->
-    <section class="brief-page bg-ink text-paper py-16 md:py-20">
-      <div class="max-w-5xl mx-auto px-6 md:px-10">
-        <div class="flex items-baseline gap-6 mb-10">
-          <span class="font-display text-6xl text-copper leading-none">VIII.</span>
-          <div>
-            <p class="small-caps text-copper mb-1">Chapter Eight</p>
-            <h2 class="font-display text-3xl md:text-4xl text-paper leading-[0.95]">Next steps.</h2>
-          </div>
-        </div>
-
-        <p class="font-display text-2xl md:text-3xl text-paper leading-snug max-w-3xl mb-10">
+    <!-- 8. Next steps -->
+    <section id="ch-8" class="brief-page bg-linen scroll-mt-20">
+      <div class="max-w-2xl mx-auto px-6 py-24 md:py-28 text-center">
+        <p class="eyebrow">8 &middot; Next steps</p>
+        <h2 class="mt-4 text-3xl md:text-5xl text-espresso leading-tight">Let's see if we're a good fit.</h2>
+        <p class="mt-6 text-stone text-lg leading-relaxed">
           If any chapter of this brief sounds like your week, the next step is a free 30-minute call. Fill out a two-minute form, then pick a time.
         </p>
-
-        <div class="grid md:grid-cols-2 gap-5 mb-10">
-          <a
-            href={BOOK_URL}
-            target="_blank"
-            rel="noopener"
-            class="group bg-copper text-paper p-6 md:p-8 rounded-sm hover:bg-paper hover:text-ink transition-colors flex flex-col print:border print:border-paper/20"
-          >
-            <span class="small-caps text-paper/60 group-hover:text-ink/60 mb-4">Start here</span>
-            <p class="font-display text-2xl md:text-3xl text-paper group-hover:text-ink leading-tight mb-3">Book a 30-minute call</p>
-            <p class="font-mono text-xs text-paper/80 group-hover:text-ink/80 tabular mt-auto">Short form &middot; then pick a time</p>
-          </a>
-          <a
-            href={`mailto:${EMAIL}?subject=Re%3A%20Capability%20Brief&body=Hi%20Leigh-Ann%2C%0A%0AI%20just%20read%20through%20your%20capability%20brief.%20Here%27s%20what%27s%20going%20on%3A%0A%0A`}
-            class="group border-2 border-paper/30 p-6 md:p-8 rounded-sm hover:border-copper transition-colors flex flex-col"
-          >
-            <span class="small-caps text-paper/60 mb-4">Or</span>
-            <p class="font-display text-2xl md:text-3xl text-paper leading-tight mb-3">Email me directly</p>
-            <p class="font-mono text-xs text-paper/80 tabular mt-auto">{EMAIL}</p>
-          </a>
+        <div class="mt-8 flex flex-wrap justify-center gap-4">
+          <a href={BOOK_URL} target="_blank" rel="noopener" class="btn btn-primary">Book a 30-minute call</a>
+          <a href={`mailto:${EMAIL}?subject=Re%3A%20Capability%20Brief`} class="btn btn-outline">{EMAIL}</a>
         </div>
-
-        <div class="flex items-center gap-4 justify-center pt-8 border-t border-paper/15">
-          <div class="w-8 h-px bg-paper/30"></div>
-          <span class="font-display-italic text-lg text-copper">fin.</span>
-          <div class="w-8 h-px bg-paper/30"></div>
-        </div>
+        <p class="mt-6 accent-line text-teal text-lg">I work with a small number of clients at a time.</p>
       </div>
     </section>
   </main>
 
-  <script>
-    const btn = document.getElementById("print-btn");
-    btn?.addEventListener("click", () => window.print());
+  <footer class="bg-espresso text-ivory/80 print:hidden">
+    <div class="max-w-5xl mx-auto px-6 py-8 text-sm text-ivory/55 flex flex-col sm:flex-row justify-between gap-3">
+      <p><span class="font-serif text-lg text-ivory">Leigh-Ann Martin</span> &middot; Capability brief, 2026</p>
+      <p>
+        <a href={base} class="hover:text-ivory transition-colors">Main site</a> &middot;
+        <a href={`https://www.${LINKEDIN}`} target="_blank" rel="noopener" class="hover:text-ivory transition-colors">LinkedIn</a> &middot;
+        <a href={`mailto:${EMAIL}`} class="hover:text-ivory transition-colors">{EMAIL}</a>
+      </p>
+    </div>
+  </footer>
+</TealLayout>
 
-    // Reveal on scroll: elements with [data-reveal] start at opacity 0 and fade in on intersect.
-    const revealEls = document.querySelectorAll("[data-reveal]");
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            entry.target.classList.add("revealed");
-            observer.unobserve(entry.target);
-          }
-        });
-      },
-      { threshold: 0.05, rootMargin: "0px 0px -40px 0px" }
-    );
-    revealEls.forEach((el) => observer.observe(el));
-  </script>
+<script>
+  document.getElementById("print-btn")?.addEventListener("click", () => window.print());
+</script>
 
-  <style>
-    @media print {
-      .brief-doc {
-        background: white !important;
-      }
-      .brief-page {
-        page-break-after: always;
-        break-after: page;
-      }
-      .brief-page:last-child {
-        page-break-after: auto;
-      }
-      .paper-grain::before {
-        display: none !important;
-      }
-      @page {
-        margin: 18mm 14mm;
-        size: letter;
-      }
+<style is:global>
+  @media print {
+    @page {
+      margin: 16mm 14mm;
+      size: letter;
     }
-  </style>
-</Layout>
+    html,
+    body {
+      background: #fff !important;
+    }
+    .brief-page {
+      break-after: page;
+    }
+    .brief-page:last-of-type {
+      break-after: auto;
+    }
+    .card,
+    .case,
+    figure,
+    li {
+      break-inside: avoid;
+    }
+    .card {
+      box-shadow: none;
+    }
+    * {
+      -webkit-print-color-adjust: exact;
+      print-color-adjust: exact;
+    }
+  }
+</style>
